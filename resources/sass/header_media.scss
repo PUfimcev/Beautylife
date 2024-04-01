@@ -1,0 +1,177 @@
+@import 'variables';
+
+@media (min-width: 2560px) {
+    .searching__popup .container_wrap {
+        height: 90%;
+        width: min(100%, 1200px);
+    }
+}
+
+@media (min-width: 769px) and (hover: hover){
+
+
+    // Connecting number, require callback
+
+    #headbar__call_request-bnt:hover {
+        background-color: $text-accent;
+        border: 1px solid $text-accent;
+        color: $body-bg;
+    }
+
+    .headbar__call_phone:hover{
+        color: $text-accent;
+    }
+
+    // Auth, Lang setting
+
+    .headbar__dropdown {
+
+        &.active{
+            .dropdown__menu {
+                display: block;
+
+                .order-history:hover {
+                    &::before{
+                        background: url('../images/basket_history_icon-hover.png') center/contain no-repeat;
+                    }
+                }
+
+                .basket:hover {
+                    &::before{
+                        background: url('../images/basket_icon-hover.png') center/contain no-repeat;
+                    }
+                }
+                .account-setting:hover {
+
+                    &::before{
+                        background: url('../images/settings_icon-hover.png') center/contain no-repeat;
+                        transform: rotate(60deg);
+                    }
+                }
+            }
+
+            .dropdown_toggle{
+                color: $text-accent;
+
+                .dropdown__arrow {
+                    transform: rotate(180deg);
+                    background-image: url(../images/arrow_down_icon_hover.png);
+                }
+            }
+
+        }
+
+        .dropdown_toggle{
+            cursor: pointer;
+
+            .dropdown__arrow {
+                transition: transform 0.5s ease-out 0s;
+            }
+
+            &:hover {
+                color: $text-accent;
+
+                .dropdown__arrow{
+                    background-image: url(../images/arrow_down_icon_hover.png);
+                }
+            }
+
+        }
+
+        .dropdown_item-reff:hover {
+            color: $text-accent;
+        }
+    }
+
+    // Login, cart
+
+    .headbar__login-cart{
+
+        a:hover {
+            color: $text-accent;
+        }
+        .headbar__chosen_prod:hover {
+            background-image: url(../images/heart_icon_hover.png);
+        }
+
+        .headbar__cart:hover {
+            background-image: url(../images/cart_icon_hover.png);
+        }
+    }
+
+
+    // Navigation
+
+    .navbar__line{
+
+
+        .navbar__nav {
+
+            .nav_link {
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    bottom: 0;
+                    left: 0;
+                    width: 0%;
+                    height: 2px;
+                    background-color: $text-accent;
+                    transition: all 0.5s ease-out 0s;
+                }
+            }
+
+            .nav_link:hover, .nav_link.active:hover {
+                color: $text-accent;
+                cursor: pointer;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 768px) and (hover: none) {
+
+    // Burger button
+    .navbar__toggler {
+        display: block;
+    }
+
+     // Auth, Lang setting
+
+     .headbar__dropdown {
+
+        &.active{
+            .dropdown__menu {
+                display: block;
+            }
+
+            .dropdown__arrow {
+                transform: rotate(180deg);
+                background-image: url(../images/arrow_down_icon_hover.png);
+            }
+
+        }
+
+        .dropdown_toggle{
+
+            .dropdown__arrow {
+                transition: transform 0.5s ease-out 0s;
+            }
+        }
+
+        .dropdown__menu {
+
+            .item-reff-auth{
+                white-space: normal;
+                word-wrap: normal;
+            }
+        }
+    }
+
+}

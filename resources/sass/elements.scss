@@ -1,0 +1,87 @@
+@import 'variables';
+
+//  Crumbs refferances
+
+.crumbs__route{
+
+    .crumbs__list{
+
+        @extend %P3-desk-description;
+        color: $text-color-crumb;
+        margin-bottom: 0;
+        padding: 2.5rem 3.1rem;
+
+        li{
+            display: inline-block;
+            max-height: 20px;
+
+            span{
+                opacity: 0.5;
+            }
+
+            .crumbs__reffers{
+                @extend %P3-desk-description;
+                color: $text-color-crumb;
+                padding: 0px;
+                opacity: 0.5;
+
+                &:hover{
+                    opacity: 1;
+                }
+            }
+        }
+
+
+    }
+}
+
+
+// Anchor
+
+.anchor_depict{
+    background: url('../images/anchor_up_arrow.png') center/contain no-repeat;
+    opacity: 0.8;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 3px;
+    border: none;
+    position: fixed;
+    bottom: 5%;
+    z-index: 2;
+
+    &:hover{
+        background: url('../images/anchor_up_arrow-hover.png') center/contain no-repeat;
+        opacity: 1;
+    }
+
+}
+
+// No Admin Heads-up
+
+.noAdmin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .noAdmin__content{
+        margin-top: 9rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            margin: 0;
+
+            a {
+                color: $text-accent-2;
+                font-weight: bold;
+
+                &:hover{
+                    color: $text-accent;
+                }
+            }
+        }
+
+    }
+}

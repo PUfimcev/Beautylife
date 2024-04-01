@@ -1,0 +1,148 @@
+// Desktop
+
+// Fonts
+$font-family-Mostly-Bright: 'Mostly Bright Personal Use', sans-serif;
+$font-family-Manrope: 'Manrope', sans-serif;
+
+// Colors
+$body-bg: #FAF8F6;
+$list-bg: #ffffff;
+
+$text-maincolor: #1F1C1B;
+$line-color: #000000;
+$text-accent: #987B75;
+$text-accent-2: #530C0C;
+$text-color-crumb: #2C2828;
+
+$box-shadow: #ece0de;
+
+
+// Text styles
+
+%H1-desk-level-header {
+
+    font-family: $font-family-Mostly-Bright;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 100px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: $text-maincolor;
+
+
+}
+
+%H2-desk-level-header {
+
+    font-family: $font-family-Mostly-Bright;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: $text-maincolor;
+
+}
+
+%H3-desk-level-header {
+
+    font-family: $font-family-Mostly-Bright;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: $text-accent;
+
+}
+
+%P1-desk-description {
+    font-family: $font-family-Manrope;
+    font-family: Manrope;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text-maincolor;
+}
+
+%P2-desk-description {
+    font-family: $font-family-Manrope;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text-maincolor;
+}
+
+%P2-H-desk-description {
+    font-family: $font-family-Manrope;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text-maincolor;
+}
+
+%P3-desk-description {
+    font-family: $font-family-Manrope;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text-maincolor;
+}
+
+%button-desk {
+    font-family: $font-family-Manrope;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text-maincolor;
+}
+
+%button-desk-2 {
+    font-family: $font-family-Manrope;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text-maincolor;
+}
+
+// links
+
+%links-a{
+
+        display: inline-block;
+        text-decoration: none;
+        padding: 8px;
+        color: $text-accent;
+        cursor: pointer;
+        border: 0;
+
+}
+
+// Icons
+
+%icons-settings {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+// Typography
+$font-family-MosttlyBright: 'Mostly Bright Personal Use', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+
+
+// Mobile

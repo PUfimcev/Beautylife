@@ -1,0 +1,31 @@
+@import '../variables';
+
+#order__history{
+
+    box-shadow: 0 0 0.5rem 0.4rem $box-shadow;
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+    border-radius: 0.8rem;
+    background-color: $list-bg;
+
+    .order__history__title{
+        border-bottom: 2px solid $text-accent;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .no_order__history{
+        height: 40vh;
+
+        .no_order__history-allusion{
+            padding: 0;
+            color: $text-accent;
+
+            &:hover{
+                color: $text-accent-2;
+                text-decoration:  underline;
+            }
+        }
+    }
+
+}

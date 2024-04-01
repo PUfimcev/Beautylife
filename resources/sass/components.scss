@@ -1,0 +1,132 @@
+@import 'variables';
+
+// Notifications
+
+#notifications {
+    width: min(100%, 25rem);
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 1s ease-out 0s;
+    background-color: $text-accent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid $text-accent-2;
+    border-radius: 5px;
+
+    .navbar__cancel-icon{
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: 0.3rem;
+        color: #fff !important;
+
+    }
+
+    .note{
+        color: #fff !important;
+        text-align: center;
+        padding: 2rem;
+        border: none;
+        background-color: $text-accent;
+    }
+
+}
+
+// User-card account
+
+.user-card{
+    width: 60%;
+    margin: 2rem auto;
+
+    .user-card-header{
+        background-color: $text-accent;
+        padding: 1rem;
+
+        h2, p {
+            margin: 0;
+            color: $body-bg;
+        }
+
+        p{
+            @extend %P3-desk-description;
+            color: $body-bg !important;
+        }
+
+    }
+
+    .user-card-credentials{
+        padding: 0.5rem;
+        margin: 0 auto;
+
+        .credentials-item{
+            @extend %P2-H-desk-description;
+            border-bottom: 1px solid $text-color-crumb;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &:hover{
+                a {
+                    display: block;
+                }
+            }
+
+            p:first-child{
+                color: $text-accent;
+            }
+
+            p:not(:last-child){
+                text-align: left;
+                padding: 0.5rem;
+                margin: 0;
+                width: 40%;
+
+            }
+
+            p:last-child{
+                display: flex;
+                width: 20%;
+                margin-bottom: 0;
+            }
+
+            a {
+                display: none;
+                color: $text-accent;
+                margin-left: auto;
+
+                &:hover{
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+                }
+            }
+
+            p:first-child::before{
+                content: '';
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                width: 1.5rem;
+                height: 1.5rem;
+                padding: 0.7rem;
+                margin-right: 1rem;
+            }
+
+            .item-name::before{
+                background-image: url('../images/account_user_icon.png');
+            }
+
+            .item-email::before{
+                background-image: url('../images/account_email_icon.png');
+            }
+
+            .item-reset-password::before{
+                background-image: url('../images/account_reset-password_icon.png');
+            }
+        }
+
+    }
+}

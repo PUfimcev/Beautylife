@@ -1,0 +1,77 @@
+// Variables
+@import 'variables';
+
+// components
+@import 'header';
+@import 'header_media';
+@import 'elements';
+@import 'auth';
+@import 'components';
+@import 'admin_panel/callbacks_page.scss';
+@import 'admin_panel/pagination.scss';
+@import 'person_data/bookmarks.scss';
+@import 'person_data/order_history.scss';
+@import 'basket.scss';
+
+// Fonts
+@font-face {
+    font-family: 'Mostly Bright Personal Use';
+    src: url("../fonts/MostlyBrightPersonalUse-2OMxl.otf");
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url("../fonts/Manrope/Manrope-VariableFont_wght.ttf");
+}
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+
+*  {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+html {
+
+    background-color: $body-bg;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+}
+
+
+li {
+    list-style: none;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    @extend %P2-desk-description;
+    padding: 8px;
+    color: $text-maincolor;
+    cursor: pointer;
+}
+
+h1 {
+    @extend %H1-desk-level-header;
+}
+
+h2 {
+    @extend %H2-desk-level-header;
+}
+
+h3 {
+    @extend %H3-desk-level-header;
+}
+
+p {
+    @extend %P2-desk-description;
+}
+
