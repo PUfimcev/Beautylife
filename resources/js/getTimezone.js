@@ -1,63 +1,47 @@
 class GetTimezone {
 
     #getTimezone;
+    #token;
 
     constructor(){
 
         this.#getTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        this.#token = document.querySelector('[name="csrf-token"]').content;
 
-        if(this.#getTimezone){
+        this.#createForm();
 
-            // this.#setCookie('timezone', this.#getTimezone, options = { 'samesite': lax});
-            // window.addEventListener('load', ()=>{
-                this.#transferJSDataToLaravel();
+        // if(localStorage.getItem('Beautylife-timezone') === 'true'){
+        // window.addEventListener('unload', ()=>{
+        //         localStorage.removeItem('Beautylife-timezone');
+        //     });
+        // };
+    }
 
-            // })
+    #createForm (){
+
+        let form = document.createElement('form');
+        form.classList.add('timezone');
+        form.setAttribute('method','POST');
+        form.action = timezoneRoute;
+        form.style = "display:none";
+        form.innerHTML = `<input id="timezone" type="text" name="timezone" value="${this.#getTimezone}" />
+        <input type="hidden" name="_token" id="token" value="${ this.#token }">`;
+
+        document.body.append(form);
+
+        this.#submitForm();
+    }
+
+    #submitForm(){
+        let form = document.querySelector('.timezone');
+
+        if(sessionStorage.getItem('Beautylife-timezone') !== 'true'){
+            sessionStorage.setItem('Beautylife-timezone', 'true');
+            form.submit();
+        } else {
+            return;
         }
-    }
-
-    #transferJSDataToLaravel(){
-        console.log(this.#getTimezone);
-
-        // let form1 = document.createElement('form');
-        // form1.name = "vote";
-        // form1.action = mainRoute;
-        // form1.action = '/Beautylife/public/';
-        // form1.method = 'POST';
-        // form1.style = "display:none";
-        // form1.innerHTML = `<input id="timezone" type="text" name="timezone" value="${this.#getTimezone}" />`;
-        // `<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">`;
-
-        // document.body.append(form1);
-
-        // form['vote'].submit();
-        // form1.submit();
-
-
-        // $('html').html('<form action="/2.php" name="vote" method="post" style="display:none;"><input type="text" name="name" value="яндекс" /></form>');
-
-            //         'timezone': `${this.#getTimezone}`,
-            //         // 'token': this.#token.value
-            //     }
-
-            //     console.log(seachData)
-
-            //     const response = await axios.post(headerSearch + '/', seachData);
-
-            //     console.log(response.status)
-            //     if(response.status === 200){
-            //         let data = response.data;
-            //         console.log(data)
-            //         // let { popup_searching, token } = data;
-            //     }
-
-            // } catch (error) {
-            //     console.log(error.message);
-
-            // }
-    }
-
-
+    };
 }
 
-export default new GetTimezone;
+export default new GetTimezone();

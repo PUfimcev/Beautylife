@@ -1,0 +1,40 @@
+@import 'variables';
+
+@media screen and (min-width: 1024px){
+
+// Basket is empty
+
+#basket{
+    .no_basket{
+
+        .no_basket-allusion{
+            &:hover{
+                color: $text-accent-2;
+                text-decoration:  underline;
+            }
+        }
+    }
+
+}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+// Basket is empty
+
+#basket{
+    .no_basket{
+
+        .no_basket-allusion{
+            color: $text-accent-2;
+            text-decoration:  underline;
+        }
+    }
+
+}
+}
+
+@media screen and (max-width:767px) {
+
+}

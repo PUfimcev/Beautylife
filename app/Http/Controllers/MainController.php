@@ -6,6 +6,7 @@ use App\Classes\SearchClass;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewName;
 use App\Classes\RemoveSessionClass;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 
@@ -85,5 +86,14 @@ class MainController extends Controller
 
         return response()->json($result);
 
+    }
+
+
+    // save timezone from js into session
+    public function getTimezone(Request $request){
+
+        session(['timezone' => $request->input('timezone')]);
+
+        return redirect()->back();
     }
 }

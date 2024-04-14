@@ -93,13 +93,15 @@ class LoginController extends Controller
 
         $locale = session('locale');
 
+        $timezone = session('timezone');
+
         $this->guard()->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        if ($response = $this->loggedOut($request, $locale)) {
+        if ($response = $this->loggedOut($request, $locale, $timezone)) {
             return $response;
         }
 
@@ -115,7 +117,6 @@ class LoginController extends Controller
         //         ? new JsonResponse([], 204)
         //         : back();
         // }
-
     }
 
     /**
@@ -126,10 +127,12 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    protected function loggedOut(Request $request, $locale)
+    protected function loggedOut(Request $request, $locale, $timezone)
     {
 
         Session::put('locale',$locale);
+
+        Session::put('timezone', $timezone);
 
         if(Str::contains(url()->previous(), 'admin')){  // Str::contains(url()->previous(), 'admin'): They check if they log out from admin panel
 

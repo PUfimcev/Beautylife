@@ -1,0 +1,39 @@
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+    #bookmarks{
+
+        .no_bookmarks{
+
+            .no_bookmarks-allusion{
+
+                &:hover{
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    #bookmarks{
+
+        .no_bookmarks{
+
+            .no_bookmarks-allusion{
+
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:767px) {
+
+}

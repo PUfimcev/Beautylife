@@ -78,6 +78,16 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        window.routes = {
+            'headerSearch': '{{ route('header_search') }}',
+            'registerFormURL': '{{ route('register') }}',
+            'timezone': '{{ route('get_timezone') }}',
+        }
+        let headerSearch = window.routes.headerSearch,
+            registerFormURL = window.routes.registerFormURL,
+            timezoneRoute = window.routes.timezone;
 
+    </script>
 </body>
 </html>

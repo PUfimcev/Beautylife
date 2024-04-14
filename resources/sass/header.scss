@@ -1,5 +1,10 @@
 @import 'variables';
 
+@keyframes rotate {
+    from { transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
 header {
 
     background-color: $body-bg;
@@ -32,6 +37,7 @@ header {
 
     border-bottom: 1px solid $line-color;
     max-width: 9rem;
+    background-color: $body-bg;
 
     .headbar__search-input {
 
@@ -46,6 +52,7 @@ header {
             outline: none;
         }
         &::placeholder {
+            background-color: $body-bg;
             text-transform: uppercase;
             color: #1F1C1B;
             opacity: 70%;
@@ -375,6 +382,7 @@ header {
                     @extend %P1-desk-description;
                 }
                 .result_not_found{
+                    display: none;
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -382,25 +390,33 @@ header {
                     @extend %H3-desk-level-header;
 
                 }
+
+                .spinner{
+                    height: 60vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .spinner-img{
+                        width: 2rem;
+                        height: 2rem;
+                        background: url('../images/spinner.png') center/cover no-repeat;
+                        animation: 1.5s linear 0s infinite normal rotate;
+                    }
+
+                    p{
+                        margin-top: 1rem;
+                        font-size: 1.5rem;
+                        color: $text-accent;
+                    }
+                }
             }
         }
     }
 }
 
 
-    // Admin panel
-
-.headbar__admin{
-    border-bottom: 1px solid $line-color;
-    padding: 0;
-    width: 100%;
-    .navbar__line_admin-panel{
-        border: 0;
-        .navbar__nav{
-            margin: 0;
-        }
-    }
-}
 
 
 

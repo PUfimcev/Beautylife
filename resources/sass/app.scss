@@ -4,14 +4,25 @@
 // components
 @import 'header';
 @import 'header_media';
-@import 'elements';
 @import 'auth';
+@import 'auth_media';
+@import 'basket';
+@import 'basket_media';
 @import 'components';
-@import 'admin_panel/callbacks_page.scss';
-@import 'admin_panel/pagination.scss';
-@import 'person_data/bookmarks.scss';
-@import 'person_data/order_history.scss';
-@import 'basket.scss';
+@import 'components_media';
+@import 'elements';
+@import 'elements_media';
+@import 'pagination';
+
+@import 'person_data/bookmarks';
+@import 'person_data/bookmarks_media';
+@import 'person_data/order_history';
+@import 'person_data/order_history_media';
+
+@import 'admin_panel/callbacks_page';
+@import 'admin_panel/callbacks_page_media';
+@import 'admin_panel/admin_header';
+@import 'admin_panel/admin_header_media';
 
 // Fonts
 @font-face {

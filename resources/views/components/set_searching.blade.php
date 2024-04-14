@@ -1,7 +1,7 @@
 
 <div class="searching__popup">
         <div class="container_wrap d-flex flex-column justify-content-flex-start align-items-flex-start">
-        
+
             <div id="searching__popup_elements" class="searching__popup_elements d-flex flex-row justify-content-between align-items-center">
 
                 <div class="searching__group d-flex flex-row justify-content-start align-items-center">

@@ -1,0 +1,41 @@
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+    #order__history{
+
+        .no_order__history{
+
+            .no_order__history-allusion{
+
+                &:hover{
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    #order__history{
+
+        .no_order__history{
+
+            .no_order__history-allusion{
+
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+            }
+        }
+
+    }
+
+}
+
+@media screen and (max-width:767px) {
+
+}

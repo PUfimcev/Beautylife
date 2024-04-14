@@ -1,0 +1,82 @@
+@import 'variables';
+
+@media screen and (min-width: 1024px){
+
+    #auth__app {
+
+        main{
+
+            // login, register, confirm, email, verify and ect.
+
+            .card_profile{
+
+                .card-headbar, .register-headbar{
+                    .headbar-brand__logo{
+
+                        &:hover{
+                            color: $text-accent-2;
+                        }
+                    }
+
+                    .navbar__cancel-icon{
+
+                        &:hover{
+                            color: $text-accent-2;
+                        }
+                    }
+                }
+
+                .card__mine{
+
+                    .card-body{
+
+                        .login__password_request, .card__link-register, .register__link-to-login {
+                            &:hover{
+                                color: $text-accent-2;
+                            }
+                        }
+
+
+                        .login__password,.register_password, .confirm__password {
+
+                            .password_input {
+
+                                .password-control{
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        .login__remember_me{
+
+                            input, label{
+                                cursor: pointer;
+                            }
+                        }
+
+                        .login__button, .confirm__button, .register__button,.email__button, .verify__button{
+
+                            button{
+                                &:hover{
+                                    background-color: $text-accent-2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+
+}
+
+@media screen and (max-width:767px) {
+
+}

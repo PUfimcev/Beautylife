@@ -22,8 +22,8 @@
                 <tr>
                     <th scope="row">{{ ++$i }}</th>
                     <td><span class="callbacks__names">{{ $callback->name }}</span></td>
-                    <td>{{ $callback->phone_number }}</td>
-                    <td><span class="callbacks__date">{{ $callback->created_at->setTimezone('Europe/Minsk')->format('H:i / d.m.Y') }}</span></td>
+                    <td><span class="callbacks__phone">{{ $callback->phone_number }}</span></td>
+                    <td><span class="callbacks__date">{{ $callback->created_at->setTimezone($local_timezone)->format('H:i / d.m.Y') }}</span></td>
                     <td><form method="POST" action="{{ route('callbacks.destroy', $callback) }}">
                             @csrf
                             @method('DELETE')
@@ -38,8 +38,8 @@
             @endforelse
         </tbody>
     </table>
+    <div class="pagination">{{ $callbacks->onEachSide(1)->links() }}</div>
 
-        {{ $callbacks->onEachSide(1)->links() }}
 </div>
 </div>
 

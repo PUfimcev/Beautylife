@@ -28,7 +28,7 @@ class SetTimeNotifications {
 
                     resolve(this.#notification.style.top = "-45%");
                 }
-            }, 2500)}
+            }, 1500)}
         );
     }
 

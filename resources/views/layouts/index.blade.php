@@ -28,7 +28,6 @@
         {{-- Add link to recaptchs --}}
         <script src="https://www.google.com/recaptcha/api.js?hl={{ $current_locale }}" async defer></script>
 
-
     </head>
     <body>
 
@@ -56,11 +55,11 @@
             window.routes = {
                 'headerSearch': '{{ route('header_search') }}',
                 'registerFormURL': '{{ route('register') }}',
-                'mainRoute': '{{ route('index') }}',
+                'timezone': '{{ route('get_timezone') }}',
             }
             let headerSearch = window.routes.headerSearch,
                 registerFormURL = window.routes.registerFormURL,
-                mainRoute = window.routes.mainRoute;
+                timezoneRoute = window.routes.timezone;
 
         </script>
     </body>

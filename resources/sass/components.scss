@@ -69,12 +69,6 @@
             justify-content: space-between;
             align-items: center;
 
-            &:hover{
-                a {
-                    display: block;
-                }
-            }
-
             p:first-child{
                 color: $text-accent;
             }
@@ -98,10 +92,6 @@
                 color: $text-accent;
                 margin-left: auto;
 
-                &:hover{
-                    color: $text-accent-2;
-                    text-decoration:  underline;
-                }
             }
 
             p:first-child::before{

@@ -22,18 +22,8 @@
             .card-headbar, .register-headbar{
                 width: 100%;
 
-                .headbar-brand__logo{
-
-                    &:hover{
-                        color: $text-accent-2;
-                    }
-                }
-
                 .navbar__cancel-icon{
                     color: $text-accent;
-                    &:hover{
-                        color: $text-accent-2;
-                    }
                 }
             }
 
@@ -66,7 +56,7 @@
                                 padding-right: 2.3rem;
                             }
                             .password-control{
-                                cursor: pointer;
+
                                 display: block;
                                 width: 1.4rem;
                                 height: 1.4rem;
@@ -90,13 +80,6 @@
                         }
                     }
 
-                    .login__remember_me{
-
-                        input, label{
-                            cursor: pointer;
-                        }
-                    }
-
                     .login__button, .confirm__button, .register__button,.email__button, .verify__button{
 
                         margin-bottom: 1rem;
@@ -105,9 +88,6 @@
                             width: 100%;
                             background-color: $text-accent;
                             border: 0;
-                            &:hover{
-                                background-color: $text-accent-2;
-                            }
                         }
                     }
 

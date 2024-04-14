@@ -1,0 +1,50 @@
+@import 'variables';
+
+@media screen and (min-width: 1024px){
+
+// User-card account
+
+.user-card{
+    .user-card-credentials{
+        .credentials-item{
+            &:hover{
+                a {
+                    display: block;
+                }
+            }
+
+            a {
+                &:hover{
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+                }
+            }
+       }
+    }
+}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+// User-card account
+
+    .user-card{
+        .user-card-credentials{
+            .credentials-item{
+                a {
+                    display: block;
+                }
+            }
+
+            a {
+                color: $text-accent-2;
+                text-decoration:  underline;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+
+}

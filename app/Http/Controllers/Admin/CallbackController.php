@@ -28,9 +28,9 @@ class CallbackController extends Controller
      */
     public function index(): View
     {
-        $callbacks = Callback::latest()->paginate(13);
+        $callbacks = Callback::latest()->paginate(10);
 
-        return view('admin.pages.callbacks', compact('callbacks'))->with('i', (request()->input('page', 1)-1) * 13);
+        return view('admin.pages.callbacks', compact('callbacks'))->with('i', (request()->input('page', 1)-1) * 10);
     }
 
     /**

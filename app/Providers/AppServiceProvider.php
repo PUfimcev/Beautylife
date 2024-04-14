@@ -45,6 +45,15 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+        // input timezone
+        view()->composer(['admin.pages.callbacks'], function(View $view) {
+
+            if(session()->has('timezone')){
+
+                $view->with('local_timezone', session()->get('timezone'));
+            }
+        });
+
         // For emphasizing routes
         Blade::directive('routeactive', function ($expression) {
             return "<?php echo (request()->routeIs($expression)) ? 'active' : '' ?>";

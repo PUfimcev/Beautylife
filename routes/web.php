@@ -58,9 +58,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
         Route::get('/edit-password','formForCheckPassword')->name('get_check_form_password');
         Route::post('/edit-password/check-password','checkPassword')->name('check_password');
         Route::get('/edit-password/reset','showResetForm')->name('reset_password_form');
-        // Route::post('/edit-password/reset','reset')->name('update_password');
-
-        // POST            password/reset ................ password.update › Auth\ResetPasswordController@reset
     });
 
     Route::controller(PersonController::class)->group(function(){
@@ -92,7 +89,8 @@ Route::controller(MainController::class)->group(function() {
     Route::get('/brands', 'brands')->name('brands');
     Route::get('/conditions', 'conditions')->name('conditions');
     Route::get('/blogs', 'blogs')->name('blogs');
-    Route::post('/', 'getResultSearching')->name('header_search');
+    Route::post('/searching', 'getResultSearching')->name('header_search');
+    Route::post('/timezone', 'getTimezone')->name('get_timezone');
 });
 
 
@@ -118,13 +116,5 @@ Route::group(['namespace' => 'App\Http\Controllers\Basket', 'prefix' => 'basket'
 });
 
 
-// GET|HEAD        password/confirm . password.confirm › Auth\ConfirmPasswordController@showConfirmForm
-// POST            password/confirm ............................ Auth\ConfirmPasswordController@confirm
 
-// POST            password/email ... password.email › Auth\ForgotPasswordController@sendResetLinkEmail
-// GET|HEAD        password/reset  password.request › Auth\ForgotPasswordController@showLinkRequestForm
-
-
-// POST            password/reset ................ password.update › Auth\ResetPasswordController@reset
-// GET|HEAD        password/reset/{token} . password.reset › Auth\ResetPasswordController@showResetForm
 

@@ -7,11 +7,37 @@
 
     .table__callbacks{
 
-        width: 90% !important;
+        width: 80% !important;
         margin: 2rem auto;
 
         .callbacks__names{
             color: #06229f;
+        }
+
+        tr{
+            vertical-align: middle;
+            width: 100%;
+
+            th{
+                width: 6%;
+            }
+
+            td{
+                width: 25%;
+            }
+
+            td:last-child{
+                width: 5%;
+
+            }
+
+            span, form {
+                display: block;
+            }
+
+            button{
+                padding: 0 0.6rem;
+            }
         }
 
         .callbacks__date{
@@ -19,7 +45,6 @@
         }
 
             .no__callbacks{
-
 
                 td{
                     @extend %P1-desk-description;

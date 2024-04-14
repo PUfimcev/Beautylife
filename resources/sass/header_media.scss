@@ -7,7 +7,7 @@
     }
 }
 
-@media (min-width: 769px) and (hover: hover){
+@media screen and (min-width: 1024px){
 
 
     // Connecting number, require callback
@@ -135,7 +135,7 @@
     }
 }
 
-@media (max-width: 768px) and (hover: none) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
 
     // Burger button
     .navbar__toggler {
@@ -173,5 +173,9 @@
             }
         }
     }
+
+}
+
+@media screen and (max-width:767px) {
 
 }
