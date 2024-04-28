@@ -18,6 +18,11 @@ header {
         position: fixed;
         // max-width: 1200px;
     }
+
+}
+
+.mobile_header{
+    display: none;
 }
 
 .headbar {
@@ -38,6 +43,7 @@ header {
     border-bottom: 1px solid $line-color;
     max-width: 9rem;
     background-color: $body-bg;
+    margin-left: 1rem;
 
     .headbar__search-input {
 
@@ -45,7 +51,7 @@ header {
         padding: 0px 5px;
         border: none;
         background-color: $body-bg;
-        width: 114px;
+        width: 8rem;
 
         &:focus{
             background-color: $body-bg;
@@ -73,7 +79,12 @@ header {
 // Connecting number, require callback
 
 .headbar__call {
-    gap: 15px;
+    gap: 1rem;
+}
+
+#headbar__call_request-bnt {
+    display: inline-block;
+    text-align: center !important;
 }
 
 .headbar__call_phone,
@@ -141,7 +152,7 @@ header {
         }
 
         .dropdown_item-reff {
-            display: inline-block;
+            display: block;
             font-weight:bold;
             padding-left: 1rem;
             padding-right: 1rem;
@@ -266,7 +277,7 @@ header {
 
 // Navigation
 
-    // WEB-site
+    // Desktop
 
 .navbar__line {
     border-top: 1px solid $line-color;
@@ -289,6 +300,10 @@ header {
     }
 }
 
+
+    // Mobile
+
+    // Burger
 .navbar__toggler {
     display: none;
     border: 0;
@@ -307,114 +322,6 @@ header {
     }
 }
 
-// Set searching data
-
-#header__searching{
-    display: none;
-
-    .searching__popup{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 4;
-        background-color: rgba($color: #000000, $alpha: 0.4);
-
-
-        .container_wrap {
-            background-color: #fff;
-            height: 95%;
-            width: min(95%, 1150px);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-            #searching__popup_elements{
-                border-bottom: 1px solid $text-accent;
-                padding: 1.2rem 0.5rem 1.2rem 1.7rem;
-                height: 20%;
-
-                .searching__group{
-
-                    border: 1px solid $text-accent;
-                    border-radius: 3px;
-                    width: 97%;
-
-                    .searching__group__magnify-glass{
-                        background-image: url('../images/search_icon.png');
-                        background-size: contain;
-                        @extend %icons-settings;
-                        width: 1.2rem;
-                        height: 1.2rem;
-                        margin: 0 0.6rem;
-                    }
-
-                    .searching__group__input{
-                        font-size: 1.2rem;
-                        outline: none;
-                        padding: 0.3rem;
-                        border: none;
-                        width: 97%;
-
-                    }
-
-                }
-
-                .searching__popup__remove-icon{
-                    cursor: pointer;
-                    box-sizing: content-box;
-                    padding: 10px;
-                    width: min(3%, 1.3rem);
-                }
-
-            }
-
-            .searching__box{
-
-                height: 80%;
-                position: relative;
-                padding: 1.2rem;
-
-                .searching__box_result{
-
-                    @extend %P1-desk-description;
-                }
-                .result_not_found{
-                    display: none;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    @extend %H3-desk-level-header;
-
-                }
-
-                .spinner{
-                    height: 60vh;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-
-                    .spinner-img{
-                        width: 2rem;
-                        height: 2rem;
-                        background: url('../images/spinner.png') center/cover no-repeat;
-                        animation: 1.5s linear 0s infinite normal rotate;
-                    }
-
-                    p{
-                        margin-top: 1rem;
-                        font-size: 1.5rem;
-                        color: $text-accent;
-                    }
-                }
-            }
-        }
-    }
-}
 
 
 

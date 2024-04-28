@@ -1,7 +1,7 @@
 class SetSearching{
 
     #headerSearchingSection;
-    #headSearchInput;
+    #headSearchInput = [];
     #lengthSeachInput;
 
     #searchInputData = '';
@@ -14,10 +14,11 @@ class SetSearching{
     #searchResult;
 
     constructor(){
-
+        // header.blade.php & header_mobile.blade.php
         this.#headerSearchingSection = document.getElementById('header__searching');
-        this.#headSearchInput = document.querySelector('.headbar__search-input');
+        this.#headSearchInput = document.querySelectorAll('.headbar__search-input');
 
+        // set_searching.blade.php
         this.#searchingPopUp = document.querySelector('.searching__popup');
         this.#searchingPopupElements = document.querySelector('.searching__popup_elements');
         this.#popUpSearchInput = document.querySelector('.searching__group__input');
@@ -29,40 +30,48 @@ class SetSearching{
     }
 
     #startSearch(){
-        if(this.#headSearchInput && this.#headSearchInput !== undefined) {
+        if(this.#headSearchInput.length > 0 && this.#headSearchInput !== undefined) {
 
-            this.#headSearchInput.addEventListener('input', (event) => {
-                this.#searchInputData = event.target.value;
-                this.#lengthSeachInput = event.target.value.length;
-                if(this.#lengthSeachInput > 0) {
-                    this.#headerSearchingSection.style.display = "block";
-                    this.#popUpSearchInput.focus();
+            this.#headSearchInput.forEach((elem) => {
 
-                    this.#popUpSearchInput.value = this.#searchInputData;
-                    this.#getSearchedData(this.#searchInputData);
+                elem.addEventListener('input', (event) => {
+                    this.#searchInputData = event.target.value;
+                    this.#lengthSeachInput = event.target.value.length;
+                    if(this.#lengthSeachInput > 0) {
+                        this.#headerSearchingSection.style.display = "block";
+                        this.#popUpSearchInput.focus();
 
-                }
+                        this.#popUpSearchInput.value = this.#searchInputData;
+                        this.#getSearchedData(this.#searchInputData);
+
+                    }
+                });
+            })
+
+            this.#headSearchInput.forEach((elem) => {
+                elem.addEventListener('click', (event) => {
+                    this.#searchInputData = event.target.value;
+                    this.#lengthSeachInput = event.target.value.length;
+                    if(this.#lengthSeachInput > 0) {
+                        this.#headerSearchingSection.style.display = "block";
+                        this.#popUpSearchInput.select();
+                        this.#popUpSearchInput.value = this.#searchInputData;
+
+                        this.#getSearchedData(this.#searchInputData);
+                    }
+                });
+
             });
-
-            this.#headSearchInput.addEventListener('click', (event) => {
-                this.#searchInputData = event.target.value;
-                this.#lengthSeachInput = event.target.value.length;
-                if(this.#lengthSeachInput > 0) {
-                    this.#headerSearchingSection.style.display = "block";
-                    this.#popUpSearchInput.select();
-                    this.#popUpSearchInput.value = this.#searchInputData;
-
-                    this.#getSearchedData(this.#searchInputData);
-                }});
-            }
-
-            this.#removingElements();
+        }
+        this.#removingElements();
     }
 
     #removePopUp(){
 
         this.#headerSearchingSection.style.display = "none";
-        this.#headSearchInput.value =  this.#popUpSearchInput.value;
+        this.#headSearchInput.forEach((elem) => {
+            elem.value =  this.#popUpSearchInput.value;
+        });
     }
 
     #removingElements(){
@@ -127,7 +136,7 @@ class SetSearching{
                 }
             } else {
                 let Spinner = await import('./spinner.js').then(module => module.default.init());
-                let div = document.createElement('div'); // создаем div лишь для того, чтобы положить в него результат функции createContentModal
+                let div = document.createElement('div'); // создаем div лишь для того, чтобы положить в него результат функции Spinner
                 div.appendChild(Spinner);
                 this.#searchResult.innerHTML = div.innerHTML;
             }

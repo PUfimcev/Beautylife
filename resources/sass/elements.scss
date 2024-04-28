@@ -6,16 +6,16 @@
 
     .crumbs__list{
 
-        @extend %P3-desk-description;
         color: $text-color-crumb;
         margin-bottom: 0;
-        padding: 2.5rem 3.1rem;
+        padding: 2.5rem 3rem;
 
         li{
             display: inline-block;
             max-height: 20px;
 
             span{
+                @extend %P3-desk-description;
                 opacity: 0.5;
             }
 

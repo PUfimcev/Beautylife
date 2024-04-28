@@ -42,7 +42,24 @@
 }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
+
+//  Crumbs refferances
+
+.crumbs__route{
+
+    .crumbs__list{
+        padding: 1.5rem 3rem;
+
+        li{
+            .crumbs__reffers{
+                color: $text-accent !important;
+                text-decoration:  underline;
+            }
+        }
+    }
+}
+
 // No Admin Heads-up
 
 .noAdmin {
@@ -57,6 +74,24 @@
 }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:  768px) {
+
+    //  Crumbs refferances
+
+    .crumbs__route{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:  480px) {
+
+}
+
+@media screen and (max-width:  375px) {
+
+}
+
+@media screen and (max-width:  320px) {
 
 }

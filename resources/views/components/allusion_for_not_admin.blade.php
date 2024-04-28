@@ -10,6 +10,5 @@
             <p>{{ __('or return')}}<a class="headbar__login login" href="{{ route('index') }}">{{ __('to the Main page') }}.</a></p>
 
         </div>
-
     </div>
 @endsection

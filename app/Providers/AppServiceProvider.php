@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // get previous pathname
-        view()->composer(['auth.login', 'auth.register', 'components.allusion_for_not_admin', 'components.callback_form', 'person.setting-account.get_user_data'], function(View $view) {
+        view()->composer('*', function(View $view) {
 
             if(session()->has('prevUrl')){
 

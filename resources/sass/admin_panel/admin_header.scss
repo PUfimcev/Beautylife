@@ -1,8 +1,8 @@
-    // Admin panel
+    // Admin panel header
 
     .headbar__admin{
         border-bottom: 1px solid $line-color;
-        padding: 0;
+        padding: 0 2rem;
         width: 100%;
         .navbar__line_admin-panel{
             border: 0;
@@ -12,6 +12,6 @@
         }
 
         .dropdown__menu-auth-admin-panel{
-            left: -3.5rem;
+            left: -4rem;
         }
     }

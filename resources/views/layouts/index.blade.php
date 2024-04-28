@@ -28,11 +28,17 @@
         {{-- Add link to recaptchs --}}
         <script src="https://www.google.com/recaptcha/api.js?hl={{ $current_locale }}" async defer></script>
 
+
     </head>
     <body>
 
         <header class="d-flex flex-column justify-content-center">
-            @includeIf('layouts.header')
+            <div class="desktop_header">
+                @includeIf('layouts.header')
+            </div>
+            <div class="mobile_header">
+                @includeIf('layouts.header_mobile')
+            </div>
         </header>
 
 
@@ -60,7 +66,6 @@
             let headerSearch = window.routes.headerSearch,
                 registerFormURL = window.routes.registerFormURL,
                 timezoneRoute = window.routes.timezone;
-
         </script>
     </body>
 </html>

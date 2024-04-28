@@ -14,9 +14,9 @@ class ShowHidePassword {
             return;
         } else {
             this.#passwordControl = passwordControl;
-    
+
             this.#passwordInput = passwordInput;
-    
+
             this.#showHideButtonEye();
 
         }
@@ -28,7 +28,7 @@ class ShowHidePassword {
 
         if(this.#passwordInput.closest('.password_input').lastElementChild.classList.contains('invalid-feedback')){
             let alerInvalidFeedback = this.#passwordInput.closest('.password_input').lastElementChild;
-                
+
             alerInvalidFeedback.previousElementSibling.style.display = 'none';
             if(this.#passwordInput.classList.contains('is-invalid')) {
                 this.#passwordInput.addEventListener('focus', () => {
@@ -36,7 +36,7 @@ class ShowHidePassword {
                     alerInvalidFeedback.previousElementSibling.style.display = 'block';
                     alerInvalidFeedback.style.display = 'none';
                 })
-            } 
+            }
             this.#viewToggle();
         } else {
             if(this.#passwordControl && this.#passwordControl.length > 0) {
@@ -51,7 +51,7 @@ class ShowHidePassword {
     }
 
     #showHidePassword(){
-    
+
         if(this.previousElementSibling.type === 'password'
         ){
             this.classList.add('view');

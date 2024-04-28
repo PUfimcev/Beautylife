@@ -96,4 +96,15 @@ class MainController extends Controller
 
         return redirect()->back();
     }
+
+    // get screen width from js into session
+    // public function getScreenWidth(Request $request){
+
+    //     // dd($request->query('screen'));
+
+    //     session(['screenWidth' => $request->query('screen')]);
+    //     // dd(session()->get('screenWidth'));
+
+    //     return redirect()->back();
+    // }
 }

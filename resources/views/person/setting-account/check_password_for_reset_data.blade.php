@@ -22,7 +22,7 @@
                     @endif>
 
                     @csrf
-
+                    <input hidden type="text" autocomplete="username" value="#">
                     <div class="login__password mb-3">
                         <label for="password" class="col-form-label text-md-end">{{ __('Password') }}</label>
                         <div class="password_input d-flex flex-column justify-content-between align-items-center">

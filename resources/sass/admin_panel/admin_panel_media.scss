@@ -1,0 +1,60 @@
+// Admin panel
+
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+}
+
+@media screen and (max-width: 1023px) {
+
+}
+
+@media screen and (max-width:  768px) {
+
+}
+
+@media screen and (min-width: 600px){
+    .heads_up_admin{
+        display: none;
+    }
+}
+
+@media screen and (max-width:  599px) {
+
+    .header-admin, .main-admin{
+        display: none;
+    }
+
+    .heads_up_admin{
+        display: block;
+
+        .noAdmin_panel{
+            width: 80%;
+            h3{
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+
+            p{
+                font-size: 1.1rem;
+                text-align: center;
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  425px) {
+
+
+}
+
+@media screen and (max-width:  375px) {
+
+
+}
+
+@media screen and (max-width:  320px) {
+
+}

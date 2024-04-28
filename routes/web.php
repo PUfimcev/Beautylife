@@ -91,6 +91,7 @@ Route::controller(MainController::class)->group(function() {
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::post('/searching', 'getResultSearching')->name('header_search');
     Route::post('/timezone', 'getTimezone')->name('get_timezone');
+    // Route::get('/screen-width', 'getScreenWidth')->name('get_screen_width');
 });
 
 

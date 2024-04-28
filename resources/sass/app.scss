@@ -2,6 +2,7 @@
 @import 'variables';
 
 // components
+
 @import 'header';
 @import 'header_media';
 @import 'auth';
@@ -13,12 +14,14 @@
 @import 'elements';
 @import 'elements_media';
 @import 'pagination';
+@import 'pagination_media';
 
 @import 'person_data/bookmarks';
 @import 'person_data/bookmarks_media';
 @import 'person_data/order_history';
 @import 'person_data/order_history_media';
 
+@import 'admin_panel/admin_panel_media';
 @import 'admin_panel/callbacks_page';
 @import 'admin_panel/callbacks_page_media';
 @import 'admin_panel/admin_header';
@@ -43,19 +46,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
-.container {
-    max-width: 1200px;
-}
 
 html {
-
+    font-size: 16px;
     background-color: $body-bg;
     overflow-y: scroll;
     overscroll-behavior: none;
 }
 
+.container {
+    max-width: 1200px;
+    padding: 0;
+}
 
 li {
     list-style: none;

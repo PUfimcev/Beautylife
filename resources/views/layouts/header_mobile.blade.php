@@ -1,32 +1,9 @@
 
 <div class="container">
-    <div class="headbar d-flex flex-row justify-content-between align-items-center m-auto">
-        <div class="headbar__logo-search d-flex flex-row justify-content-around align-items-center">
-            <div class="headbar-brand"><a class="headbar-brand__logo" href="{{ route('index') }}">BLife</a></div>
-            <div class="headbar__search d-flex flex-row justify-content-between align-items-center">
-                <input class="headbar__search-input" type="text" name="headbar-seach" placeholder="{{ __('Search') }}">
-                <div class="headbar__search-icon"></div>
-            </div>
-        </div>
-        <div class="headbar__call d-flex flex-row justify-content-around align-items-center">
-            <a class="headbar__call_phone" href="tel:+350123230231" role="button">+350 123 230 231</a>
-            <a id="headbar__call_request-bnt" class="btn btn-outline-secondary border-1 rounded-0 px-4" href="{{ route('callbacks.create') }}" role="button">{{ __('Request a call') }}</a>
-        </div>
-
-        <div class="headbar__dropdown">
-            <div id="dropdown_toggle" class="dropdown_toggle">
-                {{ __('ENG') }} <span class="dropdown__arrow"></span>
-            </div>
-            <ul class="dropdown__menu dropdown__menu-lang">
-                @foreach ($available_locales as $locale_name => $locale)
-                    @if ($locale === $current_locale)
-                        <li><span class="dropdown__item item-lang">{{ __("$locale_name") }}</span></li>
-                    @else
-                        <li><a class="dropdown_item-reff item-reff-lang" href="{{ route('set_locale', $locale) }}">{{ __("$locale_name") }}</a></li>
-                    @endif
-                @endforeach
-            </ul>
-        </div>
+    <div class="headbar__logo-search d-flex flex-row justify-content-around align-items-center">
+        <div class="headbar-brand"><a class="headbar-brand__logo" href="{{ route('index') }}">BLife</a></div>
+    </div>
+    <div class="headbar headbar-mobile d-flex flex-row justify-content-between align-items-center m-auto">
 
         <div class="headbar__login-cart d-flex flex-row justify-content-around align-items-center">
             @guest
@@ -76,29 +53,60 @@
             @endauth
             <div><a href="{{ route ('basket') }}" class="headbar__cart"><span class="headbar__cart_amount">20</span></a></div>
         </div>
+        <div  class="d-flex flex-row justify-content-between align-items-center gap-3">
+
+            <div class="headbar__search d-flex flex-row justify-content-between align-items-center">
+                <input class="headbar__search-input" type="text" name="headbar-seach">
+                <div class="headbar__search-icon"></div>
+            </div>
+            <button id="burger-button" class="navbar__toggler" type="button">
+                <span class="navbar__toggler-icon"></span>
+            </button>
+        </div>
     </div>
-    <nav class="navbar__line">
-          {{-- <div class="navbar__list" id="navbarNav"> --}}
-            <ul class="navbar__nav d-flex justify-content-between align-items-center m-auto">
+
+    <div class="wrap__nav"></div>
+    <nav class="nav__line-mobile">
+         <a class="nav__cancel-icon mobile"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+        </svg></a>
+            <ul class="nav__nav-mobile">
                 <li class="nav_item">
-                    <a href="{{ route('about') }}" class="nav_link @routeactive('about')">{{ __('About company')}}</a>
+                    <a href="{{ route('about') }}" class="nav_link mobile @routeactive('about')">{{ __('About company')}}</a>
                 </li>
                 <li class="nav_item">
-                    <a href="{{ route('offers') }}" class="nav_link @routeactive('offers')">{{__('Offers')}}</a>
+                    <a href="{{ route('offers') }}" class="nav_link mobile @routeactive('offers')">{{__('Offers')}}</a>
                 </li>
                 <li class="nav_item">
-                    <a href="{{ route('catalog') }}" class="nav_link @routeactive('catalog')">{{__('Catalog')}}</a>
+                    <a href="{{ route('catalog') }}" class="nav_link mobile @routeactive('catalog')">{{__('Catalog')}}</a>
                 </li>
                 <li class="nav_item">
-                    <a href="{{ route('brands') }}" class="nav_link @routeactive('brands')">{{__('Brands')}}</a>
+                    <a href="{{ route('brands') }}" class="nav_link mobile @routeactive('brands')">{{__('Brands')}}</a>
                 </li>
                 <li class="nav_item">
-                    <a href="{{ route('conditions') }}" class="nav_link @routeactive('conditions')">{{__('Payments and delivery')}}</a>
+                    <a href="{{ route('conditions') }}" class="nav_link mobile @routeactive('conditions')">{{__('Payments and delivery')}}</a>
                 </li>
                 <li class="nav_item">
-                    <a href="{{ route('blogs') }}" class="nav_link @routeactive('blogs')">{{__('Blogs')}}</a>
+                    <a href="{{ route('blogs') }}" class="nav_link mobile @routeactive('blogs')">{{__('Blogs')}}</a>
                 </li>
             </ul>
-          {{-- </div> --}}
-      </nav>
+            <div class="headbar__call mobile">
+                <a class="headbar__call_phone" href="tel:+350123230231" role="button">+350 123 230 231</a>
+                <a id="headbar__call_request-bnt" class="btn btn-outline-secondary border-1 rounded-0 px-4" href="{{ route('callbacks.create') }}" role="button">{{ __('Request a call') }}</a>
+            </div>
+
+            <div class="headbar__dropdown mobile">
+                <div id="dropdown_toggle" class="dropdown_toggle">
+                    {{ __('ENG') }} <span class="dropdown__arrow"></span>
+                </div>
+                <ul class="dropdown__menu dropdown__menu-lang-mobile">
+                    @foreach ($available_locales as $locale_name => $locale)
+                        @if ($locale === $current_locale)
+                            <li><span class="dropdown__item item-lang mobile">{{ __("$locale_name") }}</span></li>
+                        @else
+                            <li><a class="dropdown_item-reff item-reff-lang mobile" href="{{ route('set_locale', $locale) }}">{{ __("$locale_name") }}</a></li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+    </nav>
 </div>
