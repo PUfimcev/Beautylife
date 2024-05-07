@@ -41,7 +41,11 @@ class HeaderFix {
 
                 switch(place){
                     case 'web':
-                        this.#mainElem.style = 'margin-top: 234px';
+                        if(window.matchMedia("screen and (max-width: 1023px)").matches){
+                            this.#mainElem.style = 'margin-top: 174px';
+                        } else {
+                            this.#mainElem.style = 'margin-top: 234px';
+                        }
                     break;
                     case 'admin':
                         this.#mainElem.style = 'margin-top: 98px';

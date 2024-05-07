@@ -7,6 +7,7 @@ class BurgerButtonAndNavMobile{
     #wrapNav;
     #cancelButton;
     #linkSelectLang;
+    #langButton;
     #navLinksPages = [];
 
     constructor(){
@@ -20,6 +21,7 @@ class BurgerButtonAndNavMobile{
         this.#wrapNav = document.querySelector('.wrap__nav');
         this.#navLinksPages = document.querySelectorAll('.nav_link.mobile');
         this.#linkSelectLang = document.querySelector('.item-reff-lang.mobile');
+        this.#langButton = document.querySelector('.dropdown_toggle.mobile');
 
         this.#buttonToggle();
         this.#removeButton();
@@ -27,7 +29,7 @@ class BurgerButtonAndNavMobile{
         this.#getResize();
         this.#clickNavLinks();
         this.#clickLangLink();
-
+        this.#selectLangButton();
     }
 
     #getResize(){
@@ -37,6 +39,25 @@ class BurgerButtonAndNavMobile{
             }
         });
     };
+
+    // to raise up the nav-menue after clicking burger-button
+    #navMenuTop(){
+        this.#navMobile.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }
+
+    // to lower the nav-menue after clicking lang-button
+    #navMenuBottom(){
+
+        this.#navMobile.scrollTo({
+            top: 1000,
+            bottom: 0,
+            behavior: "smooth",
+        });
+    }
 
     #clickNavLinks(){
         if(this.#navLinksPages == [] && this.#navLinksPages.length == 0) return;
@@ -78,11 +99,18 @@ class BurgerButtonAndNavMobile{
             })
 
             await promis.then(() => {
+                this.#navMenuTop();
                 setTimeout(()=>{
                     this.#wrapNav.style.opacity = '0.5';
                     this.#navMobile.style.transform = 'translateX(0%)';
                 }, 200)
             }).catch((e) => { console.log('Erorr is', e)});
+        });
+    }
+
+    #selectLangButton(){
+        this.#langButton.addEventListener('click', () => {
+            this.#navMenuBottom();
         });
     }
 

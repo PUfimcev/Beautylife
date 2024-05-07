@@ -16,7 +16,7 @@ header {
         top: 0;
         left: 0;
         position: fixed;
-        // max-width: 1200px;
+        z-index: 3;
     }
 
 }
@@ -26,7 +26,6 @@ header {
 }
 
 .headbar {
-    width: min(100%, 1100px);
     padding: 2.5rem 0px;
 }
 
@@ -283,6 +282,7 @@ header {
     border-top: 1px solid $line-color;
     border-bottom: 1px solid $line-color;
     padding: 1.87rem 0;
+    width: min(100%, 1200px);
 
     .navbar__nav {
         width: min(100%, 720px);

@@ -31,32 +31,51 @@
 
     </head>
     <body>
-
-        <header class="d-flex flex-column justify-content-center">
-            <div class="desktop_header">
-                @includeIf('layouts.header')
-            </div>
-            <div class="mobile_header">
-                @includeIf('layouts.header_mobile')
+        {{-- Header --}}
+        {{-- <header class="d-flex flex-column justify-content-center"> --}}
+        <header>
+            <div class="container">
+                <div class="desktop_header">
+                    @includeIf('layouts.header')
+                </div>
+                <div class="mobile_header">
+                    @includeIf('layouts.header_mobile')
+                </div>
             </div>
         </header>
 
-
+        {{-- Crumbs --}}
         <section class="crumbs__route">
             <div class="container">@yield('crumbs')</div>
         </section>
 
-
+        {{-- Notification --}}
         @includeIf('components.notifications')
 
+        {{-- Pages --}}
         <main class="main-web">
             @yield('content')
         </main>
 
+        {{-- Footer --}}
+
+        <footer>
+            <div class="container">
+                <div class="desktop_footer">
+                    @includeIf('layouts.footer')
+                </div>
+                <div class="mobile_footer">
+                    @includeIf('layouts.footer_mobile')
+                </div>
+            </div>
+        </footer>
+
+        {{-- Searching block --}}
         <section id="header__searching">
             @includeIf('components.set_searching')
         </section>
 
+        {{-- Routes for JS --}}
         <script>
             window.routes = {
                 'headerSearch': '{{ route('header_search') }}',

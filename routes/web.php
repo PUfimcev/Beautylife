@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Person\UserController;
+use App\Http\Controllers\Basket\BasketController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Admin\CallbackController;
-use App\Http\Controllers\Basket\BasketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,17 @@ Route::controller(MainController::class)->group(function() {
 // Route for button in Header 'Reqest a call'
 
 Route::resource('/admin/callbacks', CallbackController::class);
+
+//  Route for subscription for Site in footer
+Route::resource('/subscriptions', SubscribeController::class);
+
+// GET|HEAD        subscriptions  subscriptions.index › SubscribeController@index
+// POST            subscriptions  subscriptions.store › SubscribeController@store
+// GET|HEAD        subscriptions/create  subscriptions.create › SubscribeController@create
+// GET|HEAD        subscriptions/{subscription}  subscriptions.show › SubscribeController@show
+// PUT|PATCH       subscriptions/{subscription} subscriptions.update › SubscribeController@update
+// DELETE          subscriptions/{subscription}  subscriptions.destroy › SubscribeController@destroy
+// GET|HEAD        subscriptions/{subscription}/edit  subscriptions.edit › SubscribeController@edit
 
 // Basker routes
 

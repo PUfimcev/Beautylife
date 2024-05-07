@@ -5,6 +5,8 @@
 
 @import 'header';
 @import 'header_media';
+@import 'footer';
+@import 'footer_media';
 @import 'auth';
 @import 'auth_media';
 @import 'basket';
@@ -51,11 +53,17 @@
 
 
 html {
-    font-size: 16px;
     background-color: $body-bg;
     overflow-y: scroll;
     overscroll-behavior: none;
 }
+
+body{
+
+    width: 100vw;
+    height: 100vh;
+}
+
 
 .container {
     max-width: 1200px;

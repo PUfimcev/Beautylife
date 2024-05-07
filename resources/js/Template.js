@@ -9,7 +9,6 @@ class alterStyleDropdown{
 
         this.#sw = window.matchMedia("screen and (max-width: 768px)");
 
-        console.log(this.#sw.matches)
         if(this.#sw.matches){
             this.#elemDropDownAuth = document.querySelector('.dropdown__menu-auth');
 

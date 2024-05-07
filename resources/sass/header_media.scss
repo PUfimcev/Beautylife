@@ -10,7 +10,7 @@
 @media screen and (min-width: 1024px){
 
     .headbar {
-        width: min(90%, 1100px);
+        width: min(90%, 1200px);
     }
 
     // Connecting number, require callback
@@ -237,7 +237,11 @@
         }
 
         .headbar__logo-search{
-            margin: 0.75rem 0;
+
+            .headbar-brand__logo{
+
+                padding: 1.65rem 1rem;
+            }
         }
 
         .headbar.headbar-mobile{
@@ -278,6 +282,9 @@
         }
 
         .nav__line-mobile{
+            overflow-y: scroll;
+            margin-bottom: 10rem;
+            // overflow-y: scroll;
             align-items: center;
             border: 0;
             overflow-y: scroll;
@@ -289,7 +296,7 @@
             height: 100vh;
             width: min(100%, 400px);
             background-color: $menu-mobile-bg;
-            padding: 2.5rem 3rem 3rem 3rem;
+            padding: 2.5rem 3rem 5rem 3rem;
             transition: all 1.2s ease 0s;
 
             .nav__cancel-icon.mobile{
@@ -325,8 +332,8 @@
             }
             .headbar__dropdown.mobile{
                 margin: 0 auto;
+                margin-bottom: 4rem;
                 .dropdown__menu-lang-mobile{
-                    padding: 1rem 0.5rem;
                     left: -60%;
                     right: 50%;
                 }
