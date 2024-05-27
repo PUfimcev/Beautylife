@@ -3,7 +3,15 @@
 @section('content')
     <div class="container">
 
-        <p>Main1</p>
+        <section class="reviews">
 
+            <h2 class="reviews__title">{{ __('Reviews') }}</h2>
+            <div class="reviews__elements">
+                <div class="review">
+
+                </div>
+            </div>
+
+        </section>
     </div>
 @endsection

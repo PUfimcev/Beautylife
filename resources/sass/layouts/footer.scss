@@ -1,0 +1,324 @@
+@import '../variables';
+
+// desktop footer
+
+.desktop_footer{
+
+    border-top: 1px solid $line-color;
+    width: 100%;
+    padding: 6.25rem 0px;
+
+    .footer{
+        height: 11.25rem;
+
+        .footer__navbar__line{
+
+            width: 30%;
+            height: 100%;
+
+            .headbar-brand.footer{
+                width: clamp(6rem, 15%, 6rem);
+                align-self: flex-start;
+
+                a{
+                    padding: 5px;
+                }
+            }
+
+            .nav__nav-mobile{
+                margin-bottom: 0;
+                padding-left: 0;
+
+                a{
+                    padding: 5px;
+                }
+            }
+
+        }
+
+        .footer__elements{
+            width: min(60%, 600px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .footer__subscribe{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .footer_email_title{
+                    white-space: nowrap;
+                    margin-right: min(2.5%, 1rem);
+                    @extend %P2-desk-description;
+                }
+
+                .footer__email_form{
+                    width: 100%;
+                    height: 1.875rem;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    z-index: 0;
+
+                    .invalid-feedback{
+                        position: absolute;
+                        top: 1.875rem;
+                        font-family: $font-family-Manrope;
+                        font-size: 0.75rem !important;
+                        font-weight: 400 !important;
+                        line-height: 1rem !important;
+                        color: red !important;
+                    }
+
+                    #footer_email_input{
+                        padding: 0.25rem 0 0.25rem 1rem;
+                        border: 1px solid $line-color;
+                        border-right: 0;
+                        border-radius: 0;
+                        @extend %P3-desk-description;
+
+                        &:focus{
+                            box-shadow: none;
+                        }
+                    }
+
+                    .footer_email-btn{
+                        width: max(25%, 2.5rem);
+                        height: 1.875rem;
+                        border: 1px solid $line-color;
+                        border-left: 0;
+                        @extend %icons-settings;
+                        background-size:contain;
+                        background: $body-bg url('../images/footer_arrow_subscribe.png');
+                        padding: 0 1rem;
+                    }
+                }
+            }
+
+
+            .footer_contact-details{
+
+                display: flex;
+                justify-content: flex-start;
+                gap: 6.25rem;
+
+                .contacts_data{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+
+                    p{
+                        margin-bottom: 0;
+                        a{
+                            padding: 5px 5px 5px 0;
+                        }
+                    }
+
+                    .schedule{
+                        padding: 5px 5px 5px 0;
+                    }
+                }
+
+                .contacts_social_media-rights{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .social-media{
+                        display: flex;
+                        gap: 0.625rem;
+
+                        p{
+                            width: 1.875rem;
+                            height: 1.875rem;
+                            margin-bottom: 0;
+
+                            a{
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                @extend %icons-settings;
+                                background-size:contain;
+
+                            }
+
+                        }
+
+                        .instagram{
+                            background-image: url('../images/instagram_sign.png');
+                        }
+
+                        .facebook{
+                            background-image: url('../images/facebook_sign.png');
+                        }
+
+                        .x{
+                            background-image: url('../images/twitter_sign.png');
+                        }
+                    }
+
+                    .copyrights{
+                        @extend %P3-desk-description;
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+// mobile footer
+.mobile_footer{
+
+    display: none;
+    border-top: 1px solid $line-color;
+    width: 100%;
+
+    .footer{
+        width: min(85%, 25rem);
+
+        .headbar-brand.footer{
+            align-self: center;
+            margin: 2.5rem 0 1rem 0;
+
+            .headbar-brand__logo.footer{
+                width: 100%;
+                display: inline-block;
+                text-align: center;
+            }
+        }
+
+        .footer__input-elements{
+            width: 100%;
+
+            .footer_email_title{
+                white-space: nowrap;
+                @extend %P2-desk-description;
+            }
+
+            .footer_email_form.mobile{
+
+                width: 100%;
+                height: 1.875rem;
+                display: flex;
+                align-items: center;
+                margin: 1.25rem 0 2rem 0;
+                position: relative;
+                z-index: 0;
+
+                .invalid-feedback{
+                    width: 100%;
+                    position: absolute;
+                    top: 1.875rem;
+                    font-family: $font-family-Manrope;
+                    font-size: 0.75rem !important;
+                    font-weight: 400 !important;
+                    line-height: 1rem !important;
+                    color: red !important;
+                }
+
+                #footer_mobile_email_input{
+                    padding: 0.25rem 0 0.25rem 1rem;
+                    border: 1px solid $line-color;
+                    border-right: 0;
+                    border-radius: 0;
+                    @extend %P3-desk-description;
+
+                    &:focus{
+                        box-shadow: none;
+                    }
+                }
+
+                .footer_email-btn{
+                    width: max(25%, 2.5rem);
+                    height: 1.875rem;
+                    border: 1px solid $line-color;
+                    border-left: 0;
+                    @extend %icons-settings;
+                    background-size:contain;
+                    background: $body-bg url('../images/footer_arrow_subscribe.png');
+                    padding: 0 1rem;
+                }
+            }
+        }
+
+        .footer__navbar__line{
+            ul{
+                padding-left: 0;
+                margin-bottom: 1.875rem;
+
+                a{
+                    padding-left: 0;
+                }
+            }
+        }
+
+        .footer_mobile_contact-details{
+            width: 100%;
+            .contacts_data{
+                p{
+                    margin-bottom: 0;
+                    a{
+                        padding: 5px 5px 5px 0;
+                    }
+                }
+
+                .schedule{
+                    padding: 5px 5px 5px 0;
+                }
+            }
+
+            .contacts_social_media-rights{
+                margin-top: 1.875rem;
+
+                .social-media{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 1.875rem;
+
+                    p{
+                        width: 1.875rem;
+                        height: 1.875rem;
+                        margin-bottom: 0;
+
+                        a{
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            @extend %icons-settings;
+                            background-size:contain;
+
+                        }
+
+                    }
+
+                    .instagram{
+                        background-image: url('../images/instagram_sign.png');
+                    }
+
+                    .facebook{
+                        background-image: url('../images/facebook_sign.png');
+                    }
+
+                    .x{
+                        background-image: url('../images/twitter_sign.png');
+                    }
+                }
+
+                .copyrights{
+                    @extend %P3-desk-description;
+                    margin-bottom: 4rem;
+                }
+
+            }
+
+        }
+    }
+
+}
+
+

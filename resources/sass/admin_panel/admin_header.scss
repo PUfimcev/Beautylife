@@ -1,17 +1,25 @@
+@import '../variables';
+
     // Admin panel header
 
     .headbar__admin{
         border-bottom: 1px solid $line-color;
         padding: 0 2rem;
         width: 100%;
+
         .navbar__line_admin-panel{
             border: 0;
+            width: 80%;
             .navbar__nav{
                 margin: 0;
             }
         }
 
-        .dropdown__menu-auth-admin-panel{
-            left: -4rem;
+        .headbar__dropdown.admin{
+            width: min(20%, 5.2rem);
+            .dropdown__menu-auth-admin-panel{
+                left: -4rem;
+            }
         }
+
     }

@@ -86,5 +86,4 @@
                 registerFormURL = window.routes.registerFormURL,
                 timezoneRoute = window.routes.timezone;
         </script>
-    </body>
 </html>

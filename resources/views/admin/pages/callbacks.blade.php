@@ -5,7 +5,9 @@
 @section('content')
 
 <div class="container">
-<div class="admin__callbacks__section d-flex flex-column align-items-center justify-content-between">
+<div class="admin__callbacks__section d-flex flex-column align-items-center justify-content-start">
+
+    <h2>{{ __('Callbacks') }}</h2>
 
     <table class="table table-striped table__callbacks">
         <thead>
@@ -20,14 +22,14 @@
         <tbody class="table-group-divider">
             @forelse ($callbacks as $callback)
                 <tr>
-                    <th scope="row">{{ ++$i }}</th>
+                    <td scope="row">{{ ++$i }}</td>
                     <td><span class="callbacks__names">{{ $callback->name }}</span></td>
                     <td><span class="callbacks__phone">{{ $callback->phone_number }}</span></td>
                     <td><span class="callbacks__date">{{ $callback->created_at->setTimezone($local_timezone)->format('H:i / d.m.Y') }}</span></td>
                     <td><form method="POST" action="{{ route('callbacks.destroy', $callback) }}">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit">{{ __('Delete') }}</button>
+                            <button class="btn btn-danger" type="submit"><span>{{ __('Delete') }}</span></button>
                         </form>
                     </td>
                 </tr>

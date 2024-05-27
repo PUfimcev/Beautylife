@@ -3,31 +3,39 @@
 
 // components
 
-@import 'header';
-@import 'header_media';
-@import 'footer';
-@import 'footer_media';
-@import 'auth';
-@import 'auth_media';
-@import 'basket';
-@import 'basket_media';
-@import 'components';
-@import 'components_media';
-@import 'elements';
-@import 'elements_media';
-@import 'pagination';
-@import 'pagination_media';
+@import 'layouts/header';
+@import 'layouts/header_media';
+@import 'layouts/footer';
+@import 'layouts/footer_media';
+@import 'authorization/auth';
+@import 'authorization/auth_media';
+@import 'components/basket';
+@import 'components/basket_media';
+@import 'components/components';
+@import 'components/components_media';
+@import 'components/elements';
+@import 'components/elements_media';
+@import 'components/pagination';
+@import 'components/pagination_media';
+
+@import 'pages/main_page';
+@import 'pages/main_page_media';
+
+
 
 @import 'person_data/bookmarks';
 @import 'person_data/bookmarks_media';
 @import 'person_data/order_history';
 @import 'person_data/order_history_media';
 
+@import 'admin_panel/admin_panel';
 @import 'admin_panel/admin_panel_media';
-@import 'admin_panel/callbacks_page';
-@import 'admin_panel/callbacks_page_media';
+@import 'admin_panel/admin_pages';
+@import 'admin_panel/admin_pages_media';
 @import 'admin_panel/admin_header';
 @import 'admin_panel/admin_header_media';
+@import 'admin_panel/admin_forms_show';
+@import 'admin_panel/admin_forms_show_media';
 
 // Fonts
 @font-face {

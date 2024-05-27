@@ -1,0 +1,275 @@
+@import '../variables';
+
+// Notifications
+
+#notifications {
+    width: min(100%, 25rem);
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+    transition: top 1s ease-out 0s;
+    background-color: $text-accent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid $text-accent-2;
+    border-radius: 5px;
+
+    .navbar__cancel-icon{
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: 0.3rem;
+        color: #fff !important;
+
+    }
+
+    .note{
+        color: #fff !important;
+        text-align: center;
+        padding: 2rem;
+        border: none;
+        background-color: $text-accent;
+    }
+
+}
+
+// User-card account
+
+.user-card{
+    width: 60%;
+    margin: 2rem auto;
+
+    .user-card-header{
+        background-color: $text-accent;
+        padding: 1rem;
+
+        h2, p {
+            margin: 0;
+            color: $body-bg;
+        }
+
+        p{
+            @extend %P3-desk-description;
+            color: $body-bg !important;
+        }
+
+    }
+
+    .user-card-credentials{
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0 auto;
+
+        .credentials-item{
+            width: 100%;
+            @extend %P2-H-desk-description;
+            border-bottom: 1px solid $text-color-crumb;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p:first-child{
+                display: flex;
+                color: $text-accent;
+                width: 40%;
+            }
+
+            p:not(:last-child){
+                text-align: left;
+                padding: 0.5rem;
+                margin: 0;
+                width: 40%;
+            }
+
+            p:last-child{
+                display: flex;
+                width: 20%;
+                margin-bottom: 0;
+            }
+
+            a {
+                display: none;
+                color: $text-accent;
+                margin-left: auto;
+
+            }
+
+            p:first-child::before{
+                content: '';
+                display: block;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                width: 1.5rem;
+                height: 1.5rem;
+                padding: 0.7rem;
+                margin-right: 1rem;
+            }
+
+            .item-name::before{
+                background-image: url('../images/account_user_icon.png');
+            }
+
+            .item-email::before{
+                background-image: url('../images/account_email_icon.png');
+            }
+
+            .item-reset-password::before{
+                background-image: url('../images/account_reset-password_icon.png');
+            }
+        }
+
+    }
+}
+
+// Set searching data
+
+#header__searching{
+    display: none;
+
+    .searching__popup{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+        background-color: rgba($color: #000000, $alpha: 0.4);
+
+
+        .container_wrap {
+            background-color: #fff;
+            height: 95%;
+            width: min(95%, 1150px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            #searching__popup_elements{
+                border-bottom: 1px solid $text-accent;
+                padding: 1.2rem 0.5rem 1.2rem 1.7rem;
+                height: 20%;
+
+                .searching__group{
+
+                    border: 1px solid $text-accent;
+                    border-radius: 3px;
+                    width: 97%;
+
+                    .searching__group__magnify-glass{
+                        background-image: url('../images/search_icon.png');
+                        background-size: contain;
+                        @extend %icons-settings;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        margin: 0 0.6rem;
+                    }
+
+                    .searching__group__input{
+                        font-size: 1.2rem;
+                        outline: none;
+                        padding: 0.3rem;
+                        border: none;
+                        width: 97%;
+
+                    }
+
+                }
+
+                .searching__popup__remove-icon{
+                    cursor: pointer;
+                    box-sizing: content-box;
+                    padding: 10px;
+                    width: min(3%, 1.3rem);
+                }
+
+            }
+
+            .searching__box{
+
+                height: 80%;
+                position: relative;
+                padding: 1.2rem;
+
+                .searching__box_result{
+
+                    @extend %P1-desk-description;
+                }
+                .result_not_found{
+                    display: none;
+                    position: absolute;
+                    white-space: nowrap;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    @extend %H3-desk-level-header;
+
+                }
+
+                .spinner{
+                    height: 60vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .spinner-img{
+                        width: 2rem;
+                        height: 2rem;
+                        background: url('../images/spinner.png') center/cover no-repeat;
+                        animation: 1.5s linear 0s infinite normal rotate;
+                    }
+
+                    p{
+                        margin-top: 1rem;
+                        font-size: 1.5rem;
+                        color: $text-accent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//  Unsubscribe form
+
+.unsubscribe{
+
+    padding: 1.75rem 1.3rem;
+    border: 1px solid $text-accent;
+    border-radius: 0.3rem;
+    margin:  0 auto !important;
+    width: min(100%, 25rem);
+
+    .unsubscribe__headbar{
+
+        margin-bottom: 1rem;
+        .unsubscribe_cancel-icon{
+            color: $text-accent;
+        }
+
+    }
+
+    .unsubscribe__card-text:first-child{
+        margin-bottom: 2rem;
+    }
+
+    .unsubscribe__form{
+        margin-top: 2rem;
+        width: 100%;
+
+        .unsubscribe__button{
+
+            button{
+                width: 100%;
+            }
+        }
+    }
+
+}
+

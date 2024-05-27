@@ -1,0 +1,52 @@
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+// Basket is empty
+
+#basket{
+    .no_basket{
+
+        .no_basket-allusion{
+            &:hover{
+                color: $text-accent-2;
+                text-decoration:  underline;
+            }
+        }
+    }
+
+}
+
+}
+
+@media screen and (max-width: 1023px) {
+
+// Basket is empty
+
+#basket{
+    .no_basket{
+
+        .no_basket-allusion{
+            color: $text-accent-2;
+            text-decoration:  underline;
+        }
+    }
+
+}
+}
+
+@media screen and (max-width:  768px) {
+
+}
+
+@media screen and (max-width:  480px) {
+
+}
+
+@media screen and (max-width:  375px) {
+
+}
+
+@media screen and (max-width:  320px) {
+
+}

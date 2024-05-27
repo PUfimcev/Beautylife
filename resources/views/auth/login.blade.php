@@ -51,7 +51,7 @@
                     </div>
 
                     @if(config('services.recaptcha.key'))
-                        <div class="g-recaptcha mb-1" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                        <div class="g-recaptcha mb-1" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
                         @error('g-recaptcha-response')
                             <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
                         @enderror

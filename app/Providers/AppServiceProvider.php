@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // set locale
-        view()->composer(['layouts.index', 'auth.layouts.app', 'admin.layout.app'], function(View $view) {
+        view()->composer('*', function(View $view) {
             $view->with('current_locale', App::getLocale());
             $view->with('available_locales', config('app.available_locales'));
         });
@@ -46,11 +46,13 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // input timezone
-        view()->composer(['admin.pages.callbacks'], function(View $view) {
+        view()->composer('*', function(View $view) {
 
             if(session()->has('timezone')){
 
                 $view->with('local_timezone', session()->get('timezone'));
+            } else {
+                $view->with('local_timezone', config('app.timezone'));
             }
         });
 
@@ -58,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('routeactive', function ($expression) {
             return "<?php echo (request()->routeIs($expression)) ? 'active' : '' ?>";
         });
+
 
         // Paginator::useBootstrapFive();
         Paginator::defaultView('pagination::bootstrap-5');
@@ -69,11 +72,11 @@ class AppServiceProvider extends ServiceProvider
 
         // set recaptcha for validation
         Validator::extend('recaptcha', function ($attribute, $value, $parameters, $validator) {
-            // $getResponseToken = (string) $value;
+            $getResponseToken = (string) $value;
 
             $response = Http::asForm()->post(
                 'https://www.google.com/recaptcha/api/siteverify',
-                ['secret' => env('RECAPTCHA_SECRET_KEY'), 'response' => $value]
+                ['secret' => env('RECAPTCHA_SECRET_KEY'), 'response' => $getResponseToken]
             );
 
             if($response) {

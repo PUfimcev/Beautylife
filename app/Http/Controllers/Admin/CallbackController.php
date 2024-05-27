@@ -13,7 +13,7 @@ class CallbackController extends Controller
 {
     use PreviousUrl;
 
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void

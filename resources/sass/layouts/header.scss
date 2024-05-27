@@ -1,0 +1,331 @@
+@import '../variables';
+
+@keyframes rotate {
+    from { transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+header {
+
+    background-color: $body-bg;
+    width: 100%;
+    margin: auto;
+
+
+    &.header_fixed{
+        top: 0;
+        left: 0;
+        position: fixed;
+        z-index: 3;
+    }
+
+}
+
+.mobile_header{
+    display: none;
+}
+
+.headbar {
+    padding: 2.5rem 0px;
+}
+
+
+.headbar-brand__logo {
+    @extend %H3-desk-level-header;
+
+}
+
+// Searching
+
+.headbar__search {
+
+    border-bottom: 1px solid $line-color;
+    max-width: 9rem;
+    background-color: $body-bg;
+    margin-left: 1rem;
+
+    .headbar__search-input {
+
+        @extend %P2-desk-description;
+        padding: 0px 5px;
+        border: none;
+        background-color: $body-bg;
+        width: 8rem;
+
+        &:focus{
+            background-color: $body-bg;
+            outline: none;
+        }
+        &::placeholder {
+            background-color: $body-bg;
+            text-transform: uppercase;
+            color: #1F1C1B;
+            opacity: 70%;
+            font-size: 0.9rem;
+        }
+
+    }
+
+    .headbar__search-icon{
+        background-image: url('../images/search_icon.png');
+        background-size: contain;
+        @extend %icons-settings;
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}
+
+// Connecting number, require callback
+
+.headbar__call {
+    gap: 1rem;
+}
+
+#headbar__call_request-bnt {
+    display: inline-block;
+    text-align: center !important;
+}
+
+.headbar__call_phone,
+#headbar__call_request-bnt,
+.headbar__login-cart,
+.login {
+    @extend %P2-desk-description;
+}
+
+
+
+// Dropdown setting (lang, auth)
+
+.headbar__dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .dropdown_toggle {
+        @extend %P2-desk-description;
+        padding: 8px;
+
+        .dropdown__arrow {
+            display: inline-block;
+            background-image: url(../images/arrow_down_icon.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 2px;
+            margin-left: 5px;
+            width: 11px;
+            height: 6px;
+        }
+    }
+
+    .dropdown__menu {
+        display: none;
+        list-style: none;
+        margin: 0;
+        position: absolute;
+        opacity: 1;
+        z-index: 1;
+        min-width: 8rem;
+        max-width: 17rem;
+        border-radius: 3px;
+        background-color: $body-bg;
+        padding: 0;
+        top: 40px;
+        left: -15px;
+        box-shadow: 0 0 20px -5px;
+        @extend %P2-desk-description;
+
+        li {
+            pointer-events: none;
+
+            a{
+                pointer-events: all;
+            }
+        }
+
+        .dropdown__item {
+            display: inline-block;
+            padding: 8px;
+            padding-left: 1rem;
+        }
+
+        .dropdown_item-reff {
+            display: block;
+            font-weight:bold;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .item-reff-auth{
+            white-space: nowrap;
+            font-weight:normal;
+        }
+
+        .logout, .account-setting{
+            font-size: 0.9rem;
+        }
+
+        .logout {
+            text-align: left;
+        }
+
+        .order-history, .basket, .account-setting{
+            display: flex;
+            align-items: center;
+
+            &::before{
+                content: '';
+                display: inline-block;
+                width: 1.125rem;
+                height: 1.125rem;
+                margin-right: 0.3rem;
+            }
+        }
+
+        .order-history {
+            &::before{
+                background: url('../images/basket_history_icon.png') center/contain no-repeat;
+            }
+        }
+
+        .basket {
+            &::before{
+                background: url('../images/basket_icon.png') center/contain no-repeat;
+            }
+        }
+
+
+        .account-setting {
+            &::before{
+                background: url('../images/settings_icon.png') center/contain no-repeat;
+                transition: transform 0.5s ease-out 0s;
+            }
+        }
+    }
+
+    .dropdown__menu-auth{
+
+        li:first-child {
+            border-bottom: 1px solid $text-accent;
+            display: flex;
+            justify-content: flex-end;
+        }
+        li:last-child {
+            border-top: 1px solid $text-accent;
+        }
+    }
+
+    .dropdown__menu-auth-admin{
+        li:last-child {
+            border-top: 0;
+        }
+    }
+
+}
+
+// Login, cart
+
+
+.headbar__cart, .headbar__chosen_prod, .dropdown__lang-arrow, .navbar__toggler-icon {
+    @extend %icons-settings;
+
+}
+
+.headbar__login-cart{
+    gap: 5px;
+
+    div:not(:first-child){
+        width: 36px;
+        height: 36px;
+
+    }
+
+    .headbar__chosen_prod {
+        display: block;
+        background-image: url(../images/heart_icon.png);
+        background-size: 27px 23px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .headbar__cart {
+        position: relative;
+        display: block;
+        background-image: url(../images/cart_icon.png);
+        background-size: 24px 25px;
+        width: 100%;
+        height: 100%;
+
+        .headbar__cart_amount {
+            position: absolute;
+            top: 8%;
+            right: 0%;
+            display: block;
+            background-color: #f21a1a;
+            color: #fff;
+            width: 18px;
+            height: 18px;
+            font-family: $font-family-Manrope;
+            font-size: 10px;
+            line-height: 18px;
+            border-radius: 50%;
+            text-align: center;
+        }
+    }
+}
+
+// Navigation
+
+    // Desktop
+
+.navbar__line {
+    border-top: 1px solid $line-color;
+    border-bottom: 1px solid $line-color;
+    padding: 1.87rem 0;
+    width: min(100%, 1200px);
+
+    .navbar__nav {
+        width: min(100%, 720px);
+        @extend %P2-desk-description;
+        padding: 0px;
+
+        .nav_link {
+            @extend %P2-desk-description;
+
+            &.active {
+                color: $text-accent-2;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+    // Mobile
+
+    // Burger
+.navbar__toggler {
+    display: none;
+    border: 0;
+    padding: 8px;
+    background-color: $body-bg;
+
+    .navbar__toggler-icon {
+        display: block;
+        background-color: $body-bg;
+        background-image: url(../images/burger_icon.png);
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        @extend %icons-settings;
+    }
+}
+
+
+
+
+
+
+
+

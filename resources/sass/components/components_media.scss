@@ -1,0 +1,207 @@
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+// User-card account
+
+.user-card{
+    .user-card-credentials{
+        .credentials-item{
+            &:hover{
+                a {
+                    display: block;
+                }
+            }
+
+            a {
+                &:hover{
+                    color: $text-accent-2;
+                    text-decoration:  underline;
+                }
+            }
+       }
+    }
+}
+
+}
+
+@media screen and (max-width: 1023px) {
+
+// User-card account
+
+    .user-card{
+
+        width: 80%;
+
+        .user-card-credentials{
+            .credentials-item{
+                a {
+                    display: block;
+                }
+            }
+
+            a {
+                color: $text-accent-2;
+                text-decoration:  underline;
+            }
+        }
+    }
+
+    // Set searching data
+    #header__searching{
+        .searching__popup{
+            .container_wrap {
+                #searching__popup_elements{
+                    height: 15%;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:  768px) {
+
+
+}
+
+@media screen and (max-width:  650px) {
+
+    // User-card account
+
+    .user-card{
+        width: 90%;
+
+        .user-card-credentials{
+            padding: 0.5rem 0;
+
+            .credentials-item{
+                padding: 1rem 0;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:  480px) {
+
+    // User-card account
+
+    .user-card{
+
+        .user-card-credentials{
+
+            .credentials-item:not(:last-child){
+
+                p:first-child::before{
+                    margin-right: 0.5rem;
+                }
+                p:first-child{
+                    width: 34%;
+                }
+
+                p:last-child{
+                    width: 25%;
+                }
+
+            }
+
+            .credentials-item:last-child{
+                p:first-child::before{
+                    margin-right: 0.5rem;
+                }
+
+                p:not(:last-child){
+                    width: 60%;
+                }
+            }
+        }
+    }
+
+    // Set searching data
+    #header__searching{
+
+        .searching__popup{
+
+            .container_wrap {
+
+                #searching__popup_elements{
+                    height: 10%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  425px) {
+    // User-card account
+
+    .user-card{
+        width: 95%;
+        .user-card-credentials{
+
+            .credentials-item{
+
+                p{
+                    padding: 1rem 0 !important;
+                }
+
+                p:first-child{
+                    width: 25%;
+                }
+                p:first-child::before{
+                    display: none;
+                }
+                p:last-child{
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  375px) {
+    // Notifications
+
+    #notifications {
+        width: min(95%, 25rem);
+    }
+
+    // User-card account
+
+    .user-card{
+        width: 95%;
+        .user-card-credentials{
+
+            .credentials-item:not(:last-child){
+
+                p:nth-child(2n){
+                    width: 45%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  350px) {
+
+    // User-card account
+
+    .user-card{
+
+        .user-card-credentials{
+
+            .credentials-item{
+
+                p:first-child{
+                    width: 22% !important;
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  320px) {
+
+}

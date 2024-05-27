@@ -32,13 +32,12 @@
             </div>
             <div class="contacts_social_media-rights">
                 <div class="social-media">
-                    <p><a class="itstagram" href="https://www.instagram.com/instagram/" role="button" target="_blank" title="itstagram"></a></p>
-                    <p><a class="facebook" href="https://www.facebook.com/" role="button" target="_blank" title="facebook"></a></p>
-                    <p><a class="x" href="https://twitter.com/" role="button" target="_blank" title="x"></a></p>
+                    <p><a class="instagram" href="https://www.instagram.com/instagram/" role="button" target="_blank"></a></p>
+                    <p><a class="facebook" href="https://www.facebook.com/" role="button" target="_blank"></a></p>
+                    <p><a class="x" href="https://twitter.com/" role="button" target="_blank"></a></p>
                 </div>
                 <p class="copyrights">2024 &#169 BeautyLife</p>
             </div>
-
         </div>
     </section>
 </div>

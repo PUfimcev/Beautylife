@@ -1,0 +1,136 @@
+@import '../variables';
+
+// Admin panel - callbacks sheet
+
+.admin__callbacks__section, .admin__messages__section {
+    height: 80vh;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .message__create{
+        width: 30% !important;
+    }
+
+    .table__callbacks {
+
+        width: 80% !important;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        .callbacks__names {
+            color: #06229f;
+        }
+
+        tr{
+            vertical-align: middle;
+            width: 100%;
+            td:first-child{
+                width: 5%;
+            }
+            td:nth-child(2){
+                width: 35%;
+            }
+            td:nth-child(3){
+                width: 30%;
+            }
+            td:nth-child(4){
+                width: 20%;
+            }
+            td:last-child{
+                width: 10%;
+            }
+            button{
+                padding: 0 0.6rem;
+            }
+        }
+
+
+        .callbacks__date{
+            color: #ff0000;
+        }
+
+        .no__callbacks {
+            @extend %P1-desk-description;
+
+            .no__messages_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+// Admin panel - messages sheet
+
+.admin__messages__section{
+
+    .table__messages{
+        width: 90%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        .message__subject{
+            color: #06229f;
+        }
+
+        tr{
+
+            td:first-child{
+                width: 5%;
+            }
+
+            td:nth-child(2){
+                width: 25%;
+                a{
+                    padding: 0;
+                }
+            }
+
+            td:nth-child(3){
+                width: 15%;
+            }
+
+            td:nth-child(4){
+                width: 20%;
+            }
+
+            td:last-child{
+                width: 35%;
+            }
+        }
+
+        form{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+
+            .btn{
+                display:inline-block;
+                padding: 0 0.6rem;
+            }
+        }
+
+        .message__date{
+            color: #ff0000;
+        }
+
+        .no__messages{
+            @extend %P1-desk-description;
+
+            .no__messages_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+    }
+
+}
+
+
