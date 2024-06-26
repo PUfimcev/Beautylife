@@ -16,7 +16,7 @@
             <h2 class="card-header">{{ __('Callback form') }}</h2>
             <p class="callback__userdata_request">{{ __('Please, send us your name and phone number and we\'ll call you back.') }}</p>
             <div class="card-body">
-                <form method="POST" action="{{ route('callbacks.store') }}">
+                <form method="POST" action="{{ route('callbacks.store') }}" class="form-callbacks">
                     @csrf
                     <div class="register_name mb-1">
                         <label for="name" class="col-form-label text-md-end">{{ __('Name') }}</label>
@@ -52,6 +52,8 @@
             </div>
         </div>
     </div>
+    <script>window.addEventListener('keydown', (e) => { if(e.key == 'Enter') document.querySelector('.form-callbacks').submit()
+    });</script>
 </div>
 
 

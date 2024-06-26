@@ -25,6 +25,9 @@
                       <li class="nav_item">
                           <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages.index')">{{__('Messages')}}</a>
                       </li>
+                      <li class="nav_item">
+                          <a href="{{ route('admin.reviews.index') }}" class="nav_link @routeactive('admin.reviews.index')">{{__('Reviews')}}</a>
+                      </li>
                   </ul>
             </nav>
 

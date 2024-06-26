@@ -4,9 +4,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Person\UserController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Basket\BasketController;
 use App\Http\Controllers\Person\PersonController;
@@ -94,7 +95,14 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
         //Departure a message
         Route::get('messages-mailing/{message}', [MessageMailController::class, 'sendMessageMail'])->name('mail_message');
     });
+
+    // Route for updating and presenting reviews
+    Route::resource('reviews', ReviewController::class);
+
 });
+
+// Route for creating reviews
+Route::get('reviews-create', [ReviewController::class, 'create'])->name('reviews.create');
 
 // Main routes
 
@@ -108,7 +116,8 @@ Route::controller(MainController::class)->group(function() {
     Route::get('blogs', 'blogs')->name('blogs');
     Route::post('searching', 'getResultSearching')->name('header_search');
     Route::post('timezone', 'getTimezone')->name('get_timezone');
-    // Route::get('/screen-width', 'getScreenWidth')->name('get_screen_width');
+    Route::get('reviews/{review?}', 'getAllReviews')->name('get_all_reviews');
+    Route::post('screen-width', 'getScreenWidth')->name('get_screen_width');
 });
 
 

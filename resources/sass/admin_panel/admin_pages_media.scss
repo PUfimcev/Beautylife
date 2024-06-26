@@ -4,14 +4,14 @@
 
 @media screen and (max-width: 1023px) {
 
-    .admin__callbacks__section, .admin__messages__section {
+    .admin__callbacks__section, .admin__messages__section, .admin__reviews__section {
         width: 100%;
 
         .table__callbacks {
             width: 90% !important;
         }
 
-        .table__messages{
+        .table__messages, .table__review{
             width: 95% !important;
         }
     }
@@ -40,9 +40,9 @@
         }
     }
 
-    .admin__messages__section {
+    .admin__messages__section, .admin__reviews__section  {
 
-        .table__messages{
+        .table__messages,.table__review{
 
             form{
                 span{
@@ -54,22 +54,22 @@
                 }
                 .btn-primary{
 
-                    background: url('../images/email_sending_icon.png') center/70% no-repeat, rgb(13, 110, 253);
+                    background: url('../images/email_sending_icon.png') center/50% no-repeat, rgb(13, 110, 253);
                 }
 
                 .btn-secondary{
 
-                    background: url('../images/show_icon.png') center/60% no-repeat, rgb(108, 117, 125);
+                    background: url('../images/show_icon.png') center/45% no-repeat, rgb(108, 117, 125);
                 }
 
                 .btn-warning{
 
-                    background: url('../images/update_icon.png') center/50% no-repeat, rgb(255, 193, 7);
+                    background: url('../images/update_icon.png') center/40% no-repeat, rgb(255, 193, 7);
                 }
 
                 .btn-danger{
 
-                    background: url('../images/trash_icon.png') center/50% no-repeat, rgb(220, 53, 69);
+                    background: url('../images/trash_icon.png') center/35% no-repeat, rgb(220, 53, 69);
                 }
 
 

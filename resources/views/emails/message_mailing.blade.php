@@ -180,7 +180,7 @@
 
                 <p class="message__text-2">{{ __('Thank you for being with us!') }}</p>
 
-                <p class="request__review">{{ __('Help us to get better. Put a review about us. Press ') }}<a href="{{--{{ route('') }}--}}" class="request__review_link">{{ __('Review') }}</a></p>
+                <p class="request__review">{{ __('Help us to get better. Put a review about us. Press ') }}<a href="{{ route('reviews.create') }}" class="request__review_link" title="{{ __('Review') }}">{{ __('Review') }}</a></p>
 
                 <div class="message__contact-data">
                     <h3>BeautyLife</h3>

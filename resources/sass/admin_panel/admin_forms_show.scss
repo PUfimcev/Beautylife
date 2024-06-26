@@ -21,7 +21,7 @@
             font-weight: bold;
         }
 
-        .btn__message__form-create{
+        .btn__message__form-create {
             margin: 1.5rem auto;
             width: 20%;
         }
@@ -52,5 +52,119 @@
                 color: $text-accent-2;
             }
         }
+    }
+
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
+    }
+}
+
+
+// Review form
+
+.admin__reviews__section-create{
+    width: min(80%, 40rem);
+    margin: 4rem auto;
+    padding: 1.75rem 1.3rem;
+    border: 1px solid $text-accent;
+    border-radius: 0.3rem;
+    @extend %P1-desk-description;
+
+
+    .review__headbar{
+        width: min(80%, 30rem);
+    }
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    form{
+        width: 85%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        label{
+            font-weight: bold;
+        }
+
+        #reviewBackdropColor{
+            height: 2.2rem;
+        }
+
+        .btn__review__form-create{
+            margin: 1.5rem auto;
+            width: min(60%, 10rem);
+        }
+    }
+}
+
+// Review show
+
+.admin__review__section-show{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .review_details{
+
+        width: 80%;
+
+        .review_details_list{
+
+
+            .details-name{
+                font-weight: bold;
+            }
+
+
+            .details-content{
+                display: inline-block;
+                color: $text-accent-2;
+            }
+            .details-content:has(img){
+                display: block;
+                width: min(50%, 15rem);
+            }
+
+            img{
+                width: 100%;
+                object-fit:contain;
+            }
+
+            .review__img-background{
+                display: inline-block;
+                padding: 1rem 3rem;
+            }
+        }
+    }
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
     }
 }

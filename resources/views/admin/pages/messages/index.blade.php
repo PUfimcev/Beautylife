@@ -45,7 +45,8 @@
                 @endforelse
             </tbody>
         </table>
-        <div class="pagination">{{ $messages->onEachSide(1)->links() }}</div>
+        @isset($messages) <div class="pagination">{{ $messages->onEachSide(1)->links() }}</div> @endisset
+
 
     </div>
 </div>

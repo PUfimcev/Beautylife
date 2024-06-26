@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Review;
+use App\Classes\GetReviews;
 use App\Classes\SearchClass;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewName;
 use App\Classes\RemoveSessionClass;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 
@@ -18,6 +20,9 @@ class MainController extends Controller
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
+        // $reviews = (new GetReviews())->getReviews();
+
+        // return view('pages.main', compact('reviews'));
         return view('pages.main');
 
     }
@@ -97,14 +102,32 @@ class MainController extends Controller
         return redirect()->back();
     }
 
+
+    // get all reviews
+
+    public function getAllReviews(Review $review = null)
+    {
+
+        if(!isset($review)) {
+            $reviews = (new GetReviews(0))->getReviews();
+        } else {
+            $reviews[] = $review;
+        }
+
+        return view('pages.elements.reviews', compact('reviews'));
+
+    }
+
     // get screen width from js into session
-    // public function getScreenWidth(Request $request){
 
-    //     // dd($request->query('screen'));
+    public function getScreenWidth(Request $request){
 
-    //     session(['screenWidth' => $request->query('screen')]);
-    //     // dd(session()->get('screenWidth'));
+        if($request->input('screenWidth') == 'mobile') session(['screenWidth' => $request->input('screenWidth')]);
 
-    //     return redirect()->back();
-    // }
+        if($request->input('screenWidth') == 'desk') {
+
+            session(['screenWidth' => $request->input('screenWidth')]);
+        }
+
+    }
 }

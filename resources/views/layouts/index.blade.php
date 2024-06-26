@@ -44,16 +44,17 @@
             </div>
         </header>
 
-        {{-- Crumbs --}}
-        <section class="crumbs__route">
-            <div class="container">@yield('crumbs')</div>
-        </section>
 
         {{-- Notification --}}
         @includeIf('components.notifications')
 
         {{-- Pages --}}
         <main class="main-web">
+            {{-- Crumbs --}}
+            <section class="crumbs__route">
+                <div class="container">@yield('crumbs')</div>
+            </section>
+
             @yield('content')
         </main>
 
@@ -78,12 +79,16 @@
         {{-- Routes for JS --}}
         <script>
             window.routes = {
+                'mainRoute': '{{ route('index') }}',
                 'headerSearch': '{{ route('header_search') }}',
                 'registerFormURL': '{{ route('register') }}',
                 'timezone': '{{ route('get_timezone') }}',
+                'screenWidth': '{{ route('get_screen_width') }}',
             }
-            let headerSearch = window.routes.headerSearch,
+            let mainRoute = window.routes.mainRoute,
+                headerSearch = window.routes.headerSearch,
                 registerFormURL = window.routes.registerFormURL,
-                timezoneRoute = window.routes.timezone;
+                timezoneRoute = window.routes.timezone,
+                screenWidthRoute = window.routes.screenWidth;
         </script>
 </html>

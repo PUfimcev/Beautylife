@@ -10,11 +10,17 @@ class GetTimezone {
 
         this.#createForm();
 
-        if(localStorage.getItem('Beautylife-timezone') === 'true'){
-        window.addEventListener('unload', ()=>{
-                localStorage.removeItem('Beautylife-timezone');
-            });
-        };
+        // window.addEventListener('load', ()=>{
+        //     if(localStorage.getItem('Beautylife-timezone') === 'true'){
+        //         location.reload();
+        //     }
+        // });
+
+        // if(localStorage.getItem('Beautylife-timezone') === 'true'){
+        // window.addEventListener('unload', ()=>{
+        //         localStorage.removeItem('Beautylife-timezone');
+        //     });
+        // };
     }
 
     #createForm (){

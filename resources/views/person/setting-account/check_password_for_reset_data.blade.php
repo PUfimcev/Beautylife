@@ -19,7 +19,7 @@
                         action="{{ route ('person.check_password') }}"
                     @else
                         action="{{ route('person.reset_email_form') }}"
-                    @endif>
+                    @endif class="check_form_password">
 
                     @csrf
                     <input hidden type="text" autocomplete="username" value="#">
@@ -52,5 +52,6 @@
             </div>
         </div>
     </div>
+    <script>window.addEventListener('keydown', (e) => { if(e.key == 'Enter') document.querySelector('.check_form_password').submit() });</script>
 </div>
 @endsection

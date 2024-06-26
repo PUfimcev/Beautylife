@@ -39,8 +39,8 @@ class Message extends Model
      }
 
     /**
-     * Create accessor for attribute udated_at
-     * @return created_at
+     * Create accessor for attribute updated_at
+     * @return updated_at
      */
 
      public function getUpdatedAtAttribute($value)

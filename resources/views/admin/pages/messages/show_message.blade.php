@@ -20,8 +20,8 @@
                 <li><span class="details-name">Тип: </span><span class="details-content">{{ $email_message->type }}</span></li>
                 <li><span class="details-name">Доп. данные: </span><span class="details-content">{{ $email_message->additional_info !== null ? $email_message->additional_info : ' --- ' }}</span></li>
                 <li><span class="details-name">Additional data: </span><span class="details-content">{{ $email_message->additional_info_en !== null ? $email_message->additional_info_en : ' --- ' }}</span></li>
-                <li><span class="details-name">Дата создания: </span><span class="details-content">{{ $email_message->created_at }}</span></li>
-                <li><span class="details-name">Дата обновления: </span><span class="details-content">{{ $email_message->updated_at }}</span></li>
+                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $email_message->created_at }}</span></li>
+                <li><span class="details-name">{{ __('Update date') }}: </span><span class="details-content">{{ $email_message->updated_at }}</span></li>
             </ul>
         </div>
 

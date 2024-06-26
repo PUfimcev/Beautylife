@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+// use Carbon\Traits\Date;
 use Illuminate\View\View;
+use App\Classes\GetReviews;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
@@ -54,6 +56,24 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 $view->with('local_timezone', config('app.timezone'));
             }
+        });
+
+        // input reviews
+        view()->composer('pages.main', function(View $view) {
+
+            if(session()->has('screenWidth')) {
+                $gadjetType = session()->get('screenWidth');
+
+                if($gadjetType == 'desk') $reviews = (new GetReviews(2))->getReviews();
+
+                if($gadjetType == 'mobile') $reviews = (new GetReviews(4))->getReviews();
+            } else {
+                $reviews = (new GetReviews())->getReviews();
+
+            }
+
+            $view->with('reviews', $reviews);
+
         });
 
         // For emphasizing routes

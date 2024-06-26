@@ -18,7 +18,7 @@
             @else
 
                 action="{{ route('admin.messages.store') }}"
-            @endif>
+            @endif class="form-message">
             @csrf
             @isset($email_message)
                 @method('PUT')
@@ -76,7 +76,8 @@
             <button class="btn btn-success align-self-center btn__message__form-create" href="">{{ isset($email_message) ? __('Update') : __('Create') }}</button>
         </form>
 
-
+        <script>window.addEventListener('keydown', (e) => { if(e.key == 'Enter') document.querySelector('.form-message').submit()
+        });</script>
     </div>
 </div>
 

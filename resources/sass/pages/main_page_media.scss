@@ -2,37 +2,358 @@
 
 @media screen and (min-width: 1024px){
 
+    // first top picture
+
+    .main-picture{
+
+        .main__page_title-button:hover{
+            color: $text-accent-2 !important;
+        }
+    }
+
+    // Blogs
+
+    .blogs{
+
+
+        width: min(90%, 1200px);
+        // margin: 0 auto;
+
+        .get__all__blogs:hover{
+            color: $text-accent-2;
+        }
+
+    }
+
+
+    // Reviews
+
     .reviews{
 
         width: min(90%, 1200px);
         margin: 0 auto;
 
+        .get__all__reviews:hover{
+            color: $text-accent-2;
+        }
+
+        .reviews__elements{
+
+            justify-content: space-between;
+            overflow: hidden;
+            overflow-x: auto;
+
+            .review{
+                min-width: 400px;
+
+            .review_content{
+
+                .text{
+
+                    .get__full__review:hover{
+                        color: $text-accent-2 !important;
+                    }
+                }
+
+            }
+            }
+
+        }
+
+    }
+
+    .all_reviews{
+
+
+        .all__reviews_top{
+
+
+            .all__reviews_btn-return:hover{
+                color: $text-accent-2;
+            }
+
+        }
     }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1023px){
+
+    // first top picture
+
+    .main-picture{
+
+        .main__page_title{
+
+            width: min(45%, 30rem);
+
+        }
+        .main__page_title-button{
+            width: 15rem !important;
+        }
+    }
+
+    // Blogs
+
+    .blogs{
 
 
+        width: min(95%, 1200px);
+        // margin: 0 auto;
+
+    }
+
+    // Reviews
     .reviews{
 
         width: min(95%, 1200px);
+        margin: 0 auto;
 
+        .reviews__elements{
+            justify-content: space-between;
+            overflow: hidden;
+            overflow-x: auto;
+
+            .review{
+                width: 400px;
+                .review_head{
+
+                    .evaluation{
+
+                        .star{
+
+                            display: inline-block;
+                            width: 1.2rem;
+                            height: 1.2rem;
+
+                        }
+                    }
+                }
+
+                .review_content{
+
+                    width: 400px;
+                    padding: 1rem;
+
+                    .image{
+
+                        width: 4.5rem;
+                        height: 4.5rem;
+                    }
+                }
+            }
+
+        }
+        .reviews__elements::-webkit-scrollbar{
+            width: 0;
+        }
+    }
+
+
+}
+
+@media screen and (max-width:  900px) {
+
+    // first top picture
+
+    .main-picture{
+
+        height: 35rem;
+    }
+}
+
+@media screen and (max-width:  768px) {
+
+    // first top picture
+
+    .main-picture{
+
+        height: 28rem;
+
+        .main__page_title-button{
+            width: 15rem !important;
+        }
+    }
+
+    // all reviews
+    .all_reviews{
+        .all__reviews__elements{
+
+            .review{
+                gap: 1rem;
+                .review_content{
+                    .date{
+                        line-height: 1.25rem;
+                    }
+                }
+            }
+        }
     }
 
 }
 
-@media screen and (max-width:  768px) {
+@media screen and (max-width:  600px) {
+   // first top picture
+
+   .main-picture{
+    height: 30rem;
+    background: url('./../../../public/storage/images/beautiful_woman_close_up_title_img_mobile.png') center/auto 100% no-repeat;
+
+        .main__page_title{
+            width: min(50%, 30rem);
+        }
+    }
 
 }
 
 @media screen and (max-width:  480px) {
 
+    // first top picture
+
+    .main-picture{
+        height: 20rem;
+        justify-content: flex-end;
+
+        .main__page_title{
+            width: min(45%, 30rem);
+            padding: 0 1.25rem;
+        }
+        .main__page_title-button{
+            margin-left: 0;
+            width: 100% !important;
+            padding: 1rem 0 !important;
+        }
+    }
+
+    // Reviews
+    .reviews{
+        .reviews__elements{
+
+            .review{
+                width: 325px;
+
+                .review_content{
+                    width: 325px;
+                }
+
+            }
+        }
+    }
+
+    // All reviews
+    .all_reviews{
+
+        .all__reviews__elements{
+            width: 90%;
+
+            .review{
+                padding: 1rem;
+
+                .review_creator{
+
+                    .image{
+                        width: 4.5rem;
+                        height: 4.5rem;
+                    }
+                    .evaluation{
+
+                        .star{
+                            width: 1.2rem;
+                            height: 1.2rem;
+
+                        }
+                    }
+
+
+
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  425px) {
+
 }
 
 @media screen and (max-width:  375px) {
 
+    // first top picture
+
+    .main-picture{
+
+        height: 19rem;
+
+        .main__page_title{
+            width: min(50%, 30rem);
+        }
+    }
+
+    // Reviews
+    .reviews{
+        .reviews__elements{
+
+            .review{
+                width: 280px;
+
+                .review_content{
+                    width: 280px;
+
+                    .text{
+
+                        div{
+                            display: flex;
+                            flex-direction: column-reverse;
+
+                            .date{
+                                padding: 0;
+                            }
+
+                            .get__full__review{
+                                display: inline !important;
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    // All reviews
+    .all_reviews{
+
+        .all__reviews__elements{
+            width: 95%;
+
+            .review{
+                .review_creator{
+
+                    .image{
+                        width: 3.5rem;
+                        height: 3.5rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width:  320px) {
 
+    // Reviews
+    .reviews{
+        .reviews__elements{
+
+            .review{
+                width: 250px;
+
+                .review_content{
+                    width: 250px;
+                }
+
+            }
+        }
+    }
 }

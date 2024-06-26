@@ -9,6 +9,11 @@
 
     .admin__messages__section-create, .admin__messages__section-show{
         width: 95%;
+    }
+
+    // Review form
+    .admin__reviews__section-create, .admin__review__section-show{
+        width: min(95%, 40rem);
 
     }
 
@@ -21,4 +26,37 @@
         width: 100%;
 
     }
+
+    // Review form
+    .admin__reviews__section-create{
+
+
+        form{
+            width: 90%;
+        }
+
+    }
+}
+
+@media screen and (max-width:  425px) {
+
+    // Review form
+    .admin__reviews__section-create{
+        width: min(99%, 40rem);
+
+        form{
+            width: 95%;
+        }
+
+    }
+
+}
+
+@media screen and (max-width:  375px) {
+
+
+}
+
+@media screen and (max-width:  320px) {
+
 }
