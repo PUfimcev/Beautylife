@@ -103,14 +103,6 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     // Route for processing blogs
     Route::resource('blogs', BlogController::class);
 
-    // GET|HEAD        admin/blogs . admin.blogs.index › Admin\BlogController@index
-    // POST            admin/blogs . admin.blogs.store › Admin\BlogController@store
-    // GET|HEAD        admin/blogs/create . admin.blogs.create › Admin\BlogController@create
-    // GET|HEAD        admin/blogs/{blog}. admin.blogs.show › Admin\BlogController@show
-    // PUT|PATCH       admin/blogs/{blog} . admin.blogs.update › Admin\BlogController@update
-    // DELETE          admin/blogs/{blog} . admin.blogs.destroy › Admin\BlogController@destroy
-    // GET|HEAD        admin/blogs/{blog}/edit  admin.blogs.edit › Admin\BlogController@edit
-
 });
 
 // Main routes
