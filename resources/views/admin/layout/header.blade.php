@@ -15,19 +15,19 @@
                       </li>
                       <li class="nav_item">
                           <a href="{{ route('catalog') }}" class="nav_link @routeactive('catalog')">{{__('Catalog')}}</a>
-                      </li>
-                      <li class="nav_item">
-                          <a href="{{ route('brands') }}" class="nav_link @routeactive('brands')">{{__('Brands')}}</a>
                       </li> --}}
-                      <li class="nav_item">
-                          <a href="{{ route('callbacks.index') }}" class="nav_link @routeactive('callbacks.index')">{{__('Callbacks')}}</a>
-                      </li>
-                      <li class="nav_item">
-                          <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages.index')">{{__('Messages')}}</a>
-                      </li>
-                      <li class="nav_item">
-                          <a href="{{ route('admin.reviews.index') }}" class="nav_link @routeactive('admin.reviews.index')">{{__('Reviews')}}</a>
-                      </li>
+                        <li class="nav_item">
+                            <a href="{{ route('callbacks.index') }}" class="nav_link @routeactive('callbacks.index')">{{__('Callbacks')}}</a>
+                        </li>
+                        <li class="nav_item">
+                            <a href="{{ route('admin.blogs.index') }}" class="nav_link @routeactive('blogs')">{{__('Blogs')}}</a>
+                        </li>
+                        <li class="nav_item">
+                            <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages.index')">{{__('Messages')}}</a>
+                        </li>
+                        <li class="nav_item">
+                            <a href="{{ route('admin.reviews.index') }}" class="nav_link @routeactive('admin.reviews.index')">{{__('Reviews')}}</a>
+                        </li>
                   </ul>
             </nav>
 

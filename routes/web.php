@@ -4,9 +4,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Person\UserController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Basket\BasketController;
@@ -84,7 +85,7 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
 
     Route::controller(AdminController::class)->group(function(){
         Route::get('/', 'index')->name('index');
-        // Route::get('/', 'index')->name('index');
+
     });
 
     //  Route for creating e-mail messages
@@ -99,10 +100,18 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     // Route for updating and presenting reviews
     Route::resource('reviews', ReviewController::class);
 
-});
+    // Route for processing blogs
+    Route::resource('blogs', BlogController::class);
 
-// Route for creating reviews
-Route::get('reviews-create', [ReviewController::class, 'create'])->name('reviews.create');
+    // GET|HEAD        admin/blogs . admin.blogs.index › Admin\BlogController@index
+    // POST            admin/blogs . admin.blogs.store › Admin\BlogController@store
+    // GET|HEAD        admin/blogs/create . admin.blogs.create › Admin\BlogController@create
+    // GET|HEAD        admin/blogs/{blog}. admin.blogs.show › Admin\BlogController@show
+    // PUT|PATCH       admin/blogs/{blog} . admin.blogs.update › Admin\BlogController@update
+    // DELETE          admin/blogs/{blog} . admin.blogs.destroy › Admin\BlogController@destroy
+    // GET|HEAD        admin/blogs/{blog}/edit  admin.blogs.edit › Admin\BlogController@edit
+
+});
 
 // Main routes
 
@@ -113,7 +122,7 @@ Route::controller(MainController::class)->group(function() {
     Route::get('catalog', 'catalog')->name('catalog');
     Route::get('brands', 'brands')->name('brands');
     Route::get('conditions', 'conditions')->name('conditions');
-    Route::get('blogs', 'blogs')->name('blogs');
+    Route::get('blogs/{blog:slug?}', 'blogs')->name('blogs');
     Route::post('searching', 'getResultSearching')->name('header_search');
     Route::post('timezone', 'getTimezone')->name('get_timezone');
     Route::get('reviews/{review?}', 'getAllReviews')->name('get_all_reviews');
@@ -121,12 +130,15 @@ Route::controller(MainController::class)->group(function() {
 });
 
 
+// Route for creating reviews
+Route::get('reviews-create', [ReviewController::class, 'create'])->name('reviews.create');
+
 // Route for button in Header 'Reqest a call'
 Route::resource('admin/callbacks', CallbackController::class);
 
-
 //  Route for subscription for Site in footer
 Route::resource('/subscriptions', SubscriptionController::class);
+
 //  Route for unsubscription from Site in footer
 Route::get('/unsubscription/{subscription}', [SubscriptionController::class, 'getUnsubscribeForm'])->name('unsubscribe');
 

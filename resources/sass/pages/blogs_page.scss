@@ -1,0 +1,101 @@
+@import '../variables';
+
+// blogs page
+
+.blogs{
+
+    padding-bottom: 3rem;
+
+    .blogs__title{
+        margin: 0;
+        padding: 1.5rem 0;
+    }
+
+    .blogs__elements{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .blog{
+            width: min(40%, 30rem);
+            box-shadow: 0 0 20px -5px;
+            margin: 2rem;
+
+
+            .blog_head{
+                width: 100%;
+                height: 17rem;
+
+                .image{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .blog_content{
+                margin-top: 1rem;
+                padding: 1rem;
+
+                .text{
+
+                    div{
+                        display: flex;
+                        justify-content: space-between;
+
+                        .date{
+                            display: block;
+                            @extend %P2-desk-description;
+                            color: $text-accent-2 !important;
+                            padding: 0.5rem;
+                        }
+
+                        .get__full__blog{
+
+                            @extend %P2-desk-description;
+                            color: $text-accent !important;
+                            text-align: right !important;
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+// full blog
+
+.full_blog{
+
+    padding-bottom: 3rem;
+
+    .full_blog_top{
+        width: 100%;
+        margin-bottom: 1.5rem;
+
+        .image{
+            display: block;
+            margin: 0 auto;
+            width: min(70%, 38rem);
+            margin-bottom: 1rem;
+        }
+
+        .reviews__title{
+            font-weight: bold;
+        }
+
+        .date{
+            color: $text-accent;
+        }
+    }
+
+    .full_blog_content{
+        .blog_subtitle{
+            font-size: 1.2rem;
+            font-weight: bold !important;
+        }
+    }
+}

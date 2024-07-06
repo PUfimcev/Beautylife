@@ -1,0 +1,173 @@
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+    .blogs{
+
+        width: min(90%, 1200px);
+        margin: 0 auto;
+
+        .blogs__elements{
+
+            .blog{
+
+                .blog_content{
+
+                    .text{
+
+                        div{
+                            .get__full__blog:hover{
+                                color: $text-accent-2 !important;;
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    .full_blog{
+        width: min(70%, 1200px);
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (max-width: 1023px){
+
+
+    .blogs{
+
+        width: min(95%, 1200px);
+        margin: 0 auto;
+
+    }
+
+    .full_blog{
+        width: min(75%, 1200px);
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (max-width:  900px) {
+
+    .full_blog{
+
+        .full_blog_top{
+
+            .image{
+                width: min(90%, 38rem);
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:  768px) {
+
+    .blogs{
+
+        .blogs__elements{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+
+            .blog{
+                width: 70%;
+                margin: 0;
+            }
+        }
+    }
+
+    // full blog
+
+    .full_blog{
+        width: min(80%, 1200px);
+        padding-top: 3rem;
+    }
+}
+
+@media screen and (max-width:  600px) {
+    .blogs{
+
+        .blogs__elements{
+
+            .blog{
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  480px) {
+
+
+    .blogs{
+
+        .blogs__elements{
+
+            .blog{
+                width: 90%;
+            }
+        }
+    }
+
+    // full blog
+
+    .full_blog{
+        width: min(90%, 1200px);
+        padding-top: 3rem;
+    }
+
+}
+
+@media screen and (max-width:  425px) {
+
+    .full_blog{
+
+        .full_blog_top{
+
+            .image{
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:  375px) {
+
+    .blogs{
+
+        .blogs__elements{
+
+            .blog{
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:  320px) {
+
+    // Reviews
+    .reviews{
+        .reviews__elements{
+
+            .review{
+                width: 250px;
+
+                .review_content{
+                    width: 250px;
+                }
+
+            }
+        }
+    }
+}

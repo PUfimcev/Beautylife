@@ -5,31 +5,32 @@
 
 @media screen and (max-width: 1023px) {
 
-    // Messages form, show
+    // Messages/Blogs form, show
 
-    .admin__messages__section-create, .admin__messages__section-show{
+    .admin__messages__section-create, .admin__messages__section-show, .admin__blogs__section-create, .admin__blog__section-show{
         width: 95%;
+        line-height: 2rem !important;
     }
 
     // Review form
     .admin__reviews__section-create, .admin__review__section-show{
         width: min(95%, 40rem);
+        line-height: 2rem !important;
 
     }
 
 }
 
 @media screen and (max-width:  768px) {
-    // Messages form, show
+    // Messages/Blogs form, show
 
-    .admin__messages__section-create, .admin__messages__section-show{
+    .admin__messages__section-create, .admin__messages__section-show, .admin__blogs__section-create, .admin__blog__section-show{
         width: 100%;
 
     }
 
     // Review form
     .admin__reviews__section-create{
-
 
         form{
             width: 90%;

@@ -11,12 +11,9 @@
 @endsection
 
 @section('content')
-    
 
-    <div class="container">
-        
+
         <h1>Brands</h1>
-    
-    </div>
+
 
 @endsection

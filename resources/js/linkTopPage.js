@@ -22,9 +22,8 @@ class LinkTopPage{
         if(this.#allLinks.length > 0) this.#allLinks.forEach(element => {
             element.addEventListener('click', function(){
 
-                window.scrollTo({
-                    top: 0,
-                    left: 0});
+                window.top = 0;
+
             });
         });
     }

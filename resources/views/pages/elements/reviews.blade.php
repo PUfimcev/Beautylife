@@ -3,9 +3,9 @@
 @section('title', __('reviews'))
 
 @section('content')
-    <div class="container">
 
         <section class="all_reviews">
+
             <div class="all__reviews_top">
 
                 <h2 class="reviews__title">{{ (count($reviews) > 1) ? __('Reviews') : __('Review')}}</h2>
@@ -44,5 +44,4 @@
             </div>
         </section>
 
-    </div>
 @endsection

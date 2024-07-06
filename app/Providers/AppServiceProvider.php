@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 // use Carbon\Traits\Date;
+use App\Classes\GetBlogs;
 use Illuminate\View\View;
 use App\Classes\GetReviews;
 use Illuminate\Support\Facades\App;
@@ -56,6 +57,16 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 $view->with('local_timezone', config('app.timezone'));
             }
+        });
+
+        // input blogs on the main page
+
+        view()->composer('pages.main', function(View $view) {
+
+            $blogs = (new GetBlogs(4))->getBlogs();
+
+            $view->with('blogs', $blogs);
+
         });
 
         // input reviews

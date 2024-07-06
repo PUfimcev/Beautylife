@@ -21,7 +21,7 @@ class Anchor {
 
         window.addEventListener('scroll', () => {
 
-            (window.scrollY > 400) ? this.#getHideAnchor(true, widthElem) : this.#getHideAnchor(false);
+            (window.scrollY > 800) ? this.#getHideAnchor(true, widthElem) : this.#getHideAnchor(false);
         })
     }
 
@@ -50,13 +50,13 @@ class Anchor {
             if(width != undefined) {
                 switch(true) {
                     case width >= 1440 && width < 2560:
-                        this.#button.style = "right: 13%";
+                        this.#button.style = "right: 5%";
                     break;
                     case (width >= 2560):
-                        this.#button.style = "right: 25%";
+                        this.#button.style = "right: 20%";
                     break;
                     default:
-                        this.#button.style = "right: 10%";
+                        this.#button.style = "right: 2%";
                     break;
                 }
             }

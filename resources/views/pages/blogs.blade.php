@@ -11,9 +11,23 @@
 @endsection
 
 @section('content')
-    <div class="container">
-    
-        <h1>Blog</h1>
-    
-    </div>
+
+        <section class="blogs">
+            <h2 class="blogs__title">{{ __('Blogs') }}</h2>
+
+            <div class="blogs__elements">
+
+                @forelse ($blogs as $blog)
+                    @include('pages.elements.blog', ['blog' => $blog])
+                @empty
+                    <p class="no__blogs">{{ __('There are no blogs') }}</p>
+                @endforelse
+            </div>
+
+            @if (!isset($blogs) || !empty($blogs))
+                <div class="pagination">{{ $blogs->onEachSide(1)->links() }}</div>
+            @endif
+
+        </section>
+
 @endsection

@@ -1,4 +1,4 @@
-@extends('admin.layout.form-layout')
+@extends(isset($review) ? 'admin.layout.app' : 'admin.layout.form-layout')
 
 @section('title', isset($review) ? __('Edit').' '.__('review') :  __('Create').' '.__('review'))
 
@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <div class="admin__reviews__section-create d-flex flex-column align-items-center justify-content-start">
+    <div class="admin__reviews__section-create {{ isset($review) ? "" : "create" }} d-flex flex-column align-items-center justify-content-start">
 
         @if(!isset($review))
 
@@ -57,7 +57,7 @@
                         <p>{{ __('A photo is downloaded') }}</p>
                     @else
                         <p>{{ __('No photo. Select color of backdrop') }}:</p>
-                        <input class="form-control" type="color" id="reviewBackdropColor" name="backdrop_image" value="{{ old('backdrop_image', isset($review->backdrop_image) ? $review->backdrop_image : null) }}" >
+                        <input class="form-control" type="color" id="reviewBackdropColor" name="backdrop_image" value="{{ old('backdrop_image', isset($review->backdrop_image) ? $review->backdrop_image : "#000000") }}" >
                     @endif
                 @else
 
@@ -98,7 +98,7 @@
 
 
     </div>
-    <script>document.querySelector('.unsubscribe_cancel-icon').addEventListener('click', () => {window.close()});</script>
+    <script>if(document.querySelector('.unsubscribe_cancel-icon')) document.querySelector('.unsubscribe_cancel-icon').addEventListener('click', () => {window.close()});</script>
     <script>window.addEventListener('keydown', (e) => { if(e.key == 'Enter') document.querySelector('.form_review').submit() });</script>
 </div>
 

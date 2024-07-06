@@ -11,9 +11,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
-    
+
+
         <h1>Payment and delivery</h1>
-    
-    </div>
+
+
 @endsection

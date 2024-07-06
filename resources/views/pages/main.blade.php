@@ -1,7 +1,6 @@
 @extends('layouts.index')
 
 @section('content')
-    <div class="container">
 
         {{-- Introducing picture --}}
         <section class="main-picture">
@@ -15,15 +14,16 @@
 
         {{-- Blogs --}}
 
-        <section class="blogs">
+        <section class="blogs__main_page">
             <h2 class="blogs__title">{{ __('Blogs') }}</h2>
-            {{-- @empty (!$reviews) --}}
+
             <a href="{{ route('blogs') }}" class="get__all__blogs" title="{{ __('Get all blogs') }}">{{ __('read all') }}</a>
-            {{-- @endempty --}}
+
             <div class="blogs__elements">
 
-                @forelse ($blogs = [] as $blog)
-                    {{-- @include('components.review', ['blog' => $blog]) --}}
+                @forelse ($blogs as $blog)
+
+                    @include('pages.elements.blog_on_main_page', ['blog' => $blog, 'i' => $loop->iteration])
                 @empty
                     <p class="no__blogs">{{ __('There are no blogs') }}</p>
                 @endforelse
@@ -38,7 +38,7 @@
             <div class="reviews__elements">
 
                 @forelse ($reviews as $review)
-                    @include('components.review', ['review' => $review])
+                    @include('pages.elements.review', ['review' => $review, 'i' => $loop->iteration])
                 @empty
                     <p class="no__reviews">{{ __('There are no reviews') }}</p>
                 @endforelse
@@ -48,5 +48,4 @@
                 <a href="{{ route('get_all_reviews') }}" class="get__all__reviews" title="{{ __('Get all reviews') }}">{{ __('read all') }}</a>
             @endempty
         </section>
-    </div>
 @endsection

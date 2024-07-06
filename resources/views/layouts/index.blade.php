@@ -55,7 +55,8 @@
                 <div class="container">@yield('crumbs')</div>
             </section>
 
-            @yield('content')
+            <div class="container">@yield('content')</div>
+
         </main>
 
         {{-- Footer --}}

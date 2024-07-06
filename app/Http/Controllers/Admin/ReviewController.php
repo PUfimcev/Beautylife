@@ -53,7 +53,7 @@ class ReviewController extends Controller
 
         Review::create($params);
 
-        return to_route('index')->with('status', 'Thank you very much!')->with('status2', 'Review created successfully!');;
+        return to_route('index')->with('status', 'Thank you very much!')->with('status2', 'Review created successfully!');
 
     }
 
@@ -94,7 +94,7 @@ class ReviewController extends Controller
     {
 
         $getFileRoute = Str::of($review->reviewer_image_route)->after('/'.config('app.name').'/storage/app/');
-        if($getFileRoute !== '' && Storage::disk('local')->exists($getFileRoute)) Storage::disk('local')->delete($getFileRoute);;
+        if($getFileRoute !== '' && Storage::disk('local')->exists($getFileRoute)) Storage::disk('local')->delete($getFileRoute);
 
         $review->delete();
 

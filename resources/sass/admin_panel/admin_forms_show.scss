@@ -5,6 +5,7 @@
 .admin__messages__section-create{
     width: 80%;
     margin: 0 auto;
+    padding-bottom: 3rem;
     @extend %P1-desk-description;
 
     h2{
@@ -73,13 +74,20 @@
 // Review form
 
 .admin__reviews__section-create{
-    width: min(80%, 40rem);
-    margin: 4rem auto;
-    padding: 1.75rem 1.3rem;
-    border: 1px solid $text-accent;
-    border-radius: 0.3rem;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
     @extend %P1-desk-description;
 
+    &.create{
+
+        width: min(80%, 40rem);
+        margin: 4rem auto;
+        padding: 1.75rem 1.3rem;
+        border: 1px solid $text-accent;
+        border-radius: 0.3rem;
+        @extend %P1-desk-description;
+    }
 
     .review__headbar{
         width: min(80%, 30rem);
@@ -152,6 +160,99 @@
                 display: inline-block;
                 padding: 1rem 3rem;
             }
+        }
+    }
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
+    }
+}
+
+// Blog form
+
+.admin__blogs__section-create{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    form{
+        width: 85%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        label{
+            font-weight: bold;
+        }
+
+        .blog__image{
+            display: block;
+            width: 85%;
+            height: auto;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+        }
+
+        .btn__blog__form-create{
+            margin: 1.5rem auto;
+            width: min(60%, 10rem);
+        }
+    }
+}
+
+
+// Blog show
+
+.admin__blog__section-show{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .blog_details{
+
+        width: 80%;
+
+        .blog_details_list{
+
+
+            .details-name{
+                font-weight: bold;
+            }
+
+
+            .details-content{
+                display: inline-block;
+                color: $text-accent-2;
+            }
+            .details-content:has(img){
+                display: block;
+                width: min(50%, 15rem);
+            }
+
+            img{
+                width: 100%;
+                object-fit:contain;
+            }
+
         }
     }
     form{

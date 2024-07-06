@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Blog;
 use App\Models\Review;
+use App\Classes\GetBlogs;
 use App\Classes\GetReviews;
 use App\Classes\SearchClass;
 use Illuminate\Http\Request;
@@ -20,9 +22,6 @@ class MainController extends Controller
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        // $reviews = (new GetReviews())->getReviews();
-
-        // return view('pages.main', compact('reviews'));
         return view('pages.main');
 
     }
@@ -63,11 +62,22 @@ class MainController extends Controller
         return view('pages.conditions');
     }
 
-    public function blogs()
+    // get all blogs or selected
+
+    public function blogs(Blog $blog = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        return view('pages.blogs');
+
+        if(!isset($blog)) {
+            $blogs = (new GetBlogs())->getBlogs();
+
+            return view('pages.blogs', compact('blogs'));
+        } else {
+
+            return view('pages.elements.blog_full', compact('blog'));
+        }
+
     }
 
 

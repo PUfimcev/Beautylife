@@ -21,14 +21,6 @@ class HeaderFix {
 
        ((this.#mainElemWeb && this.#fixElem('web')) || (this.#mainElemAdmin && this.#fixElem('admin')));
 
-        // if(this.#mainElemWeb) {
-        //     this.#fixElem('web');
-        // } else if(this.#mainElemAdmin) {
-        //     this.#fixElem('admin');
-        // } else {
-        //     return
-        // }
-
     }
 
     #fixElem(place = null){
@@ -48,7 +40,7 @@ class HeaderFix {
                         }
                     break;
                     case 'admin':
-                        this.#mainElem.style = 'margin-top: 98px';
+                        this.#mainElem.style = 'margin-top: 76px';
                     break;
                 }
             } else {

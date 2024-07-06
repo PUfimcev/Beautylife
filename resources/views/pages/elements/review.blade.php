@@ -1,4 +1,4 @@
-<div class="review">
+<div class="review review_{{ $i }}">
     <div class="review_head">
         <span class="name">{{ $review->reviewer_name }}</span>
         <div class="evaluation"><span class="star"></span><span>{{ $review->evaluation }}</span></div>
