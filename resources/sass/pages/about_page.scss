@@ -1,0 +1,48 @@
+@import '../variables';
+
+// about page
+
+.about{
+
+    .about_company{
+
+        padding-bottom: 3rem;
+
+        h1, h2 {
+            color: $text-accent;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        h3{
+            color: $text-accent-2;
+            font-weight: bold;
+            margin: 2rem 0;
+        }
+
+        ul{
+            margin: 2rem 0;
+            li{
+
+                list-style: '* ';
+
+                &::marker{
+                    color: $text-accent;
+                }
+
+            }
+        }
+
+        p{
+            margin: 2rem 0;
+            word-spacing: 4px;
+            line-height: 1.5;
+
+        }
+
+        .about__selected_text{
+            font-weight: bold;
+            margin-left: 2rem;
+        }
+    }
+}

@@ -117,7 +117,7 @@ Route::controller(MainController::class)->group(function() {
     Route::get('blogs/{blog:slug?}', 'blogs')->name('blogs');
     Route::post('searching', 'getResultSearching')->name('header_search');
     Route::post('timezone', 'getTimezone')->name('get_timezone');
-    Route::get('reviews/{review?}', 'getAllReviews')->name('get_all_reviews');
+    Route::get('reviews/{review:reviewer_name?}', 'getAllReviews')->name('get_all_reviews');
     Route::post('screen-width', 'getScreenWidth')->name('get_screen_width');
 });
 
