@@ -198,11 +198,13 @@
     "Partial Content": "Partial Content",
     "Password": "Password",
     "Payload Too Large": "Payload Too Large",
+    "Payment":"Payment",
     "Payment Required": "Payment Required",
     "Payments and delivery": "Payments and delivery",
     "payments and delivery": "payments and delivery",
     "Permanent Redirect": "Permanent Redirect",
     "Phone number": "Phone number",
+    "Pickup":"Pickup",
     "Please, enter correct credentials": "Please, enter correct credentials",
     "Please click the button below to verify your email address.": "Please click the button below to verify your email address.",
     "Please confirm your password before continuing.": "Please confirm your password before continuing.",
@@ -373,7 +375,17 @@
     "Discounts and bonuses for every buyer":"Discounts and bonuses for every buyer",
     "There is not a single day of the year when we do not have a promotion or special price. The PROMOTIONS section operates 24x7. And for every purchase you receive bonuses under our loyalty program, with which you can pay up to 20% of the cost of a non-promotional product":"There is not a single day of the year when we do not have a promotion or special price. The PROMOTIONS section operates 24x7. And for every purchase you receive bonuses under our loyalty program, with which you can pay up to 20% of the cost of a non-promotional product",
     "Honest customer reviews":"Honest customer reviews",
-    "We publish all reviews: we do not delete, do not edit, we post everything as is. Because it's honest. Your impressions, advice and recommendations help others make the right choice":"We publish all reviews: we do not delete, do not edit, we post everything as is. Because it's honest. Your impressions, advice and recommendations help others make the right choice"
-
+    "We publish all reviews: we do not delete, do not edit, we post everything as is. Because it's honest. Your impressions, advice and recommendations help others make the right choice":"We publish all reviews: we do not delete, do not edit, we post everything as is. Because it's honest. Your impressions, advice and recommendations help others make the right choice",
+    "The order must be paid in cash or by credit card upon receipt at the point of issue or to the courier. A cash receipt is issued along with the order":"The order must be paid in cash or by credit card upon receipt at the point of issue or to the courier. A cash receipt is issued along with the order",
+    "You can pick up the goods yourself in our retail stores":"You can pick up the goods yourself in our retail stores",
+    "In the shopping center \"Galleria Minsk\", Minsk, Pobediteley 9, 2nd floor. 10:00 - 22:00 daily":"In the shopping center \"Galleria Minsk\", Minsk, Pobediteley 9, 2nd floor. 10:00 - 22:00 daily",
+    "In the shopping center \"Corona City\", Minsk, st. Denisovskaya, 8, 1st floor. 10:00 - 21:00 daily":"In the shopping center \"Corona City\", Minsk, st. Denisovskaya, 8, 1st floor. 10:00 - 21:00 daily",
+    "Delivery by courier within the city":"Delivery by courier within the city",
+    "We provide prompt delivery throughout the city by courier from 12.00 to 18.00":"We provide prompt delivery throughout the city by courier from 12.00 to 18.00",
+    "Orders placed before 12:00 are delivered on the same day (or another day of your choice). If orders were placed after 12:00, delivery will be made the next day":"Orders placed before 12:00 are delivered on the same day (or another day of your choice). If orders were placed after 12:00, delivery will be made the next day",
+    "Coordination and confirmation of the order is carried out 10:00 - 17:30 - Mon-Fri":"Coordination and confirmation of the order is carried out 10:00 - 17:30 - Mon-Fri",
+    "Cost of delivery":"Cost of delivery",
+    "Pickup from our stores is free":"Pickup from our stores is free",
+    "Delivery by courier - 5$. When ordering from 50$. - for free":"Delivery by courier - 5$. When ordering from 50$. - for free"
 
 }

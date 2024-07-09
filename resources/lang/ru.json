@@ -200,11 +200,13 @@
     "Partial Content": "Частичное содержимое",
     "Password": "Пароль",
     "Payload Too Large": "Полезная нагрузка слишком велика",
+    "Payment":"Оплата",
     "Payment Required": "Требуется оплата",
     "Payments and delivery": "Оплата и доставка",
     "payments and delivery": "оплата и доставка",
     "Permanent Redirect": "Постоянное перенаправление",
     "Phone number": "Номер телефона",
+    "Pickup":"Самовывоз",
     "Please enter correct credentials": "Пожалуйста, введите верные данные",
     "Please click the button below to verify your email address.": "Пожалуйста, нажмите кнопку ниже, чтобы подтвердить свой адрес электронной почты.",
     "Please confirm your password before continuing.": "Пожалуйста, подтвердите свой пароль, прежде чем продолжить.",
@@ -375,7 +377,17 @@
     "Discounts and bonuses for every buyer":"Скидки и бонусы каждому покупателю",
     "There is not a single day of the year when we do not have a promotion or special price. The PROMOTIONS section operates 24x7. And for every purchase you receive bonuses under our loyalty program, with which you can pay up to 20% of the cost of a non-promotional product":"Нет ни одного дня в году, когда у нас не было бы акции или специальной цены. Раздел АКЦИИ работает в режиме 24x7. А за каждую покупку вам начисляются бонусы по нашей программе лояльности, которыми вы можете оплатить до 20% стоимости неакционного товара",
     "Honest customer reviews":"Честные отзывы клиентов",
-    "We publish all reviews: we do not delete, do not edit, we post everything as is. Because it's honest. Your impressions, advice and recommendations help others make the right choice":"Мы публикуем все отзывы: не удаляем, не редактируем, размещаем всё как есть. Потому что это честно. Ваши впечатления, советы и рекомендации помогают сделать другим правильный выбор"
-
+    "We publish all reviews: we do not delete, do not edit, we post everything as is. Because it's honest. Your impressions, advice and recommendations help others make the right choice":"Мы публикуем все отзывы: не удаляем, не редактируем, размещаем всё как есть. Потому что это честно. Ваши впечатления, советы и рекомендации помогают сделать другим правильный выбор",
+    "The order must be paid in cash or by credit card upon receipt at the point of issue or to the courier. A cash receipt is issued along with the order":"Заказ оплачивается наличными либо банковской картой при получении в пункте выдачи или курьеру. Вместе с заказом выдается кассовый чек",
+    "You can pick up the goods yourself in our retail stores":"Забрать товар самостоятельно Вы можете в наших розничных магазинах",
+    "In the shopping center \"Galleria Minsk\", Minsk, Pobediteley 9, 2nd floor. 10:00 - 22:00 daily":"В ТРЦ \"Galleria Minsk\" г. Минск, п-т Победителей 9, 2 этаж. 10:00 - 22:00 ежедневно",
+    "In the shopping center \"Corona City\", Minsk, st. Denisovskaya, 8, 1st floor. 10:00 - 21:00 daily":"В ТРЦ \"Корона Сити\" г. Минск, ул. Денисовская, 8, 1 этаж. 10:00 - 21:00 ежедневно",
+    "Delivery by courier within the city":"Доставка курьером по городу",
+    "We provide prompt delivery throughout the city by courier from 12.00 to 18.00":"Мы осуществляем оперативную доставку по городу курьером с 12.00 до 18.00",
+    "Orders placed before 12:00 are delivered on the same day (or another day of your choice). If orders were placed after 12:00, delivery will be made the next day":"Заказы оставленные до 12:00 доставляются в этот же день (или в другой день, по вашему выбору). Если заказы были оставлены после 12:00, доставка осуществляется на следующий день",
+    "Coordination and confirmation of the order is carried out 10:00 - 17:30 - Mon-Fri":"Согласование и подтверждение заказа осуществляется 10:00 - 17:30 - пн-пт",
+    "Cost of delivery":"Стоимость доставки",
+    "Pickup from our stores is free":"Самовывоз из наших магазинов - бесплатно",
+    "Delivery by courier - 5$. When ordering from 50$. - for free":"Доставка курьером - 7 руб. При заказе от 70 руб. - бесплатно"
 
 }

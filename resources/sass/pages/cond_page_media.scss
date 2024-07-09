@@ -1,0 +1,66 @@
+@import '../variables';
+
+// about page
+
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+    .conditions{
+
+        width: min(90%, 1200px);
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (max-width: 1023px){
+
+
+    .conditions{
+
+        width: min(95%, 1200px);
+        margin: 0 auto;
+
+    }
+}
+
+@media screen and (max-width:  900px) {
+
+}
+
+@media screen and (max-width:  768px) {
+
+    .conditions{
+
+        .payment_delivery{
+
+            padding-top: 2rem;
+        }
+    }
+}
+
+
+@media screen and (max-width:  600px) {
+
+}
+
+@media screen and (max-width:  480px) {
+
+
+
+}
+
+@media screen and (max-width:  425px) {
+
+
+}
+
+@media screen and (max-width:  375px) {
+
+}
+
+@media screen and (max-width:  320px) {
+
+
+}
