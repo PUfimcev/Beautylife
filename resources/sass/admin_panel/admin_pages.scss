@@ -173,6 +173,7 @@
                     left: 0;
                     object-fit:contain;
                     width: 100%;
+                    height: 100%;
                 }
             }
 
@@ -193,6 +194,136 @@
         .no__blogs{
             @extend %P1-desk-description;
             .no__blogs_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+}
+
+// Admin panel - brands sheet
+
+.admin__brands__section{
+    padding: 2rem 0;
+
+    .message__create{
+        width: 30% !important;
+    }
+
+    .table__brand{
+        width: 95%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        tr{
+            width: 100%;
+            th{
+                vertical-align: text-top;
+            }
+
+            td:nth-child(3){
+                position: relative;
+                width: 20% !important;
+                overflow: hidden;
+
+                .brand__image{
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            td:nth-child(4){
+                width: 25% !important;
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            .btn{
+                display:inline-block;
+                padding: 0 0.6rem;
+            }
+        }
+        .no__brands{
+            @extend %P1-desk-description;
+            .no__brands_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+}
+
+// Admin panel - offers sheet
+
+.admin__offers__section{
+    padding: 2rem 0;
+
+    .message__create{
+        width: 30% !important;
+    }
+
+    .table__offers{
+        width: 95%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        tr{
+            width: 100%;
+            th{
+                vertical-align: text-top;
+            }
+
+            td:nth-child(3){
+                position: relative;
+                width: 20% !important;
+                overflow: hidden;
+
+                .offer__image{
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            td:nth-child(4){
+                width: 25% !important;
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            .btn{
+                display:inline-block;
+                padding: 0 0.6rem;
+            }
+        }
+        .no__offers{
+            @extend %P1-desk-description;
+            .no__offers_projects{
                 text-align: center;
                 height: 5rem !important;
                 color: #ff0000;

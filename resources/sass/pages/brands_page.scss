@@ -1,0 +1,138 @@
+@import '../variables';
+
+// brands page
+
+.brands{
+
+    padding-bottom: 3rem;
+
+    .brands__title{
+        color: $text-accent;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+    .brands__elements{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .no__brands{
+            display:inline-block;
+            font-family: $font-family-Mostly-Bright;
+            font-size: 1.75rem;
+            margin: 0 auto 3rem auto;
+        }
+
+        .brand{
+            width: calc(33% + 3.5px);
+            height: 20rem;
+            padding: 0;
+            border: 1px solid $text-accent;
+            margin-right: -1px;
+            margin-bottom: -1px;
+            background-color: $body-bg;
+
+                .brand_head{
+                    width: 100%;
+                    height: 10rem;
+
+
+                    .image{
+                        display: block;
+                        width: 80%;
+                        height: 100%;
+                        object-fit:contain;
+                        margin: 0 auto;
+                    }
+                }
+                .brand_content{
+                    padding: 1rem 2rem;
+
+                    .brand_title{
+                        color: $text-accent-2;
+                    }
+
+                    .brand_summary{
+                        margin: 0;
+                        font-size: 0.875rem;
+
+                    }
+                }
+
+        }
+    }
+}
+
+// full brand
+
+.full_brand{
+
+    padding-bottom: 3rem;
+
+    .link__to_brands{
+        display: block;
+        font-family: $font-family-Mostly-Bright;
+        font-size: 1rem;
+        color: $text-accent;
+        text-align: right;
+        margin: 0.5rem auto;
+    }
+
+    .full_brand_top{
+        width: 100%;
+        margin-bottom: 1.5rem;
+        border: 1px solid $text-accent;
+
+        display: flex;
+        align-items: flex-start;
+
+        .full_brand_head{
+
+            width: 30%;
+
+            .image{
+                display: block;
+                padding: 1rem;
+                width: 100%;
+                height: 10rem;
+                object-fit:contain;
+            }
+        }
+
+        .full_brand_content{
+            width: 70%;
+            padding: 2rem;
+
+            .brand_title{
+                color: $text-accent-2;
+            }
+
+            .brand_summary{
+
+                font-weight: bold;
+            }
+
+            .brand_description{
+
+                a{
+                    color: $text-accent;
+                }
+            }
+
+        }
+    }
+
+    .full_brand_products{
+
+        width: 100%;
+
+        .no__goods{
+            font-family: $font-family-Mostly-Bright;
+            font-size: 1.75rem;
+            text-align: center;
+            margin: 1.5rem auto;
+        }
+
+    }
+}

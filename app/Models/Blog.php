@@ -74,7 +74,7 @@ class Blog extends Model
     }
 
 
-        /**
+    /**
      * Create accessor for attribute created_at
      * @return updated_at
      */

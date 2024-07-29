@@ -7,26 +7,23 @@
 
             <nav class="navbar__line navbar__line_admin-panel">
                   <ul class="navbar__nav d-flex justify-content-between align-items-center">
-                      {{-- <li class="nav_item">
-                          <a href="{{ route('about') }}" class="nav_link @routeactive('about')">{{ __('About company')}}</a>
-                      </li>
-                      <li class="nav_item">
-                          <a href="{{ route('offers') }}" class="nav_link @routeactive('offers')">{{__('Offers')}}</a>
-                      </li>
-                      <li class="nav_item">
-                          <a href="{{ route('catalog') }}" class="nav_link @routeactive('catalog')">{{__('Catalog')}}</a>
-                      </li> --}}
                         <li class="nav_item">
-                            <a href="{{ route('callbacks.index') }}" class="nav_link @routeactive('callbacks.index')">{{__('Callbacks')}}</a>
+                            <a href="{{ route('callbacks.index') }}" class="nav_link @routeactive('callbacks*')">{{__('Callbacks')}}</a>
                         </li>
                         <li class="nav_item">
-                            <a href="{{ route('admin.blogs.index') }}" class="nav_link @routeactive('blogs')">{{__('Blogs')}}</a>
+                            <a href="{{ route('admin.offers.index') }}" class="nav_link @routeactive('admin.offers*')">{{__('Offers')}}</a>
                         </li>
                         <li class="nav_item">
-                            <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages.index')">{{__('Messages')}}</a>
+                            <a href="{{ route('admin.brands.index') }}" class="nav_link @routeactive('admin.brands*')">{{__('Brands')}}</a>
                         </li>
                         <li class="nav_item">
-                            <a href="{{ route('admin.reviews.index') }}" class="nav_link @routeactive('admin.reviews.index')">{{__('Reviews')}}</a>
+                            <a href="{{ route('admin.blogs.index') }}" class="nav_link @routeactive('admin.blogs*')">{{__('Blogs')}}</a>
+                        </li>
+                        <li class="nav_item">
+                            <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages*')">{{__('Messages')}}</a>
+                        </li>
+                        <li class="nav_item">
+                            <a href="{{ route('admin.reviews.index') }}" class="nav_link @routeactive('admin.reviews*')">{{__('Reviews')}}</a>
                         </li>
                   </ul>
             </nav>

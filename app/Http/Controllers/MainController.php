@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Blog;
+use App\Models\Brand;
 use App\Models\Review;
 use App\Classes\GetBlogs;
 use App\Classes\GetReviews;
@@ -38,6 +39,8 @@ class MainController extends Controller
 
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
+        // $offers = [];
+
         return view('pages.offers');
     }
 
@@ -48,11 +51,23 @@ class MainController extends Controller
         return view('pages.catalog');
     }
 
-    public function brands()
+    public function brands(Brand $brand = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        return view('pages.brands');
+        if(!isset($brand)) {
+
+            $brands = Brand::orderBy('brand_name','asc')->paginate(9);
+
+            return view('pages.brands', compact('brands'));
+
+        } else {
+
+            $products = [];
+
+            return view('pages.elements.brand_full', compact('brand', 'products'));
+        }
+
     }
 
     public function conditions()

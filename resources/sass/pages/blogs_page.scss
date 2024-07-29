@@ -7,8 +7,9 @@
     padding-bottom: 3rem;
 
     .blogs__title{
-        margin: 0;
-        padding: 1.5rem 0;
+        color: $text-accent;
+        font-weight: bold;
+        margin-bottom: 2rem;
     }
 
     .blogs__elements{
@@ -16,6 +17,13 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+
+        .no__blogs{
+            display:inline-block;
+            font-family: $font-family-Mostly-Bright;
+            font-size: 1.75rem;
+            margin: 0 auto 3rem auto;
+        }
 
         .blog{
             width: min(40%, 30rem);

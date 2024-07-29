@@ -18,7 +18,7 @@ class GetBlogs{
             $blogsQuery->take($numberBlogs);
         }
 
-        $blogs = $blogsQuery->orderBy('updated_at','desc')->paginate(8);;
+        $blogs = $blogsQuery->orderBy('updated_at','desc')->paginate(8);
 
         $this->blogs = $blogs;
     }

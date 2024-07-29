@@ -4,14 +4,14 @@
 
 @media screen and (max-width: 1023px) {
 
-    .admin__callbacks__section, .admin__messages__section, .admin__reviews__section, .admin__blogs__section {
+    .admin__callbacks__section, .admin__messages__section, .admin__reviews__section, .admin__blogs__section, .admin__brands__section, .admin__offers__section {
         width: 100%;
 
         .table__callbacks {
             width: 90% !important;
         }
 
-        .table__messages, .table__review, .table__blog{
+        .table__messages, .table__review, .table__blog, .table__brand, .table__offers{
             width: 95% !important;
         }
     }
@@ -40,9 +40,9 @@
         }
     }
 
-    .admin__messages__section, .admin__reviews__section, .admin__blogs__section {
+    .admin__messages__section, .admin__reviews__section, .admin__blogs__section, .admin__brands__section, .admin__offers__section {
 
-        .table__messages, .table__review, .table__blog{
+        .table__messages, .table__review, .table__blog, .table__brand, .table__offers{
 
             form{
                 span{

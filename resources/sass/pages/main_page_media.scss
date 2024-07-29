@@ -11,6 +11,35 @@
         }
     }
 
+    // Offers
+
+    .offers__main_page{
+
+
+        width: min(90%, 1200px);
+
+
+        // .get__all__blogs:hover{
+        //     color: $text-accent-2;
+        // }
+
+        // .blogs__elements{
+        //     .blog__elem_on_main-page:is(.blog_1, .blog_2, .blog_3, .blog_4){
+        //         .blog__elem_on_main-page__content{
+        //             .text{
+
+        //                 div{
+        //                     .get__full__blog:hover{
+        //                         color: $text-accent;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+    }
+
     // Blogs
 
     .blogs__main_page{
@@ -105,6 +134,14 @@
         .main__page_title-button{
             width: 15rem !important;
         }
+    }
+
+    // Offers
+
+    .offers__main_page{
+
+        width: min(95%, 1200px);
+
     }
 
     // Blogs
@@ -234,6 +271,81 @@
         }
     }
 
+    // offers
+
+    .offers__main_page{
+
+        .offers__elements{
+
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+            // .blog__elem_on_main-page:where(.blog_1, .blog_2){
+            //     width: max(90%, 20rem);
+            //     height: max(10vh, 400px);
+
+            //     display: flex !important;
+            //     flex-direction: column !important;
+            //     justify-content: flex-start !important;
+            //     align-items: flex-start !important;
+
+            //     position: static !important;
+
+
+            //     .blog__elem_on_main-page_top{
+            //         width: 100% !important;
+            //         height: 75% !important;
+            //         position: static !important;
+
+            //         .image{
+            //             height: 100% !important
+            //         }
+            //     }
+
+            //     .blog__elem_on_main-page__content{
+            //         width: 100% !important;
+            //         height: 20% !important;
+            //         align-self: flex-start;
+            //         position: static !important;
+            //         margin-top: 0 !important;
+            //         padding: 0 !important;
+
+            //         .text{
+            //             margin-left: 0 !important;
+            //             width: 100% !important;
+            //             height: 100% !important;
+
+            //             .blog_title{
+            //                 width: 60% !important;
+            //                 padding: 0.8rem 0 0.4rem 0;
+            //             }
+
+            //             div{
+
+            //                 display: flex !important;
+            //                 flex-direction: column !important;
+            //                 align-items: flex-start !important;
+
+            //                 .get__full__blog{
+            //                     align-self: flex-end;
+            //                     display: block;
+            //                     padding-left: 0;
+            //                 }
+            //             }
+            //         }
+
+            //     }
+            // }
+            // .blog__elem_on_main-page:where(.blog_3, .blog_4){
+            //     display: none !important;
+            // }
+        }
+    }
+
+
     // blogs
 
     .blogs__main_page{
@@ -331,6 +443,21 @@
         }
     }
 
+    //offergs
+    .offers__main_page{
+
+        .offers__elements{
+
+
+        //     .blog__elem_on_main-page:where(.blog_1, .blog_2){
+        //         width: 100%;
+        //         height: max(10vh, 320px);
+        //         margin-bottom: 2rem !important;
+
+        //     }
+        }
+    }
+
     // blogs
     .blogs__main_page{
 
@@ -407,6 +534,20 @@
 
         .main__page_title{
             width: min(50%, 30rem);
+        }
+    }
+
+    // offers
+    .offers__main_page{
+
+        .offers__elements{
+
+
+            // .offer__elem_on_main-page:where(.offer_1, .offer_2){
+            //     height: max(10vh, 280px);
+            //     margin-bottom: 1rem !important;
+
+            // }
         }
     }
 

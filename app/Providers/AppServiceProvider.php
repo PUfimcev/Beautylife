@@ -59,6 +59,17 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+        // input offers on the main page
+
+        view()->composer('pages.main', function(View $view) {
+
+            // $offers = (new GetOffers(3))->getOffers();
+            $offers = [];
+
+            $view->with('offers', $offers);
+
+        });
+
         // input blogs on the main page
 
         view()->composer('pages.main', function(View $view) {

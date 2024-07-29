@@ -21,9 +21,7 @@
         <h2>{{ __('About company')}}</h2>
 
         <p>{{ __('BeautyLife is not just an online store and a network of branded offline stores. This is a community of people who make a conscious choice in favor of naturalness, naturalness and effectiveness') }}.</p>
-
         <p>{{ __('We have collected for you more than 150 brands of natural and effective cosmetics from all over the world, presented in all categories. Here you will find products tailored to your preferences and features') }}:</p>
-
         <ul>
             <li>{{ __('facial care cosmetics for all skin types and ages') }},</li>
             <li>{{ __('products for effective and SPA body care at home') }},</li>
@@ -32,7 +30,6 @@
             <li>{{ __('home and professional cosmetics for hair and scalp care') }},</li>
             <li>{{ __('useful and fashionable accessories') }}.</li>
         </ul>
-
         <p>{{ __('We have been working for you since 2006. Our partners include only trusted manufacturers whose products, developments and production conditions meet all international requirements') }}.</p>
         <p>{{ __('Our main criteria when choosing a particular cosmetic brand are the naturalness and high quality of the ingredients, as well as their effectiveness and complete safety') }}.</p>
         <p>{{ __('All brands presented in our stores have undergone careful selection and strict testing. And a professional team of specialists in the field of cosmetology allows us to monitor the most significant new products on the global market of cosmetic products and replenish the assortment of DNA stores with the best of them') }}.</p>
@@ -43,7 +40,6 @@
         <p>{{ __('Our managers are assistants and consultants. They will be happy to help you choose cosmetics based on your wishes, and will also tell you how to place an order and make payment. Managers answer questions by phone, online chat and through feedback forms') }}.</p>
 
         <p class="about__selected_text">{{ __('During the consultation, we take into account your purchase history and communication with us to personalize our answers and offers. It is important for us to resolve the issue quickly and efficiently. Forming long-term relationships with clients is one of the main goals of our company. We understand that it is more convenient for you to buy goods in a store where they know your preferences and help you make the right choice') }}.</p>
-
         <p>{{ __('Sales consultants of the DNA network regularly undergo professional training. An in-depth study of the range of products allows them to thoroughly possess information about the composition and effect of cosmetics and their individual components, as well as competently advise customers, helping them make the best choice') }}.</p>
 
         <h3>{{ __('An integrated approach to goods and services') }}</h3>

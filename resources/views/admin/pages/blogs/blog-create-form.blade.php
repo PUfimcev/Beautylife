@@ -14,16 +14,17 @@
 
 
         <form method="POST"
-            @if (isset($blog))
+            @if(isset($blog))
                 action="{{ route('admin.blogs.update', $blog) }}"
             @else
                 action="{{ route('admin.blogs.store') }}"
-            @endif enctype="multipart/form-data" class="form_blog">
+            @endif
+            enctype="multipart/form-data" class="form_blog">
 
-            @csrf
             @isset($blog)
                 @method('PUT')
             @endisset
+            @csrf
 
 
             <div class="blog__create mb-1">
@@ -641,8 +642,6 @@
 
 
     </div>
-
-    <script>window.addEventListener('keydown', (e) => { if(e.key == 'Enter') document.querySelector('.form_review').submit() });</script>
 </div>
 
 @endsection

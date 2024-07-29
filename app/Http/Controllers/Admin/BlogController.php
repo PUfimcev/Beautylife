@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'is_admin']);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -26,6 +37,7 @@ class BlogController extends Controller
      */
     public function create()
     {
+
         return view('admin.pages.blogs.blog-create-form');
     }
 
@@ -51,6 +63,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
+
         return view('admin.pages.blogs.blog-show', compact('blog'));
     }
 
@@ -59,6 +72,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+
         return view('admin.pages.blogs.blog-create-form', compact('blog'));
     }
 
@@ -89,6 +103,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
+
         if($blog->blog_image_route !== null && Storage::exists($blog->blog_image_route)) Storage::delete($blog->blog_image_route);
 
         $blog->delete();

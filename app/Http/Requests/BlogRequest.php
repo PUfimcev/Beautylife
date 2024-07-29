@@ -41,13 +41,14 @@ class BlogRequest extends FormRequest
             'blog_title_en' => 'required|string|max:455',
             'slug' => ['required', 'string', 'min:3', 'max:255', 'regex:/[0-9A-z]/'],
             'blog_paragraph_1' => 'required|string',
-            'blogFile' => 'required|image|nullable',
+            'blogFile' => ['image', 'nullable'],
         ];
 
         if(!empty($this->blog)) {
             $rules['slug'][] = Rule::unique('blogs')->ignore($this->blog->id);
         } else {
             $rules['slug'][] = Rule::unique('blogs');
+            $rules['blogFile'][] = 'required';
         }
 
         return $rules;

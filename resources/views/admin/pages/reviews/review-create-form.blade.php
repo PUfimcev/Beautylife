@@ -99,7 +99,7 @@
 
     </div>
     <script>if(document.querySelector('.unsubscribe_cancel-icon')) document.querySelector('.unsubscribe_cancel-icon').addEventListener('click', () => {window.close()});</script>
-    <script>window.addEventListener('keydown', (e) => { if(e.key == 'Enter') document.querySelector('.form_review').submit() });</script>
+
 </div>
 
 @endsection

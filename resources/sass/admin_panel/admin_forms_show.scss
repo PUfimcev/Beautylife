@@ -269,3 +269,212 @@
 
     }
 }
+
+
+// Brand form
+
+.admin__brands__section-create{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    form{
+        width: 85%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        label{
+            font-weight: bold;
+        }
+
+        .brand__image{
+            display: block;
+            width: 85%;
+            height: auto;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+        }
+
+        .btn__brand__form-create{
+            margin: 1.5rem auto;
+            width: min(60%, 10rem);
+        }
+    }
+}
+
+
+// Brand show
+
+.admin__brand__section-show{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .brand_details{
+
+        width: 80%;
+
+        .brand_details_list{
+
+
+            .details-name{
+                font-weight: bold;
+            }
+
+
+            .details-content{
+                display: inline-block;
+                color: $text-accent-2;
+            }
+            .details-content:has(img){
+                display: block;
+                width: min(50%, 15rem);
+            }
+
+            img{
+                width: 100%;
+                object-fit:contain;
+            }
+
+        }
+    }
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
+    }
+}
+
+// Offers form
+
+.admin__offers__section-create{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    form{
+        width: 85%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        label, .offer_period{
+            font-weight: bold;
+        }
+
+
+        .offer__image{
+            display: block;
+            width: 85%;
+            height: auto;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+        }
+
+        .offer_discount {
+
+            #offer__discount_size {
+
+                width: max(8%, 7rem);
+            }
+
+        }
+
+
+        .offer_period{
+            #offer__period_from, #offer__period_to{
+                width: max(10%, 13rem);
+            }
+        }
+
+        .btn__offer__form-create{
+            margin: 1.5rem auto;
+            width: min(60%, 10rem);
+        }
+    }
+}
+
+
+// Offers show
+
+.admin__offer__section-show{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .btn-return{
+        margin-right: 4rem;
+    }
+
+    .offer_details{
+
+        width: 80%;
+
+        .offer_details_list{
+
+
+            .details-name{
+                font-weight: bold;
+            }
+
+
+            .details-content{
+                display: inline-block;
+                color: $text-accent-2;
+            }
+            .details-content:has(img){
+                display: block;
+                width: min(50%, 15rem);
+            }
+
+            img{
+                width: 100%;
+                object-fit:contain;
+            }
+
+        }
+    }
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
+    }
+}
+

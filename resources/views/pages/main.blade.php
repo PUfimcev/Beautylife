@@ -11,6 +11,23 @@
             <a class="main__page_title-button" href="{{ route('catalog') }}" class="title__allusion_catalog" title="{{ __('Explore') }}">{{ __('Explore') }}</a>
         </section>
 
+        {{-- Offers --}}
+
+        <section class="offers__main_page">
+            <h2 class="offers__title">{{ __('Special offer') }}</h2>
+
+            <div class="offers__elements">
+
+                @forelse ($offers as $offer)
+
+                    @include('pages.elements.offers_on_main_page', ['offer' => $offer, 'i' => $loop->iteration])
+                @empty
+                    <p class="no__offers">{{ __('There are no offers') }}</p>
+                @endforelse
+            </div>
+
+        </section>
+
 
         {{-- Blogs --}}
 

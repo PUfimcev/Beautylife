@@ -5,11 +5,13 @@
 
 @media screen and (max-width: 1023px) {
 
-    // Messages/Blogs form, show
+    // Messages/Blogs/Offers form, show
 
-    .admin__messages__section-create, .admin__messages__section-show, .admin__blogs__section-create, .admin__blog__section-show{
+    .admin__messages__section-create, .admin__messages__section-show, .admin__blogs__section-create, .admin__blog__section-show, .admin__brands__section-create, .admin__brand__section-show, .admin__offers__section-create, .admin__offer__section-show{
         width: 95%;
         line-height: 2rem !important;
+
+
     }
 
     // Review form
@@ -22,10 +24,15 @@
 }
 
 @media screen and (max-width:  768px) {
-    // Messages/Blogs form, show
+    // Messages/Blogs/Offers form, show
 
-    .admin__messages__section-create, .admin__messages__section-show, .admin__blogs__section-create, .admin__blog__section-show{
+    .admin__messages__section-create, .admin__messages__section-show, .admin__blogs__section-create, .admin__blog__section-show, .admin__brands__section-create, .admin__brand__section-show, .admin__offers__section-create, .admin__offer__section-show{
         width: 100%;
+
+        .offer_details{
+
+            width: 95%;
+        }
 
     }
 
