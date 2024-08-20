@@ -89,7 +89,7 @@
                 <li><span class="details-name">Blog paragraph 10 in English: </span><span class="details-content">{{ empty($blog->blog_paragraph_10_en) ?   __('No')  : $blog->blog_paragraph_10_en }}</span></li>
 
 
-                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $blog->updated_at }}</span></li>
+                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $blog->created_at }}</span></li>
                 <li><span class="details-name">{{ __('Edit date') }}: </span><span class="details-content">{{ $blog->updated_at }}</span></li>
 
 

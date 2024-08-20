@@ -57,267 +57,211 @@
 
     .offers__title{
         text-transform: uppercase;
-        margin-bottom: 2rem;
+        margin-bottom: 3.5rem;
     }
 
     .offers__elements{
         width: 100%;
 
         display: grid;
-        // grid-template-columns: repeat(40, 1fr);
-        // grid-template-rows: repeat(20, 1fr);
-        // grid-template-areas:
-        // "blog_2 blog_2"
-        // "blog_1 blog_2 blog_2"
-        // "blog_3 blog_3"
-        // "blog_3 blog_3 blog_2"
-        // ;
+        grid-template-columns: repeat(55, 1fr);
+        grid-template-rows: repeat(72, 1fr);
+        grid-template-areas:
+        "offer_1 offer_2"
+        "offer_1 offer_2"
+        "offer_1 offer_3"
+        "offer_3";
 
         .get__full__offer-btn-arrow{
             display: inline-block;
             @extend %icons-settings;
             background-image: url('../images/button_arrow.png') !important;
             background-size:contain;
-            padding: 0.5rem 1.2rem;
-            vertical-align: middle;
-            margin-left: 0.5rem;
+            padding: 0.5rem 2rem;
+            margin-left: 1rem;
         }
 
-        .blog__elem_on_main-page.blog_1{
+        .offer__elem_on_main-page{
 
-            grid-area: blog_1;
-            grid-column-start: 1;
-            grid-column-end: 10;
-            grid-row-start: 4;
-            grid-row-end: 10;
+            &.offer_1{
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+                grid-area: offer_1;
+                grid-column-start: 1;
+                grid-column-end: 24;
+                grid-row-start: 1;
+                grid-row-end: 46;
 
-            .blog__elem_on_main-page_top{
-                width: 100%;
-                height: 50%;
+                position: relative;
 
-                .image{
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    object-fit:cover;
-
-                }
-            }
-
-            .blog__elem_on_main-page__content{
-                width: 100%;
-                height: 50%;
-
-                .text{
+                .offer__elem_on_main-page_top{
                     width: 100%;
                     height: 100%;
 
-                    .blog_title{
-                        @extend %P2-desk-description;
-                        padding: 0.8rem 0 0.4rem 0;
-                        margin: 0;
-                    }
+                    position: absolute;
 
-                    div{
-                        .date{
-                            display: block;
-                            @extend %P3-desk-description;
-                        }
+                    .image{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit:cover;
 
-                        .get__full__blog{
-                            display: block;
-                            padding-left: 0;
-                            @extend  %button-desk-2;
-                        }
                     }
                 }
 
-            }
-
-        }
-
-        .blog__elem_on_main-page.blog_2{
-
-            grid-area: blog_2;
-            grid-column-start: 13;
-            grid-column-end: 41;
-            grid-row-start: 1;
-            grid-row-end: 11;
-
-            position: relative;
-
-            .blog__elem_on_main-page_top{
-                width: 100%;
-                height: 100%;
-
-                position: absolute;
-                top: 0;
-                left: 0;
-
-                .image{
-                    display: block;
+                .offer__elem_on_main-page__content{
                     width: 100%;
-                    height: 100%;
-                    object-fit:cover;
-                }
-            }
+                    position: absolute;
+                    top: 5%;
+                    display: flex;
+                    justify-content: center;
 
-            .blog__elem_on_main-page__content{
-                width: 100%;
-                position: absolute;
-                bottom: 5%;
-                left: 0;
-
-                .text{
-                    width: 95%;
-                    margin-left: auto;
-
-                    .blog_title{
-                        width: 40%;
-                        @extend %P2-desk-description;
-                        padding-bottom: 0.4rem;
-                        margin: 0;
-                    }
-
-                    div{
+                    .text{
                         display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        align-items: flex-start;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        margin: 0 auto;
+                        padding: 0 2rem;
 
-                        .date{
-                            display: block;
-                            @extend %P3-desk-description;
+                        a{
+
+                            display: flex;
+                            justify-content: flex-end;
+                            padding: 0;
+
+                            .offer_title{
+                                display: inline-block;
+                                @extend %H3-desk-level-header;
+                                font-size: 2rem !important;
+                                padding: 0.5rem 0;
+                                margin: 0;
+                            }
                         }
 
-                        .get__full__blog{
-                            align-self: flex-end;
-                            display: block;
-                            padding-left: 0;
-                            @extend  %button-desk-2;
+                        .offer__about{
+                            @extend %P2-desk-description;
+                            margin: 0;
                         }
                     }
+
                 }
 
             }
-        }
 
-        .blog__elem_on_main-page.blog_3{
+            &.offer_2{
 
+                grid-area: offer_2;
+                grid-column-start: 35;
+                grid-column-end: 56;
+                grid-row-start: 2;
+                grid-row-end: 30;
 
-            grid-area: blog_3;
-            grid-column-start: 1;
-            grid-column-end: 27;
-            grid-row-start: 12;
-            grid-row-end: 21;
+                position: relative;
 
-
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: stretch;
-
-            .blog__elem_on_main-page_top{
-                width: 67%;
-                height: 100%;
-
-                .image{
-                    display: block;
+                .offer__elem_on_main-page_top{
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
-                }
-            }
 
-            .blog__elem_on_main-page__content{
-                width: 30%;
-                align-self: flex-start;
-                padding-top: 3rem;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
 
-                .text{
-                    width: 100%;
-
-                    .blog_title{
-                        @extend %P2-desk-description;
-                        padding: 0.8rem 0 0.4rem 0;
-                        margin: 0;
-                    }
-
-                    div{
-                        .date{
-                            display: block;
-                            @extend %P3-desk-description;
-                        }
-
-                        .get__full__blog{
-                            display: block;
-                            padding-left: 0;
-                            @extend  %button-desk-2;
-                        }
+                    .image{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit:cover;
                     }
                 }
 
-            }
-        }
-
-        .blog__elem_on_main-page.blog_4{
-
-            grid-area: blog_4;
-            grid-column-start: 28;
-            grid-column-end: 41;
-            grid-row-start: 15;
-            grid-row-end: 20;
-
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-between;
-            align-items: stretch;
-
-            .blog__elem_on_main-page_top{
-                width: 50%;
-                height: 100%;
-
-                .image{
-                    display: block;
+                .offer__elem_on_main-page__content{
                     width: 100%;
+                    position: absolute;
+                    top: 5%;
+                    display: flex;
+                    justify-content: center;
+
+                    .text{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        margin: 0 auto;
+                        padding: 0 2rem;
+
+                        a{
+                            display: flex;
+                            justify-content: flex-end;
+                            padding: 0;
+
+                            .offer_title{
+                                display: inline-block !important;
+                                @extend %H3-desk-level-header;
+                                font-size: 2rem !important;
+                                padding: 0.5rem 0;
+                                margin: 0;
+                            }
+                        }
+                        .offer__about{
+                            @extend %P2-desk-description;
+                            margin: 0;
+                        }
+                    }
+
+                }
+            }
+
+            &.offer_3{
+
+
+                grid-area: offer_3;
+                grid-column-start: 28;
+                grid-column-end: 52;
+                grid-row-start: 39;
+                grid-row-end: 73;
+
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .offer__elem_on_main-page_top{
+                    width: 50%;
                     height: 100%;
-                    object-fit: cover;
+
+                    .image{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .offer__elem_on_main-page__content{
+                    width: 45%;
+                    align-self: flex-end;
+                    padding-bottom: 1.5rem;
+
+                    .text{
+                        width: 100%;
+
+                        a{
+                            width: 100%;
+                            display: flex;
+
+                            .offer_title{
+                                @extend %P2-desk-description;
+                                font-weight: bold !important;
+                                margin: 0;
+                            }
+                        }
+                        .offer__about{
+                            @extend %P2-desk-description;
+                            margin: 0;
+                        }
+                    }
 
                 }
             }
 
-            .blog__elem_on_main-page__content{
-                width: 47%;
-                align-self: flex-end;
-
-                .text{
-                    width: 100%;
-
-                    .blog_title{
-                        @extend %P2-desk-description;
-                        padding-bottom: 0.4rem;
-                        margin: 0;
-                    }
-
-                    div{
-                        .date{
-                            display: block;
-                            @extend %P3-desk-description;
-                        }
-
-                        .get__full__blog{
-                            display: block;
-                            padding-left: 0;
-                            @extend  %button-desk-2;
-                        }
-                    }
-                }
-
-            }
         }
 
         .no__offers{

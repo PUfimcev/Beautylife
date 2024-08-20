@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\App;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,15 +24,22 @@ class OfferRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'title' => 'required|string|max:100|regex:/[0-9А-я]/',
-            'title_en' => 'required|string|max:100|regex:/[0-9A-z]/',
+            'title' => ['required', 'string','max:100','regex:/[0-9А-я]/'],
+            'title_en' => ['required', 'string','max:100','regex:/[0-9A-z]/'],
             'description' => 'required|string|regex:/[0-9А-я]/',
             'description_en' => 'required|string|regex:/[0-9A-z]/',
             'discount_size' => 'numeric|min:0|max:100|max_digits:3',
             'offerFile' => ['image', 'nullable'],
         ];
 
-        if(empty($this->offer)) $rules['offerFile'][] = 'required';
+        if(!empty($this->offer)) {
+            $rules['title'][] = Rule::unique('offers')->ignore($this->offer->id);
+            $rules['title_en'][] = Rule::unique('offers')->ignore($this->offer->id);
+        } else {
+            $rules['title'][] = Rule::unique('offers');
+            $rules['title_en'][] = Rule::unique('offers');
+            $rules['offerFile'][] = 'required';
+        }
 
         return $rules;
 

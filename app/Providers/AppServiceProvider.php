@@ -3,12 +3,16 @@
 namespace App\Providers;
 
 // use Carbon\Traits\Date;
+use App\Models\Offer;
 use App\Classes\GetBlogs;
 use Illuminate\View\View;
+use App\Classes\GetOffers;
 use App\Classes\GetReviews;
+use App\Observers\OfferObserver;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -63,12 +67,15 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('pages.main', function(View $view) {
 
-            // $offers = (new GetOffers(3))->getOffers();
-            $offers = [];
+            $offers = (new GetOffers(3))->getOffers();
 
             $view->with('offers', $offers);
 
         });
+
+        // create offer observer for emailing
+
+        Offer::observe(OfferObserver::class);
 
         // input blogs on the main page
 

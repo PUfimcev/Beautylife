@@ -1,0 +1,143 @@
+@import '../variables';
+
+// offers page
+
+.offers{
+
+    padding-bottom: 3rem;
+
+    .offers__title{
+        color: $text-accent;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+    .offers__elements{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        flex-wrap: wrap;
+
+        .no__offers{
+            display:inline-block;
+            font-family: $font-family-Mostly-Bright;
+            font-size: 1.75rem;
+            margin: 0 auto 3rem auto;
+        }
+
+        .offer{
+            width: min(45%, 30rem);
+            box-shadow: 0 0 20px -5px;
+            margin: 1rem;
+
+            display: flex;
+
+
+            .offer_head{
+                width: 50%;
+                height: 10rem;
+
+                .image{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .offer_content{
+                width: 50%;
+                padding: 1rem;
+
+                .offer_title{
+                    color: $text-accent !important;
+                }
+
+                .offer_summary{
+                    text-align: end;
+
+                }
+            }
+        }
+    }
+}
+
+// full offer
+
+.full_offer{
+
+    padding-bottom: 3rem;
+
+    .link__to_offers{
+        display: block;
+        font-family: $font-family-Mostly-Bright;
+        font-size: 1rem;
+        color: $text-accent;
+        text-align: right;
+        margin: 0.5rem auto;
+    }
+
+    .full_offer_top{
+        width: 100%;
+        margin-bottom: 1.5rem;
+        border: 1px solid $text-accent;
+
+        display: flex;
+        align-items: flex-start;
+
+        .full_offer_head{
+
+            width: 30%;
+
+            .image{
+                display: block;
+                width: 100%;
+                object-fit:cover;
+            }
+        }
+
+        .full_offer_content{
+            width: 70%;
+            height: 100%;
+            overflow: hidden;
+            overflow-y: scroll;
+
+            div{
+                padding: 1rem;
+
+                .offer_title{
+                    color: $text-accent;
+                }
+
+                .offer_summary{
+
+                    font-weight: bold;
+                }
+
+                .offer_description{
+
+                    a{
+                        color: $text-accent;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    .full_offer_products{
+
+        width: 100%;
+
+        .no__goods{
+            font-family: $font-family-Mostly-Bright;
+            font-size: 1.75rem;
+            text-align: center;
+            margin: 1.5rem auto;
+        }
+
+    }
+}
+

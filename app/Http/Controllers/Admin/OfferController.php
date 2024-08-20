@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Brand;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use App\Traits\Transliteratable;
 use App\Http\Requests\OfferRequest;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class OfferController extends Controller
 {
+    use Transliteratable;
 
     /**
      * Create a new controller instance.
@@ -55,6 +58,10 @@ class OfferController extends Controller
     {
 
         $params = $request->all();
+
+        $params['slug'] = self::getTransliteration($request->input('title'));
+
+        $params['slug_en'] = $request->input('title_en');
 
         if ($request->hasFile('offerFile')) $params['image_route'] = $this->setFilePath($request->file('offerFile'));
 
@@ -102,6 +109,10 @@ class OfferController extends Controller
     {
 
         $params = $request->all();
+
+        $params['slug'] = self::getTransliteration($request->input('title'));
+
+        $params['slug_en'] = $request->input('title_en');
 
         if ($request->hasFile('offerFile')) {
 

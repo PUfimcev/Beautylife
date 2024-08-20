@@ -30,16 +30,16 @@
                 <li><span class="details-name">id: </span><span class="details-content">{{ $offer->id }}</span></li>
 
                 <li><span class="details-name">Заголовок: </span><span class="details-content">{{ $offer->title }}</span></li>
-                <li></li>
+
 
                 <li><span class="details-name">Title in English: </span><span class="details-content">{{ $offer->title_en }}</span></li>
-                <li></li>
+
 
 
                 <li><span class="details-name">Аннотация предложения: </span><span class="details-content">{{ empty($offer->about) ?   __('No')  : $offer->about }}</span></li>
-                <li></li>
+
                 <li><span class="details-name">Offer summary in English: </span><span class="details-content">{{ empty($offer->about_en) ?   __('No')  : $offer->about_en }}</span></li>
-                <li></li>
+
 
                 <li><span class="details-name">{{ __('Offer picture') }}: </span><span class="details-content">@if($offer->image_route)
                     <img class="brand__image"
@@ -48,40 +48,31 @@
                     {{  __('No') }}.
                 @endif</span></li>
 
-                <li></li>
                 <li><span class="details-name">Описание предложения: </span><span class="details-content">@php echo html_entity_decode($offer->description); @endphp</span></li>
-                <li></li>
+
                 <li><span class="details-name">Offer description in English: </span><span class="details-content">@php echo html_entity_decode($offer->description_en); @endphp</span></li>
 
-                <li></li>
                 <li><span class="details-name">{{ __('Discount') }}: </span><span class="details-content">{{ empty($offer->discount_size) ?   __('No')  : $offer->discount_size }}</span></li>
 
-                <li></li>
+
                 <li><span class="details-name">{{ __('Period of validity') }}: </span><span class="details-content">
                     @if ((isset($offer->period_from) && isset($offer->period_to)))
                     <span class="offer__period">{{ $offer->period_from->format('H:i / d.m.Y') }}</span> - <span class="offer__period">{{ $offer->period_to->format('H:i / d.m.Y') }}  </span>
                     @else
                         <span>{{ __('No') }}</span>
                     @endif
-                </span></li>
 
-                <li></li>
+                </span></li>
                 <li><span class="details-name">{{ __('Brands') }}: </span>
                     @forelse ($brands as $name)
                         <span class="details-content">{{ $name }}</span>
                     @empty
                         <span class="details-content">{{ __('No') }}</span>
                     @endforelse
-
                 </li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $offer->updated_at }}</span></li>
+
+                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $offer->created_at }}</span></li>
                 <li><span class="details-name">{{ __('Edit date') }}: </span><span class="details-content">{{ $offer->updated_at }}</span></li>
-
-
-
             </ul>
         </div>
 

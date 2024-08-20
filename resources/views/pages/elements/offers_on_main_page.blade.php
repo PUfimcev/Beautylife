@@ -1,17 +1,18 @@
-<a href="{{ route('offers', $offer->slug) }}" class="offer__elem_on_main-page offer_{{ $i }}"  title="{{ __('Get full offer') }}">
+<div  class="offer__elem_on_main-page offer_{{ $i }}">
     <div class="offer__elem_on_main-page_top">
 
 
-        {{-- @if(isset($offer->offer_image_route) && !empty($offer->offer_image_route))
-            <img class="image" src="{{ asset('storage/'.$offer->offer_image_route) }}" alt="{{ __('Image') }}">
-        @endif --}}
+        @if(isset($offer->image_route) && !empty($offer->image_route))
+            <img class="image" src="{{ asset('storage/'.$offer->image_route) }}" alt="{{ $offer->langField('title') }}">
+        @endif
 
     </div>
     <div class="offer__elem_on_main-page__content">
 
         <div class="text">
-            <h3 class="offer_title">{{ $offer->langField('title') }}<span class="get__full__blog-btn-arrow"></span></h3>
-            <p  class="offer__about">{{ __('') }}</p>
+            <a href="{{ route('offers', $offer) }}" title="{{ $offer->langField('title') }}"><h3 class="offer_title">{{ $offer->langField('title') }}</h3><span class="get__full__offer-btn-arrow"></span></a>
+            <p  class="offer__about">{{ $offer->langField('about') }}</p>
         </div>
     </div>
-</a>
+</div>
+

@@ -34,7 +34,7 @@
                 <li></li>
                 <li><span class="details-name">Brand description in English: </span><span class="details-content">@empty($brand->brand_description) {{ __('No') }} @endempty @php echo html_entity_decode($brand->brand_description_en); @endphp</span></li>
                 <li></li>
-                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $brand->updated_at }}</span></li>
+                <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $brand->created_at }}</span></li>
                 <li><span class="details-name">{{ __('Edit date') }}: </span><span class="details-content">{{ $brand->updated_at }}</span></li>
 
 

@@ -132,16 +132,6 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     // Route for processing offers
     Route::resource('offers', OfferController::class);
 
-
-
-// GET|HEAD        admin/offers  admin.offers.index › Admin\OfferController@index
-// POST            admin/offers  admin.offers.store › Admin\OfferController@store
-// GET|HEAD        admin/offers/create  admin.offers.create › Admin\OfferController@create
-// GET|HEAD        admin/offers/{offer}  admin.offers.show › Admin\OfferController@show
-// PUT|PATCH       admin/offers/{offer} . admin.offers.update › Admin\OfferController@update
-// DELETE          admin/offers/{offer} . admin.offers.destroy › Admin\OfferController@destroy
-// GET|HEAD        admin/offers/{offer}/edit  admin.offers.edit › Admin\OfferController@edit
-
 });
 
 // Main routes
@@ -149,9 +139,9 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
 Route::controller(MainController::class)->group(function() {
     Route::get('/', 'main')->name('index');
     Route::get('about-us', 'about')->name('about');
-    Route::get('offers', 'offers')->name('offers');
+    Route::get('offers/{offer?}', 'offers')->name('offers')->withTrashed();
     Route::get('catalog', 'catalog')->name('catalog');
-    Route::get('brands/{brand:brand_name?}', 'brands')->name('brands');
+    Route::get('brands/{brand?}', 'brands')->name('brands');
     Route::get('conditions', 'conditions')->name('conditions');
     Route::get('blogs/{blog:slug?}', 'blogs')->name('blogs');
     Route::post('searching', 'getResultSearching')->name('header_search');

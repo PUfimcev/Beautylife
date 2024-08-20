@@ -45,8 +45,10 @@ class BrandController extends Controller
     public function store(BrandRequest $request)
     {
         $params = $request->all();
+        $params['slug'] = $request->input('brand_name');
 
         if ($request->hasFile('brandFile')) $params['brand_image_route'] = $this->setFilePath($request->file('brandFile'));
+
 
         Brand::create($params);
 
@@ -75,6 +77,8 @@ class BrandController extends Controller
     public function update(BrandRequest $request, Brand $brand)
     {
         $params = $request->all();
+
+        $params['slug'] = $request->input('brand_name');
 
         if ($request->hasFile('brandFile')) {
 

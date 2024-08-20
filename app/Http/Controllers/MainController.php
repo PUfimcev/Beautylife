@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Blog;
 use App\Models\Brand;
+use App\Models\Offer;
 use App\Models\Review;
 use App\Classes\GetBlogs;
+use App\Classes\GetOffers;
 use App\Classes\GetReviews;
 use App\Classes\SearchClass;
 use Illuminate\Http\Request;
@@ -34,14 +36,29 @@ class MainController extends Controller
         return view('pages.about');
     }
 
-    public function offers()
+    public function offers(Offer $offer = null)
     {
 
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        // $offers = [];
+        if(!isset($offer)) {
 
-        return view('pages.offers');
+            $offers = (new GetOffers())->getOffers();
+            $offersArch = (new GetOffers(0,'archive'))->getOffers();
+
+            return view('pages.offers', compact('offers', 'offersArch'));
+
+        } else {
+
+            if(!$offer->trashed()) {
+                $products = [];
+
+                return view('pages.elements.offer_full', compact('offer', 'products'));
+            } else {
+                return view('pages.elements.offer_full', compact('offer'));
+            }
+
+        }
     }
 
     public function catalog()
@@ -54,6 +71,7 @@ class MainController extends Controller
     public function brands(Brand $brand = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
+
 
         if(!isset($brand)) {
 
@@ -103,10 +121,17 @@ class MainController extends Controller
             $locale = config('app.locale');
         }
 
-        session(['locale' => $locale]);
-        App::setLocale($locale);
+    // process code to swap slug/slug_en route in page offer depending on locale (en or ru) & by toggling lang link and get appropriate related data
 
-        return redirect()->back();
+
+    $getOffer = GetOffers::getLocaleOffer();
+
+    session(['locale' => $locale]);
+    App::setLocale($locale);
+
+    if($getOffer == null) return redirect()->back();
+
+        return to_route('offers', $getOffer);
 
     }
 
