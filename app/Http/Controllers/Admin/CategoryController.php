@@ -71,7 +71,12 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
 
-        $subcategories = $category->subcategories;
+        if(session('locale') == 'en'){
+            $subcategories = $category->subcategories()->orderBy('name_en','asc')->get();
+        }
+
+            $subcategories = $category->subcategories()->orderBy('name','asc')->get();
+
         return view('admin.pages.categories.category-show', compact('category', 'subcategories'))->with('i', 1);
     }
 
@@ -141,14 +146,12 @@ class CategoryController extends Controller
     {
         if(session('locale') == 'en'){
 
-            // $subcategories = $category->subcategories()->onlyTrashed()->orderBy('name_en','asc')->paginate(10);
-            $subcategories = $category->subcategories()->orderBy('name_en','asc')->paginate(10);
+            $subcategories = $category->subcategories()->onlyTrashed()->orderBy('name_en','asc')->get();
 
         }
 
-            // $subcategories = $category->subcategories()->onlyTrashed()->orderBy('name','asc')->paginate(10);
+            $subcategories = $category->subcategories()->onlyTrashed()->orderBy('name','asc')->get();
 
-            $subcategories = $category->subcategories()->orderBy('name','asc')->paginate(10);
 
 
         return view('admin.pages.categories.category-show', compact('category', 'subcategories'))->with('archive','true')->with('i', 1);
