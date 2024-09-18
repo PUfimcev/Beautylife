@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Traits\Translatable;
 use Illuminate\Support\Facades\App;
@@ -88,6 +89,14 @@ class Offer extends Model
     public function brands()
     {
         return $this->belongsToMany(Brand::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
     /**

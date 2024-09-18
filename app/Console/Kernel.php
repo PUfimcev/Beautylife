@@ -14,39 +14,23 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-          // artisan command method
 
-        $schedule->command('app:remove-offer')->everyMinute();
+        // command schedule for deleting of expired offers
 
-        // $schedule->call(function () {
-        //     $local_timezone = session()->get('timezone');
+        // $schedule->command('app:remove-offer')->everyMinute();
 
-        //     $currentTime  = Carbon::now()->setTimezone($local_timezone);
+        // Or such a way
 
-        //     foreach(Offer::all()->where('period_to', '<', $currentTime) as $offer){
-        //         $offer->delete();
-        //     }
+        $schedule->call(function () {
+            $local_timezone = session()->get('timezone');
 
-        // })->everyMinute();
+            $currentTime  = Carbon::now()->setTimezone($local_timezone);
 
-        // /Applications/XAMPP/xamppfiles/htdocs/Beautylife
+            foreach(Offer::all()->where('period_to', '<', $currentTime) as $offer){
+                $offer->delete();
+            }
 
-        // /Applications/XAMPP/xamppfiles/htdocs/Beautylife/app/Console/Kernel.php
-        // http://localhost/Beautylife/public/
-
-
-        // /opt/homebrew/Cellar/php/8.2.3/bin/php
-
-        //
-
-
-        // * * * * * cd /Applications/XAMPP/xamppfiles/htdocs/Beautylife &&  php artisan schedule:run  >> /dev/null 2>&1
-
-        // /Applications/XAMPP/xamppfiles/htdocs
-
-        // /etc/crontab
-
-
+        })->daily();
     }
 
     /**

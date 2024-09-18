@@ -1,4 +1,4 @@
-class GetTimezone {
+class GetTimezone{
 
     #getTimezone;
     #token;

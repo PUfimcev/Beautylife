@@ -50,17 +50,17 @@
 
             <div class="message__create__subject mb-1">
                 <label for="type" class="col-form-label text-md-end">{{ __('Type') }}:</label>
-                <select id="type" class="form-select @error('subject') is-invalid @enderror" name="type" aria-label="{{ __('Message type') }}">
+                <select id="type" class="form-select {{--@error('subject') is-invalid @enderror"--}} name="type" aria-label="{{ __('Message type') }}">
                     <option  @if(!isset($email_message)) selected @endif disabled>{{ __('Message type') }}</option>
                     <option value="discount" @selected(old('type', 'discount') == (isset($email_message) ? $email_message->type : null))>{{ __('discount') }}</option>
                     <option value="promo-action" @selected(old('type', 'promo-action') == (isset($email_message) ? $email_message->type : null)) >{{ __('promo-action') }}</option>
                     <option value="notification" @selected(old('type', 'notification') == (isset($email_message) ? $email_message->type : null))>{{ __('notification') }}</option>
                 </select>
-                    @error('type')
+                    {{-- @error('type')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror --}}
             </div>
 
             <div class="message__create__addition-data mb-1">

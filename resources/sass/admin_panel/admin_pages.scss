@@ -337,4 +337,139 @@
 }
 
 
+// Admin panel - categories sheet
+
+.admin__categories__section{
+    padding: 2rem 0;
+
+    .category__create{
+        width: 30% !important;
+    }
+
+    .table__categories{
+        width: 95%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        tr{
+            width: 100%;
+            th{
+                vertical-align: text-top;
+            }
+
+            td{
+
+                width: 20% !important;
+            }
+
+            td:nth-child(1){
+                width: 10% !important;
+            }
+
+            td:nth-child(3){
+                width: 30% !important;
+            }
+
+            td:nth-child(4){
+                vertical-align: middle;
+                .btn{
+                    width: 100%;
+                    display:inline-block;
+                    padding: 0.3rem 0.6rem;
+                }
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            .btn{
+                display:inline-block;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        .no__categories{
+            @extend %P1-desk-description;
+            .no__categories_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+}
+
+// Admin panel - subcategories sheet
+
+.admin__subcategories__section{
+    padding: 2rem 0;
+
+    .btn-return{
+        margin-right: 4rem;
+    }
+
+    .subcategory__create{
+        width: 30% !important;
+    }
+
+    .table__subcategories{
+        width: 95%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        tr{
+            width: 100%;
+            th{
+                vertical-align: text-top;
+            }
+
+            td, th{
+
+                width: 25% !important;
+            }
+
+            td:nth-child(1), th:nth-child(1){
+                width: 10% !important;
+            }
+
+            td:nth-child(3), th:nth-child(3){
+                width: 40% !important;
+            }
+
+            td:nth-child(4), th:nth-child(4){
+                width: 35% !important;
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            .btn{
+                display:inline-block;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        .no__subcategories{
+            @extend %P1-desk-description;
+            .no__subcategories_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+}
+
 

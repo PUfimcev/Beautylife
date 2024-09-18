@@ -15,7 +15,7 @@ class BasketController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('basket_is_not_empty')->except('basketIsEmpty');
+        $this->middleware('basket_is_not_empty')->except(['basketIsEmpty', 'addProductToBasket']);
     }
 
     /**
@@ -35,4 +35,13 @@ class BasketController extends Controller
     {
         return view('basket.basket_is_empty');
     }
+
+    /**
+    *  Add product to the basket.
+    */
+    public function addProductToBasket() :void
+    {
+        dd('Product added to basket');
+    }
+
 }

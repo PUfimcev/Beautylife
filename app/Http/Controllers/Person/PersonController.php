@@ -19,19 +19,6 @@ class PersonController extends Controller
     }
 
     /**
-     *  Show the list of featured wares. Bookmarks.
-    */
-
-   public function getBookmarks()
-   {
-        $wares = [];
-        // $wares = ['creme'];
-        // $wares = User::get();
-
-       return view('person.bookmarks', compact('wares'));
-   }
-
-    /**
      *  Show the order hidtory.
     */
 

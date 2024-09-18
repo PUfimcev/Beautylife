@@ -28,6 +28,49 @@
 
         </section>
 
+        {{-- New arrival --}}
+
+        <section class="new_arrival__main_page">
+            <h2 class="new_arrival__title">{{ __('New arrival') }}</h2>
+
+            <div class="new_arrival__elements">
+
+                @forelse ($newArrivals as $newArrival)
+
+                    @include('pages.elements.new_arrival_on_main_page', ['new_arrival' => $newArrival, 'i' => $loop->iteration])
+                @empty
+                    <p class="no__new_arrival">{{ __('There are no new arrivals') }}</p>
+                @endforelse
+
+            </div>
+
+            @isset($newArrivals)
+                <a href="{{ route('catalog', 'new-arrivals') }}" class="get__all__new_arrivals-mobile" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
+            @endisset
+
+        </section>
+
+        {{-- Bestsellers --}}
+
+        <section class="bestsellers__main_page">
+            <h2 class="bestsellers__title">{{ __('Bestsellers') }}</h2>
+
+            @isset($bestsellers)
+            <a href="{{ route('catalog', 'bestsellers') }}" class="get__all__bestsellers-mobile" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
+        @endisset
+
+            <div class="bestsellers__elements">
+
+                @forelse ($bestsellers as $bestseller)
+
+                    @include('pages.elements.bestsellers_on_main_page', ['bestseller' => $bestseller, 'i' => $loop->iteration])
+                @empty
+                    <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>
+                @endforelse
+            </div>
+
+        </section>
+
 
         {{-- Blogs --}}
 

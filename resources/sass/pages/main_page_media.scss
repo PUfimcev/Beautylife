@@ -36,6 +36,140 @@
 
     }
 
+    // New arrivals & Bestsellers
+
+    .new_arrival__main_page{
+
+
+        width: min(90%, 1200px);
+
+        .new_arrival__elements{
+            flex-wrap: wrap;
+
+            .new_arrival__element{
+
+                .new_arrival__elem_on_main-page:hover{
+
+                    .new_arrival__elem_on_main-page_top{
+
+                        border: 1.5px solid $text-accent;
+
+                        .product-action{
+                            display: flex;
+                            left: 0;
+                            bottom: 0;
+                            border-top: 1.5px solid $text-accent;
+
+
+                            .send_to_bookmarks, .send_to_basket{
+                                display: block;
+                            }
+
+                            .send_to_bookmarks{
+                                border-right: 1.5px solid $text-accent;
+                            }
+                        }
+                    }
+
+                    .new_arrival__elem_on_main-page__content {
+
+                        .text{
+                            color: $text-accent;
+                        }
+
+                        .price{
+
+                            .total-price{
+
+                                color: $text-accent;
+                            }
+
+                        }
+
+
+                    }
+
+                }
+            }
+            .get__all__new_arrivals:hover {
+                color: $text-accent-2;
+            }
+        }
+
+    }
+
+    .bestsellers__main_page{
+
+
+        width: min(90%, 1200px);
+
+        .bestsellers__elements{
+            flex-wrap: wrap;
+
+            .bestseller__element{
+
+                .bestseller__elem_on_main-page{
+                    .bestseller__elem_on_main-page_top{
+                        .product__evaluation{
+
+                            right: 1rem;
+                            top: 1rem;
+                        }
+                    }
+                }
+
+                .bestseller__elem_on_main-page:hover{
+
+                    .bestseller__elem_on_main-page_top{
+
+                        border: 1.5px solid $text-accent;
+
+
+
+                        .product-action{
+                            display: flex;
+                            left: 0;
+                            bottom: 0;
+                            border-top: 1.5px solid $text-accent;
+
+
+                            .send_to_bookmarks, .send_to_basket{
+                                display: block;
+                            }
+
+                            .send_to_bookmarks{
+                                border-right: 1.5px solid $text-accent;
+                            }
+                        }
+                    }
+
+                    .bestseller__elem_on_main-page__content{
+
+                        .text{
+                            color: $text-accent;
+                        }
+
+                        .price{
+
+                            .total-price{
+
+                                color: $text-accent;
+                            }
+
+                        }
+
+
+                    }
+
+                }
+            }
+            .get__all__bestsellers:hover{
+                color: $text-accent-2;
+            }
+        }
+
+    }
+
     // Blogs
 
     .blogs__main_page{
@@ -140,6 +274,147 @@
 
     }
 
+    // New arrivals & Bestsellers
+
+    .new_arrival__main_page{
+
+        width: min(95%, 1200px);
+
+        .new_arrival__elements {
+            gap: 0.9rem;
+
+            height: min(70vh, 25rem);
+
+            .new_arrival__element {
+
+                width: 17.2rem !important;
+                height: 100%;
+
+                .new_arrival__elem_on_main-page {
+
+                    width: 17.2rem !important;
+
+
+                    .new_arrival__elem_on_main-page_top {
+                        height: 17.2rem !important;
+                        border: none;
+
+                        .product-action{
+                            width: 4.5rem;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            top: 0;
+                            right: 0;
+
+
+                            .send_to_bookmarks, .send_to_basket{
+                                display: block;
+                                width: 100%;
+                                height: 20%;
+                            }
+
+                        }
+                    }
+                }
+            }
+            .get__all__new_arrivals {
+                display: none;
+            }
+
+        }
+
+        .get__all__new_arrivals-mobile {
+
+            display: block;
+            color: $text-accent;
+            text-decoration: underline;
+            text-align: end;
+            margin-left: auto;
+        }
+
+    }
+
+    .bestsellers__main_page{
+
+        width: min(95%, 1200px);
+
+        .bestsellers__title{
+            margin-bottom: 0;
+        }
+
+
+        .bestsellers__elements{
+            gap: 0.9rem;
+
+            height: min(70vh, 25rem);
+
+            .bestseller__element{
+
+                width: 17.2rem !important;
+                height: 100%;
+
+                .bestseller__elem_on_main-page{
+
+                    width: 17.2rem !important;
+
+                    &.bestseller_2{
+                        height: min(70vh, 25rem);
+
+                    }
+
+                    .bestseller__elem_on_main-page_top{
+                        height: 17.2rem !important;
+                        border: none;
+
+                        .product__evaluation{
+
+                            bottom: 1rem;
+                            left: 1rem;
+                        }
+
+                        .product-action{
+                            width: 4.5rem;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            top: 0;
+                            right: 0;
+
+
+                            .send_to_bookmarks, .send_to_basket{
+                                display: block;
+                                width: 100%;
+                                height: 20%;
+                            }
+
+                        }
+                    }
+                }
+            }
+            .get__all__bestsellers{
+                display: none;
+            }
+
+        }
+
+        .get__all__bestsellers-mobile{
+
+            display: block;
+            color: $text-accent;
+            text-decoration: underline;
+            text-align: end;
+            margin-left: auto;
+        }
+
+        .get__all__bestsellers-mobile{
+            margin-bottom: 2rem;
+        }
+
+    }
+
     // Blogs
 
     .blogs__main_page{
@@ -206,6 +481,77 @@
 
         height: 35rem;
     }
+
+    // New arrivals & Bestsellers
+
+    .new_arrival__main_page {
+
+        .new_arrival__elements {
+            overflow: hidden;
+            overflow-x: auto;
+            gap: 1.5rem;
+            height: min(70vh, 24rem);
+
+            &::-webkit-scrollbar{
+                width: 0;
+            }
+
+            .new_arrival__element{
+
+                width: 16.25rem !important;
+                height: 100% !important;
+
+
+                .new_arrival__elem_on_main-page {
+
+                    width: 16.25rem !important;
+
+                    .new_arrival__elem_on_main-page_top {
+                        height: 16.25rem !important;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .bestsellers__main_page{
+
+        .bestsellers__elements{
+            overflow: hidden;
+            overflow-x: auto;
+            gap: 1.5rem;
+            height: min(70vh, 24rem);
+
+            &::-webkit-scrollbar{
+                width: 0;
+            }
+
+            .bestseller__element{
+
+                width: 16.25rem !important;
+                height: 100% !important;
+
+
+                .bestseller__elem_on_main-page{
+
+                    width: 16.25rem !important;
+
+                    &.bestseller_2{
+
+                        height: 100%;
+                    }
+
+                    .bestseller__elem_on_main-page_top{
+                        height: 16.25rem !important;
+                    }
+
+                }
+            }
+        }
+    }
+
+
 
     // Reviews
 

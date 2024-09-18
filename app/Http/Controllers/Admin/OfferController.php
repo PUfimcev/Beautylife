@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Brand;
 use App\Models\Offer;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Traits\Transliteratable;
 use App\Http\Requests\OfferRequest;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class OfferController extends Controller
@@ -174,9 +175,8 @@ class OfferController extends Controller
 
     public function getCategories(){
 
-        // $brands = Category::all();
 
-        $categories = [];
+        $categories = Category::all();
 
         return $categories;
     }
@@ -215,7 +215,7 @@ class OfferController extends Controller
 
 
     /**
-     * Remove finally the specified resource from storage.
+     * Restore the specified resource from archive.
      */
     public function restoreArchive(Offer $offer)
     {
@@ -226,7 +226,7 @@ class OfferController extends Controller
     }
 
     /**
-     * Remove finally the specified resource from storage.
+     * Remove finally the specified resource.
      */
     public function destroyArchive(Offer $offer)
     {

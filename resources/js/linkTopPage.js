@@ -19,13 +19,18 @@ class LinkTopPage{
 
 
     #docuTop(){
-        if(this.#allLinks.length > 0) this.#allLinks.forEach(element => {
-            element.addEventListener('click', function(){
+        if(this.#allLinks.length > 0) {
 
-                window.top = 0;
+            this.#allLinks.forEach(element => {
+                element.addEventListener('click', function(){
 
+                    document.top = 0;
+
+                });
             });
-        });
+        } else {
+            return;
+        }
     }
 }
 

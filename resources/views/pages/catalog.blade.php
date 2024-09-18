@@ -15,6 +15,15 @@
 
         <h1>Catalog</h1>
 
+    <ul class="categories__list">
+
+        @forelse ($categories as $category)
+            <li class="category catalog-filter"><span class="category__name">{{ $category->langField('name') }}</span><span class="category__name_plus">+</span></li>
+        @empty
+            <li>{{ __('There are no categories') }}</li>
+        @endforelse
+    </ul>
+
 
 
 @endsection

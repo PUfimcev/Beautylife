@@ -4,6 +4,7 @@ namespace App\Providers;
 
 // use Carbon\Traits\Date;
 use App\Models\Offer;
+use App\Models\Category;
 use App\Classes\GetBlogs;
 use Illuminate\View\View;
 use App\Classes\GetOffers;
@@ -63,6 +64,17 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+        // input data for catalog page
+
+        view()->composer('pages.catalog', function(View $view) {
+
+            $categories = Category::all();
+
+            $view->with('categories', $categories);
+
+        });
+
+
         // input offers on the main page
 
         view()->composer('pages.main', function(View $view) {
@@ -70,6 +82,33 @@ class AppServiceProvider extends ServiceProvider
             $offers = (new GetOffers(3))->getOffers();
 
             $view->with('offers', $offers);
+
+        });
+
+        // input new arrivals on the main page
+
+        view()->composer('pages.main', function(View $view) {
+
+            // $newArrivals = (new GetProducts())->newArrivals(3);
+
+            //  Выборку сделать по товарам, сортировать по дате создания latest(), и выбирать  take(3)
+            $newArrivals = ['1', '2', '3'];
+
+            $view->with('newArrivals', $newArrivals);
+
+        });
+
+        // input bestsellers on the main page
+
+        view()->composer('pages.main', function(View $view) {
+
+            // $bestsellers = (new GetProducts())->bestsellers(3);
+
+            //  Выборку сделать по товарам, сортировать по количеству заказанных в порядке desc, и выбирать  take(3)
+            $bestsellers = ['1', '2', '3'];
+            // $bestsellers = [];
+
+            $view->with('bestsellers', $bestsellers);
 
         });
 

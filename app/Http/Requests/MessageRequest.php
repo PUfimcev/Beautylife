@@ -25,7 +25,7 @@ class MessageRequest extends FormRequest
         return [
             'subject' => 'required|string|max:255',
             'subject_en' => 'required|string|max:255',
-            'type' => 'required',
+            // 'type' => 'required',
         ];
     }
 
@@ -35,13 +35,13 @@ class MessageRequest extends FormRequest
 
             return [
                 'subject_en.required' => 'Поле Subject in English обязательно',
-                'type.required' => 'Поле тип обязательно',
+                // 'type.required' => 'Поле тип обязательно',
             ];
         }
 
         return [
             'subject_en.required' => 'The Subject in English field is required.',
-            'type.required' => 'The Type field is required.',
+            // 'type.required' => 'The Type field is required.',
         ];
 
     }

@@ -40,7 +40,7 @@ class HeaderFix {
                         }
                     break;
                     case 'admin':
-                        this.#mainElem.style = 'margin-top: 76px';
+                        this.#mainElem.style = 'margin-top: 164px';
                     break;
                 }
             } else {

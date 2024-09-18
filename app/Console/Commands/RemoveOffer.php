@@ -6,6 +6,7 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\Offer;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class RemoveOffer extends Command
 {
@@ -42,9 +43,8 @@ class RemoveOffer extends Command
 
         $currentTime  = Carbon::now()->setTimezone($local_timezone);
 
-        foreach(Offer::all()->where('period_to', '<', $currentTime) as $offer){
-            $offer->delete();
-        }
+        DB::table('offers')->where('period_to', '<', $currentTime)->delete();
+
     }
 }
 

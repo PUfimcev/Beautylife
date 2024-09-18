@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Offer;
 use App\Models\Review;
+use App\Models\Category;
 use App\Classes\GetBlogs;
 use App\Classes\GetOffers;
 use App\Classes\GetReviews;
@@ -61,10 +62,18 @@ class MainController extends Controller
         }
     }
 
-    public function catalog()
+    public function catalog($quality = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
+        if($quality == 'bestsellers')  dd('bestsellers');
+
+        if($quality == 'new-arrivals')  dd('new-arrivals');
+
+
+
+
+        // return view('pages.catalog', compact('categories'));
         return view('pages.catalog');
     }
 

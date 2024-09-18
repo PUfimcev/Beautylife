@@ -16,7 +16,10 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Basket\BasketController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Admin\CallbackController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Person\BookmarkController;
 use App\Http\Controllers\Mail\MessageMailController;
+use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\OfferArchiveController;
 
 /*
@@ -78,6 +81,17 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
         // Routes for getting User's order history
         Route::get('order-history', 'getOrderHistory')->name('order_history');
 
+    });
+
+
+    Route::controller(BookmarkController::class)->group(function(){
+        // Routes for getting User's bookmarks
+        Route::get('bookmarks', 'getBookmarks')->name('bookmarks');
+
+        // Routes for adding User's bookmarks
+        Route::post('bookmarks/add', 'addBookmarks')->name('bookmarks_add');
+        // Route::post('bookmarks/add/{product:slug}', 'addBookmarks')->name('bookmarks_add');
+
 
     });
 
@@ -110,6 +124,46 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     // Route for processing brands
     Route::resource('brands', BrandController::class);
 
+    // Route for processing archive categories
+    Route::controller(CategoryController::class)->group(function(){
+
+        Route::group(['prefix' => 'categories'], function(){
+
+            Route::get('archive', 'archiveIndex')->name('category_archive')->withTrashed();;
+
+            Route::get('archive/{category}', 'showArchive')->name('category_show')->withTrashed();
+
+            Route::get('archive/{category}/restore', 'restoreArchive')->name('category_restore')->withTrashed();
+
+            Route::delete('archive/{category}/delete', 'destroyArchive')->name('category_full_delete')->withTrashed();
+
+        });
+
+    });
+
+    // Route for processing categories
+    Route::resource('categories', CategoryController::class);
+
+    // Route for processing archive subcategories
+    Route::controller(SubcategoryController::class)->group(function(){
+
+        Route::group(['prefix' => 'categories/{category}/subcategories'], function(){
+
+            Route::get('archive', 'archiveIndex')->name('subcategory_archive')->withTrashed();;
+
+            Route::get('archive/{subcategory}', 'showArchive')->name('subcategory_show')->withTrashed();
+
+            Route::get('archive/{subcategory}/restore', 'restoreArchive')->name('subcategory_restore')->withTrashed();
+
+            Route::delete('archive/{subcategory}/delete', 'destroyArchive')->name('subcategory_full_delete')->withTrashed();
+
+        });
+
+    });
+
+    // Route for processing subcategories
+    Route::resource('categories/{category}/subcategories', SubcategoryController::class);
+
 
     // Route for processing archive offers
     Route::controller(OfferController::class)->group(function(){
@@ -140,7 +194,7 @@ Route::controller(MainController::class)->group(function() {
     Route::get('/', 'main')->name('index');
     Route::get('about-us', 'about')->name('about');
     Route::get('offers/{offer?}', 'offers')->name('offers')->withTrashed();
-    Route::get('catalog', 'catalog')->name('catalog');
+    Route::get('catalog/{quality?}', 'catalog')->name('catalog');
     Route::get('brands/{brand?}', 'brands')->name('brands');
     Route::get('conditions', 'conditions')->name('conditions');
     Route::get('blogs/{blog:slug?}', 'blogs')->name('blogs');
@@ -173,6 +227,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Basket', 'prefix' => 'basket'
 
         Route::get('/', 'getBasket')->name('basket');
         Route::get('/basket-empty', 'basketIsEmpty')->name('basket_empty');
+
+        // Routes for adding products to basket
+        Route::post('add', 'addProductToBasket')->name('basket_add');
+        // Route::post('add/{product:slug}', 'addProductToBasket')->name('basket_add');
     });
 
     // Route::group(['middleware' => 'basket_is_not_empty'], function(){
