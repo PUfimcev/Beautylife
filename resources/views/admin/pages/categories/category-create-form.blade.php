@@ -10,20 +10,29 @@
 
         <h2>{{ isset($category) ? __('Edit') : __('Create') }} {{ __('category') }}</h2>
 
-        @if((url()->previous()))
+        @if (isset($category))
+            @if((url()->previous()) && (url()->previous() !== route('admin.categories.edit', $category)))
 
-            <a class="btn btn-light align-self-end  btn-return" href="{{ url()->previous() }}">{{ __('Back') }}</a>
+                <a class="btn btn-light align-self-end  btn-return" href="{{ url()->previous() }}">{{ __('Back') }}</a>
+            @else
+                <a class="btn btn-light align-self-end  btn-return" href="{{ route('admin.categories.index') }}">{{ __('Back') }}</a>
+            @endif
         @else
-            <a class="btn btn-light align-self-end  btn-return" href="{{ route('admin.categories.index') }}">{{ __('Back') }}</a>
-        @endif
 
+            @if((url()->previous()) && (url()->previous() !== route('admin.categories.create')))
+
+                <a class="btn btn-light align-self-end  btn-return" href="{{ url()->previous() }}">{{ __('Back') }}</a>
+            @else
+                <a class="btn btn-light align-self-end  btn-return" href="{{ route('admin.categories.index') }}">{{ __('Back') }}</a>
+            @endif
+        @endif
 
         <form method="POST"
             @if (isset($category))
                 action="{{ route('admin.categories.update', $category) }}"
             @else
                 action="{{ route('admin.categories.store') }}"
-            @endif>
+            @endif enctype="multipart/form-data" class="form_category">
 
             @csrf
             @isset($category)
@@ -64,6 +73,43 @@
                         </span>
                     @enderror
                 </div>
+            </div>
+
+            <div class="category__create mb-1">
+                <label for="categoryFile" class="col-form-label">{{ isset($category) ? __('Change category picture') : __('Create category picture') }}:</label>
+
+                @if (isset($category))
+                    @if($category->image_route !== null)
+
+                        <p>{{ __('The downloaded picture') }}:</p>
+                        <img class="category__image"
+                        src="{{ asset('storage/'.$category->image_route) }}" alt="{{ __('Image') }}" />
+
+                        <input class="form-control @error('categoryFile') is-invalid @enderror" type="file" id="categoryFile" name="categoryFile" value="{{ old('categoryFile', isset($category) ? $category->image_route : null) }}" accept=".jpg, .jpeg,.png, .svg, .gif, .bmp" >
+                        @error('categoryFile')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    @else
+                        <p>{{ __('No picture') }}.</p>
+                        <input class="form-control @error('categoryFile') is-invalid @enderror" type="file" id="categoryFile" name="categoryFile"  accept=".jpg, .jpeg,.png, .svg, .gif, .bmp" >
+                        @error('categoryFile')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    @endif
+                @else
+
+                    <input class="form-control @error('categoryFile') is-invalid @enderror" type="file" id="categoryFile" name="categoryFile"  accept=".jpg, .jpeg,.png, .svg, .gif, .bmp" >
+                    @error('categoryFile')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                @endif
+
             </div>
 
            <button type="submit" onClick="()=> {submit()}" class="btn btn-success align-self-center btn__category__form-create" href="">{{ isset($category) ? __('Edit') : __('Create') }}</button>

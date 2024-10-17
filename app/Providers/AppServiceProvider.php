@@ -35,13 +35,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // set locale
+// set locale
         view()->composer('*', function(View $view) {
             $view->with('current_locale', App::getLocale());
             $view->with('available_locales', config('app.available_locales'));
         });
 
-        // get previous pathname
+// get previous pathname
         view()->composer('*', function(View $view) {
 
             if(session()->has('prevUrl')){
@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        // input timezone
+// input timezone
         view()->composer('*', function(View $view) {
 
             if(session()->has('timezone')){
@@ -64,18 +64,18 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        // input data for catalog page
+// input data for catalog page
 
-        view()->composer('pages.catalog', function(View $view) {
+        // view()->composer('pages.catalog', function(View $view) {
 
-            $categories = Category::all();
+        //     $categories = Category::all();
 
-            $view->with('categories', $categories);
+        //     $view->with('categories', $categories);
 
-        });
+        // });
 
 
-        // input offers on the main page
+// input offers on the main page
 
         view()->composer('pages.main', function(View $view) {
 
@@ -85,7 +85,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        // input new arrivals on the main page
+// input new arrivals on the main page
 
         view()->composer('pages.main', function(View $view) {
 
@@ -98,9 +98,9 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        // input bestsellers on the main page
+// input bestsellers on the main page
 
-        view()->composer('pages.main', function(View $view) {
+        view()->composer(['pages.main', 'pages.elements.category_full'], function(View $view) {
 
             // $bestsellers = (new GetProducts())->bestsellers(3);
 
@@ -112,11 +112,11 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        // create offer observer for emailing
+// create offer observer for emailing
 
         Offer::observe(OfferObserver::class);
 
-        // input blogs on the main page
+// input blogs on the main page
 
         view()->composer('pages.main', function(View $view) {
 
@@ -126,7 +126,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        // input reviews
+// input reviews
         view()->composer('pages.main', function(View $view) {
 
             if(session()->has('screenWidth')) {
@@ -144,21 +144,22 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        // For emphasizing routes
+// For emphasizing routes
         Blade::directive('routeactive', function ($expression) {
             return "<?php echo (request()->routeIs($expression)) ? 'active' : '' ?>";
         });
 
 
-        // Paginator::useBootstrapFive();
-        Paginator::defaultView('pagination::bootstrap-5');
+// Paginator::useBootstrapFive();
+        // Paginator::defaultView('pagination::bootstrap-5');
 
-        // set current password for validation
+
+// set current password for validation
         Validator::extend('current_password', function ($attribute, $value, $parameters, $validator) {
             return Hash::check($value, auth()->user()->password);
         });
 
-        // set recaptcha for validation
+// set recaptcha for validation
         Validator::extend('recaptcha', function ($attribute, $value, $parameters, $validator) {
             $getResponseToken = (string) $value;
 

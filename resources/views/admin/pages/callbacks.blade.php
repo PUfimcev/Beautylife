@@ -40,7 +40,10 @@
             @endforelse
         </tbody>
     </table>
-    <div class="pagination">{{ $callbacks->onEachSide(1)->links() }}</div>
+
+    @if (!isset($callbacks) || !empty($callbacks))
+    <div class="pagination">{{ $callbacks->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+    @endif
 
 </div>
 </div>

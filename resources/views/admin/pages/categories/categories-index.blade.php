@@ -22,6 +22,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">{{ __('Code') }}</th>
+                    <th scope="col">{{ __('Image') }}</th>
                     <th scope="col">{{ __('Name') }}</th>
                     <th scope="col">{{ __('Subcategories') }}</th>
                     <th scope="col">{{ __('Action') }}</th>
@@ -32,6 +33,14 @@
                     <tr>
                         <td scope="row">{{ ++$i }}</td>
                         <td><span class="category__code">{{ $category->code }}</span></td>
+
+                        <td>@if($category->image_route)
+                            <img class="category__image"
+                            src="{{ asset('storage/'.$category->image_route) }}" alt="{{ __('Image') }}" />
+                        @else
+                            <span>{{  __('No') }}</span>
+                        @endif
+                        </td>
 
                         <td><span class="category__name">{{ $category->langField('name') }}</span></td>
 
@@ -78,7 +87,7 @@
         </table>
 
         @if (!isset($categories) || !empty($categories))
-            <div class="pagination">{{ $categories->onEachSide(1)->links() }}</div>
+            <div class="pagination">{{ $categories->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
         @endif
 
     </div>

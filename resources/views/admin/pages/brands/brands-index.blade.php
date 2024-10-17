@@ -55,7 +55,7 @@
         </table>
 
         @if (!isset($brands) || !empty($brands))
-            <div class="pagination">{{ $brands->onEachSide(1)->links() }}</div>
+            <div class="pagination">{{ $brands->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
         @endif
 
     </div>

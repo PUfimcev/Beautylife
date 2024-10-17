@@ -53,7 +53,8 @@
         @endforelse
 
         @if (!isset($products) || !empty($products))
-            <div class="pagination">{{ $products->onEachSide(1)->links() }}</div>
+        <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+        <div class="pagination-tablet">{{ $products->links('vendor.pagination.simple-default')}}</div>
         @endif
     </div>
 

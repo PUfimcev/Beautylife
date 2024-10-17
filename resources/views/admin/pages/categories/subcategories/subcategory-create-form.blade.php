@@ -11,7 +11,7 @@
         <h2>{{ isset($subcategory) ? __('Edit') : __('Create') }} {{ __('subcategory') }}</h2>
 
 
-        @if((url()->previous()))
+        @if((url()->previous()) && isset($subcategory))
 
             <a class="btn btn-light align-self-end  btn-return" href="{{ url()->previous() }}">{{ __('Back') }}</a>
         @else

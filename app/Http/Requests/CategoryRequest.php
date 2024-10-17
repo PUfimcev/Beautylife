@@ -27,6 +27,7 @@ class CategoryRequest extends FormRequest
             'code' => ['required', 'string', 'min:3', 'max:100','regex:/[0-9A-z]/'],
             'name' => ['required', 'string','min:3', 'max:250','regex:/[0-9А-я]/'],
             'name_en' => ['required', 'string','min:3', 'max:250','regex:/[0-9A-z]/'],
+            'categoryFile' => ['image', 'nullable'],
         ];
 
         if(!empty($this->category)) {
@@ -37,6 +38,7 @@ class CategoryRequest extends FormRequest
             $rules['code'][] = Rule::unique('categories');
             $rules['name'][] = Rule::unique('categories');
             $rules['name_en'][] = Rule::unique('categories');
+            $rules['categoryFile'][] = 'required';
         }
 
         return $rules;
@@ -49,6 +51,7 @@ class CategoryRequest extends FormRequest
                 'code' => 'Code',
                 'name' => 'Name',
                 'name_en' => 'Name in Englis',
+                'categoryFile' => 'Image',
             ];
         }
 
@@ -56,6 +59,7 @@ class CategoryRequest extends FormRequest
             'code' => 'Код',
             'name' => 'Наименование',
             'name_en' => 'Наименование по Английски',
+            'categoryFile' => 'Изображение',
         ];
     }
 

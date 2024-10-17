@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Classes\GetBlogs;
 use App\Classes\GetOffers;
 use App\Classes\GetReviews;
+use App\Classes\GetProducts;
 use App\Classes\SearchClass;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewName;
@@ -52,6 +53,7 @@ class MainController extends Controller
         } else {
 
             if(!$offer->trashed()) {
+                // $products = (new GetProducts())->getProducts();
                 $products = [];
 
                 return view('pages.elements.offer_full', compact('offer', 'products'));
@@ -62,19 +64,68 @@ class MainController extends Controller
         }
     }
 
-    public function catalog($quality = null)
+    public function catalog(Category $category = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        if($quality == 'bestsellers')  dd('bestsellers');
+        if(!isset($category)) {
+            if(session('locale') == 'en'){
+                $categories = Category::all()->sortBy('name_en');
+            }
+            if(session('locale') == 'ru'){
+                $categories = Category::all()->sortBy('name');
+            }
+            return view('pages.catalog', compact('categories'));
+        } else {
 
-        if($quality == 'new-arrivals')  dd('new-arrivals');
+            // list(....) = CategoryFilter::getData();
 
+            $products = [1, 2, 3, 4, 5, 6];
+            $brands = Brand::all()->sortBy('brand_name');
 
+            $count = count($products);
 
+            return view('pages.elements.category_full', compact('category', 'products', 'brands'))->with(['count' => $count]);}
+    }
 
-        // return view('pages.catalog', compact('categories'));
-        return view('pages.catalog');
+    public function catalogTopNew($quality)
+    {
+        (new RemoveSessionClass())->removeSessionPrevUrl();
+
+        if($quality == 'bestsellers') {
+            $goods = [1, 2, 3, 4, 5, 6];
+            $count = count($goods);
+            $title = 'Bestsellers';
+            $tag = 'Top';
+        }
+        if($quality == 'new-arrivals')  {
+            $goods = [1, 2, 3, 4, 5, 6];
+            $count = count($goods);
+            $title = 'New arrival';
+            $tag = 'New';
+        }
+
+        if($quality == 'all-goods')  {
+            $goods = [];
+            $count = count($goods);
+            $title = 'All goods';
+        }
+
+        if($quality == 'sale-price')  {
+            $goods = [1, 2, 3, 4];
+            $count = count($goods);
+            $title = 'Sale price';
+        }
+
+        if(session('locale') == 'en'){
+            $categories = Category::all()->sortBy('name_en');
+        } else if(session('locale') == 'ru'){
+            $categories = Category::all()->sortBy('name');
+        } else {
+            $categories = Category::all()->sortBy('name');
+        }
+
+        return view('pages.elements.categories_goods_top_new_all', compact('categories', 'goods'))->with(['title'=> $title, 'count' => $count]);
     }
 
     public function brands(Brand $brand = null)
@@ -90,6 +141,7 @@ class MainController extends Controller
 
         } else {
 
+            // $products = (new GetProducts())->getProducts();
             $products = [];
 
             return view('pages.elements.brand_full', compact('brand', 'products'));

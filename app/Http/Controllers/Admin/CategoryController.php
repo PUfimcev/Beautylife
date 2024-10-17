@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -54,11 +55,16 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        dd($request->all());
         $params = $request->all();
+
+
+        if ($request->hasFile('categoryFile')) $params['image_route'] = $this->setFilePath($request->file('categoryFile'));
 
         $params['code'] = Str::snake(Str::lower($request->input('code')));
         $params['name'] = Str::ucfirst($request->input('name'));
         $params['name_en'] = Str::ucfirst($request->input('name_en'));
+
 
         Category::create($params);
 
@@ -96,9 +102,23 @@ class CategoryController extends Controller
 
         $params = $request->all();
 
+        // dd( $params);
+
+        if ($request->hasFile('categoryFile')) {
+
+            if(!Storage::exists('category_image')) {
+                Storage::makeDirectory('category_image', 0775, true); //creates directory
+            }
+
+            if($category->image_route !== null && Storage::exists($category->image_route)) Storage::delete($category->image_route);
+
+            $params['image_route'] = $this->setFilePath($request->file('categoryFile'));
+        }
+
         $params['code'] = Str::snake(Str::lower($request->input('code')));
         $params['name'] = Str::ucfirst($request->input('name'));
         $params['name_en'] = Str::ucfirst($request->input('name_en'));
+
 
         $category->update($params);
 
@@ -115,6 +135,20 @@ class CategoryController extends Controller
         $category->delete();
 
         return to_route('admin.categories.index')->with('status', 'Successfully deleted!');
+    }
+
+    /**
+     * Get the route of file storage.
+     */
+    public function setFilePath($file)
+    {
+        if(!Storage::exists('category_image')) {
+            Storage::makeDirectory('category_image', 0775, true); //creates directory
+        }
+
+        $path = Storage::put('category_image', $file);
+
+        return  $path;
     }
 
 
@@ -174,6 +208,7 @@ class CategoryController extends Controller
      */
     public function destroyArchive(Category $category)
     {
+        if($category->image_route !== null && Storage::exists($category->image_route)) Storage::delete($category->image_route);
 
         $category->forceDelete();
 

@@ -159,7 +159,7 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
 
         });
 
-    });
+    })->scopeBindings();
 
     // Route for processing subcategories
     Route::resource('categories/{category}/subcategories', SubcategoryController::class);
@@ -194,7 +194,8 @@ Route::controller(MainController::class)->group(function() {
     Route::get('/', 'main')->name('index');
     Route::get('about-us', 'about')->name('about');
     Route::get('offers/{offer?}', 'offers')->name('offers')->withTrashed();
-    Route::get('catalog/{quality?}', 'catalog')->name('catalog');
+    Route::get('catalog/{category?}', 'catalog')->name('catalog');
+    Route::get('catalogs/{quality}', 'catalogTopNew')->name('catalog_top_new');
     Route::get('brands/{brand?}', 'brands')->name('brands');
     Route::get('conditions', 'conditions')->name('conditions');
     Route::get('blogs/{blog:slug?}', 'blogs')->name('blogs');

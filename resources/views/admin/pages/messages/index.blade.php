@@ -45,8 +45,10 @@
                 @endforelse
             </tbody>
         </table>
-        @isset($messages) <div class="pagination">{{ $messages->onEachSide(1)->links() }}</div> @endisset
 
+        @if (!isset($messages) || !empty($messages))
+            <div class="pagination">{{ $messages->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+        @endif
 
     </div>
 </div>

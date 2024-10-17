@@ -17,6 +17,8 @@
 @import 'components/elements_media';
 @import 'components/pagination';
 @import 'components/pagination_media';
+@import 'components/product';
+@import 'components/product_media';
 
 @import 'pages/main_page';
 @import 'pages/main_page_media';
@@ -24,6 +26,10 @@
 @import 'pages/about_page_media';
 @import 'pages/offers_page';
 @import 'pages/offers_page_media';
+@import 'pages/catalog_page';
+@import 'pages/catalog_page_media';
+@import 'pages/catalog_new_top_all';
+@import 'pages/catalog_new_top_all_media';
 @import 'pages/brands_page';
 @import 'pages/brands_page_media';
 @import 'pages/cond_page';

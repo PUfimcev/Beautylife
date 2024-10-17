@@ -51,9 +51,12 @@
         {{-- Pages --}}
         <main class="main-web">
             {{-- Crumbs --}}
-            <section class="crumbs__route">
-                <div class="container">@yield('crumbs')</div>
-            </section>
+
+            @hasSection('crumbs')
+                <section class="crumbs__route">
+                    <div class="container">@yield('crumbs')</div>
+                </section>
+            @endif
 
             <div class="container">@yield('content')</div>
 
@@ -78,6 +81,7 @@
         </section>
 
         {{-- Routes for JS --}}
+        @stack('scripts')
         <script>
             window.routes = {
                 'mainRoute': '{{ route('index') }}',

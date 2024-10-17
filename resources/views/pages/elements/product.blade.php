@@ -1,18 +1,7 @@
-<div class="bestseller__element element_{{ $i }}">
+<div class="product__element element_{{ $i }}">
 
-    @if ($i == 3)
-
-        <a href="{{ route('catalog_top_new', 'bestsellers') }}" class="get__all__bestsellers" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
-
-    @endif
-
-    <a  class="bestseller__elem_on_main-page bestseller_{{ $i }}" href="{{-- route('products', $product) --}}"  title="{{-- $product->langField('title') --}}">
-        <div class="bestseller__elem_on_main-page_top">
-
-
-            {{-- @if(isset($offer->image_route) && !empty($offer->image_route))
-                <img class="image" src="{{ asset('storage/'.$offer->image_route) }}" alt="{{ $offer->langField('title') }}">
-            @endif --}}
+    <a  class="product_{{ $i }}" href="{{-- route('products', $product) --}}"  title="{{-- $product->langField('title') --}}">
+        <div class="product_top">
 
             <span class="product__tag">Top</span>
 
@@ -45,7 +34,7 @@
             </div>
 
         </div>
-        <div class="bestseller__elem_on_main-page__content">
+        <div class="product__content">
 
             <p class="text">Uriage Local application paste for oily and problematic skin Hyseac pate sos soin local</p>
             <div class="price">

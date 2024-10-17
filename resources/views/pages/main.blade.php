@@ -45,7 +45,7 @@
             </div>
 
             @isset($newArrivals)
-                <a href="{{ route('catalog', 'new-arrivals') }}" class="get__all__new_arrivals-mobile" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
+                <a href="{{ route('catalog_top_new', 'new-arrivals') }}" class="get__all__new_arrivals-mobile" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
             @endisset
 
         </section>
@@ -56,8 +56,8 @@
             <h2 class="bestsellers__title">{{ __('Bestsellers') }}</h2>
 
             @isset($bestsellers)
-            <a href="{{ route('catalog', 'bestsellers') }}" class="get__all__bestsellers-mobile" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
-        @endisset
+            <a href="{{ route('catalog_top_new', 'bestsellers') }}" class="get__all__bestsellers-mobile" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
+            @endisset
 
             <div class="bestsellers__elements">
 

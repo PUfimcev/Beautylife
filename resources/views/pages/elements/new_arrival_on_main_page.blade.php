@@ -52,7 +52,7 @@
     </a>
     @if ($i == 2)
 
-        <a href="{{ route('catalog', 'new-arrivals') }}" class="get__all__new_arrivals" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
+        <a href="{{ route('catalog_top_new', 'new-arrivals') }}" class="get__all__new_arrivals" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
 
     @endif
 

@@ -34,6 +34,13 @@
 
                 <li><span class="details-name">Name in English: </span><span class="details-content">{{ $category->name_en }}</span></li>
 
+                <li><span class="details-name">{{ __('Category picture') }}: </span><span class="details-content">@if($category->image_route)
+                    <img class="brand__image"
+                    src="{{ asset('storage/'.$category->image_route) }}" alt="{{ __('Category picture') }}" />
+                @else
+                    {{  __('No') }}.
+                @endif</span></li>
+
                 <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $category->created_at }}</span></li>
 
                 <li><span class="details-name">{{ __('Edit date') }}: </span><span class="details-content">{{ $category->updated_at }}</span></li>

@@ -88,7 +88,7 @@
         </table>
 
         @if (!isset($offers) || !empty($offers))
-            <div class="pagination">{{ $offers->onEachSide(1)->links() }}</div>
+            <div class="pagination">{{ $offers->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
         @endif
 
     </div>

@@ -30,6 +30,7 @@ class Category extends Model
         'code',
         'name',
         'name_en',
+        'image_route',
     ];
 
         /**

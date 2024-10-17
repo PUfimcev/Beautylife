@@ -30,9 +30,9 @@ class GetProducts{
     }
 
 
-    // public function getOffers()
+    // public function getProducts()
     // {
-    //     return $this->offers;
+    //     return $this->products;
     // }
 
     public function getNewArrivals(int $numberOffers = 0)

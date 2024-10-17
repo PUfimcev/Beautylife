@@ -1,0 +1,81 @@
+@import '../variables';
+
+@media screen and (min-width: 1024px){
+
+    .categories__goods_top_new_all{
+
+        width: min(90%, 1200px);
+
+
+        .categories__goods_top_new_all-body{
+
+            .categories__goods{
+                a{
+                    &:hover{
+
+                        color: $text-accent !important;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+
+}
+
+@media screen and (max-width: 1023px){
+
+    .categories__goods_top_new_all{
+
+        width: min(95%, 1200px);
+
+        .categories__goods_top_new_all-top{
+
+            margin-bottom: 3rem;
+        }
+    }
+
+
+}
+
+@media screen and (max-width:  900px) {
+
+
+}
+
+@media screen and (max-width:  768px) {
+
+
+}
+
+@media screen and (max-width:  600px) {
+
+}
+
+@media screen and (max-width:  480px) {
+
+
+
+
+
+
+
+}
+
+@media screen and (max-width:  425px) {
+
+
+
+}
+
+@media screen and (max-width:  375px) {
+
+
+}
+
+@media screen and (max-width:  320px) {
+
+
+}

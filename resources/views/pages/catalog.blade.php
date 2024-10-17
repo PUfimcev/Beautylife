@@ -12,18 +12,20 @@
 
 @section('content')
 
+        <section class="catalog">
+            <h2 class="catalog__title">{{ __('Catalog') }}</h2>
 
-        <h1>Catalog</h1>
+            <div class="catalog__elements">
 
-    <ul class="categories__list">
+                @if(!empty($categories))
+                    @each('pages.elements.category', $categories, 'category')
 
-        @forelse ($categories as $category)
-            <li class="category catalog-filter"><span class="category__name">{{ $category->langField('name') }}</span><span class="category__name_plus">+</span></li>
-        @empty
-            <li>{{ __('There are no categories') }}</li>
-        @endforelse
-    </ul>
+                @else
+                    <p class="no__catalog">{{ __('The catalog is empty') }}</p>
+                @endif
 
+            </div>
 
+        </section>
 
 @endsection

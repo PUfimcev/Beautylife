@@ -500,6 +500,14 @@
             font-weight: bold;
         }
 
+        .category__image{
+            display: block;
+            width: 85%;
+            height: auto;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+        }
+
         .btn__category__form-create{
             margin: 1.5rem auto;
             width: min(60%, 10rem);
@@ -538,6 +546,15 @@
             .details-content{
                 display: inline-block;
                 color: $text-accent-2;
+            }
+            .details-content:has(img){
+                display: block;
+                width: min(50%, 15rem);
+            }
+
+            img{
+                width: 100%;
+                object-fit:contain;
             }
         }
     }

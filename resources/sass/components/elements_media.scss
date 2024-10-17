@@ -4,7 +4,13 @@
 
 //  Crumbs refferances
 .crumbs__route{
+
+
     .crumbs__list{
+
+        width: min(90%, 1200px);
+        margin: 2.5rem auto;
+
         li{
             .crumbs__reffers{
                 &:hover{
@@ -49,7 +55,9 @@
 .crumbs__route{
 
     .crumbs__list{
-        padding: 1.5rem 3rem;
+
+        width: min(95%, 1200px);
+        margin: 2.5rem auto;
 
         li{
             .crumbs__reffers{

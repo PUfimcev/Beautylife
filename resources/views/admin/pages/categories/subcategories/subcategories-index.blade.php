@@ -83,7 +83,7 @@
         </table>
 
         @if (!isset($subcategories) || !empty($subcategories))
-            <div class="pagination">{{ $subcategories->onEachSide(1)->links() }}</div>
+            <div class="pagination">{{ $subcategories->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
         @endif
 
     </div>

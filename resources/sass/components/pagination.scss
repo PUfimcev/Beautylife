@@ -57,3 +57,36 @@
     }
 
 }
+
+
+// pagination simple
+
+.pagination-tablet{
+    width: max(17%, 14rem);
+
+    nav{
+        width: 100%;
+
+        .pagination-tablet-ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+
+            :where(.disabled){
+
+                font-size: 1.1rem !important;
+                color: $text-accent;
+            }
+
+            :is(li>a){
+
+                font-size: 1.1rem !important;
+                color: $text-accent-2;
+                font-weight: bold;
+            }
+        }
+    }
+
+}

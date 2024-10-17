@@ -43,7 +43,9 @@
             </div>
 
             @if (!isset($offersArch) || !empty($offersArch))
-                <div class="pagination">{{ $offersArch->onEachSide(1)->links() }}</div>
+            <div class="pagination">{{ $offersArch->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+
+            <div class="pagination-tablet">{{ $offersArch->links('vendor.pagination.simple-default')}}</div>
             @endif
 
         </section>

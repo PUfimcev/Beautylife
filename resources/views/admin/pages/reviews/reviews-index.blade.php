@@ -57,7 +57,10 @@
                 @endforelse
             </tbody>
         </table>
-        @isset($reviews) <div class="pagination">{{ $reviews->onEachSide(1)->links() }}</div> @endisset
+
+        @if (!isset($reviews) || !empty($reviews))
+            <div class="pagination">{{ $reviews->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+        @endif
 
     </div>
 </div>
