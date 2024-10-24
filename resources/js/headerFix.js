@@ -31,18 +31,19 @@ class HeaderFix {
 
                 this.#headerElem.classList.add('header_fixed');
 
-                switch(place){
-                    case 'web':
-                        if(window.matchMedia("screen and (max-width: 1023px)").matches){
+                if(place == 'web'){
+
+                    if(window.matchMedia("screen and (min-width: 769px) and (max-width: 1023px)").matches){
+                            this.#mainElem.style = 'margin-top: 166px';
+                    } else if(window.matchMedia("screen and (max-width: 768px)").matches) {
+                            this.#mainElem.style = 'margin-top: 0px';
+                    } else {
+                            console.log('margin-top: 0px');
                             this.#mainElem.style = 'margin-top: 174px';
-                        } else {
-                            this.#mainElem.style = 'margin-top: 174px';
-                        }
-                    break;
-                    case 'admin':
-                        this.#mainElem.style = 'margin-top: 164px';
-                    break;
+                    }
                 }
+                if(place == 'admin') this.#mainElem.style = 'margin-top: 164px';
+
             } else {
                 this.#headerElem.classList.remove('header_fixed');
                 this.#mainElem.style = 'margin-top: 0px';

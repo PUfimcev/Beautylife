@@ -31,6 +31,7 @@
                     <option  value="new-arrivals">{{ __('New arrival') }}</option>
                     <option  value="sale-price">{{ __('Sale price') }}</option>
                 </select>
+                <span class="select-arrow"></span>
             </div>
 
         </div>
@@ -38,12 +39,18 @@
 
     <section class="filer__mobile">
 
-            <div class="category__filter-top">
-                <span>{{ __('Filter by') }} <span class="dropdown__arrow"></span>
-                <span >{{ __('Sort by') }} <span class="dropdown__arrow"></span>
-            </div>
+        <div class="full_category-top-mobile">
 
-            <form class="category__filter" method="GET" action="">
+            <h2 class="category__name">{{ Str::upper($category->langField('name')) }}</h2>
+
+        </div>
+
+        <div class="category__filter-top-mobile">
+            <div>{{ __('Filter by') }} <span class="dropdown__arrow"></span></div>
+            <div>{{ __('Sort by') }} <span class="dropdown__arrow"></span></div>
+         </div>
+
+        <form class="category__filter-mobile" method="GET" action="">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                 <ul class="select_goods_wrap">

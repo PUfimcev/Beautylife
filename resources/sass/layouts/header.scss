@@ -8,16 +8,17 @@
 header {
 
     background-color: $body-bg;
-    width: 100%;
-    margin: auto;
 
+        &.header_fixed{
+            width: 100vmax;
+            box-sizing: border-box;
+            position: fixed;
 
-    &.header_fixed{
-        top: 0;
-        left: 0;
-        position: fixed;
-        z-index: 10;
-    }
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
 
 }
 

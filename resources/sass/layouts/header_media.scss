@@ -141,8 +141,10 @@
 
 @media screen and (max-width: 1023px) {
 
+
     .headbar {
-        width: min(95%, 1100px);
+        width: min(95%, 1200px);
+
     }
 
     // Searching
@@ -218,6 +220,24 @@
 
 @media screen and (max-width:  768px) {
 
+
+    header {
+
+        &.header_fixed{
+            // position: static;
+        }
+
+            // .headbar-mobile{
+            //     // position: sticky;
+            //     top: 0;
+            //     left: 0;
+            //     // position: fixed;
+            //     z-index: 10;
+
+            // // position: sticky;
+        // }
+
+    }
     // header mobile
 
     .desktop_header{
@@ -241,6 +261,13 @@
         }
 
         .headbar.headbar-mobile{
+            // position: sticky;
+            // position: sticky;
+            // top: 0;
+            // left: 0;
+            // position: fixed;
+            // z-index: 10;
+
             width: 100%;
             border-top: 1px solid $line-color;
             border-bottom: 1px solid $line-color;

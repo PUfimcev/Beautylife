@@ -72,9 +72,9 @@ class MainController extends Controller
             if(session('locale') == 'en'){
                 $categories = Category::all()->sortBy('name_en');
             }
-            if(session('locale') == 'ru'){
-                $categories = Category::all()->sortBy('name');
-            }
+
+            $categories = Category::all()->sortBy('name');
+
             return view('pages.catalog', compact('categories'));
         } else {
 

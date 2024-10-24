@@ -90,21 +90,54 @@
                 margin-right: 0.4rem;
             }
             .select_goods_wrap{
-
-                padding: 0.5rem 2rem;
+                width: 13rem;
+                height: 2.5rem;
                 border: 1px solid #987B75;
+                position: relative;
 
                 .select__goods_top_new_all{
                     width: 100%;
-                    margin: 0 auto;
+                    height: 100%;
+                    margin-left: 1.5rem;
                     @extend %P2-desk-description;
                     outline: none;
                     border: 0;
                     cursor: pointer;
-                    background-color: $body-bg;
+                    background-color: transparent;
+
+                    position: absolute;
+                    z-index: 1;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    -moz-appearance: none;
+                    -webkit-appearance: none;
+                    border: none;
+                    outline: none;
+
+                }
+                .select-arrow{
+                    position: absolute;
+                    z-index: 0;
+                    top: 55%;
+                    right: 5%;
+                    transform: translateY(-50%);
+
+                    display: inline-block;
+                    background-image: url(../images/arrow_down_icon.png);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    width: 9px;
+                    height: 9px;
+
                 }
             }
         }
+
+    }
+    .filer__mobile{
+        display: none;
     }
 
     .full_category-body{
