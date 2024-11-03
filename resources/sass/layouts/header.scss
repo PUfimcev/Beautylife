@@ -9,7 +9,7 @@ header {
 
     background-color: $body-bg;
 
-        &.header_fixed{
+    &.header_fixed{
             width: 100vmax;
             box-sizing: border-box;
             position: fixed;
@@ -18,7 +18,7 @@ header {
             left: 0;
             right: 0;
             z-index: 10;
-        }
+    }
 
 }
 

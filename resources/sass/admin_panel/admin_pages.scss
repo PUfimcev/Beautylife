@@ -484,4 +484,67 @@
 
 }
 
+// Admin panel - skintype sheet
+
+.admin__skintypes__section{
+    padding: 2rem 0;
+
+    .skintype__create{
+        width: 30% !important;
+    }
+
+    .table__skintypes{
+        width: 95%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        tr{
+            width: 100%;
+            th{
+                vertical-align: text-top;
+            }
+
+            td{
+
+                width: 20% !important;
+            }
+
+            td:nth-child(1){
+                width: 10% !important;
+            }
+
+            td:nth-child(3){
+                .btn{
+                    width: 100%;
+                    display:inline-block;
+                    padding: 0.3rem 0.6rem;
+                }
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            .btn{
+                display:inline-block;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        .no__skintypes{
+            @extend %P1-desk-description;
+            .no__skintypes_projects{
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+}
+
 

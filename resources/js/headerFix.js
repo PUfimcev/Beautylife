@@ -23,6 +23,11 @@ class HeaderFix {
 
     }
 
+    /**
+     * Description placeholder
+     *
+     * @param {*} [place=null]
+     */
     #fixElem(place = null){
 
         window.addEventListener('scroll', () =>{
@@ -36,9 +41,9 @@ class HeaderFix {
                     if(window.matchMedia("screen and (min-width: 769px) and (max-width: 1023px)").matches){
                             this.#mainElem.style = 'margin-top: 166px';
                     } else if(window.matchMedia("screen and (max-width: 768px)").matches) {
-                            this.#mainElem.style = 'margin-top: 0px';
+                            this.#mainElem.style = 'margin-top: 170px';
                     } else {
-                            console.log('margin-top: 0px');
+                            // console.log('margin-top: 0px');
                             this.#mainElem.style = 'margin-top: 174px';
                     }
                 }

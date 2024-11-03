@@ -55,9 +55,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        dd($request->all());
         $params = $request->all();
-
 
         if ($request->hasFile('categoryFile')) $params['image_route'] = $this->setFilePath($request->file('categoryFile'));
 
@@ -101,8 +99,6 @@ class CategoryController extends Controller
     {
 
         $params = $request->all();
-
-        // dd( $params);
 
         if ($request->hasFile('categoryFile')) {
 

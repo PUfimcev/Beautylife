@@ -178,40 +178,34 @@
             <div class="category__filter" method="GET" action="">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
-                <div class="category">
+                <div class="filter-category">
                     <div class="category__title" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span></span><span>-</span></div>
 
                     <ul class="subcategory__names">
 
                         @foreach ($category->subcategories as $subcategory)
                             <li>
-                                <input type="checkbox" class="subcategory-check" name="subcategory-{{ $loop->iteration }}" id="subcategory-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory-check" name="subcategory-{{ $loop->iteration }}" id="subcategory_item-{{ $loop->iteration }}"
 
                                 value="{{ $subcategory->name_en }}"
-
-                                {{-- @checked(old('subcategory-{{ $loop->iteration }}', $subcategory->name_en)) --}}
                                 >
-                                <label class="subcategory__name" for="subcategory-{{ $loop->iteration }}">{{ $subcategory->langField('name') }}</label>
+                                <label class="subcategory__name" for="subcategory_item-{{ $loop->iteration }}">{{ $subcategory->langField('name') }}</label>
                             </li>
                         @endforeach
                     </ul>
                 </div>
 
-                <div class="brand">
+                <div class="filter-brands">
                     <div class="brand__title" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span></span><span>-</span></div>
 
                     <ul class="brands__names">
 
                         @foreach ($brands as $brand)
-                            <li>
-                                <input type="checkbox" class="brand-check" name="brand-{{ $loop->iteration }}" id="brand-{{ $loop->iteration }}"
 
-                                value="{{ $brand->brand_name }}"
-
-                                {{-- @checked(old('subcategory-{{ $loop->iteration }}', $subcategory->name_en)) --}}
-                                >
-                                <label class="brand__name" for="brand-{{ $loop->iteration }}">{{ $brand->brand_name }}</label>
-                            </li>
+                        <li>
+                            <input type="checkbox" class="brand-check" name="brand-{{ $loop->iteration }}" id="brand_item-{{ $loop->iteration }}" value="{{ $brand->brand_name }}">
+                            <label class="brand__name" for="brand_item-{{ $loop->iteration }}">{{ $brand->brand_name }}</label>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -225,7 +219,18 @@
                 <div class="skintype">
                     <div class="skintype__title" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>
 
-                    <ul class="skin__types">
+                    <ul class="skintypes_list">
+                        @foreach ($skintypes as $skintype)
+                            <li>
+                                <input type="checkbox" class="skintype-check" name="skintype-{{ $loop->iteration }}" id="skintype-{{ $loop->iteration }}"
+
+                                value="{{ $skintype->name_en }}"
+
+                                {{-- @checked(old('skintype-{{ $loop->iteration }}', $skintype->name_en)) --}}
+                                >
+                                <label class="skintype__name" for="skintype-{{ $loop->iteration }}">{{ $skintype->langField('name') }}</label>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 

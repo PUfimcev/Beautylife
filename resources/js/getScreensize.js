@@ -3,8 +3,18 @@
 class GetScreensize{
 
     #token;
+    /**
+     * Description placeholder
+     *
+     * @type {string}
+     */
     #applianceType = 'desk';
 
+    /**
+     * Creates an instance of GetScreensize.
+     *
+     * @constructor
+     */
     constructor(){
 
         this.#token = document.querySelector('[name="csrf-token"]').content;

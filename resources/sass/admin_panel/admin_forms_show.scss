@@ -671,3 +671,83 @@
 
     }
 }
+
+// Skintype form
+
+.admin__skintypes__section-create{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    form{
+        width: 85%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        label{
+            font-weight: bold;
+        }
+
+        .btn__skintype__form-create{
+            margin: 1.5rem auto;
+            width: min(60%, 10rem);
+        }
+    }
+}
+
+// Skintype show
+
+.admin__skintype__section-show {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .btn-return{
+        margin-right: 4rem;
+    }
+
+    .skintype_details{
+
+        width: 80%;
+
+        .skintype_details_list{
+
+
+            .details-name{
+                font-weight: bold;
+            }
+
+
+            .details-content{
+                display: inline-block;
+                color: $text-accent-2;
+            }
+        }
+    }
+
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
+    }
+
+}

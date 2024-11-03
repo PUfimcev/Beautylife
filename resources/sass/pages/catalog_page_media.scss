@@ -36,12 +36,10 @@
 
             .category__subcategory{
 
-
-
                 .category__filter{
 
 
-                    .category, .brand, .price, .skintype, .age, .forwhom{
+                    .filter-category, .filter-brands, .price, .skintype, .age, .forwhom{
 
                         .category__title, .brand__title,  .price__title, .skintype__title, .age__title, .forwhom__title{
                             &:hover{
@@ -51,9 +49,9 @@
                             }
                         }
 
-                        .subcategory__names, .brands__names, .objects__types,.age__types, .skin__types, .price__option{
+                        .subcategory__names, .brands__names, .objects__types,.age__types, .skintypes_list , .price__option{
 
-                            .subcategory__name,.brand__name{
+                            label{
 
                                 &:hover{
                                     color: $text-accent;

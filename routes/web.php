@@ -17,6 +17,7 @@ use App\Http\Controllers\Basket\BasketController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Admin\CallbackController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SkinTypeController;
 use App\Http\Controllers\Person\BookmarkController;
 use App\Http\Controllers\Mail\MessageMailController;
 use App\Http\Controllers\Admin\SubcategoryController;
@@ -165,6 +166,21 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     Route::resource('categories/{category}/subcategories', SubcategoryController::class);
 
 
+
+    // Route for processing archive subcategory skin type
+    Route::controller(SkinTypeController::class)->group(function(){
+        Route::group(['prefix' => 'skintypes'], function(){
+            Route::get('archive', 'archiveIndex')->name('skintype_archive')->withTrashed();;
+            Route::get('archive/{skintype}', 'showArchive')->name('skintype_show')->withTrashed();
+            Route::get('archive/{skintype}/restore', 'restoreArchive')->name('skintype_restore')->withTrashed();
+            Route::delete('archive/{skintype}/delete', 'destroyArchive')->name('skintype_full_delete')->withTrashed();
+        });
+    });
+
+    // Route for processing subcategory skin type
+    Route::resource('skintypes', SkinTypeController::class);
+
+
     // Route for processing archive offers
     Route::controller(OfferController::class)->group(function(){
 
@@ -185,6 +201,7 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
 
     // Route for processing offers
     Route::resource('offers', OfferController::class);
+
 
 });
 

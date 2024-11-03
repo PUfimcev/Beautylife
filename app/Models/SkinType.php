@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Models\Subcategory;
 use App\Traits\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class SkinType extends Model
 {
     use HasFactory, Translatable,  SoftDeletes;
 
@@ -19,7 +18,7 @@ class Category extends Model
      * @var array<int, string>
      */
 
-     protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +29,6 @@ class Category extends Model
         'code',
         'name',
         'name_en',
-        'image_route',
     ];
 
     /**
@@ -39,22 +37,6 @@ class Category extends Model
     public function getRouteKeyName(): string
     {
         return 'code';
-    }
-
-    /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
-    */
-    public function subcategories()
-    {
-        return $this->hasMany(Subcategory::class);
-    }
-
-    /**
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    */
-    public function offers()
-    {
-        return $this->belongsToMany(Offer::class);
     }
 
     /**

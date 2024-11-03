@@ -1,3 +1,9 @@
+/**
+ * Description placeholder
+ *
+ * @class Spinner
+ * @typedef {Spinner}
+ */
 class Spinner{
     #create(){
         this.spinner = document.createElement('div');
@@ -11,6 +17,11 @@ class Spinner{
     }
 
 
+    /**
+     * Description placeholder
+     *
+     * @returns {*}
+     */
     init(){
         let spinnerData = this.#create();
         return spinnerData;

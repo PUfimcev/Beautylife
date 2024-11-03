@@ -33,6 +33,7 @@
                     <option @selected(old('select__goods_top_new_all', 'New arrival') == (($title == 'New arrival') ?  'New arrival' : '')) value="new-arrivals">{{ __('New arrival') }}</option>
                     <option @selected(old('select__goods_top_new_all', 'Sale price') == (($title == 'Sale price') ?  'Sale price' : '')) value="sale-price">{{ __('Sale price') }}</option>
                 </select>
+                <span class="select-arrow"></span>
             </div>
 
         </div>

@@ -87,9 +87,9 @@
                     <li class="nav_item">
                         <a href="{{ route('admin.categories.index') }}" class="nav_link @routeactive('admin.*categor*')">{{__('Categories')}}</a>
                     </li>
-                    {{-- <li class="nav_item">
-                        <a href="{{ route('admin.subcategories.index') }}" class="nav_link @routeactive('admin.subcategor*')">{{__('Subcategories')}}</a>
-                    </li> --}}
+                    <li class="nav_item">
+                        <a href="{{ route('admin.skintypes.index') }}" class="nav_link @routeactive('admin.skintype*')">{{__('Skin types')}}</a>
+                    </li>
                     {{-- <li class="nav_item">
                         <a href="{{ route('admin.offers.index') }}" class="nav_link @routeactive('admin.offers*')">{{__('Offers')}}</a>
                     </li>

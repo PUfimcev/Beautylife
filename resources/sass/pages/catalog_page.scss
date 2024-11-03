@@ -179,7 +179,7 @@
                 width: 100%;
 
 
-                .category,.brand, .price, .skintype, .age, .forwhom{
+                .filter-category, .filter-brands, .price, .skintype, .age, .forwhom{
 
                     width: 100%;
 
@@ -218,23 +218,24 @@
 
                     }
 
-                    .subcategory__names, .brands__names,.objects__types,.age__types, .skin__types, .price__option {
+                    .subcategory__names, .brands__names, .objects__types,.age__types, .skintypes_list, .price__option {
                         display: none;
                         margin-top: 1.25rem;
+                        margin-bottom: 0;
                         padding-left: 0;
                         width: 90%;
 
-                        .subcategory-check, .brand-check{
+                        input[type="checkbox"]{
+
                              display: none;
 
-                            &:checked + :is(.subcategory__name, .brand__name){
+                            &:checked + :is(.subcategory__name, .brand__name , .skintype__name){
 
                                 font-weight: bold;
                             }
+                        }
 
-                         }
-
-                        .subcategory__name, .brand__name{
+                        label{
                             margin-bottom: 0.5rem;
                             cursor: pointer;
                         }
