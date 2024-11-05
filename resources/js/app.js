@@ -11,5 +11,6 @@ import BurgerButtonAndNavMobile from './burgerButtonAndNavMobile';
 import Anchor from './anchor';
 import LinkTopPage from './linkTopPage';
 import SelectReset from './selectReset';
+import CheckboxVisible from './checkboxVisible';
 
 

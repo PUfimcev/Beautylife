@@ -179,11 +179,11 @@
                 width: 100%;
 
 
-                .filter-category, .filter-brands, .price, .skintype, .age, .forwhom{
+                .filter-items{
 
                     width: 100%;
 
-                    .category__title, .brand__title, .price__title, .skintype__title, .age__title, .forwhom__title{
+                    .title{
                         width: 90%;
                         background-color: $body-bg;
                         padding: 2.5rem 0 0 0;
@@ -218,7 +218,7 @@
 
                     }
 
-                    .subcategory__names, .brands__names, .objects__types,.age__types, .skintypes_list, .price__option {
+                    .subcategory__names {
                         display: none;
                         margin-top: 1.25rem;
                         margin-bottom: 0;
