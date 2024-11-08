@@ -59,10 +59,8 @@ class CategoryController extends Controller
 
         if ($request->hasFile('categoryFile')) $params['image_route'] = $this->setFilePath($request->file('categoryFile'));
 
-        $params['code'] = Str::snake(Str::lower($request->input('code')));
         $params['name'] = Str::ucfirst($request->input('name'));
         $params['name_en'] = Str::ucfirst($request->input('name_en'));
-
 
         Category::create($params);
 
@@ -111,7 +109,6 @@ class CategoryController extends Controller
             $params['image_route'] = $this->setFilePath($request->file('categoryFile'));
         }
 
-        $params['code'] = Str::snake(Str::lower($request->input('code')));
         $params['name'] = Str::ucfirst($request->input('name'));
         $params['name_en'] = Str::ucfirst($request->input('name_en'));
 

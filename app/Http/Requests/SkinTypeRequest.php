@@ -34,15 +34,15 @@ class SkinTypeRequest extends FormRequest
         if(App::getLocale() === 'en'){
             return [
                 'code' => 'Code',
-                'name' => 'Name',
-                'name_en' => 'Name in Englis',
+                'name' => 'Skin type',
+                'name_en' => 'Skin type in Englis',
             ];
         }
 
         return [
             'code' => 'Код',
-            'name' => 'Наименование',
-            'name_en' => 'Наименование по Английски',
+            'name' => 'Тип кожи',
+            'name_en' => 'Тип кожи по Английски',
         ];
     }
 
@@ -53,19 +53,19 @@ class SkinTypeRequest extends FormRequest
 
             return [
                 'code.regex' => 'The field Code should be written in English letters',
-                'name.required' => 'The Наименование field is required',
-                'name.regex' => 'The Name field should be written in Russian letters',
-                'name_en.required' => 'The Name in Englis field is required',
-                'name_en.regex' => 'The Name in Englis field should be written in English letters',
+                'name.required' => 'The Тип кожи field is required',
+                'name.regex' => 'The Skin type field should be written in Russian letters',
+                'name_en.required' => 'The Skin type in Englis field is required',
+                'name_en.regex' => 'The Skin type in Englis field should be written in English letters',
             ];
         }
 
         return [
             'code.regex' => 'Поле Код должно быть написано латиницей',
-            'name.required' => 'Поле Наименование обязательно',
-            'name.regex' => 'Поле Name должно быть написано русскими буквами',
-            'name_en.required' => 'Поле Name in Englis обязательно',
-            'name_en.regex' => 'Поле Name in Englis должно быть написано латиницей',
+            'name.required' => 'Поле Тип кожи обязательно',
+            'name.regex' => 'Поле Skin type должно быть написано русскими буквами',
+            'name_en.required' => 'Поле Skin type in Englis обязательно',
+            'name_en.regex' => 'Поле Skin type in Englis должно быть написано латиницей',
         ];
 
     }

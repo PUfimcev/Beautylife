@@ -24,7 +24,7 @@
             <span >{{ __('Sort by') }}:</span>
 
             <div class="select_goods_wrap" method="GET" action="">
-                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                {{-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}"> --}}
                 <select name="select__goods" class="select__goods_top_new_all">
                     <option  value="all-goods">{{ __('All goods') }}</option>
                     <option  value="bestsellers">{{ __('Bestsellers') }}</option>
@@ -189,6 +189,7 @@
 
             <div class="category__filter" method="GET" action="">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                <input type="hidden" name="category" id="category-name" value="{{ $category->code }}">
 
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span></span><span>-</span></div>
@@ -250,15 +251,36 @@
 
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span></span><span>-</span></div>
+                    <ul class="subcategory__names agerange">
+                        @foreach ($ageranges as $agerange)
+                            <li>
+                                <input type="checkbox" class="agerange-check" name="agerange-{{ $loop->iteration }}" id="agerange_item-{{ $loop->iteration }}"
 
-                    <ul class="subcategory__names">
+                                value="{{ $agerange->name_en }}"
+                                data-id="agerange_item-{{ $loop->iteration }}"
+                                {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
+                                >
+                                <label class="agerange__name" for="agerange_item-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span></span><span>-</span></div>
 
-                    <ul class="subcategory__names">
+                    <ul class="subcategory__names consumers">
+                        @foreach ($consumers as $consumer)
+                        <li>
+                            <input type="checkbox" class="consumer-check" name="consumer-{{ $loop->iteration }}" id="consumer_item-{{ $loop->iteration }}"
+
+                            value="{{ $consumer->name_en }}"
+                            data-id="consumer_item-{{ $loop->iteration }}"
+                            {{-- @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en)) --}}
+                            >
+                            <label class="consumer__name" for="consumer_item-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
+                        </li>
+                    @endforeach
                     </ul>
                 </div>
             </div>
@@ -286,7 +308,23 @@
 
     <div class="view-all__btn"><a href="{{ route('catalog_top_new', 'all-goods') }}">{{ __('View all') }}</a></div>
 
-    <div class="pagination">1 2 3</div>
+    @if(session('screenWidth') !== 'mobile' && $pages > 0)
+        <div class="pagination">
+            <ul class="pagination__pages">
+                @foreach ($pages as $page)
+                    <li>
+                        <input type="radio" class="page" name="page" id="page-{{ $loop->iteration }}"
+
+                        value="{{ $page }}"
+                        data-id="page-{{ $loop->iteration }}"
+                        {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
+                        >
+                        <label class="page__numb" for="page-{{ $loop->iteration }}">{{ $page }}</label>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     {{-- @if (!isset($products) || !empty($products))
         <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>

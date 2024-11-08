@@ -47,15 +47,15 @@ class SubcategoryRequest extends FormRequest
         if(App::getLocale() === 'en'){
             return [
                 'code' => 'Code',
-                'name' => 'Name',
-                'name_en' => 'Name in Englis',
+                'name' => 'Subcategory name',
+                'name_en' => 'Subcategory name in Englis',
             ];
         }
 
         return [
             'code' => 'Код',
-            'name' => 'Наименование',
-            'name_en' => 'Наименование по Английски',
+            'name' => 'Название подкатегории',
+            'name_en' => 'Название подкатегории по Английски',
         ];
     }
 
@@ -66,19 +66,19 @@ class SubcategoryRequest extends FormRequest
 
             return [
                 'code.regex' => 'The field Code should be written in English letters',
-                'name.required' => 'The Наименование field is required',
-                'name.regex' => 'The Name field should be written in Russian letters',
-                'name_en.required' => 'The Name in Englis field is required',
-                'name_en.regex' => 'The Name in Englis field should be written in English letters',
+                'name.required' => 'The Название подкатегории field is required',
+                'name.regex' => 'The Subcategory name field should be written in Russian letters',
+                'name_en.required' => 'The Subcategory name in Englis field is required',
+                'name_en.regex' => 'The Subcategory name in Englis field should be written in English letters',
             ];
         }
 
         return [
             'code.regex' => 'Поле Код должно быть написано латиницей',
-            'name.required' => 'Поле Наименование обязательно',
-            'name.regex' => 'Поле Name должно быть написано русскими буквами',
-            'name_en.required' => 'Поле Name in Englis обязательно',
-            'name_en.regex' => 'Поле Name in Englis должно быть написано латиницей',
+            'name.required' => 'Поле Название подкатегории обязательно',
+            'name.regex' => 'Поле Subcategory name должно быть написано русскими буквами',
+            'name_en.required' => 'Поле Subcategory name in Englis обязательно',
+            'name_en.regex' => 'Поле Subcategory name in Englis должно быть написано латиницей',
         ];
 
     }

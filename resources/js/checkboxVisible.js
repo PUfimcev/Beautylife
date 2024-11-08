@@ -41,7 +41,8 @@ class CheckboxVisible {
 
         window.addEventListener('unload', ()=>{
             if(sessionStorage.getItem('checkboxes')){
-                this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {secure: true, 'max-age': 3600 })
+                // this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {secure: true, 'max-age': 3600 })
+                this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {'max-age': 3600 })
             }
         })
 

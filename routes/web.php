@@ -22,6 +22,7 @@ use App\Http\Controllers\Person\BookmarkController;
 use App\Http\Controllers\Mail\MessageMailController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\OfferArchiveController;
+use App\Http\Controllers\Admin\AgerangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,15 +130,10 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     Route::controller(CategoryController::class)->group(function(){
 
         Route::group(['prefix' => 'categories'], function(){
-
             Route::get('archive', 'archiveIndex')->name('category_archive')->withTrashed();;
-
             Route::get('archive/{category}', 'showArchive')->name('category_show')->withTrashed();
-
             Route::get('archive/{category}/restore', 'restoreArchive')->name('category_restore')->withTrashed();
-
             Route::delete('archive/{category}/delete', 'destroyArchive')->name('category_full_delete')->withTrashed();
-
         });
 
     });
@@ -149,22 +145,16 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     Route::controller(SubcategoryController::class)->group(function(){
 
         Route::group(['prefix' => 'categories/{category}/subcategories'], function(){
-
             Route::get('archive', 'archiveIndex')->name('subcategory_archive')->withTrashed();;
-
             Route::get('archive/{subcategory}', 'showArchive')->name('subcategory_show')->withTrashed();
-
             Route::get('archive/{subcategory}/restore', 'restoreArchive')->name('subcategory_restore')->withTrashed();
-
             Route::delete('archive/{subcategory}/delete', 'destroyArchive')->name('subcategory_full_delete')->withTrashed();
-
         });
 
     })->scopeBindings();
 
     // Route for processing subcategories
     Route::resource('categories/{category}/subcategories', SubcategoryController::class);
-
 
 
     // Route for processing archive subcategory skin type
@@ -180,28 +170,33 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     // Route for processing subcategory skin type
     Route::resource('skintypes', SkinTypeController::class);
 
+    // Route for processing archive subcategory Age range
+    Route::controller(AgerangeController::class)->group(function(){
+        Route::group(['prefix' => 'ageranges'], function(){
+            Route::get('archive', 'archiveIndex')->name('agerange_archive')->withTrashed();;
+            Route::get('archive/{agerange}', 'showArchive')->name('agerange_show')->withTrashed();
+            Route::get('archive/{agerange}/restore', 'restoreArchive')->name('agerange_restore')->withTrashed();
+            Route::delete('archive/{agerange}/delete', 'destroyArchive')->name('agerange_full_delete')->withTrashed();
+        });
+    });
+
+    // Route for processing subcategory Age range
+    Route::resource('ageranges', AgerangeController::class);
+
 
     // Route for processing archive offers
     Route::controller(OfferController::class)->group(function(){
 
         Route::group(['prefix' => 'offers'], function(){
-
             Route::get('archive', 'archiveIndex')->name('offers_archive');
-
             Route::get('archive/{offer}', 'showArchive')->name('offer_show')->withTrashed();
-
             Route::get('archive/{offer}/restore', 'restoreArchive')->name('offers_restore')->withTrashed();
-
             Route::delete('archive/{offer}/delete', 'destroyArchive')->name('offers_full_delete')->withTrashed();
-
         });
-
-
     });
 
     // Route for processing offers
     Route::resource('offers', OfferController::class);
-
 
 });
 

@@ -3,6 +3,8 @@
 namespace App\Classes;
 
 use App\Models\Brand;
+use App\Models\Agerange;
+use App\Models\Category;
 use App\Models\SkinType;
 
 abstract class CategoryFilter
@@ -10,6 +12,11 @@ abstract class CategoryFilter
     // protected $query;
     // protected $request;
 
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
 
@@ -17,12 +24,21 @@ abstract class CategoryFilter
     }
 
 
-
+    /**
+     * getBrandData
+     *
+     * @return void
+     */
     protected static function getBrandData()
     {
         return Brand::all()->sortBy('brand_name');
     }
 
+    /**
+     * getSkintypesData
+     *
+     * @return void
+     */
     protected static function getSkintypesData()
     {
         if(session('locale') == 'en'){
@@ -37,6 +53,45 @@ abstract class CategoryFilter
     }
 
 
+    /**
+     * getAgerangesData
+     *
+     * @return void
+     */
+    protected static function getAgerangesData()
+    {
+        if(session('locale') == 'en'){
+            $ageranges = Agerange::all()->sortBy('name_en');
+        } else if(session('locale') == 'ru'){
+            $ageranges = Agerange::all()->sortBy('name');
+        } else {
+            $ageranges = Agerange::all()->sortBy('name');
+        }
+
+        return $ageranges;
+    }
+
+    /**
+     * getCataloges
+     *
+     * @return void
+     */
+    public static function getCatalogs()
+    {
+        if(session('locale') == 'en'){
+            $categories = Category::all()->sortBy('name_en');
+        }
+
+        $categories = Category::all()->sortBy('name');
+
+        return $categories;
+    }
+
+    /**
+     * getCatalogData
+     *
+     * @return void
+     */
     public static function getCatalogData()
     {
 
@@ -44,13 +99,18 @@ abstract class CategoryFilter
 
         $skintypes = self::getSkintypesData();
 
-        $products = [1, 2, 3, 4, 5, 6];
+        $ageranges = self::getAgerangesData();
 
-        $count = count($products);
+        $productsAll = range(1, 25, 1);
+
+        $products = array_slice($productsAll, 0, 12);
+
+        $count = count($productsAll);
 
         return array(
             $brands,
             $skintypes,
+            $ageranges,
             $count,
             $products,
         );

@@ -90,13 +90,13 @@
                     <li class="nav_item">
                         <a href="{{ route('admin.skintypes.index') }}" class="nav_link @routeactive('admin.skintype*')">{{__('Skin types')}}</a>
                     </li>
+                    <li class="nav_item">
+                        <a href="{{ route('admin.ageranges.index') }}" class="nav_link @routeactive('admin.ageranges*')">{{__('Age ranges')}}</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="{{ route('admin.consumers.index') }}" class="nav_link @routeactive('admin.consumer*')">{{__('Consumers')}}</a>
+                    </li>
                     {{-- <li class="nav_item">
-                        <a href="{{ route('admin.offers.index') }}" class="nav_link @routeactive('admin.offers*')">{{__('Offers')}}</a>
-                    </li>
-                    <li class="nav_item">
-                        <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages*')">{{__('Messages')}}</a>
-                    </li>
-                    <li class="nav_item">
                         <a href="{{ route('admin.blogs.index') }}" class="nav_link @routeactive('admin.blogs*')">{{__('Blogs')}}</a>
                     </li>
                     <li class="nav_item">

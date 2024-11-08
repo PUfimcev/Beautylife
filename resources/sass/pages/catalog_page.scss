@@ -229,7 +229,7 @@
 
                              display: none;
 
-                            &:checked + :is(.subcategory__name, .brand__name , .skintype__name){
+                            &:checked + :is(.subcategory__name, .brand__name , .skintype__name, .agerange__name){
 
                                 font-weight: bold;
                             }

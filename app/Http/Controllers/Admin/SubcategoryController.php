@@ -55,7 +55,6 @@ class SubcategoryController extends Controller
         $params = $request->all();
 
         $params['category_id'] = $category->id;
-        $params['code'] = Str::snake(Str::lower($request->input('code')));
         $params['name'] = Str::ucfirst($request->input('name'));
         $params['name_en'] = Str::ucfirst($request->input('name_en'));
 
@@ -88,7 +87,6 @@ class SubcategoryController extends Controller
 
         $params = $request->all();
 
-        $params['code'] = Str::snake(Str::lower($request->input('code')));
         $params['name'] = Str::ucfirst($request->input('name'));
         $params['name_en'] = Str::ucfirst($request->input('name_en'));
 

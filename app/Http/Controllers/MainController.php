@@ -66,24 +66,34 @@ class MainController extends Controller
         }
     }
 
+    /**
+     * catalog
+     *
+     * @param  mixed $category
+     * @return void
+     */
     public function catalog(Category $category = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
         if(!isset($category)) {
-            if(session('locale') == 'en'){
-                $categories = Category::all()->sortBy('name_en');
-            }
 
-            $categories = Category::all()->sortBy('name');
+            $categories = CategoryFilter::getCatalogs();
 
             return view('pages.catalog', compact('categories'));
         } else {
 
-            list($brands, $skintypes, $count, $products,) = CategoryFilter::getCatalogData();
+            list($brands, $skintypes, $ageranges, $count, $products) = CategoryFilter::getCatalogData();
 
-            return view('pages.elements.category_full', compact('category', 'products', 'brands', 'skintypes'))->with(['count' => $count]);}
+            return view('pages.elements.category_full', compact('category', 'products', 'brands', 'skintypes', 'ageranges'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);}
     }
+
+    /**
+     * catalogTopNew
+     *
+     * @param  mixed $quality
+     * @return void
+     */
 
     public function catalogTopNew($quality)
     {

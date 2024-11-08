@@ -49,16 +49,16 @@ class CategoryRequest extends FormRequest
         if(App::getLocale() === 'en'){
             return [
                 'code' => 'Code',
-                'name' => 'Name',
-                'name_en' => 'Name in Englis',
+                'name' => 'Category name',
+                'name_en' => 'Category name in Englis',
                 'categoryFile' => 'Image',
             ];
         }
 
         return [
             'code' => 'Код',
-            'name' => 'Наименование',
-            'name_en' => 'Наименование по Английски',
+            'name' => 'Название категории',
+            'name_en' => 'Название категории по Английски',
             'categoryFile' => 'Изображение',
         ];
     }
@@ -70,19 +70,19 @@ class CategoryRequest extends FormRequest
 
             return [
                 'code.regex' => 'The field Code should be written in English letters',
-                'name.required' => 'The Наименование field is required',
-                'name.regex' => 'The Name field should be written in Russian letters',
-                'name_en.required' => 'The Name in Englis field is required',
-                'name_en.regex' => 'The Name in Englis field should be written in English letters',
+                'name.required' => 'The Название категории field is required',
+                'name.regex' => 'The Category name field should be written in Russian letters',
+                'name_en.required' => 'The Category name in Englis field is required',
+                'name_en.regex' => 'The Category name in Englis field should be written in English letters',
             ];
         }
 
         return [
             'code.regex' => 'Поле Код должно быть написано латиницей',
-            'name.required' => 'Поле Наименование обязательно',
-            'name.regex' => 'Поле Name должно быть написано русскими буквами',
-            'name_en.required' => 'Поле Name in Englis обязательно',
-            'name_en.regex' => 'Поле Name in Englis должно быть написано латиницей',
+            'name.required' => 'Поле Название категории обязательно',
+            'name.regex' => 'Поле Category name должно быть написано русскими буквами',
+            'name_en.required' => 'Поле Category name in Englis обязательно',
+            'name_en.regex' => 'Поле Category name in Englis должно быть написано латиницей',
         ];
 
     }

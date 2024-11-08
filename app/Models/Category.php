@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\Subcategory;
+use Illuminate\Support\Str;
 use App\Traits\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -40,6 +41,18 @@ class Category extends Model
     {
         return 'code';
     }
+
+     /**
+      * Create mutator for attribute code
+      *
+      * @param  mixed $value
+      * @return void
+      */
+      public function setCodeAttribute($value)
+      {
+         $this->attributes['code'] = Str::slug(Str::lower($value));
+      }
+
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
