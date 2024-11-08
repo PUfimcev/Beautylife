@@ -5,6 +5,7 @@ use App\Models\Offer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\Admin\ConsumerController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Basket\BasketController;
 use App\Http\Controllers\Person\PersonController;
+use App\Http\Controllers\Admin\AgerangeController;
 use App\Http\Controllers\Admin\CallbackController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SkinTypeController;
@@ -22,7 +24,6 @@ use App\Http\Controllers\Person\BookmarkController;
 use App\Http\Controllers\Mail\MessageMailController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\OfferArchiveController;
-use App\Http\Controllers\Admin\AgerangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -182,6 +183,19 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
 
     // Route for processing subcategory Age range
     Route::resource('ageranges', AgerangeController::class);
+
+    // Route for processing archive subcategory Consumer
+    Route::controller(ConsumerController::class)->group(function(){
+        Route::group(['prefix' => 'consumers'], function(){
+            Route::get('archive', 'archiveIndex')->name('consumer_archive')->withTrashed();;
+            Route::get('archive/{consumer}', 'showArchive')->name('consumer_show')->withTrashed();
+            Route::get('archive/{consumer}/restore', 'restoreArchive')->name('consumer_restore')->withTrashed();
+            Route::delete('archive/{consumer}/delete', 'destroyArchive')->name('consumer_full_delete')->withTrashed();
+        });
+    });
+
+    // Route for processing subcategory Consumer
+    Route::resource('consumers', ConsumerController::class);
 
 
     // Route for processing archive offers

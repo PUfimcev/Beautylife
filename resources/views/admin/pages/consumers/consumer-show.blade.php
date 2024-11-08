@@ -29,10 +29,10 @@
             <ul class="consumer_details_list">
                 <li><span class="details-name">id: </span><span class="details-content">{{ $consumer->id }}</span></li>
 
-                <li><span class="details-name">Название: </span><span class="details-content">{{ $consumer->name }}</span></li>
+                <li><span class="details-name">Потребитель: </span><span class="details-content">{{ $consumer->name }}</span></li>
 
 
-                <li><span class="details-name">Name in English: </span><span class="details-content">{{ $consumer->name_en }}</span></li>
+                <li><span class="details-name">Consumer in English: </span><span class="details-content">{{ $consumer->name_en }}</span></li>
 
                 <li><span class="details-name">{{ __('Create date') }}: </span><span class="details-content">{{ $consumer->created_at }}</span></li>
 

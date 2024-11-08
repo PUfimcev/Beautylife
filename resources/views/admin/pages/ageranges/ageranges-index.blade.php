@@ -63,7 +63,7 @@
                     </tr>
                 @empty
                     <tr class="no__ageranges">
-                        <td colspan="8" class="no__ageranges_projects">{{ __('There are no categories') }}</td>
+                        <td colspan="8" class="no__ageranges_projects">{{ __('There are no subcategories') }}</td>
                     </tr>
                 @endforelse
             </tbody>

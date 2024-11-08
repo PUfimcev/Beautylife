@@ -52,9 +52,9 @@
             </div>
 
             <div class="consumer__create mb-1">
-                <label for="consumer_name" class="col-form-label text-md-end">Возрастной диапазон:</label>
+                <label for="consumer_name" class="col-form-label text-md-end">Потребитель:</label>
                 <div class="consumer_name_input">
-                    <input id="consumer_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', isset($consumer) ? $consumer->name : null) }}"  autocomplete="name" autofocus placeholder="Возрастной диапазон">
+                    <input id="consumer_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', isset($consumer) ? $consumer->name : null) }}"  autocomplete="name" autofocus placeholder="Потребитель">
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -64,9 +64,9 @@
             </div>
 
             <div class="consumer__create mb-1">
-                <label for="consumer_name_en" class="col-form-label text-md-end">Age range in English:</label>
+                <label for="consumer_name_en" class="col-form-label text-md-end">Consumer in English:</label>
                 <div class="consumer_name_en_input">
-                    <input id="consumer_name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en" value="{{ old('name_en', isset($consumer) ? $consumer->name_en : null) }}"  autocomplete="name_en" autofocus placeholder="Age range in English">
+                    <input id="consumer_name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en" value="{{ old('name_en', isset($consumer) ? $consumer->name_en : null) }}"  autocomplete="name_en" autofocus placeholder="Consumer in English">
                     @error('name_en')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

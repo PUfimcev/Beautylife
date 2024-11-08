@@ -83,9 +83,9 @@ class MainController extends Controller
             return view('pages.catalog', compact('categories'));
         } else {
 
-            list($brands, $skintypes, $ageranges, $count, $products) = CategoryFilter::getCatalogData();
+            list($brands, $skintypes, $ageranges, $consumers, $count, $products) = CategoryFilter::getCatalogData();
 
-            return view('pages.elements.category_full', compact('category', 'products', 'brands', 'skintypes', 'ageranges'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);}
+            return view('pages.elements.category_full', compact('category', 'products', 'brands', 'skintypes', 'ageranges', 'consumers'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);}
     }
 
     /**

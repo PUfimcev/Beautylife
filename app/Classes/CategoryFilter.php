@@ -5,6 +5,7 @@ namespace App\Classes;
 use App\Models\Brand;
 use App\Models\Agerange;
 use App\Models\Category;
+use App\Models\Consumer;
 use App\Models\SkinType;
 
 abstract class CategoryFilter
@@ -72,6 +73,24 @@ abstract class CategoryFilter
     }
 
     /**
+     * getConsumersData
+     *
+     * @return void
+     */
+    protected static function getConsumersData()
+    {
+        if(session('locale') == 'en'){
+            $consumers = Consumer::all()->sortBy('name_en');
+        } else if(session('locale') == 'ru'){
+            $consumers = Consumer::all()->sortBy('name');
+        } else {
+            $consumers = Consumer::all()->sortBy('name');
+        }
+
+        return $consumers;
+    }
+
+    /**
      * getCataloges
      *
      * @return void
@@ -101,6 +120,8 @@ abstract class CategoryFilter
 
         $ageranges = self::getAgerangesData();
 
+        $consumers = self::getConsumersData();
+
         $productsAll = range(1, 25, 1);
 
         $products = array_slice($productsAll, 0, 12);
@@ -111,6 +132,7 @@ abstract class CategoryFilter
             $brands,
             $skintypes,
             $ageranges,
+            $consumers,
             $count,
             $products,
         );

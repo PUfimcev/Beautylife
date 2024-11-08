@@ -153,6 +153,17 @@
                         <div class="age__title" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span></span><span>-</span></div>
 
                         <ul class="age__types">
+                            @foreach ($ageranges as $agerange)
+                            <li>
+                                <input type="checkbox" class="agerange-check" name="agerange-{{ $loop->iteration }}" id="agerange_item-{{ $loop->iteration }}"
+
+                                value="{{ $agerange->name_en }}"
+                                data-id="agerange_item-{{ $loop->iteration }}"
+                                {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
+                                >
+                                <label class="agerange__name" for="agerange_item-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
+                            </li>
+                        @endforeach
                         </ul>
                     </div>
 
@@ -160,6 +171,17 @@
                         <div class="forwhom__title" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span></span><span>-</span></div>
 
                         <ul class="objects__types">
+                            @foreach ($consumers as $consumer)
+                        <li>
+                            <input type="checkbox" class="consumer-check" name="consumer-{{ $loop->iteration }}" id="consumer_item-{{ $loop->iteration }}"
+
+                            value="{{ $consumer->name_en }}"
+                            data-id="consumer_item-{{ $loop->iteration }}"
+                            {{-- @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en)) --}}
+                            >
+                            <label class="consumer__name" for="consumer_item-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
+                        </li>
+                    @endforeach
                         </ul>
                     </div>
                 </div>
