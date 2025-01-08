@@ -1,17 +1,23 @@
-class CheckboxVisible {
+export default class CheckboxVisible {
 
     #checkboxes;
     #arrayCheckboxes = [];
     #resetBnt;
-    #checkboxesContainer;
+    #categoryName;
+    #checkboxesContainers;
 
     constructor(){
 
-        this.#checkboxes = document.querySelectorAll('.category__filter input[type="checkbox"]');
-
+        this.#checkboxes = document.querySelectorAll('.full_category-body .subcategory-select');
         this.#resetBnt = document.querySelector('.category__subcategory .reset__btn');
 
-        if(!this.#resetBnt && this.#checkboxes.length === 0) return;
+        // this.#categoryName = document.querySelector('.full_category-body #category-name').value ?? '';
+
+        if(!this.#resetBnt && this.#checkboxes.length === 0 || !this.#checkboxes) return;
+
+        // if(document.querySelector('.full_category #category-name') && this.#arrayCheckboxes.length === 0) {
+        //     this.#arrayCheckboxes.push(this.#categoryName);
+        // }
 
         this.handleCookie();
         this.handleCheckbox();
@@ -22,27 +28,30 @@ class CheckboxVisible {
 
         window.addEventListener('load', ()=>{
 
-            if(!this.getCookie('checkboxes')) return;
-
-            const getDataFromCookie = JSON.parse(this.getCookie('checkboxes'));
+            const getDataFromCookie = this.getCookie('checkboxes') ? JSON.parse(this.getCookie('checkboxes')) : [];
 
             if(!getDataFromCookie && getDataFromCookie.length === 0) return;
 
-            this.#checkboxesContainer = document.querySelectorAll('.subcategory__names');
+            // if(getDataFromCookie.includes(elem.dataset.id))
+
+            this.#checkboxesContainers = document.querySelectorAll('.full_category-body .subcategory__names');
+
 
             this.handleCheckboxesContainer(getDataFromCookie);
 
             this.makeCheckedCheckbox(getDataFromCookie);
             getDataFromCookie.forEach(elem => {
                 this.#arrayCheckboxes.push(elem);
+                this.#arrayCheckboxes = [... new Set(this.#arrayCheckboxes)];
             })
+
 
         })
 
         window.addEventListener('unload', ()=>{
             if(sessionStorage.getItem('checkboxes')){
                 // this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {secure: true, 'max-age': 3600 })
-                this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {'max-age': 3600 })
+                this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {'max-age': 600 })
             }
         })
 
@@ -53,7 +62,8 @@ class CheckboxVisible {
         const arr = [];
 
         this.#checkboxes.forEach(elem => {
-            if(getDataFromCookie.includes(elem.dataset.id))
+            // if(getDataFromCookie.includes(elem.dataset.id))
+            if(elem.checked)
 
                 arr.push(elem.closest('ul'));
         });
@@ -83,16 +93,17 @@ class CheckboxVisible {
             elem.addEventListener('click', (e)=> {
                 if(e.target.checked) {
 
-                    this.#arrayCheckboxes.push(e.target.dataset.id)
+                    this.#arrayCheckboxes.push(e.target.dataset.id);
+                    this.#arrayCheckboxes = [... new Set(this.#arrayCheckboxes)];
+                    document.querySelector(`.full_category #page-1`).click();
                     this.setListCheckboxes();
                 } else {
-
+                    document.querySelector(`.full_category #page-1`).click();
                     this.setListCheckboxes(e.target.dataset.id);
                 }
-
-
             });
         })
+
     };
 
     setListCheckboxes(data){
@@ -136,4 +147,3 @@ class CheckboxVisible {
 
 }
 
-export default new CheckboxVisible();

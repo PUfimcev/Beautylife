@@ -7,6 +7,8 @@
 
         <meta name="description" content="Website BeautyLife">
 
+        <meta name="theme-color" content="#987B75">
+
         <title>{{ config('app.name') }}@hasSection('title'): @yield('title')@endif</title>
 
         <!-- CSRF Token -->
@@ -96,4 +98,6 @@
                 timezoneRoute = window.routes.timezone,
                 screenWidthRoute = window.routes.screenWidth;
         </script>
+
+    </body>
 </html>

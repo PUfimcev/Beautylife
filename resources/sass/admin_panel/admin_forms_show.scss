@@ -912,3 +912,191 @@
     }
 
 }
+
+// product form
+
+.admin__products__section-create{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .product__create_categories-name{
+        width: min(35%, 20rem);
+        display: flex;
+        flex-direction: column;
+
+        a{
+            display: inline-block;
+        }
+    }
+
+    form{
+        width: min(85%, 40rem);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        label{
+            font-weight: bold;
+        }
+
+        .product_top, .product_new {
+            display: flex;
+            align-items: center;
+
+            input{
+                margin-top: 0;
+                margin-left: 2rem;
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        .product__images{
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 1rem;
+            // margin: 0 auto;
+            margin: 1rem 0;
+            width: 100%;
+
+            li{
+
+                width: 30%;
+                height: 8rem;
+
+                label{
+                    width: 100%;
+                    height: 100%;
+
+                    .product__image{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        display: block;
+                        cursor: pointer;
+
+                    }
+                    .form-check-input{
+                        display: none;
+                    }
+
+                    .form-check-input:checked ~ .product__image{
+                        opacity: 0.5;
+                    }
+                }
+
+                &:last-child{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    p{
+                        text-align: center;
+                    }
+
+                    .btn__product_img_remove{
+                        width: min(60%, 10rem);
+                    }
+                }
+            }
+        }
+
+
+        .btn__product__form-create{
+            margin: 1.5rem auto;
+            width: min(60%, 10rem);
+        }
+    }
+}
+
+// product show
+
+.admin__product__section-show {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    @extend %P1-desk-description;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .btn-return{
+        margin-right: 4rem;
+    }
+
+    .product_details{
+
+        width: 80%;
+
+        .product_details_list{
+
+            li{
+                margin-bottom: 1rem;
+                .details-name{
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+
+                .details-content{
+                    display: inline-block;
+                    color: $text-accent-2;
+                }
+
+                .product__images{
+                    margin-top: 0.5rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                    // margin: 0 auto;
+                    margin: 1rem 0;
+                    width: 100%;
+
+                    li{
+                        width: 30%;
+
+                        .product__image{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            display: block;
+                        }
+                    }
+
+
+
+                }
+            }
+
+
+        }
+    }
+
+    form{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .btn{
+            display: inline-block;
+            width: min(60%,10rem);
+        }
+
+    }
+
+}

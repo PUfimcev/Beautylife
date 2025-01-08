@@ -32,6 +32,7 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     public function redirectTo()
     {
+        request()->session()->flash('status', 'You are registered!');
         $route = (RouteServiceProvider::redirectTo());
         return $route;
     }

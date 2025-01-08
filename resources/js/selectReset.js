@@ -14,7 +14,12 @@ class ResetSelect {
 
     #resetButton(){
         this.#allSelectItems.forEach((elem) => {
-            elem.closest('div').querySelector('.select_reset-btn').addEventListener('click', (e) =>{
+
+            let button = elem.closest('div').querySelector('.select_reset-btn');
+
+            if(!button) return;
+
+            button.addEventListener('click', (e) =>{
 
                 let parent = e.currentTarget.closest('.offer__create');
                 this.#resetSelect(parent);

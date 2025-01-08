@@ -7,7 +7,7 @@
 <div class="container">
     <div class="admin__consumers__section d-flex flex-column align-items-center justify-content-start">
 
-        <h2>{{  __('Age ranges') }}</h2>
+        <h2>{{  __('Consumers') }}</h2>
 
         @if (isset($archive))
         <a class="btn btn-warning consumer__create mt-3" href="{{ route('admin.consumers.index') }}">{{ __('Active') }}</a>

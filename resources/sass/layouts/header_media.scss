@@ -55,6 +55,7 @@
 
             .dropdown_toggle{
                 color: $text-accent;
+                cursor: pointer;
 
                 .dropdown__arrow {
                     transform: rotate(180deg);

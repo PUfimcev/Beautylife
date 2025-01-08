@@ -1,15 +1,20 @@
 <div class="new_arrival__element element_{{ $i }}">
 
-    <a  class="new_arrival__elem_on_main-page new_arrival_{{ $i }}" href="{{-- route('products', $product) --}}"  title="{{-- $product->langField('title') --}}">
-        <div class="new_arrival__elem_on_main-page_top">
+    <a  class="new_arrival__elem_on_main-page new_arrival_{{ $i }}" href="{{-- route('products', $product) --}}"  title="{{ $product->langField('name') }}">
+        <div class="new_arrival__elem_on_main-page_top"
+        {{-- @if($product->productImages->count() > 0)
+        style="background-image: url({{  asset('storage/'.$product->productImages[0]->route) }});"
+        @endif --}}
+        >
 
+            <span class="product__tag">@if($product->isNew()) New @endif</span>
+            @if($product->productImages->count() > 0)
 
-            {{-- @if(isset($offer->image_route) && !empty($offer->image_route))
-                <img class="image" src="{{ asset('storage/'.$offer->image_route) }}" alt="{{ $offer->langField('title') }}">
-            @endif --}}
+                <img class="product__image" src="{{ asset('storage/'.$product->productImages[0]->route) }}" alt="{{ __('Image') }}" />
 
-            <span class="product__tag">New</span>
-            <img class="image" src="{{-- asset('storage/'.$product->image_route) --}}" alt="{{-- $product->langField('title') --}}">
+            @else
+                <span class="no_picture">{{ __('No picture') }}</span>
+            @endif
 
             <div class="product-action">
                 <span
@@ -38,13 +43,13 @@
         </div>
         <div class="new_arrival__elem_on_main-page__content">
 
-            <p class="text">Uriage Local application paste for oily and problematic skin Hyseac pate sos soin local</p>
+            <p class="text">{{ $product->langField('name') }}</p>
             <div class="price">
-                @isset($product->discount)
-                    <p class="discount-price">$ 17.00</p>
-                @endisset
+                @if($product->reduced_price > 0)
+                    <p class="discount-price">BYN {{ $product->reduced_price }}</p>
+                @endif
 
-                <p class="total-price"  @isset($product->discount) style="text-decoration-line: line-through; opacity: 0.5" @endisset>$ 25.00</p>
+                <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $product->price }}</p>
 
                 <p class="text-line"></p>
             </div>

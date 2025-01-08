@@ -27,8 +27,8 @@ class GetOffers{
         }
 
         $this->offers = $offers;
-    }
 
+    }
 
     public function getOffers()
     {

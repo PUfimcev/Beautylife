@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use App\Traits\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class SkinType extends Model
 {
@@ -38,6 +41,14 @@ class SkinType extends Model
     public function getRouteKeyName(): string
     {
         return 'code';
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function properties(): HasMany
+    {
+        return $this->hasMany(Property::class);
     }
 
     /**

@@ -7,21 +7,12 @@
 
             <nav class="navbar__line navbar__line_admin-panel">
                   <ul class="navbar__nav d-flex justify-content-evenly align-items-center">
+                      <li class="nav_item">
+                          <a href="{{ route('admin.products.index') }}" class="nav_link @routeactive('admin.products*')">{{__('Products')}}</a>
+                      </li>
                         <li class="nav_item">
                             <a href="{{ route('callbacks.index') }}" class="nav_link @routeactive('callbacks*')">{{__('Callbacks')}}</a>
                         </li>
-                        {{-- <li class="nav_item">
-                            <a href="{{ route('admin.offers.index') }}" class="nav_link @routeactive('admin.offers*')">{{__('Offers')}}</a>
-                        </li>
-                        <li class="nav_item">
-                            <a href="{{ route('admin.brands.index') }}" class="nav_link @routeactive('admin.brands*')">{{__('Brands')}}</a>
-                        </li>
-                        <li class="nav_item">
-                            <a href="{{ route('admin.blogs.index') }}" class="nav_link @routeactive('admin.blogs*')">{{__('Blogs')}}</a>
-                        </li>
-                        <li class="nav_item">
-                            <a href="{{ route('admin.messages.index') }}" class="nav_link @routeactive('admin.messages*')">{{__('Messages')}}</a>
-                        </li> --}}
                         <li class="nav_item">
                             <a href="{{ route('admin.reviews.index') }}" class="nav_link @routeactive('admin.reviews*')">{{__('Reviews')}}</a>
                         </li>

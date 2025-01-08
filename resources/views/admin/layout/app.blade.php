@@ -42,6 +42,10 @@
     <main class="main-admin">
         @yield('content')
     </main>
+
+        {{-- Routes for JS --}}
+        @stack('scripts')
+
     <script>
         window.routes = {
             'headerSearch': '{{ route('header_search') }}',

@@ -15,6 +15,7 @@
 @section('content')
 
 <section class="full_category">
+    {{-- <input type="hidden" form="category__filter-id" name="category" id="category-name" value="{{ $category->code }}"> --}}
 
     <div class="full_category-top">
 
@@ -23,9 +24,9 @@
         <div class="selection_goods">
             <span >{{ __('Sort by') }}:</span>
 
-            <div class="select_goods_wrap" method="GET" action="">
+            <div class="select_goods_wrap">
                 {{-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}"> --}}
-                <select name="select__goods" class="select__goods_top_new_all">
+                <select form="category__filter-id" name="select__goods" class="select__goods_top_new_all">
                     <option  value="all-goods">{{ __('All goods') }}</option>
                     <option  value="bestsellers">{{ __('Bestsellers') }}</option>
                     <option  value="new-arrivals">{{ __('New arrival') }}</option>
@@ -51,32 +52,31 @@
          </div>
 
         <form class="category__filter-mobile" method="GET" action="">
-                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                 <ul class="select_goods_wrap">
                     <li>
-                        <input type="radio" class="select__goods" name="selectGoods" id="select__goods-all-goods" value="all-goods"
+                        <input type="radio" class="subcategory_select-mobile" name="selectGoods" id="select__goods-all-goods" value="all-goods"
 
                         {{ request()->input('selectGoods') == 'all-goods' ? 'checked' : '' }}
                         >
                         <label class="select__goods-type" for="select__goods-all-goods">{{  __('All goods') }}</label>
                     </li>
                     <li>
-                        <input type="radio" class="select__goods" name="selectGoods" id="select__goods-bestsellers" value="bestsellers"
+                        <input type="radio" class="subcategory_select-mobile" name="selectGoods" id="select__goods-bestsellers" value="bestsellers"
 
                         {{ request()->input('selectGoods' ) == 'bestsellers' ? 'checked' : '' }}
                         >
                         <label class="select__goods-type" for="select__goods-bestsellers">{{  __('Bestsellers') }}</label>
                     </li>
                     <li>
-                        <input type="radio" class="select__goods" name="selectGoods" id="select__goods-new-arrivals" value="new-arrivals"
+                        <input type="radio" class="subcategory_select-mobile" name="selectGoods" id="select__goods-new-arrivals" value="new-arrivals"
 
                         {{ request()->input('selectGoods') == 'new-arrivals' ? 'checked' : '' }}
                         >
                         <label class="select__goods-type" for="select__goods-new-arrivals">{{ __('New arrival') }}</label>
                     </li>
                     <li>
-                        <input type="radio" class="select__goods" name="selectGoods" id="select__goods-sale-price" value="sale-price"
+                        <input type="radio" class="subcategory_select-mobile" name="selectGoods" id="select__goods-sale-price" value="sale-price"
 
                         {{ request()->input('selectGoods') == 'sale-price' ? 'checked' : '' }}
                         >
@@ -93,7 +93,7 @@
 
                             @foreach ($category->subcategories as $subcategory)
                                 <li>
-                                    <input type="checkbox" class="subcategory-check" name="subcategory{{ $loop->iteration }}" id="subcategory-mobile-{{ $loop->iteration }}"
+                                    <input type="checkbox" class="subcategory_select-mobile" name="subcategory{{ $loop->iteration }}" id="subcategory-mobile-{{ $loop->iteration }}"
 
                                     value="{{ $subcategory->name_en }}"
 
@@ -112,7 +112,7 @@
 
                             @foreach ($brands as $brand)
                                 <li>
-                                    <input type="checkbox" class="brand-check" name="brand{{ $loop->iteration }}" id="brand-mobile-{{ $loop->iteration }}"
+                                    <input type="checkbox" class="subcategory_select-mobile" name="brand{{ $loop->iteration }}" id="brand-mobile-{{ $loop->iteration }}"
 
                                     value="{{ $brand->brand_name }}"
 
@@ -127,6 +127,8 @@
                     <div class="price-mobile">
                         <div class="price__title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
 
+
+                        {{-- subcategory_select-mobile --}}
                         <div class="price__option">Something</div>
                     </div>
 
@@ -137,7 +139,7 @@
 
                             @foreach ($skintypes as $skintype)
                             <li>
-                                <input type="checkbox" class="skintype-check" name="skintype-{{ $loop->iteration }}" id="skintype-mobile-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory_select-mobile" name="skintype-{{ $loop->iteration }}" id="skintype-.admin__consumers__section-{{ $loop->iteration }}"
 
                                 value="{{ $skintype->name_en }}"
 
@@ -155,13 +157,13 @@
                         <ul class="age__types">
                             @foreach ($ageranges as $agerange)
                             <li>
-                                <input type="checkbox" class="agerange-check" name="agerange-{{ $loop->iteration }}" id="agerange_item-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory_select-mobile" name="agerange-{{ $loop->iteration }}" id="agerange_mobile-{{ $loop->iteration }}"
 
                                 value="{{ $agerange->name_en }}"
-                                data-id="agerange_item-{{ $loop->iteration }}"
+                                data-id="agerange_mobile-{{ $loop->iteration }}"
                                 {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
                                 >
-                                <label class="agerange__name" for="agerange_item-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
+                                <label class="agerange__name" for="agerange_mobile-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
                             </li>
                         @endforeach
                         </ul>
@@ -173,18 +175,21 @@
                         <ul class="objects__types">
                             @foreach ($consumers as $consumer)
                         <li>
-                            <input type="checkbox" class="consumer-check" name="consumer-{{ $loop->iteration }}" id="consumer_item-{{ $loop->iteration }}"
+                            <input type="checkbox" class="subcategory_select-mobile" name="consumer-{{ $loop->iteration }}" id="consumer_mobile-{{ $loop->iteration }}"
 
                             value="{{ $consumer->name_en }}"
-                            data-id="consumer_item-{{ $loop->iteration }}"
+                            data-id="consumer_mobile-{{ $loop->iteration }}"
                             {{-- @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en)) --}}
                             >
-                            <label class="consumer__name" for="consumer_item-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
+                            <label class="consumer__name" for="consumer_mobile-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
                         </li>
                     @endforeach
                         </ul>
                     </div>
                 </div>
+
+                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                <input type="hidden" name="category" id="category-name" value="{{ $category->code }}">
 
 
 
@@ -195,7 +200,7 @@
 
                 </div>
 
-            </form>
+        </form>
 
 
     </section>
@@ -209,10 +214,9 @@
             <div class="category__filter-top"><span>{{ Str::upper(__('Filter by')) }}:</span></div>
 
 
-            <div class="category__filter" method="GET" action="">
-                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-                <input type="hidden" name="category" id="category-name" value="{{ $category->code }}">
+            <form id="category__filter-id" class="category__filter" method="GET" action="">
 
+                {{-- <input type="submit">submit</input> --}}
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span></span><span>-</span></div>
 
@@ -220,9 +224,12 @@
 
                         @foreach ($category->subcategories as $subcategory)
                             <li>
-                                <input type="checkbox" class="subcategory-check" name="subcategory-{{ $loop->iteration }}" id="subcategory_item-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory-select" name="subcategory-{{ $loop->iteration }}" id="subcategory_item-{{ $loop->iteration }}"
+                                {{-- {{ request()->has('subcategory-'. $loop->iteration) ? 'checked' : ''}} --}}
 
-                                value="{{ $subcategory->name_en }}"
+                                @checked(old('subcategory-'. $loop->iteration, request()->input('subcategory-'. $loop->iteration) ))
+
+                                value="{{ $subcategory->code }}"
                                 data-id="subcategory_item-{{ $loop->iteration }}"
                                 >
                                 <label class="subcategory__name" for="subcategory_item-{{ $loop->iteration }}">{{ $subcategory->langField('name') }}</label>
@@ -239,7 +246,9 @@
                         @foreach ($brands as $brand)
 
                         <li>
-                            <input type="checkbox" class="brand-check" name="brand-{{ $loop->iteration }}" id="brand_item-{{ $loop->iteration }}" value="{{ $brand->brand_name }}"
+                            <input type="checkbox" class="subcategory-select" name="brand-{{ $loop->iteration }}" id="brand_item-{{ $loop->iteration }}"
+                            @checked(old('brand-'. $loop->iteration, request()->input('brand-'. $loop->iteration) ))
+                            value="{{ $brand->slug }}"
                             data-id="brand_item-{{ $loop->iteration }}">
                             <label class="brand__name" for="brand_item-{{ $loop->iteration }}">{{ $brand->brand_name }}</label>
                         </li>
@@ -259,11 +268,11 @@
                     <ul class="subcategory__names skintype">
                         @foreach ($skintypes as $skintype)
                             <li>
-                                <input type="checkbox" class="skintype-check" name="skintype-{{ $loop->iteration }}" id="skintype_item-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory-select" name="skintype-{{ $loop->iteration }}" id="skintype_item-{{ $loop->iteration }}"
 
-                                value="{{ $skintype->name_en }}"
+                                value="{{ $skintype->code }}"
                                 data-id="skintype_item-{{ $loop->iteration }}"
-                                {{-- @checked(old('skintype-{{ $loop->iteration }}', $skintype->name_en)) --}}
+                                @checked(old('skintype-'. $loop->iteration, request()->input('skintype-'. $loop->iteration) ))
                                 >
                                 <label class="skintype__name" for="skintype_item-{{ $loop->iteration }}">{{ $skintype->langField('name') }}</label>
                             </li>
@@ -276,11 +285,11 @@
                     <ul class="subcategory__names agerange">
                         @foreach ($ageranges as $agerange)
                             <li>
-                                <input type="checkbox" class="agerange-check" name="agerange-{{ $loop->iteration }}" id="agerange_item-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory-select" name="agerange-{{ $loop->iteration }}" id="agerange_item-{{ $loop->iteration }}"
 
-                                value="{{ $agerange->name_en }}"
+                                value="{{ $agerange->code }}"
                                 data-id="agerange_item-{{ $loop->iteration }}"
-                                {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
+                                @checked(old('agerange-'. $loop->iteration, request()->input('agerange-'. $loop->iteration) ))
                                 >
                                 <label class="agerange__name" for="agerange_item-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
                             </li>
@@ -294,18 +303,22 @@
                     <ul class="subcategory__names consumers">
                         @foreach ($consumers as $consumer)
                         <li>
-                            <input type="checkbox" class="consumer-check" name="consumer-{{ $loop->iteration }}" id="consumer_item-{{ $loop->iteration }}"
+                            <input type="checkbox" class="subcategory-select" name="consumer-{{ $loop->iteration }}" id="consumer_item-{{ $loop->iteration }}"
 
-                            value="{{ $consumer->name_en }}"
+                            value="{{ $consumer->code }}"
                             data-id="consumer_item-{{ $loop->iteration }}"
-                            {{-- @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en)) --}}
+                            @checked(old('consumer-'. $loop->iteration, request()->input('consumer-'. $loop->iteration) ))
                             >
                             <label class="consumer__name" for="consumer_item-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
                         </li>
                     @endforeach
                     </ul>
                 </div>
-            </div>
+
+                @csrf
+                {{-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}"> --}}
+
+            </form>
 
             <div class="reset__btn"><a href="{{ route('catalog', $category) }}">{{ __('Clear all') }}</a>
             </div>
@@ -325,8 +338,9 @@
                 @endforelse
             </div>
         </div>
-    </div>
 
+
+    </div>
 
     <div class="view-all__btn"><a href="{{ route('catalog_top_new', 'all-goods') }}">{{ __('View all') }}</a></div>
 
@@ -335,11 +349,11 @@
             <ul class="pagination__pages">
                 @foreach ($pages as $page)
                     <li>
-                        <input type="radio" class="page" name="page" id="page-{{ $loop->iteration }}"
+                        <input form="category__filter-id" type="radio" class="radio-select" name="page" id="page-{{ $loop->iteration }}"
 
                         value="{{ $page }}"
                         data-id="page-{{ $loop->iteration }}"
-                        {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
+                        @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en))
                         >
                         <label class="page__numb" for="page-{{ $loop->iteration }}">{{ $page }}</label>
                     </li>
@@ -348,7 +362,8 @@
         </div>
     @endif
 
-    {{-- @if (!isset($products) || !empty($products))
+{{--
+    @if (!isset($products) || !empty($products))
         <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
     @endif --}}
 

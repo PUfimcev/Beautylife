@@ -9,6 +9,7 @@ use App\Classes\GetBlogs;
 use Illuminate\View\View;
 use App\Classes\GetOffers;
 use App\Classes\GetReviews;
+use App\Classes\GetProducts;
 use App\Observers\OfferObserver;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -89,13 +90,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('pages.main', function(View $view) {
 
-            // $newArrivals = (new GetProducts())->newArrivals(3);
+            $newArrivals = (new GetProducts())->getNewArrivals(3);
 
             //  Выборку сделать по товарам, сортировать по дате создания latest(), и выбирать  take(3)
-            $newArrivals = ['1', '2', '3'];
-
             $view->with('newArrivals', $newArrivals);
-
         });
 
 // input bestsellers on the main page

@@ -3,6 +3,7 @@
 namespace App\Classes;
 
 // use App\Models\Product;
+use App\Models\Product;
 use Illuminate\Support\Facades\App;
 
 class GetProducts{
@@ -35,9 +36,17 @@ class GetProducts{
     //     return $this->products;
     // }
 
-    public function getNewArrivals(int $numberOffers = 0)
+    public function getNewArrivals(int $numberOffers = null)
     {
+        $newProducts = Product::query();
 
+        if($numberOffers) {
+            $newProducts = $newProducts->where('new', '1')->latest()->take($numberOffers)->get();
+        } else {
+            $newProducts = $newProducts->where('new', '1')->get();
+        }
+
+        return $newProducts;
     }
 
 

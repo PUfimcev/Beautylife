@@ -5,7 +5,6 @@ use App\Models\Offer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\Admin\ConsumerController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
@@ -14,11 +13,13 @@ use App\Http\Controllers\Person\UserController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Basket\BasketController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\Admin\AgerangeController;
 use App\Http\Controllers\Admin\CallbackController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ConsumerController;
 use App\Http\Controllers\Admin\SkinTypeController;
 use App\Http\Controllers\Person\BookmarkController;
 use App\Http\Controllers\Mail\MessageMailController;
@@ -157,6 +158,21 @@ Route::group(['middleware' =>'is_admin', 'prefix' => 'admin', 'as' => 'admin.'],
     // Route for processing subcategories
     Route::resource('categories/{category}/subcategories', SubcategoryController::class);
 
+    // Route for processing archive products
+    Route::controller(ProductController::class)->group(function(){
+        Route::group(['prefix' => 'products'], function(){
+            Route::get('archive', 'archiveIndex')->name('products_archive')->withTrashed();;
+            Route::get('archive/{product}', 'showArchive')->name('product_show')->withTrashed();
+            Route::get('archive/{product}/restore', 'restoreArchive')->name('product_restore')->withTrashed();
+            Route::delete('archive/{product}/delete', 'destroyArchive')->name('product_full_delete')->withTrashed();
+        });
+    });
+
+    // Route for processing products
+    Route::resource('products', ProductController::class);
+    Route::post('products/{product}', [ProductController::class,'destroyPictures'])->name('product_pictures');
+    Route::get('products/category/{category?}/create', [ProductController::class,'create'])->name('products_create');
+
 
     // Route for processing archive subcategory skin type
     Route::controller(SkinTypeController::class)->group(function(){
@@ -235,7 +251,7 @@ Route::controller(MainController::class)->group(function() {
 // Route for creating reviews
 Route::get('reviews-create', [ReviewController::class, 'create'])->name('reviews.create');
 
-// Route for button in Header 'Reqest a call'
+// Route for button in Header 'Request a call'
 Route::resource('admin/callbacks', CallbackController::class);
 
 //  Route for subscription for Site in footer

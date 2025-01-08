@@ -37,7 +37,7 @@
 
                 @forelse ($newArrivals as $newArrival)
 
-                    @include('pages.elements.new_arrival_on_main_page', ['new_arrival' => $newArrival, 'i' => $loop->iteration])
+                    @include('pages.elements.new_arrival_on_main_page', ['product' => $newArrival, 'i' => $loop->iteration])
                 @empty
                     <p class="no__new_arrival">{{ __('There are no new arrivals') }}</p>
                 @endforelse

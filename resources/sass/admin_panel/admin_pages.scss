@@ -484,6 +484,80 @@
 
 }
 
+// Admin panel - product sheet
+
+.admin__products__section{
+    padding: 2rem 0;
+
+    .search-elem{
+
+        input:focus{
+            box-shadow: none;
+
+        }
+    }
+    .product__create{
+        width: 30% !important;
+    }
+
+    .table__products{
+        width: 95%;
+        margin: 2rem auto;
+        margin-top: 1rem;
+
+        tr{
+            width: 100%;
+
+            th{
+                vertical-align: text-top;
+            }
+
+            td{
+
+                width: 10% !important;
+            }
+
+            td:nth-child(2){
+                width: 15% !important;
+            }
+
+            td:last-child{
+                width: 15% !important;
+                .btn{
+                    width: 100%;
+                    display:inline-block;
+                    padding: 0.3rem 0.6rem;
+                }
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            .btn{
+                display:inline-block;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        .no__products{
+
+            @extend %P1-desk-description;
+            .no__products_projects{
+                width: 100%;
+                text-align: center;
+                height: 5rem !important;
+                color: #ff0000;
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+}
+
 // Admin panel - skintype sheet
 
 .admin__skintypes__section{

@@ -268,7 +268,7 @@
             display:inline-block;
             font-family: $font-family-Mostly-Bright;
             font-size: 1.75rem;
-            margin: 0 auto 3rem auto;
+            margin: auto;
         }
     }
 
@@ -328,12 +328,30 @@
                 width: 100%;
                 height: 100%;
 
+
                 .new_arrival__elem_on_main-page_top{
                     width: 100%;
                     height: min(50vh, 25.5rem);
                     background-color: #fff;
                     position: relative;
                     border: 1.5px solid #fff;
+
+                    @extend %icons-settings;
+                    background-size: cover;
+
+                    .product__image{
+                        width: 80%;
+                        // height: 80%;
+                        object-fit: contain;
+                        aspect-ratio: 4/3;
+                        display: block;
+                        margin: auto;
+                        position: absolute;
+                        display: block;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
 
                     .product__tag{
                         display: block;
@@ -345,6 +363,7 @@
                         margin-top: 1.25rem;
                         margin-left: 1.25rem;
                         z-index: 2;
+                        filter: invert(1);
                     }
 
                     .product-action{
@@ -369,6 +388,16 @@
                             background-image: url('../images/product_bag_button.png');
                             @extend %icons-settings;
                         }
+                    }
+
+                    .no_picture{
+                        position: absolute;
+                        display: block;
+                        align-content: center;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
                     }
                 }
 
@@ -432,7 +461,7 @@
             display:inline-block;
             font-family: $font-family-Mostly-Bright;
             font-size: 1.75rem;
-            margin: 0 auto 3rem auto;
+            margin: auto;
         }
     }
     .get__all__new_arrivals-mobile{
