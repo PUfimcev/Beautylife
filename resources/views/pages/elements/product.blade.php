@@ -1,13 +1,25 @@
 <div class="product__element element_{{ $i }}">
 
-    <a  class="product_{{ $i }}" href="{{-- route('products', $product) --}}"  title="{{-- $product->langField('title') --}}">
+    <a  class="product_{{ $i }}" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product]) }}">
         <div class="product_top">
 
-            <span class="product__tag">Top</span>
+            <div class="product__tag">
+                @if ($product->isNew())<span>New</span>@endif
+                @if ($product->isTop())<span>Top</span>@endif
+                @if ($product->isSale())<span>Sale</span>@endif
+            </div>
+
+
 
             <div class="product__evaluation"><span class="star"></span><span>5.0{{-- $review->evaluation --}}</span></div>
 
-            <img class="image" src="{{-- asset('storage/'.$product->image_route) --}}" alt="{{-- $product->langField('title') --}}">
+            @if($product->productImages->count() > 0)
+
+                <img class="product__image" src="{{ asset('storage/'.$product->productImages[0]->route) }}" alt="{{ __('Image') }}" />
+
+            @else
+                <span class="no_picture">{{ __('No picture') }}</span>
+            @endif
 
             <div class="product-action">
                 <span
@@ -36,13 +48,13 @@
         </div>
         <div class="product__content">
 
-            <p class="text">Uriage Local application paste for oily and problematic skin Hyseac pate sos soin local</p>
+            <p class="text">{{ $product->langField('name') }}</p>
             <div class="price">
-                @isset($product->discount)
-                    <p class="discount-price">$ 17.00</p>
-                @endisset
+                @if($product->reduced_price > 0)
+                    <p class="discount-price">BYN {{ $product->reduced_price }}</p>
+                @endif
 
-                <p class="total-price"  @isset($product->discount) style="text-decoration-line: line-through; opacity: 0.5" @endisset>$ 25.00</p>
+                <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $product->price }}</p>
 
                 <p class="text-line"></p>
             </div>

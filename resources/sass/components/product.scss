@@ -29,17 +29,49 @@
                 position: relative;
                 border: 1.5px solid #fff;
 
-                .product__tag{
+                .product__image{
+                    width: 90%;
+                    // height: 80%;
+                    object-fit: cover;
+                    aspect-ratio: 4/3;
                     display: block;
+                    margin: auto;
+                    position: absolute;
+                    display: block;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                .no_picture{
+                    position: absolute;
+                    display: block;
+                    align-content: center;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                }
+
+                .product__tag {
+                    display: flex;
+                    // height: 20%;
+                    flex-direction: column;
                     position: absolute;
                     text-transform: uppercase;
                     transform: rotate(-90deg);
-                    top: 0.5rem;
-                    left: 0;
+                    top: 0rem;
                     margin-top: 1.25rem;
                     margin-left: 1.25rem;
+                    left: 0px;
                     z-index: 2;
+                    text-shadow: 1px 1px 1px #fff,
+                    -1px -1px 1px #fff,
+                    1px -1px 1px #fff,
+                    -1px 1px 1px #fff;
                 }
+
+
                 .product__evaluation{
                     position: absolute;
                     z-index: 2;
@@ -93,7 +125,7 @@
                         margin: 0;
                     }
                     .total-price, .discount-price{
-                        width: 30%;
+                        // width: 30%;
                         span{
                             display: inline-block;
                         }
@@ -102,7 +134,7 @@
                         color: $text-accent-2;
                     }
                     .text-line{
-                        width: 40%;
+                        width: 20%;
                         border-top: 1.5px solid $text-accent;
                         padding-bottom: 0.5rem;
                     }

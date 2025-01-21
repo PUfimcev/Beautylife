@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Consumer;
 use App\Models\SkinType;
 
-abstract class CategoryFilter
+class CategoryFilter
 {
     // protected $query;
     // protected $request;

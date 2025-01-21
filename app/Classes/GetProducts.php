@@ -5,45 +5,17 @@ namespace App\Classes;
 // use App\Models\Product;
 use App\Models\Product;
 use Illuminate\Support\Facades\App;
+use App\Classes\MainAbstractProductFilter;
 
-class GetProducts{
-
-    private $productsQuery;
-
-    public function __construct(int $numberOffers = 0)
-    {
-
-        // $this->productsQuery = Product::query();
-
-        // if($numberOffers > 0){
-        //     $offersQuery->take($numberOffers);
-        //     $offers = $offersQuery->orderBy('updated_at','desc')->get();
-        // } else {
-
-        //     if($arch == 'archive'){
-        //         $offersQuery->onlyTrashed();
-        //     }
-
-        //     $offers = $offersQuery->orderBy('updated_at','desc')->paginate(6);
-        // }
-
-        // $this->offers = $offers;
-    }
-
-
-    // public function getProducts()
-    // {
-    //     return $this->products;
-    // }
+class GetProducts extends MainAbstractProductFilter
+{
 
     public function getNewArrivals(int $numberOffers = null)
     {
-        $newProducts = Product::query();
-
         if($numberOffers) {
-            $newProducts = $newProducts->where('new', '1')->latest()->take($numberOffers)->get();
+            $newProducts =  $this->productBuilder->where('new', '1')->latest()->take($numberOffers)->get();
         } else {
-            $newProducts = $newProducts->where('new', '1')->get();
+            $newProducts =  $this->productBuilder->where('new', '1')->get();
         }
 
         return $newProducts;
@@ -52,33 +24,36 @@ class GetProducts{
 
     public function getBestsellers(int $numberOffers = 0)
     {
+        if($numberOffers) {
+            $topProducts =  $this->productBuilder->where('top', '1')->latest()->take($numberOffers)->get();
+        } else {
+            $topProducts =  $this->productBuilder->where('top', '1')->get();
+        }
 
+        return $topProducts;
     }
 
 
-    // process code to swap slug/slug_en route in page offer depending on locale (en or ru) & by toggling lang link and get appropriate related data
+    public function getResult($searchQuery)
+    {
+        if(!$searchQuery) return [];
 
-    // public static function getLocaleOffer()
-    // {
-    //     $arr = explode('/', url()->previous());
+        if(session('locale') == 'en'){
+            $nameColumn = 'name_en';
+            $slug = 'products.slug_en';
+            $name = 'products.name_en';
+            $about = 'product_descriptions.about_en';
+        } elseif (session('locale') == 'ru'){
+            $nameColumn = 'name';
+            $slug = 'products.slug';
+            $name = 'products.name';
+            $about = 'product_descriptions.about';
+        }
 
-    //     if(!in_array('offers', $arr)) return;
-
-    //     $urlOfferKey = array_search('offers', $arr);
-    //     $urlPreviuosLastKey = array_key_last($arr);
-
-    //     if($urlOfferKey == $urlPreviuosLastKey) return;
-
-    //     $route = $arr[$urlPreviuosLastKey];
+        $searchQuery = $this->productBuilder->join('product_descriptions', 'products.id', '=', 'product_descriptions.product_id')->select('products.id', $slug, $name, 'products.price', 'products.reduced_price', $about)->where($nameColumn , 'like',"%$searchQuery%")->get();
 
 
-    //     if(App::getLocale() == 'ru'){
-    //         $getOffer = Offer::withTrashed()->where('slug', $route )->first();
-    //     } elseif (App::getLocale() == 'en'){
-    //         $getOffer = Offer::withTrashed()->where('slug_en', $route )->first();
-    //     }
+        return (isset($products) && !empty($products)) ? $searchQuery : [];
+    }
 
-    //     return $getOffer;
-
-    // }
 }

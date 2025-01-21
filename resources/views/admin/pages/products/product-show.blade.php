@@ -68,22 +68,20 @@
                 <li><span class="details-name">Product subcategory in English: </span><span class="details-content">{{ empty($product->getSubCategory()->name_en) ?   __('No')  : $product->getSubCategory()->name_en }}</span></li>
 
 
-                <li><span class="details-name">Бренд товара: </span><span class="details-content">{{ empty($product->getBrand()->name) ?   __('No')  : $product->getBrand()->name }}</span></li>
+                <li><span class="details-name">Бренд товара: </span><span class="details-content">{{ empty($product->getBrand()->brand_name) ?   __('No')  : $product->getBrand()->brand_name }}</span></li>
 
-                <li><span class="details-name">Product brand in English: </span><span class="details-content">{{ empty($product->getBrand()->name_en) ?   __('No')  : $product->getBrand()->name_en }}</span></li>
+                <li><span class="details-name">Для типа кожи: </span><span class="details-content">{{ empty($product->getSkinType()->name) ?   __('No')  : $product->getSkinType()->name }}</span></li>
 
-                <li><span class="details-name">Для типа кожи: </span><span class="details-content">{{ empty($product->GetSkinType()->name) ?   __('No')  : $product->GetSkinType()->name }}</span></li>
+                <li><span class="details-name">Product skin type in English: </span><span class="details-content">{{ empty($product->getSkinType()->name_en) ?   __('No')  : $product->getSkinType()->name_en }}</span></li>
 
-                <li><span class="details-name">Product skin type in English: </span><span class="details-content">{{ empty($product->GetSkinType()->name_en) ?   __('No')  : $product->GetSkinType()->name_en }}</span></li>
+                <li><span class="details-name">Для какого возраста: </span><span class="details-content">{{ empty($product->getAgerangeType()->name) ?   __('No')  : $product->getAgerangeType()->name }}</span></li>
 
-                <li><span class="details-name">Для какого возраста: </span><span class="details-content">{{ empty($product->GetAgerangeType()->name) ?   __('No')  : $product->GetAgerangeType()->name }}</span></li>
-
-                <li><span class="details-name">Product age range in English: </span><span class="details-content">{{ empty($product->GetAgerangeType()->name_en) ?   __('No')  : $product->GetAgerangeType()->name_en }}</span></li>
+                <li><span class="details-name">Product age range in English: </span><span class="details-content">{{ empty($product->getAgerangeType()->name_en) ?   __('No')  : $product->getAgerangeType()->name_en }}</span></li>
 
 
-                <li><span class="details-name">Потребители товара: </span><span class="details-content">{{ empty($product->GetConsumer()->name) ?   __('No')  : $product->GetConsumer()->name }}</span></li>
+                <li><span class="details-name">Потребители товара: </span><span class="details-content">{{ empty($product->getConsumer()->name) ?   __('No')  : $product->getConsumer()->name }}</span></li>
 
-                <li><span class="details-name">Product consumer in English: </span><span class="details-content">{{ empty($product->GetConsumer()->name_en) ?   __('No')  : $product->GetConsumer()->name_en }}</span></li>
+                <li><span class="details-name">Product consumer in English: </span><span class="details-content">{{ empty($product->getConsumer()->name_en) ?   __('No')  : $product->getConsumer()->name_en }}</span></li>
 `
 
                 <li><span class="details-name">{{ __('Product pictures') }}: </span><span class="details-content">

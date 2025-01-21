@@ -47,7 +47,7 @@ class Property extends Model
     */
     public function subcategory(): BelongsTo
     {
-        return $this->belongsTo(Subcategory::class, Property::class);
+        return $this->belongsTo(Subcategory::class);
     }
 
     /**
@@ -55,28 +55,28 @@ class Property extends Model
     */
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(Brand::class, Property::class);
+        return $this->belongsTo(Brand::class);
     }
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
     public function skinType(): BelongsTo
     {
-        return $this->belongsTo(SkinType::class, Property::class);
+        return $this->belongsTo(SkinType::class);
     }
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
     public function agerange(): BelongsTo
     {
-        return $this->belongsTo(Agerange::class, Property::class);
+        return $this->belongsTo(Agerange::class);
     }
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
     public function consumer(): BelongsTo
     {
-        return $this->belongsTo(Consumer::class, Property::class);
+        return $this->belongsTo(Consumer::class);
     }
 
 

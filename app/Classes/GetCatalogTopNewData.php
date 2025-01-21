@@ -3,67 +3,45 @@
 namespace App\Classes;
 
 use App\Models\Category;
+use App\Classes\MainAbstractProductFilter;
 
 
-class GetCatalogTopNewData{
+class GetCatalogTopNewData extends MainAbstractProductFilter
+{
 
-    // private $data = [];
+    /**
+    * @param mixed $query
+    * @return ((int[]|unset)|(int|unset)|(string|unset)|\Illuminate\Database\Eloquent\Collection<int, \App\Models\Category>)[
+    */
 
-    public function __construct($query)
+    public function getCatalogTopNewData($query)
     {
 
-        $this->getCatalogTopNewData($query);
+        $products = $this->getProducts($query)->orderBy('created_at', 'desc');
+
+        return $products;
     }
 
 
-    public static function getCatalogTopNewData($query)
+    public function getProducts($query)
     {
         if($query == 'bestsellers') {
-            $goods = [1, 2, 3, 4, 5, 6];
-            $count = count($goods);
-            $title = 'Bestsellers';
-            $tag = 'Top';
+            $goods = $this->productBuilder->where('top', 1);
         }
 
         if($query == 'new-arrivals')  {
-            $goods = [1, 2, 3, 4, 5, 6];
-            $count = count($goods);
-            $title = 'New arrival';
-            $tag = 'New';
+            $goods = $this->productBuilder->where('new', 1);
         }
 
         if($query == 'all-goods')  {
-            $goods = [];
-            $count = count($goods);
-            $title = 'All goods';
+            $goods = $this->productBuilder;
         }
 
         if($query == 'sale-price')  {
-            $goods = [1, 2, 3, 4];
-            $count = count($goods);
-            $title = 'Sale price';
+            $goods = $this->productBuilder->where('reduced_price', '>', 0);
         }
 
-        if(session('locale') == 'en'){
-            $categories = Category::all()->sortBy('name_en');
-        } else if(session('locale') == 'ru'){
-            $categories = Category::all()->sortBy('name');
-        } else {
-            $categories = Category::all()->sortBy('name');
-        }
-
-        return array(
-            $goods,
-            $count,
-            $title,
-            $categories,
-        );
+        return $goods;
 
     }
-
-
-//     public static function getCatalogTopNewData()
-//     {
-//         return $this->blogs;
-//     }
 }

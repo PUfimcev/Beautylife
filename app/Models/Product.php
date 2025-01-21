@@ -164,15 +164,15 @@ class Product extends Model
     }
 
 
-    public function scopeGetCategory($query, $id)
+    public function scopeGetCategory($query)
     {
 
-        $category = Product::withTrashed()->findOrFail($id)->property->category;
+        $category = Product::withTrashed()->findOrFail($this->id)->property->category;
 
         return $category;
     }
 
-    public function scopeGetSubCategory($query)
+    public function scopeGetSubcategory($query)
     {
         $subcategory = Product::withTrashed()->findOrFail($this->id)->property->subcategory;
 
@@ -188,28 +188,28 @@ class Product extends Model
 
     public function scopeGetBrand($query)
     {
-        $category = Product::withTrashed()->findOrFail($this->id)->property->brand;
+        $brand = Product::withTrashed()->findOrFail($this->id)->property->brand;
 
-        return $category;
+        return $brand;
     }
     public function scopeGetSkinType($query)
     {
-        $category = Product::withTrashed()->findOrFail($this->id)->property->skinType;
+        $skinType = Product::withTrashed()->findOrFail($this->id)->property->skinType;
 
-        return $category;
+        return $skinType;
     }
     public function scopeGetAgerangeType($query)
     {
-        $category = Product::withTrashed()->findOrFail($this->id)->property->agerangeType;
+        $agerangeType = Product::withTrashed()->findOrFail($this->id)->property->agerange;
 
-        return $category;
+        return $agerangeType;
     }
 
     public function scopeGetConsumer($query)
     {
-        $category = Product::withTrashed()->findOrFail($this->id)->property->consumer;
+        $consumer = Product::withTrashed()->findOrFail($this->id)->property->consumer;
 
-        return $category;
+        return $consumer;
     }
 
     public function scopeGetPicture($query, $id)

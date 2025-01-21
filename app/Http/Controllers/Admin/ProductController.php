@@ -10,11 +10,12 @@ use App\Models\Consumer;
 use App\Models\Property;
 use App\Models\SkinType;
 use App\Models\Subcategory;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Traits\Transliteratable;
 use App\Models\ProductDescription;
 use App\Http\Controllers\Controller;
-use App\Models\ProductImage;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -86,7 +87,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $productsTableParams = $request->only('slug', 'slug_en', 'code', 'name', 'name_en', 'price', 'reduced_price', 'amount', 'new', 'top');
 
@@ -135,7 +136,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-
         return view('admin.pages.products.product-show', compact('product'));
     }
 
@@ -155,9 +155,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        // dd($request->all());
         $productsTableParams = $request->only('slug', 'slug_en', 'code', 'name', 'name_en', 'price', 'reduced_price', 'amount', 'new', 'top');
 
         $productsTableParams['new'] = $request->input('new') ?? null;

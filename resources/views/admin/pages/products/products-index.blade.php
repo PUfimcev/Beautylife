@@ -31,7 +31,7 @@
 
                 @endif
 
-                <input type="text" class="form-control" name="findData" placeholder="{{ __('Find product') }}" aria-describedby="button-addon2">
+                <input type="text" class="form-control" name="findData" placeholder="{{ __('Find product') }}" aria-describedby="button-addon2" value="{{ request()->has('findData') ? request()->input('findData') : null }}">
                 <button class="btn btn-outline-secondary border-0" type="submit" id="button-addon2">{{ __('Find') }}</button>
             </div>
             @csrf

@@ -30,7 +30,7 @@
                 >
                     <option @selected(old('select__goods_top_new_all', 'All goods') == (($title == 'All goods') ?  'All goods' : '')) value="all-goods">{{ __('All goods') }}</option>
                     <option @selected(old('select__goods_top_new_all', 'Bestsellers') == (($title == 'Bestsellers') ?  'Bestsellers' : ''))  value="bestsellers">{{ __('Bestsellers') }}</option>
-                    <option @selected(old('select__goods_top_new_all', 'New arrival') == (($title == 'New arrival') ?  'New arrival' : '')) value="new-arrivals">{{ __('New arrival') }}</option>
+                    <option @selected(old('select__goods_top_new_all', 'New arrivals') == (($title == 'New arrivals') ?  'New arrivals' : '')) value="new-arrivals">{{ __('New arrivals') }}</option>
                     <option @selected(old('select__goods_top_new_all', 'Sale price') == (($title == 'Sale price') ?  'Sale price' : '')) value="sale-price">{{ __('Sale price') }}</option>
                 </select>
                 <span class="select-arrow"></span>
@@ -62,12 +62,18 @@
             <div class="goods_top_new_all-quantity"><span>{{ __('Items') }}: {{ $count }}</span></div>
 
             <div class="product__elements">
-                @forelse ($goods as $good)
+                @if (!isset($products))
 
-                    @include('pages.elements.product', ['product' => $good, 'i' => $loop->iteration, 'whatForProduct' => $title])
-                @empty
-                    <p class="no__goods">{{ __('There are no goods') }}</p>
-                @endforelse
+                    <div class="searching__box_result">Loading</div>
+                @else
+
+                    @forelse ($products as $product)
+
+                        @include('pages.elements.product', ['product' => $product, 'i' => $loop->iteration, 'whatForProduct' => $title])
+                    @empty
+                        <p class="no__goods">{{ __('There are no goods') }}</p>
+                    @endforelse
+                @endif
             </div>
 
 
@@ -75,12 +81,9 @@
 
     </div>
 
-    @if (!isset($goods) || !empty($goods))
-    {{-- <div class="pagination">{{ $goods->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div> --}}
+    @if (isset($products) && !empty($products))
+    <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
     @endif
-
-    <div class="pagination">1 2 3 4 5 6 </div>
-
 
     @push('scripts')
 

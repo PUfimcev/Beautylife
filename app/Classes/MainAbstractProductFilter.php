@@ -9,18 +9,21 @@ abstract class MainAbstractProductFilter
 
 
     private $productsRequest;
-    private $productBuilder;
+    public $productBuilder;
 
-    public function __construct($query)
+    public function __construct($builder, $query)
     {
         if(isset($query))  $this->productsRequest = $query;
 
-        $this->productBuilder = Product::query();
+        $this->productBuilder = $builder;
+
+        // Product::with(['productDescription', 'productImages', 'property.category', 'property.subcategory', 'property.brand', 'property.skinType', 'property.agerange', 'property.consumer']);
     }
 
     public function apply()
     {
-        foreach($this->productBuilder() as $fieldname => $value) {
+
+        foreach($this->productFilter() as $fieldname => $value) {
             if(method_exists($this, $fieldname)) {
                 $this->$fieldname($value);
             }
@@ -31,9 +34,10 @@ abstract class MainAbstractProductFilter
     }
 
 
-    public function productBuilder()
+    public function productFilter()
     {
-        return $this->productsRequest->all();
+
+        return $this->productsRequest;
     }
 
 }

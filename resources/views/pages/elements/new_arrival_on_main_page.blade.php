@@ -1,13 +1,14 @@
 <div class="new_arrival__element element_{{ $i }}">
 
-    <a  class="new_arrival__elem_on_main-page new_arrival_{{ $i }}" href="{{-- route('products', $product) --}}"  title="{{ $product->langField('name') }}">
-        <div class="new_arrival__elem_on_main-page_top"
-        {{-- @if($product->productImages->count() > 0)
-        style="background-image: url({{  asset('storage/'.$product->productImages[0]->route) }});"
-        @endif --}}
-        >
+    <a  class="new_arrival__elem_on_main-page new_arrival_{{ $i }}" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product]) }}"  title="{{ $product->langField('name') }}">
 
-            <span class="product__tag">@if($product->isNew()) New @endif</span>
+        <div class="new_arrival__elem_on_main-page_top" >
+
+            <span class="product__tag">
+                @if ($product->isNew())<span>New</span>@endif
+                @if ($product->isSale())<span>Sale</span>@endif
+            </span>
+
             @if($product->productImages->count() > 0)
 
                 <img class="product__image" src="{{ asset('storage/'.$product->productImages[0]->route) }}" alt="{{ __('Image') }}" />
@@ -28,14 +29,14 @@
                     @if (Auth::user()->isAdmin()) onclick="event.preventDefault();"
                     @else
                         onclick="event.preventDefault();
-                        // console.log(`Product added bookmarks`);
+
                         document.getElementById('add_product_bookmarks').submit();"
                     @endif
                 @endauth
                     class="send_to_bookmarks"></span>
                 <span
                     onclick="event.preventDefault();
-                        // console.log(`Product added basket`);
+
                         document.getElementById('add_product_basket').submit();"
                 class="send_to_basket"></span>
             </div>
@@ -55,7 +56,7 @@
             </div>
         </div>
     </a>
-    @if ($i == 2)
+    @if ($i == 2 && $count >= 2)
 
         <a href="{{ route('catalog_top_new', 'new-arrivals') }}" class="get__all__new_arrivals" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
 

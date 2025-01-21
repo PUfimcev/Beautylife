@@ -63,7 +63,7 @@
 
                     {{-- <button type="button" class="btn btn-light btn-secondary mb-1 select_reset-btn">{{ __('Reset') }}</button> --}}
                     <select id="product_subcategory_type" class="form-select @error('subcategory_id') is-invalid @enderror" size="1" name="subcategory_id" autofocus aria-label="{{ __('Subcategory type') }}">
-
+                        <option @disabled(true) @selected(isset($product) ? false : true)>--------</option>
                         @foreach ($subcategories = isset($product) ? $product->GetSubcategories() : $subcategories as $subcategory)
                             <option value="{{ $subcategory->id }}" @selected(isset($product) ? $product->property->subcategory_id == $subcategory->id : old('subcategory_id'))>{{ $subcategory->langField('name') }}</option>
                         @endforeach

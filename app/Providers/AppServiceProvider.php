@@ -3,13 +3,10 @@
 namespace App\Providers;
 
 // use Carbon\Traits\Date;
-use App\Models\Offer;
-use App\Models\Category;
+use App\Models\{Offer, Product, Category};
 use App\Classes\GetBlogs;
 use Illuminate\View\View;
-use App\Classes\GetOffers;
-use App\Classes\GetReviews;
-use App\Classes\GetProducts;
+use App\Classes\{GetOffers, GetReviews, GetProducts};
 use App\Observers\OfferObserver;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -90,23 +87,28 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('pages.main', function(View $view) {
 
-            $newArrivals = (new GetProducts())->getNewArrivals(3);
+
+            $query['getNewArrivals'] = 3;
+            $productQuery = Product::with(['productImages']);
+
+            $products = (new GetProducts($productQuery, $query))->apply()->get();
+
+            // $newArrivals = ()->getNewArrivals(3);
 
             //  Выборку сделать по товарам, сортировать по дате создания latest(), и выбирать  take(3)
-            $view->with('newArrivals', $newArrivals);
+            $view->with('newArrivals', $products);
         });
 
 // input bestsellers on the main page
 
         view()->composer(['pages.main', 'pages.elements.category_full'], function(View $view) {
 
-            // $bestsellers = (new GetProducts())->bestsellers(3);
+            $query['getBestsellers'] = 3;
+            $productQuery = Product::with(['productImages']);
 
-            //  Выборку сделать по товарам, сортировать по количеству заказанных в порядке desc, и выбирать  take(3)
-            $bestsellers = ['1', '2', '3'];
-            // $bestsellers = [];
+            $products = (new GetProducts($productQuery, $query))->apply()->get();
 
-            $view->with('bestsellers', $bestsellers);
+            $view->with('bestsellers', $products);
 
         });
 

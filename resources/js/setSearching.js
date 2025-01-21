@@ -6,6 +6,7 @@ class SetSearching{
 
     #searchInputData = '';
     #token;
+    #lang;
 
     #searchingPopUp;
     #searchingPopupElements;
@@ -18,16 +19,29 @@ class SetSearching{
         this.#headerSearchingSection = document.getElementById('header__searching');
         this.#headSearchInput = document.querySelectorAll('.headbar__search-input');
 
+
         // set_searching.blade.php
         this.#searchingPopUp = document.querySelector('.searching__popup');
         this.#searchingPopupElements = document.querySelector('.searching__popup_elements');
         this.#popUpSearchInput = document.querySelector('.searching__group__input');
         this.#token = document.getElementById('token');
+        this.#lang = document.getElementById('search_lang');
+
         this.#popUpRemoveIcon = document.querySelector('.searching__popup__remove-icon');
-        this.#searchResult = document.querySelector('.searching__box_result');
+        this.#searchResult = document.querySelector('.searching__box_result-list');
+
+        if(!this.#headerSearchingSection) return;
 
         this.#startSearch();
     }
+
+    #debounce(func, delay){
+        let timeout;
+        return (...arg) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(()=>{func(...arg)}, delay);
+        };
+    };
 
     #startSearch(){
         if(this.#headSearchInput.length > 0 && this.#headSearchInput !== undefined) {
@@ -89,24 +103,39 @@ class SetSearching{
         }
     }
 
+
     #getSearchedData(query){
         if(!query || query === '') return;
 
-        if(query) this.#getData(query);
+        let searchedData = query;
 
-        if(this.#searchingPopupElements) this.#searchingPopupElements.addEventListener('keyup', (event) => {
+        if(searchedData.length == 0) return;
 
-            const searchedData = event.target.value;
+        if(searchedData.length <= 1) this.#getFullSearchedData(searchedData);
 
-            if(searchedData !== '') {
-                this.#getFullSearchedData(searchedData);
+        if(this.#searchingPopupElements) this.#searchingPopupElements.addEventListener('input', this.#debounce((e) =>{
+            searchedData = e.target.value
+
+            if(searchedData == '') {
+                this.#searchResult.innerHTML = ``;
+                this.#searchResult.style = "display: none";
+                document.querySelector('.result_not_found').style.display = "block";
+
             } else {
-                this.#getFullSearchedData(null);
+                this.#searchResult.style.display = "block";
             }
-        })
+
+            if(searchedData !== '') this.#getFullSearchedData(searchedData);
+
+        }, 500));
     }
 
     #getFullSearchedData(query){
+
+        // console.log(query.length);
+        console.log(query == ' ');
+        // if(searchedData == ' ' && searchedData.length == 1) return;
+
         this.#getData(query);
     }
 
@@ -116,19 +145,23 @@ class SetSearching{
 
             const seachData = {
                 'popup_searching': query,
-                'token': this.#token.value
+                'token': this.#token.value,
+                'lang': this.#lang.value,
             }
+
 
             const response = await axios.post(headerSearch, seachData);
 
             if(response.status === 200){
                 let data = response.data;
-                let { popup_searching, token } = data;
 
-                if(popup_searching !== null) {
+
+                if(data && data.length > 0) {
                     document.querySelector('.result_not_found').style.display = "none";
                     this.#searchResult.style.display = "block";
-                    this.#searchResult.innerHTML = `${popup_searching}`;
+                    this.#searchResult.innerHTML = '';
+
+                    this.#searchResult.innerHTML = data;
                 } else {
                     this.#searchResult.innerHTML = ``;
                     this.#searchResult.style = "display: none";

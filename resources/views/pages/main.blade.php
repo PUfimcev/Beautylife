@@ -33,11 +33,16 @@
         <section class="new_arrival__main_page">
             <h2 class="new_arrival__title">{{ __('New arrival') }}</h2>
 
-            <div class="new_arrival__elements">
+            <div class="new_arrival__elements @if($newArrivals->count() < 3) less-items @endif">
 
                 @forelse ($newArrivals as $newArrival)
 
-                    @include('pages.elements.new_arrival_on_main_page', ['product' => $newArrival, 'i' => $loop->iteration])
+                    @include('pages.elements.new_arrival_on_main_page', ['product' => $newArrival, 'i' => $loop->iteration, 'count' => $newArrivals->count()])
+
+                    @if ($newArrivals->count() == 1)
+
+                        <a href="{{ route('catalog_top_new', 'new-arrivals') }}" class="get__all__new_arrivals" title="{{ __('Get all new arrivals') }}">{{ __('see more') }}</a>
+                    @endif
                 @empty
                     <p class="no__new_arrival">{{ __('There are no new arrivals') }}</p>
                 @endforelse
@@ -59,14 +64,17 @@
             <a href="{{ route('catalog_top_new', 'bestsellers') }}" class="get__all__bestsellers-mobile" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
             @endisset
 
-            <div class="bestsellers__elements">
+            <div class="bestsellers__elements @if($bestsellers->count() < 3) less-items @endif">
 
                 @forelse ($bestsellers as $bestseller)
 
-                    @include('pages.elements.bestsellers_on_main_page', ['bestseller' => $bestseller, 'i' => $loop->iteration])
+                    @include('pages.elements.bestsellers_on_main_page', ['product' => $bestseller, 'i' => $loop->iteration, 'count' => $bestsellers->count()])
                 @empty
                     <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>
                 @endforelse
+                @if($bestsellers->count() < 3)
+                    <a href="{{ route('catalog_top_new', 'bestsellers') }}" class="get__all__bestsellers" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
+                @endif
             </div>
 
         </section>

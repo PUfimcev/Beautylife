@@ -7,23 +7,32 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Offer;
 use App\Models\Review;
+use App\Models\Product;
 use App\Models\Category;
 use App\Classes\GetBlogs;
 use App\Classes\GetOffers;
 use App\Classes\GetReviews;
+use App\Models\Subcategory;
+use Illuminate\Support\Str;
 use App\Classes\GetProducts;
 use App\Classes\SearchClass;
+use App\Traits\Translatable;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewName;
 use App\Classes\CategoryFilter;
+use Illuminate\Support\Facades\DB;
 use App\Classes\RemoveSessionClass;
 use Illuminate\Support\Facades\App;
 use App\Classes\GetCatalogTopNewData;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Query\JoinClause;
 
 class MainController extends Controller
 {
 
+    use Translatable;
 
     public function main()
     {
@@ -54,15 +63,7 @@ class MainController extends Controller
 
         } else {
 
-            if(!$offer->trashed()) {
-                // $products = (new GetProducts())->getProducts();
-                $products = [];
-
-                return view('pages.elements.offer_full', compact('offer', 'products'));
-            } else {
-                return view('pages.elements.offer_full', compact('offer'));
-            }
-
+            return view('pages.elements.offer_full', compact('offer'));
         }
     }
 
@@ -82,26 +83,45 @@ class MainController extends Controller
 
             return view('pages.catalog', compact('categories'));
         } else {
-
+            // dd(request()->all());
             list($brands, $skintypes, $ageranges, $consumers, $count, $products) = CategoryFilter::getCatalogData();
 
-            return view('pages.elements.category_full', compact('category', 'products', 'brands', 'skintypes', 'ageranges', 'consumers'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);}
+            return view('pages.elements.category_full', compact('products', 'category', 'brands', 'skintypes', 'ageranges', 'consumers'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);
+        }
     }
 
     /**
      * catalogTopNew
      *
      * @param  mixed $quality
-     * @return void
+     * @return view
      */
 
     public function catalogTopNew($quality)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        list($goods, $count, $title, $categories) = GetCatalogTopNewData::getCatalogTopNewData($quality);
+        $query['getCatalogTopNewData'] = $quality;
+        $productQuery = Product::with(['productImages', 'property.category']);
 
-        return view('pages.elements.categories_goods_top_new_all', compact('categories', 'goods'))->with(['title'=> $title, 'count' => $count]);
+        $products = (new GetCatalogTopNewData($productQuery, $query))->apply()->paginate(12);
+
+        $productsCount = $products->count();
+
+        $categories = CategoryFilter::getCatalogs();
+
+        return view('pages.elements.categories_goods_top_new_all', compact('products', 'categories'))->with(['title'=> Str::ucfirst(Str::of($quality)->replace('-', ' ')), 'count' => $productsCount]);
+    }
+
+    public function getProduct(Category $category, Subcategory $subcategory, Product $product)
+    {
+        if(session('locale') == 'en'){
+
+            dd('Producr '.$product->name_en);
+        } else {
+            dd('Producr '.$product->name);
+
+        }
     }
 
     public function brands(Brand $brand = null)
@@ -122,7 +142,6 @@ class MainController extends Controller
 
             return view('pages.elements.brand_full', compact('brand', 'products'));
         }
-
     }
 
     public function conditions()
@@ -174,9 +193,46 @@ class MainController extends Controller
 
     public function getResultSearching(Request $request)
     {
-        $result = (new SearchClass($request->all()))->getResult();
 
-        return response()->json($result);
+        $query['getResult'] = $request->input('popup_searching');
+
+        $productQuery = Product::with(['productImages']);
+
+        $products = (new GetProducts($productQuery, $query))->apply()->get();
+
+
+
+        foreach($products as $product){
+
+            if(session('locale') == 'en'){
+                $name = $product->name_en;
+                $slug = $product->slug_en;
+                $about = $product->about_en;
+                $currancy = 'USD';
+            } elseif (session('locale') == 'ru'){
+                $name = $product->name;
+                $slug = $product->slug;
+                $about = $product->about;
+                $currancy = 'BYN';
+            }
+
+                $url = 'storage/'.$product->productImages[0]->route;
+
+                echo  "
+                    <li class=\"product__founded\" >
+                        <div><img class=\"product__image\" src=\"$url\" alt=\"Image\" /></div>
+                        <div class=\"product__description\">
+                            <a href=\"\" title=\"$name\">$name</a>
+                            <p>$about</p>
+                        </div>
+                        <div class=\"product__price\">
+                            <span>$currancy $product->price</span>
+                            <span>$product->reduced_price</span>
+                        </div>
+
+                    </li>
+                ";
+            }
 
     }
 

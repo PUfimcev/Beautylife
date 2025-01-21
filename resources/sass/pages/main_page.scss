@@ -297,6 +297,12 @@
         justify-content: space-between;
         align-items: flex-start;
 
+        &.less-items{
+
+            justify-content: flex-start;
+            gap: 8%;
+        }
+
         .new_arrival__element{
             height: 100%;
 
@@ -342,7 +348,7 @@
                     .product__image{
                         width: 80%;
                         // height: 80%;
-                        object-fit: contain;
+                        object-fit: cover;
                         aspect-ratio: 4/3;
                         display: block;
                         margin: auto;
@@ -353,17 +359,22 @@
                         transform: translate(-50%, -50%);
                     }
 
-                    .product__tag{
-                        display: block;
+                    .product__tag, .product__tag2{
+                        display: flex;
+                        // height: 20%;
+                        flex-direction: column;
                         position: absolute;
                         text-transform: uppercase;
                         transform: rotate(-90deg);
-                        top: 0.5rem;
-                        left: 0;
+                        top: 0rem;
                         margin-top: 1.25rem;
                         margin-left: 1.25rem;
+                        left: 0px;
                         z-index: 2;
-                        filter: invert(1);
+                        text-shadow: 1px 1px 1px #fff,
+                        -1px -1px 1px #fff,
+                        1px -1px 1px #fff,
+                        -1px 1px 1px #fff;
                     }
 
                     .product-action{
@@ -452,10 +463,8 @@
                 text-decoration: underline;
                 text-align: center;
             }
-
-
-
         }
+
 
         .no__new_arrival{
             display:inline-block;
@@ -463,6 +472,12 @@
             font-size: 1.75rem;
             margin: auto;
         }
+    }
+
+    .get__all__new_arrivals{
+        color: $text-accent;
+        text-decoration: underline;
+        text-align: center;
     }
     .get__all__new_arrivals-mobile{
 
@@ -491,6 +506,12 @@
         display: flex;
         justify-content: space-between;
         align-items:flex-start;
+
+        &.less-items{
+
+            justify-content: flex-start;
+            gap: 8%;
+        }
 
         .bestseller__element{
 
@@ -534,16 +555,39 @@
                     position: relative;
                     border: 1.5px solid #fff;
 
-                    .product__tag{
+                    @extend %icons-settings;
+                    background-size: cover;
+
+                    .product__image{
+                        width: 80%;
+                        // height: 80%;
+                        object-fit: cover;
+                        aspect-ratio: 4/3;
                         display: block;
+                        margin: auto;
+                        position: absolute;
+                        display: block;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+                    .product__tag{
+                        display: flex;
+                        // height: 20%;
+                        flex-direction: column;
                         position: absolute;
                         text-transform: uppercase;
                         transform: rotate(-90deg);
-                        top: 0.5rem;
-                        left: 0;
+                        top: 0rem;
                         margin-top: 1.25rem;
                         margin-left: 1.25rem;
+                        left: 0px;
                         z-index: 2;
+                        text-shadow: 1px 1px 1px #fff,
+                        -1px -1px 1px #fff,
+                        1px -1px 1px #fff,
+                        -1px 1px 1px #fff;
                     }
 
                     .product__evaluation{
@@ -593,6 +637,16 @@
                             background-image: url('../images/product_bag_button.png');
                             @extend %icons-settings;
                         }
+                    }
+
+                    .no_picture{
+                        position: absolute;
+                        display: block;
+                        align-content: center;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
                     }
                 }
 
@@ -663,6 +717,12 @@
             margin: 0 auto 3rem auto;
         }
         }
+    }
+
+    .get__all__bestsellers{
+        color: $text-accent;
+        text-decoration: underline;
+        text-align: center;
     }
 
     .get__all__bestsellers-mobile{

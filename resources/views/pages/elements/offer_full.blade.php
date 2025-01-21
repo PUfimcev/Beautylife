@@ -45,25 +45,6 @@
 
     </div>
 
-    @isset($products)
-        <h3>{{ __('Goods') }}</h3>
-
-        <div class="full_offer_products">
-
-
-            @forelse ($products as $product)
-                {{-- @include('pages.elements.brand', ['brand' => $brand]) --}}
-            @empty
-                <p class="no__goods">{{ __('There are no goods') }}</p>
-            @endforelse
-
-            @if (!isset($products) || !empty($products))
-                <div class="pagination">{{ $products->onEachSide(1)->links() }}</div>
-            @endif
-
-        </div>
-
-    @endisset
 </section>
 
 @endsection

@@ -236,12 +236,13 @@ Route::controller(MainController::class)->group(function() {
     Route::get('/', 'main')->name('index');
     Route::get('about-us', 'about')->name('about');
     Route::get('offers/{offer?}', 'offers')->name('offers')->withTrashed();
+    Route::get('{category}/{subcategory}/{product}', 'getProduct')->name('product');
     Route::get('catalog/{category?}', 'catalog')->name('catalog');
     Route::get('catalogs/{quality}', 'catalogTopNew')->name('catalog_top_new');
     Route::get('brands/{brand?}', 'brands')->name('brands');
     Route::get('conditions', 'conditions')->name('conditions');
     Route::get('blogs/{blog:slug?}', 'blogs')->name('blogs');
-    Route::post('searching', 'getResultSearching')->name('header_search');
+    Route::post('/searching', 'getResultSearching')->name('header_search');
     Route::post('timezone', 'getTimezone')->name('get_timezone');
     Route::get('reviews/{review:reviewer_name?}', 'getAllReviews')->name('get_all_reviews');
     Route::post('screen-width', 'getScreenWidth')->name('get_screen_width');
