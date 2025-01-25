@@ -167,14 +167,25 @@ class Product extends Model
     public function scopeGetCategory($query)
     {
 
-        $category = Product::withTrashed()->findOrFail($this->id)->property->category;
+        if(isset($this->category_id)){
+            $category = Category::withTrashed()->findOrFail($this->category_id);
+        } else {
+
+            $category = Product::withTrashed()->findOrFail($this->id)->property->category;
+        }
 
         return $category;
     }
 
     public function scopeGetSubcategory($query)
     {
-        $subcategory = Product::withTrashed()->findOrFail($this->id)->property->subcategory;
+
+        if(isset($this->subcategory_id)){
+            $subcategory = Subcategory::withTrashed()->findOrFail($this->subcategory_id);
+        } else {
+
+            $subcategory = Product::withTrashed()->findOrFail($this->id)->property->subcategory;
+        }
 
         return $subcategory;
     }

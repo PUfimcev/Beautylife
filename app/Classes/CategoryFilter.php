@@ -10,17 +10,13 @@ class CategoryFilter extends MainAbstractProductFilter
 
     public function getCatalogProducts($query)
     {
-        if(empty($query)){
 
-        }
+        // dd($this->productBuilder->get()->map->property);
+        // $products = $this->productBuilder->where('properties.category_id', $query)->get();
+        // dd($products);
+        $products = $this->productBuilder->join('properties', 'products.id', '=', 'properties.product_id')->where('category_id', $query)->get();
 
-        $products = $this->productBuilder->where('id',$query)->get()->map->properties->get()->map->product_id;
-
-        dd($products);
-        // $products = Product::find($productsID);
-// join('properties', 'categories.id', '=', 'properties.category_id')
-
-        return $productsID;
+        return $products;
     }
 
     /**

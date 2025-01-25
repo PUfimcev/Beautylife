@@ -328,9 +328,9 @@
 
             <div class="product__elements">
                 @forelse ($products as $product)
-                {{-- {{ dd($product) }} --}}
+                {{-- {{ dd($product->getCategory($product->id)) }} --}}
                 {{-- {{ dd(Product::find($product->id)->getCategory()->first()); }} --}}
-                    @include('pages.elements.product', ['product' => $product, 'i' => $loop->iteration])
+                    @include('pages.elements.product', ['product' => $product, 'category' => $category, 'i' => $loop->iteration])
                 @empty
                     <p class="no__goods">{{ __('There are no goods') }}</p>
                 @endforelse
@@ -375,7 +375,7 @@
         <div class="bestsellers__elements">
             @forelse ($bestsellers as $bestseller)
                 {{-- {{ dd(Product::find($bestseller->id)) }} --}}
-                @include('pages.elements.bestsellers_on_main_page', ['bestseller' => $bestseller, 'i' => $loop->iteration])
+                @include('pages.elements.bestsellers_on_main_page', ['bestseller' => $bestseller, 'category' => $category, 'i' => $loop->iteration])
             @empty
                 <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>
             @endforelse

@@ -85,43 +85,23 @@ class MainController extends Controller
         } else {
 
             if(!isset($request)){
-                // dd($category);
+
                 $query['getcatalogproducts'] = $category->id;
 
-                $categoryQuery = Category::with(['properties']);
+                $productQuery = Product::query();
 
-                // dd($categoryQuery);
 
-                $productsPre = (new CategoryFilter($categoryQuery, $query))->apply()->get()->map->product_id->toArray();
+                $productsPre = (new CategoryFilter($productQuery, $query))->apply();
 
-                // dd($productsPre );
-                // $products = Product::find($productsPre)->paginate(12);
-                $products = Product::find($productsPre);
-                // dd($products);
-                $productsQuantity = $products->count();
-                // dd($productsQuantity);
-                // $bestsellers = $productsPre->where('top', 1)->inRandomOrder()->limit(3)->get();
-                // dd($bestsellers);
+                $products = $productsPre->paginate(12);
+
+
+                $productsQuantity = $productsPre->count();
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
 
             }
 
-            // $query['getCatalogTopNewData'] = $quality;
-            // $productQuery = Product::with(['productImages', 'property.category']);
-
-            // $products = (new GetCatalogTopNewData($productQuery, $query))->apply()->paginate(12);
-
-            // $productsCount = $products->count();
-
-            // $categories = CategoryFilter::getCatalogs();
-
-            // return view('pages.elements.categories_goods_top_new_all', compact('products', 'categories'))->with(['title'=> Str::ucfirst(Str::of($quality)->replace('-', ' ')), 'count' => $productsCount]);
-
-            // dd(request()->all());
-            // list($brands, $skintypes, $ageranges, $consumers, $count, $products) = CategoryFilter::getCatalogData();
-
-            // return view('pages.elements.category_full', compact('products', 'category', 'brands', 'skintypes', 'ageranges', 'consumers'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);
         }
     }
 
@@ -139,9 +119,14 @@ class MainController extends Controller
         $query['getCatalogTopNewData'] = $quality;
         $productQuery = Product::with(['productImages', 'property.category']);
 
-        $products = (new GetCatalogTopNewData($productQuery, $query))->apply()->paginate(12);
+        $productsPre = (new GetCatalogTopNewData($productQuery, $query))->apply();
 
-        $productsCount = $products->count();
+        $products = $productsPre->paginate(12);
+
+        $productsCount = $productsPre->count();
+
+        // dd($productsCount);
+
 
         $categories = CategoryFilter::getCatalogs();
 
