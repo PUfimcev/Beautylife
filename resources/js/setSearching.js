@@ -132,9 +132,9 @@ class SetSearching{
 
     #getFullSearchedData(query){
 
-        // console.log(query.length);
-        console.log(query == ' ');
-        // if(searchedData == ' ' && searchedData.length == 1) return;
+        query = query.trim();
+
+        if(query.length === 0) return;
 
         this.#getData(query);
     }

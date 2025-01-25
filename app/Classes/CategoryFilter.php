@@ -2,28 +2,26 @@
 
 namespace App\Classes;
 
-use App\Models\Brand;
-use App\Models\Agerange;
-use App\Models\Category;
-use App\Models\Consumer;
-use App\Models\SkinType;
+use App\Classes\MainAbstractProductFilter;
+use App\Models\{Brand, Agerange, Category, Consumer, SkinType, Product};
 
-class CategoryFilter
+class CategoryFilter extends MainAbstractProductFilter
 {
-    // protected $query;
-    // protected $request;
 
-    /**
-     * __construct
-     *
-     * @return void
-     */
-    public function __construct()
+    public function getCatalogProducts($query)
     {
+        if(empty($query)){
 
-        $this->getCatalogData();
+        }
+
+        $products = $this->productBuilder->where('id',$query)->get()->map->properties->get()->map->product_id;
+
+        dd($products);
+        // $products = Product::find($productsID);
+// join('properties', 'categories.id', '=', 'properties.category_id')
+
+        return $productsID;
     }
-
 
     /**
      * getBrandData
@@ -111,7 +109,7 @@ class CategoryFilter
      *
      * @return void
      */
-    public static function getCatalogData()
+    public static function getCatalogOptionData()
     {
 
         $brands = self::getBrandData();
@@ -122,19 +120,11 @@ class CategoryFilter
 
         $consumers = self::getConsumersData();
 
-        $productsAll = range(1, 25, 1);
-
-        $products = array_slice($productsAll, 0, 12);
-
-        $count = count($productsAll);
-
         return array(
             $brands,
             $skintypes,
             $ageranges,
             $consumers,
-            $count,
-            $products,
         );
 
     }

@@ -45,13 +45,6 @@ class Category extends Model
         return 'code';
     }
 
-    /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-    */
-    public function products(): HasManyThrough
-    {
-        return $this->hasManyThrough(Product::class, Property::class);
-    }
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany

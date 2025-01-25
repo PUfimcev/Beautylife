@@ -93,8 +93,6 @@ class AppServiceProvider extends ServiceProvider
 
             $products = (new GetProducts($productQuery, $query))->apply()->get();
 
-            // $newArrivals = ()->getNewArrivals(3);
-
             //  Выборку сделать по товарам, сортировать по дате создания latest(), и выбирать  take(3)
             $view->with('newArrivals', $products);
         });
@@ -104,6 +102,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['pages.main', 'pages.elements.category_full'], function(View $view) {
 
             $query['getBestsellers'] = 3;
+
             $productQuery = Product::with(['productImages']);
 
             $products = (new GetProducts($productQuery, $query))->apply()->get();

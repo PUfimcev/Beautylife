@@ -18,7 +18,6 @@ class SelectVisible extends CheckboxVisible {
 
         this.#selectItems.addEventListener('change', (e)=>{
 
-            // console.log(e.target.value);
             if(e.target.value) this.setCookie('selectedGoods', e.target.value, {'max-age': 84600 });
         });
     }
@@ -28,10 +27,7 @@ class SelectVisible extends CheckboxVisible {
             this.#selectItems.value = 'all-goods';
         }
 
-        const getDataFromCookie = this.getCookie('selectedGoods');
-        if(!getDataFromCookie) return;
-
-        this.#selectItems.value = getDataFromCookie;
+        this.#selectItems.value = this.getCookie('selectedGoods');
 
     }
 

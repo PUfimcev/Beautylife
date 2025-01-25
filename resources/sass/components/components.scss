@@ -130,6 +130,10 @@
 
 #header__searching{
     display: none;
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
 
     .searching__popup{
         position: fixed;
@@ -149,6 +153,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            overflow: hidden;
 
             #searching__popup_elements{
                 border-bottom: 1px solid $text-accent;
@@ -195,11 +200,113 @@
                 height: 80%;
                 position: relative;
                 padding: 1.2rem;
+                overflow-y: scroll;
+                padding-bottom: 1rem;
 
                 .searching__box_result{
 
                     @extend %P1-desk-description;
+                    width: 100%;
+
+                    .searching__box_result-list{
+                        width: 100%;
+                        padding-left: 0;
+
+                        .product__founded{
+                            width: 100%;
+                            height: 10rem;
+                            padding: 1rem 0.5rem;
+
+                            a{
+                                display: block !important;
+                                width: 100%;
+                                height: 100%;
+                                padding: 0;
+                                div{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    gap: 2%;
+                                    width: 100%;
+                                    height: 100%;
+                                    color: $text-accent;
+
+                                    .product__image{
+                                        width: 15%;
+                                        height: 100%;
+
+                                        img{
+                                            width: 100%;
+                                            height: 100%;
+                                            object-fit: cover;
+                                        }
+                                    }
+
+                                    .product__description{
+
+                                        width: 60%;
+                                        height: 100%;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: flex-start;
+                                        align-items: flex-start;
+                                        gap: 0.5rem;
+
+                                        a{
+                                            color: $text-accent;
+                                            height: 30%;
+
+                                        }
+
+                                        p{
+                                            color: $text-accent;
+                                            height: 60%;
+                                            text-wrap: balance;
+                                            padding: 0.5rem;
+                                        }
+                                    }
+
+                                    .product__price {
+                                        width: 18%;
+                                        align-items: center;
+                                        justify-content: flex-end;
+                                        padding-right: 1rem;
+                                        gap: 0.5rem;
+
+                                        span{
+                                            @extend %P2-desk-description;
+                                            color: $text-accent !important;
+                                            display: inline-block;
+
+                                        }
+
+                                        .crossedPrice{
+                                            text-decoration: line-through;
+                                        }
+
+                                    }
+
+                                    .product__availability{
+                                        width: 18%;
+                                        align-items: center;
+                                        justify-content: flex-end;
+                                        padding-right: 1rem;
+
+                                        span{
+                                            @extend %P2-desk-description;
+                                            color: $text-accent !important;
+                                            display: inline-block;
+
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
                 }
+
                 .result_not_found{
                     display: none;
                     position: absolute;

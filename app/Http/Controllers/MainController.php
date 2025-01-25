@@ -77,16 +77,51 @@ class MainController extends Controller
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        if(!isset($category)) {
+        if(!isset($category) && !isset($request)) {
 
             $categories = CategoryFilter::getCatalogs();
 
             return view('pages.catalog', compact('categories'));
         } else {
-            // dd(request()->all());
-            list($brands, $skintypes, $ageranges, $consumers, $count, $products) = CategoryFilter::getCatalogData();
 
-            return view('pages.elements.category_full', compact('products', 'category', 'brands', 'skintypes', 'ageranges', 'consumers'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);
+            if(!isset($request)){
+                // dd($category);
+                $query['getcatalogproducts'] = $category->id;
+
+                $categoryQuery = Category::with(['properties']);
+
+                // dd($categoryQuery);
+
+                $productsPre = (new CategoryFilter($categoryQuery, $query))->apply()->get()->map->product_id->toArray();
+
+                // dd($productsPre );
+                // $products = Product::find($productsPre)->paginate(12);
+                $products = Product::find($productsPre);
+                // dd($products);
+                $productsQuantity = $products->count();
+                // dd($productsQuantity);
+                // $bestsellers = $productsPre->where('top', 1)->inRandomOrder()->limit(3)->get();
+                // dd($bestsellers);
+
+                return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
+
+            }
+
+            // $query['getCatalogTopNewData'] = $quality;
+            // $productQuery = Product::with(['productImages', 'property.category']);
+
+            // $products = (new GetCatalogTopNewData($productQuery, $query))->apply()->paginate(12);
+
+            // $productsCount = $products->count();
+
+            // $categories = CategoryFilter::getCatalogs();
+
+            // return view('pages.elements.categories_goods_top_new_all', compact('products', 'categories'))->with(['title'=> Str::ucfirst(Str::of($quality)->replace('-', ' ')), 'count' => $productsCount]);
+
+            // dd(request()->all());
+            // list($brands, $skintypes, $ageranges, $consumers, $count, $products) = CategoryFilter::getCatalogData();
+
+            // return view('pages.elements.category_full', compact('products', 'category', 'brands', 'skintypes', 'ageranges', 'consumers'))->with(['count' => $count, 'pages' => range(1, ceil($count/12), 1)]);
         }
     }
 
@@ -199,40 +234,6 @@ class MainController extends Controller
         $productQuery = Product::with(['productImages']);
 
         $products = (new GetProducts($productQuery, $query))->apply()->get();
-
-
-
-        foreach($products as $product){
-
-            if(session('locale') == 'en'){
-                $name = $product->name_en;
-                $slug = $product->slug_en;
-                $about = $product->about_en;
-                $currancy = 'USD';
-            } elseif (session('locale') == 'ru'){
-                $name = $product->name;
-                $slug = $product->slug;
-                $about = $product->about;
-                $currancy = 'BYN';
-            }
-
-                $url = 'storage/'.$product->productImages[0]->route;
-
-                echo  "
-                    <li class=\"product__founded\" >
-                        <div><img class=\"product__image\" src=\"$url\" alt=\"Image\" /></div>
-                        <div class=\"product__description\">
-                            <a href=\"\" title=\"$name\">$name</a>
-                            <p>$about</p>
-                        </div>
-                        <div class=\"product__price\">
-                            <span>$currancy $product->price</span>
-                            <span>$product->reduced_price</span>
-                        </div>
-
-                    </li>
-                ";
-            }
 
     }
 

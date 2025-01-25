@@ -1,6 +1,6 @@
 
 <div class="searching__popup">
-        <div class="container_wrap d-flex flex-column justify-content-flex-start align-items-flex-start">
+    <div class="container_wrap d-flex flex-column justify-content-flex-start align-items-flex-start">
 
             <div id="searching__popup_elements" class="searching__popup_elements d-flex flex-row justify-content-between align-items-center">
 
@@ -23,4 +23,7 @@
                 <div class="result_not_found">{{ __('Data not found') }}</div>
             </div>
     </div>
+    <form id="add_product_bookmarks" action="{{ route('person.bookmarks_add') }}" method="POST" style="display: none">
+        @csrf
+    </form>
 </div>

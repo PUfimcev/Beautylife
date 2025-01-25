@@ -14,7 +14,7 @@
                 @if ($product->isSale())<span>Sale</span>@endif
             </span>
 
-            <div class="product__evaluation"><span class="star"></span><span>5.0{{-- $review->evaluation --}}</span></div>
+            <div class="product__evaluation"><span class="star"></span><span>5.0</span></div>
 
             @if($product->productImages->count() > 0)
 
@@ -42,9 +42,12 @@
                 @endauth
                     class="send_to_bookmarks"></span>
                 <span
-                    onclick="event.preventDefault();
+                    @if ($product->amount > 0)
+                        onclick="event.preventDefault(); document.getElementById('add_product_basket').submit();"
+                    @else
+                        onclick="event.preventDefault();"
 
-                        document.getElementById('add_product_basket').submit();"
+                @endif
                 class="send_to_basket"></span>
             </div>
 
@@ -53,13 +56,20 @@
 
             <p class="text">{{ $product->langField('name') }}</p>
             <div class="price">
-            @if($product->reduced_price > 0)
-                <p class="discount-price">BYN {{ $product->reduced_price }}</p>
-            @endif
+                @if($product->amount > 0)
 
-            <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $product->price }}</p>
+                    @if($product->reduced_price > 0)
+                        <p class="discount-price">BYN {{ $product->reduced_price }}</p>
+                    @endif
 
-                <p class="text-line"></p>
+                    <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $product->price }}</p>
+
+                    <p class="text-line"></p>
+                    @else
+
+                    <p class="product_abcent">{{ __('Not available') }} </p>
+
+                @endif
             </div>
         </div>
     </a>

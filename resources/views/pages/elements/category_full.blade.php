@@ -1,3 +1,4 @@
+@use(App\Models\Product;)
 @extends('layouts.index')
 
 @section('title', $category->langField('name') )
@@ -15,9 +16,7 @@
 @section('content')
 
 <section class="full_category">
-    {{-- <input type="hidden" form="category__filter-id" name="category" id="category-name" value="{{ $category->code }}"> --}}
-
-    <div class="full_category-top">
+        <div class="full_category-top">
 
         <h2 class="category__name">{{ Str::upper($category->langField('name')) }}</h2>
 
@@ -25,9 +24,9 @@
             <span >{{ __('Sort by') }}:</span>
 
             <div class="select_goods_wrap">
-                {{-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}"> --}}
+
                 <select form="category__filter-id" name="select__goods" class="select__goods_top_new_all">
-                    <option  value="all-goods">{{ __('All goods') }}</option>
+                    <option @selected(true) value="all-goods">{{ __('All goods') }}</option>
                     <option  value="bestsellers">{{ __('Bestsellers') }}</option>
                     <option  value="new-arrivals">{{ __('New arrival') }}</option>
                     <option  value="sale-price">{{ __('Sale price') }}</option>
@@ -38,7 +37,7 @@
         </div>
     </div>
 
-    <section class="filer__mobile">
+    {{-- <section class="filer__mobile">
 
         <div class="full_category-top-mobile">
 
@@ -127,8 +126,6 @@
                     <div class="price-mobile">
                         <div class="price__title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
 
-
-                        {{-- subcategory_select-mobile --}}
                         <div class="price__option">Something</div>
                     </div>
 
@@ -143,7 +140,7 @@
 
                                 value="{{ $skintype->name_en }}"
 
-                                {{-- @checked(old('skintype-{{ $loop->iteration }}', $skintype->name_en)) --}}
+                                @checked(old('skintype-{{ $loop->iteration }}', $skintype->name_en))
                                 >
                                 <label class="skintype__name" for="skintype-mobile-{{ $loop->iteration }}">{{ $skintype->langField('name') }}</label>
                             </li>
@@ -161,7 +158,7 @@
 
                                 value="{{ $agerange->name_en }}"
                                 data-id="agerange_mobile-{{ $loop->iteration }}"
-                                {{-- @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en)) --}}
+                                @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en))
                                 >
                                 <label class="agerange__name" for="agerange_mobile-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
                             </li>
@@ -179,7 +176,7 @@
 
                             value="{{ $consumer->name_en }}"
                             data-id="consumer_mobile-{{ $loop->iteration }}"
-                            {{-- @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en)) --}}
+                            @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en))
                             >
                             <label class="consumer__name" for="consumer_mobile-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
                         </li>
@@ -203,7 +200,7 @@
         </form>
 
 
-    </section>
+    </section> --}}
 
 
 
@@ -214,7 +211,7 @@
             <div class="category__filter-top"><span>{{ Str::upper(__('Filter by')) }}:</span></div>
 
 
-            <form id="category__filter-id" class="category__filter" method="GET" action="">
+            <form id="category__filter-id" class="category__filter" method="GET" action="{{ route('catalog', $category) }}">
 
                 {{-- <input type="submit">submit</input> --}}
                 <div class="filter-items">
@@ -238,7 +235,7 @@
                     </ul>
                 </div>
 
-                <div class="filter-items">
+                {{-- <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span></span><span>-</span></div>
 
                     <ul class="subcategory__names brand">
@@ -254,9 +251,9 @@
                         </li>
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
 
-                <div class="filter-items">
+                {{-- <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
 
                     <div class="subcategory__names">Something</div>
@@ -278,9 +275,9 @@
                             </li>
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
 
-                <div class="filter-items">
+                {{-- <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span></span><span>-</span></div>
                     <ul class="subcategory__names agerange">
                         @foreach ($ageranges as $agerange)
@@ -295,9 +292,9 @@
                             </li>
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
 
-                <div class="filter-items">
+                {{-- <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span></span><span>-</span></div>
 
                     <ul class="subcategory__names consumers">
@@ -313,7 +310,7 @@
                         </li>
                     @endforeach
                     </ul>
-                </div>
+                </div> --}}
 
                 @csrf
                 {{-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}"> --}}
@@ -331,7 +328,8 @@
 
             <div class="product__elements">
                 @forelse ($products as $product)
-
+                {{-- {{ dd($product) }} --}}
+                {{-- {{ dd(Product::find($product->id)->getCategory()->first()); }} --}}
                     @include('pages.elements.product', ['product' => $product, 'i' => $loop->iteration])
                 @empty
                     <p class="no__goods">{{ __('There are no goods') }}</p>
@@ -344,7 +342,7 @@
 
     <div class="view-all__btn"><a href="{{ route('catalog_top_new', 'all-goods') }}">{{ __('View all') }}</a></div>
 
-    @if(session('screenWidth') !== 'mobile' && $pages > 0)
+    {{-- @if(session('screenWidth') !== 'mobile' && $pages > 0)
         <div class="pagination">
             <ul class="pagination__pages">
                 @foreach ($pages as $page)
@@ -360,12 +358,12 @@
                 @endforeach
             </ul>
         </div>
-    @endif
-
-{{--
-    @if (!isset($products) || !empty($products))
-        <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
     @endif --}}
+
+
+    @if (!isset($products) || !empty($products))
+        {{-- <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div> --}}
+    @endif
 
     <div class="full_category-bottom">
         <h2 class="bestsellers__title">{{ Str::upper(__('You might also like')) }}</h2>
@@ -376,6 +374,7 @@
 
         <div class="bestsellers__elements">
             @forelse ($bestsellers as $bestseller)
+                {{-- {{ dd(Product::find($bestseller->id)) }} --}}
                 @include('pages.elements.bestsellers_on_main_page', ['bestseller' => $bestseller, 'i' => $loop->iteration])
             @empty
                 <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>

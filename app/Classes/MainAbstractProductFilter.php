@@ -14,9 +14,8 @@ abstract class MainAbstractProductFilter
     public function __construct($builder, $query)
     {
         if(isset($query))  $this->productsRequest = $query;
-
+;
         $this->productBuilder = $builder;
-
         // Product::with(['productDescription', 'productImages', 'property.category', 'property.subcategory', 'property.brand', 'property.skinType', 'property.agerange', 'property.consumer']);
     }
 
@@ -25,6 +24,7 @@ abstract class MainAbstractProductFilter
 
         foreach($this->productFilter() as $fieldname => $value) {
             if(method_exists($this, $fieldname)) {
+
                 $this->$fieldname($value);
             }
         }

@@ -23,6 +23,40 @@
     }
 }
 
+// search element
+
+#header__searching{
+
+    .searching__popup{
+
+        .container_wrap {
+            .searching__box{
+
+                .searching__box_result{
+
+                    .searching__box_result-list{
+
+                        .product__founded{
+                            &:hover{
+                                background-color: $box-shadow
+                            }
+
+                            .product__description{
+
+                                .product__name:hover{
+                                    cursor: pointer;
+                                    color: $text-accent-2;
+                                    text-decoration: underline;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 }
 
 @media screen and (max-width: 1023px) {
@@ -49,10 +83,29 @@
 
     // Set searching data
     #header__searching{
+
         .searching__popup{
+
             .container_wrap {
-                #searching__popup_elements{
-                    height: 15%;
+                .searching__box{
+
+                    .searching__box_result{
+
+                        .searching__box_result-list{
+
+                            .product__founded{
+
+
+                                .product__description{
+                                    .product__name{
+                                        text-decoration: underline;
+                                        color: $text-accent-2;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -80,6 +133,51 @@
             }
         }
     }
+
+
+    // search element
+
+#header__searching{
+
+    .searching__popup{
+
+        .container_wrap {
+            .searching__box{
+
+                .searching__box_result{
+
+                    .searching__box_result-list{
+
+                        .product__founded{
+
+                            height: 15rem;
+
+                            .product__image{
+
+                                width: 30%;
+                            }
+
+                            .product__description{
+                                width: 55%;
+                            }
+                            .product__price{
+                                // width: %;
+                                flex-direction: column;
+                                align-items: flex-start;
+
+                                span{
+                                    margin-left: 0.5rem;
+                                    width: 30%;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 }
 
@@ -126,7 +224,7 @@
             .container_wrap {
 
                 #searching__popup_elements{
-                    height: 10%;
+                    // height: 10%;
                 }
             }
         }
