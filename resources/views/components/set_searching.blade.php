@@ -23,7 +23,4 @@
                 <div class="result_not_found">{{ __('Data not found') }}</div>
             </div>
     </div>
-    <form id="add_product_bookmarks" action="{{ route('person.bookmarks_add') }}" method="POST" style="display: none">
-        @csrf
-    </form>
 </div>

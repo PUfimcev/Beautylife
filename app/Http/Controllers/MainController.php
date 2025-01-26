@@ -73,23 +73,38 @@ class MainController extends Controller
      * @param  mixed $category
      * @return void
      */
-    public function catalog(Category $category = null)
+    public function catalog(Request $request, Category $category = null)
     {
         (new RemoveSessionClass())->removeSessionPrevUrl();
 
-        if(!isset($category) && !isset($request)) {
+        if(!isset($category)) {
 
             $categories = CategoryFilter::getCatalogs();
 
             return view('pages.catalog', compact('categories'));
         } else {
 
-            if(!isset($request)){
+            if(count($request->all()) == 0){
 
-                $query['getcatalogproducts'] = $category->id;
+                $query['getCatalogProducts'] = $category->id;
 
-                $productQuery = Product::query();
+                $productQuery = Product::with(['productImages', 'property']);
 
+                $productsPre = (new CategoryFilter($productQuery, $query))->apply();
+
+                $products = $productsPre->paginate(12);
+
+                $productsQuantity = $productsPre->count();
+
+                return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
+
+            } else {
+                $query = $request->all();
+                $query['getCatalogProducts'] = $category->id;
+
+                // dd($query );
+
+                $productQuery = Product::with(['productImages', 'property']);
 
                 $productsPre = (new CategoryFilter($productQuery, $query))->apply();
 
@@ -97,6 +112,8 @@ class MainController extends Controller
 
 
                 $productsQuantity = $productsPre->count();
+
+                // dd($products, $productsQuantity);
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Basket;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BasketController extends Controller
 {
@@ -39,9 +40,9 @@ class BasketController extends Controller
     /**
     *  Add product to the basket.
     */
-    public function addProductToBasket() :void
+    public function addProductToBasket(Product $product) :void
     {
-        dd('Product added to basket');
+        dd($product);
     }
 
 }

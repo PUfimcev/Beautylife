@@ -16,7 +16,7 @@ abstract class MainAbstractProductFilter
         if(isset($query))  $this->productsRequest = $query;
 ;
         $this->productBuilder = $builder;
-        // Product::with(['productDescription', 'productImages', 'property.category', 'property.subcategory', 'property.brand', 'property.skinType', 'property.agerange', 'property.consumer']);
+
     }
 
     public function apply()

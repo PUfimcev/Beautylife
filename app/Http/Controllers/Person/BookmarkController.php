@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Person;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BookmarkController extends Controller
 {
@@ -33,9 +34,9 @@ class BookmarkController extends Controller
     /**
     *  Add product in the list of featured wares.
     */
-    public function addBookmarks() :void
+    public function addBookmarks(Product $product) :void
     {
-        dd('Bookmark added');
+        dd($product);
     }
 
 }

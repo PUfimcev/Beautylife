@@ -74,10 +74,10 @@
         </div>
     </a>
 
-    <form id="add_product_bookmarks" action="{{ route('person.bookmarks_add') }}" method="POST" style="display: none">
+    <form id="add_product_bookmarks" action="{{ route('person.bookmarks_add', $product) }}" method="POST" style="display: none">
         @csrf
     </form>
-    <form id="add_product_basket" action="{{ route('basket_add') }}" method="POST" style="display: none">
+    <form id="add_product_basket" action="{{ route('basket_add', $product) }}" method="POST" style="display: none">
         @csrf
     </form>
 

@@ -9,7 +9,7 @@ class MakeFormInCatalogsubmit{
 
         this.#selecCheckboxesInCategoryFilter = document.querySelectorAll('.category__filter .subcategory-select');
 
-        this.#selectOptionsInOptionGoodsTopNewAll = document.querySelector('.full_category .select__goods_top_new_all');
+        this.#selectOptionsInOptionGoodsTopNewAll = document.querySelector('.full_category .select__goods');
 
         this.#form = document.querySelector('#category__filter-id');
 

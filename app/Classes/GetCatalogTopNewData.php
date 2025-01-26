@@ -38,7 +38,7 @@ class GetCatalogTopNewData extends MainAbstractProductFilter
         }
 
         if($query == 'sale-price')  {
-            $goods = $this->productBuilder->where('reduced_price', '>', 0);
+            $goods = $this->productBuilder->where('reduced_price', '>', 0)->where('amount', '>', 0);
         }
 
         return $goods;

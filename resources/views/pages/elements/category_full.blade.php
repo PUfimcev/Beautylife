@@ -25,11 +25,11 @@
 
             <div class="select_goods_wrap">
 
-                <select form="category__filter-id" name="select__goods" class="select__goods_top_new_all">
-                    <option @selected(true) value="all-goods">{{ __('All goods') }}</option>
-                    <option  value="bestsellers">{{ __('Bestsellers') }}</option>
-                    <option  value="new-arrivals">{{ __('New arrival') }}</option>
-                    <option  value="sale-price">{{ __('Sale price') }}</option>
+                <select form="category__filter-id" name="selectGoods" class="select__goods">
+                    <option  @selected(old('selectGoods', 'all-goods') == request()->input("selectGoods")) value="all-goods">{{ __('All goods') }}</option>
+                    <option  @selected(old('selectGoods', 'bestsellers') == request()->input("selectGoods"))  value="bestsellers">{{ __('Bestsellers') }}</option>
+                    <option  @selected(old('selectGoods','new-arrivals') == request()->input("selectGoods"))  value="new-arrivals">{{ __('New arrivals') }}</option>
+                    <option  @selected(old('selectGoods', 'sale-price') == request()->input("selectGoods"))  value="sale-price">{{ __('Sale price') }}</option>
                 </select>
                 <span class="select-arrow"></span>
             </div>
@@ -221,12 +221,12 @@
 
                         @foreach ($category->subcategories as $subcategory)
                             <li>
-                                <input type="checkbox" class="subcategory-select" name="subcategory-{{ $loop->iteration }}" id="subcategory_item-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory-select" name="subcategorySelect" id="subcategory_item-{{ $loop->iteration }}"
                                 {{-- {{ request()->has('subcategory-'. $loop->iteration) ? 'checked' : ''}} --}}
 
-                                @checked(old('subcategory-'. $loop->iteration, request()->input('subcategory-'. $loop->iteration) ))
+                                @checked(old('subcategorySelect', request()->input('subcategory-'. $loop->iteration) ))
 
-                                value="{{ $subcategory->code }}"
+                                value="{{ $subcategory->id }}"
                                 data-id="subcategory_item-{{ $loop->iteration }}"
                                 >
                                 <label class="subcategory__name" for="subcategory_item-{{ $loop->iteration }}">{{ $subcategory->langField('name') }}</label>
@@ -328,8 +328,7 @@
 
             <div class="product__elements">
                 @forelse ($products as $product)
-                {{-- {{ dd($product->getCategory($product->id)) }} --}}
-                {{-- {{ dd(Product::find($product->id)->getCategory()->first()); }} --}}
+                {{-- {{ dd($product->property->category_id) }} --}}
                     @include('pages.elements.product', ['product' => $product, 'category' => $category, 'i' => $loop->iteration])
                 @empty
                     <p class="no__goods">{{ __('There are no goods') }}</p>
@@ -362,7 +361,7 @@
 
 
     @if (!isset($products) || !empty($products))
-        {{-- <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div> --}}
+        <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
     @endif
 
     <div class="full_category-bottom">
@@ -373,9 +372,10 @@
         @endisset
 
         <div class="bestsellers__elements">
+
             @forelse ($bestsellers as $bestseller)
-                {{-- {{ dd(Product::find($bestseller->id)) }} --}}
-                @include('pages.elements.bestsellers_on_main_page', ['bestseller' => $bestseller, 'category' => $category, 'i' => $loop->iteration])
+
+                @include('pages.elements.bestsellers_on_main_page', ['product' => $bestseller, 'i' => $loop->iteration])
             @empty
                 <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>
             @endforelse

@@ -93,8 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
         Route::get('bookmarks', 'getBookmarks')->name('bookmarks');
 
         // Routes for adding User's bookmarks
-        Route::post('bookmarks/add', 'addBookmarks')->name('bookmarks_add');
-        // Route::post('bookmarks/add/{product:slug}', 'addBookmarks')->name('bookmarks_add');
+        Route::post('bookmarks/add/{product:slug}', 'addBookmarks')->name('bookmarks_add');
 
 
     });
@@ -273,8 +272,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Basket', 'prefix' => 'basket'
         Route::get('/basket-empty', 'basketIsEmpty')->name('basket_empty');
 
         // Routes for adding products to basket
-        Route::post('add', 'addProductToBasket')->name('basket_add');
-        // Route::post('add/{product:slug}', 'addProductToBasket')->name('basket_add');
+        Route::post('add/{product:slug}', 'addProductToBasket')->name('basket_add');
     });
 
     // Route::group(['middleware' => 'basket_is_not_empty'], function(){

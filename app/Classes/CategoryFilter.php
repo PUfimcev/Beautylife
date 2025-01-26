@@ -2,21 +2,53 @@
 
 namespace App\Classes;
 
+use Illuminate\Database\Query\Builder;
 use App\Classes\MainAbstractProductFilter;
 use App\Models\{Brand, Agerange, Category, Consumer, SkinType, Product};
 
 class CategoryFilter extends MainAbstractProductFilter
 {
-
-    public function getCatalogProducts($query)
+    /**
+    * @param mixed $queryCatalog
+    * @return void
+    */
+    public function getCatalogProducts($queryCatalog)
     {
+        if(!$queryCatalog) return;
 
-        // dd($this->productBuilder->get()->map->property);
-        // $products = $this->productBuilder->where('properties.category_id', $query)->get();
-        // dd($products);
-        $products = $this->productBuilder->join('properties', 'products.id', '=', 'properties.product_id')->where('category_id', $query)->get();
+        $this->productBuilder->where(function (Builder $query) {
+            $query->select('category_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id');
+        }, $queryCatalog
+        );
 
-        return $products;
+    }
+
+    /**
+    * @param mixed $queryTopNew
+    * @return void
+    */
+    public function selectGoods($queryTopNew)
+    {
+        if(!$queryTopNew) return;
+
+        if($queryTopNew == 'bestsellers') {
+            $this->productBuilder->where('top', 1);
+        }
+
+        if($queryTopNew == 'new-arrivals')  {
+            $this->productBuilder->where('new', 1);
+        }
+
+        if($queryTopNew == 'all-goods')  {
+            $this->productBuilder;
+        }
+
+        if($queryTopNew == 'sale-price')  {
+            $this->productBuilder->where('reduced_price', '>', 0)->where('amount', '>', 0);
+        }
+
     }
 
     /**
