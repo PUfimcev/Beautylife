@@ -213,7 +213,6 @@
 
             <form id="category__filter-id" class="category__filter" method="GET" action="{{ route('catalog', $category) }}">
 
-                {{-- <input type="submit">submit</input> --}}
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span></span><span>-</span></div>
 
@@ -221,10 +220,9 @@
 
                         @foreach ($category->subcategories as $subcategory)
                             <li>
-                                <input type="checkbox" class="subcategory-select" name="subcategorySelect" id="subcategory_item-{{ $loop->iteration }}"
-                                {{-- {{ request()->has('subcategory-'. $loop->iteration) ? 'checked' : ''}} --}}
+                                <input type="checkbox" class="subcategory-select" name="subcategorySelect[]" id="subcategory_item-{{ $loop->iteration }}"
 
-                                @checked(old('subcategorySelect', request()->input('subcategory-'. $loop->iteration) ))
+                                {{ in_array($subcategory->id, request()->input('subcategorySelect') ?? []) ? 'checked' : ''}}
 
                                 value="{{ $subcategory->id }}"
                                 data-id="subcategory_item-{{ $loop->iteration }}"

@@ -2,28 +2,13 @@
 
 namespace App\Classes;
 
+use App\Models\Property;
 use Illuminate\Database\Query\Builder;
 use App\Classes\MainAbstractProductFilter;
 use App\Models\{Brand, Agerange, Category, Consumer, SkinType, Product};
 
 class CategoryFilter extends MainAbstractProductFilter
 {
-    /**
-    * @param mixed $queryCatalog
-    * @return void
-    */
-    public function getCatalogProducts($queryCatalog)
-    {
-        if(!$queryCatalog) return;
-
-        $this->productBuilder->where(function (Builder $query) {
-            $query->select('category_id')
-                ->from('properties')
-                ->whereColumn('properties.product_id', 'products.id');
-        }, $queryCatalog
-        );
-
-    }
 
     /**
     * @param mixed $queryTopNew
@@ -48,6 +33,36 @@ class CategoryFilter extends MainAbstractProductFilter
         if($queryTopNew == 'sale-price')  {
             $this->productBuilder->where('reduced_price', '>', 0)->where('amount', '>', 0);
         }
+
+    }
+
+    /**
+    * @param mixed $querySubcategories
+    * @return void
+    */
+    public function subcategorySelect($querySubcategories)
+    {
+        $this->productBuilder->whereIn('id', function (Builder $query) use ($querySubcategories) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->whereIn('properties.subcategory_id', $querySubcategories);
+            });
+    }
+
+        /**
+    * @param mixed $queryCatalog
+    * @return void
+    */
+    public function getCatalogProducts($queryCatalog)
+    {
+        if(!$queryCatalog) return;
+
+        $this->productBuilder->where(function (Builder $query) {
+            $query->select('category_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id');
+        }, $queryCatalog
+        );
 
     }
 

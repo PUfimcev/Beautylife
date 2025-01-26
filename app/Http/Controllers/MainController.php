@@ -102,8 +102,6 @@ class MainController extends Controller
                 $query = $request->all();
                 $query['getCatalogProducts'] = $category->id;
 
-                // dd($query );
-
                 $productQuery = Product::with(['productImages', 'property']);
 
                 $productsPre = (new CategoryFilter($productQuery, $query))->apply();
@@ -112,8 +110,6 @@ class MainController extends Controller
 
 
                 $productsQuantity = $productsPre->count();
-
-                // dd($products, $productsQuantity);
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
 

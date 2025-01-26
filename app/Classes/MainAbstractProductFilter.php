@@ -29,7 +29,6 @@ abstract class MainAbstractProductFilter
             }
         }
 
-
         return $this->productBuilder;
     }
 
