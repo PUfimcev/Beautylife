@@ -34,4 +34,4 @@ class LinkTopPage{
     }
 }
 
-export default new LinkTopPage();
+// export default new LinkTopPage();

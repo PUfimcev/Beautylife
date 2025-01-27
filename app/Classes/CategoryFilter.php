@@ -62,7 +62,46 @@ class CategoryFilter extends MainAbstractProductFilter
             });
     }
 
-        /**
+    /**
+    * @param mixed $querySkintype
+    * @return void
+    */
+    public function skintypeSelect($querySkintype)
+    {
+        $this->productBuilder->whereIn('id', function (Builder $query) use ($querySkintype) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->whereIn('properties.skin_type_id', $querySkintype);
+            });
+    }
+
+    /**
+    * @param mixed $queryAgerange
+    * @return void
+    */
+    public function agerangeSelect($queryAgerange)
+    {
+        $this->productBuilder->whereIn('id', function (Builder $query) use ($queryAgerange) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->whereIn('properties.agerange_id', $queryAgerange);
+            });
+    }
+
+    /**
+    * @param mixed $queryConsumer
+    * @return void
+    */
+    public function consumerSelect($queryConsumer)
+    {
+        $this->productBuilder->whereIn('id', function (Builder $query) use ($queryConsumer) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->whereIn('properties.consumer_id', $queryConsumer);
+            });
+    }
+
+    /**
     * @param mixed $queryCatalog
     * @return void
     */

@@ -255,7 +255,7 @@
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
 
                     <div class="subcategory__names">Something</div>
-                </div>
+                </div> --}}
 
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>
@@ -263,56 +263,53 @@
                     <ul class="subcategory__names skintype">
                         @foreach ($skintypes as $skintype)
                             <li>
-                                <input type="checkbox" class="subcategory-select" name="skintype-{{ $loop->iteration }}" id="skintype_item-{{ $loop->iteration }}"
-
-                                value="{{ $skintype->code }}"
+                                <input type="checkbox" class="subcategory-select" name="skintypeSelect[]" id="skintype_item-{{ $loop->iteration }}"
+                                {{ in_array($skintype->id, request()->input('skintypeSelect') ?? []) ? 'checked' : ''}}
+                                value="{{ $skintype->id }}"
                                 data-id="skintype_item-{{ $loop->iteration }}"
-                                @checked(old('skintype-'. $loop->iteration, request()->input('skintype-'. $loop->iteration) ))
                                 >
                                 <label class="skintype__name" for="skintype_item-{{ $loop->iteration }}">{{ $skintype->langField('name') }}</label>
                             </li>
                         @endforeach
                     </ul>
-                </div> --}}
+                </div>
 
-                {{-- <div class="filter-items">
+                <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span></span><span>-</span></div>
                     <ul class="subcategory__names agerange">
                         @foreach ($ageranges as $agerange)
                             <li>
-                                <input type="checkbox" class="subcategory-select" name="agerange-{{ $loop->iteration }}" id="agerange_item-{{ $loop->iteration }}"
+                                <input type="checkbox" class="subcategory-select" name="agerangeSelect[]" id="agerange_item-{{ $loop->iteration }}"
 
-                                value="{{ $agerange->code }}"
+                                value="{{ $agerange->id }}"
                                 data-id="agerange_item-{{ $loop->iteration }}"
-                                @checked(old('agerange-'. $loop->iteration, request()->input('agerange-'. $loop->iteration) ))
+                                {{ in_array($agerange->id, request()->input('agerangeSelect') ?? []) ? 'checked' : ''}}
                                 >
                                 <label class="agerange__name" for="agerange_item-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
                             </li>
                         @endforeach
                     </ul>
-                </div> --}}
+                </div>
 
-                {{-- <div class="filter-items">
+                <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span></span><span>-</span></div>
 
                     <ul class="subcategory__names consumers">
                         @foreach ($consumers as $consumer)
                         <li>
-                            <input type="checkbox" class="subcategory-select" name="consumer-{{ $loop->iteration }}" id="consumer_item-{{ $loop->iteration }}"
+                            <input type="checkbox" class="subcategory-select" name="consumerSelect[]" id="consumer_item-{{ $loop->iteration }}"
 
-                            value="{{ $consumer->code }}"
+                            value="{{ $consumer->id }}"
                             data-id="consumer_item-{{ $loop->iteration }}"
-                            @checked(old('consumer-'. $loop->iteration, request()->input('consumer-'. $loop->iteration) ))
+                            {{ in_array($consumer->id, request()->input('consumerSelect') ?? []) ? 'checked' : ''}}
                             >
                             <label class="consumer__name" for="consumer_item-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
                         </li>
                     @endforeach
                     </ul>
-                </div> --}}
+                </div>
 
                 @csrf
-                {{-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}"> --}}
-
             </form>
 
             <div class="reset__btn"><a href="{{ route('catalog', $category) }}">{{ __('Clear all') }}</a>
@@ -326,7 +323,7 @@
 
             <div class="product__elements">
                 @forelse ($products as $product)
-                {{-- {{ dd($product->property->category_id) }} --}}
+
                     @include('pages.elements.product', ['product' => $product, 'category' => $category, 'i' => $loop->iteration])
                 @empty
                     <p class="no__goods">{{ __('There are no goods') }}</p>
@@ -373,7 +370,7 @@
 
             @forelse ($bestsellers as $bestseller)
 
-                @include('pages.elements.bestsellers_on_main_page', ['product' => $bestseller, 'i' => $loop->iteration])
+                @include('pages.elements.bestsellers_on_main_page', ['product' => $bestseller, 'g' => $loop->iteration, 'count' => $bestsellers->count()])
             @empty
                 <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>
             @endforelse

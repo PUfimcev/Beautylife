@@ -68,7 +68,7 @@
 
                 @forelse ($bestsellers as $bestseller)
 
-                    @include('pages.elements.bestsellers_on_main_page', ['product' => $bestseller, 'i' => $loop->iteration, 'count' => $bestsellers->count()])
+                    @include('pages.elements.bestsellers_on_main_page', ['product' => $bestseller, 'g' => $loop->iteration, 'count' => $bestsellers->count()])
                 @empty
                     <p class="no__bestsellers">{{ __('There are no bestsellers') }}</p>
                 @endforelse

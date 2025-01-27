@@ -303,12 +303,13 @@
 
     .view-all__btn{
 
-        margin-left: calc(25%);
         margin-top: 2.5rem;
-        width: 50%;
+        width: 100%;
 
         &>a{
-            width: 100%;
+            display: block;
+            width: 50%;
+            margin: 0 auto;
             @extend %button-desk-2;
             text-transform: uppercase;
             text-align: center !important;

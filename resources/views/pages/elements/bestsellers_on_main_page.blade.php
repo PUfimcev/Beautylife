@@ -1,12 +1,12 @@
-<div class="bestseller__element element_{{ $i }}">
+<div class="bestseller__element element_{{ $g }}">
 
-    @if ($i == 3 && $count >= 3)
+    @if ($g == 3 && $count >= 3)
 
         <a href="{{ route('catalog_top_new', 'bestsellers') }}" class="get__all__bestsellers" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
 
     @endif
 
-    <a  class="bestseller__elem_on_main-page bestseller_{{ $i }}" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product])}}"  title="{{ $product->langField('name') }}">
+    <a  class="bestseller__elem_on_main-page bestseller_{{ $g }}" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product])}}"  title="{{ $product->langField('name') }}">
         <div class="bestseller__elem_on_main-page_top">
 
             <span class="product__tag">
