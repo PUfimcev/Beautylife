@@ -49,6 +49,19 @@ class CategoryFilter extends MainAbstractProductFilter
             });
     }
 
+    /**
+    * @param mixed $queryBrands
+    * @return void
+    */
+    public function brandSelect($queryBrands)
+    {
+        $this->productBuilder->whereIn('id', function (Builder $query) use ($queryBrands) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->whereIn('properties.brand_id', $queryBrands);
+            });
+    }
+
         /**
     * @param mixed $queryCatalog
     * @return void

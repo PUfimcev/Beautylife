@@ -83,6 +83,7 @@ class MainController extends Controller
 
             return view('pages.catalog', compact('categories'));
         } else {
+            list($brands, $skintypes, $ageranges, $consumers) = CategoryFilter::getCatalogOptionData();
 
             if(count($request->all()) == 0){
 
@@ -96,11 +97,13 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
+                return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
 
             } else {
                 $query = $request->all();
                 $query['getCatalogProducts'] = $category->id;
+
+                // dd($query);
 
                 $productQuery = Product::with(['productImages', 'property']);
 
@@ -111,7 +114,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category]);
+                return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
 
             }
 

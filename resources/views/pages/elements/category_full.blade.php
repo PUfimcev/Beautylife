@@ -233,7 +233,7 @@
                     </ul>
                 </div>
 
-                {{-- <div class="filter-items">
+                <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span></span><span>-</span></div>
 
                     <ul class="subcategory__names brand">
@@ -241,15 +241,15 @@
                         @foreach ($brands as $brand)
 
                         <li>
-                            <input type="checkbox" class="subcategory-select" name="brand-{{ $loop->iteration }}" id="brand_item-{{ $loop->iteration }}"
-                            @checked(old('brand-'. $loop->iteration, request()->input('brand-'. $loop->iteration) ))
-                            value="{{ $brand->slug }}"
+                            <input type="checkbox" class="subcategory-select" name="brandSelect[]" id="brand_item-{{ $loop->iteration }}"
+                            {{ in_array($brand->id, request()->input('brandSelect') ?? []) ? 'checked' : ''}}
+                            value="{{ $brand->id }}"
                             data-id="brand_item-{{ $loop->iteration }}">
                             <label class="brand__name" for="brand_item-{{ $loop->iteration }}">{{ $brand->brand_name }}</label>
                         </li>
                         @endforeach
                     </ul>
-                </div> --}}
+                </div>
 
                 {{-- <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
