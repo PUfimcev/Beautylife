@@ -9,7 +9,7 @@ import SetTimeNotifications from './SetTimeNotifications';
 import MaskInputTel from './maskInputTel';
 import BurgerButtonAndNavMobile from './burgerButtonAndNavMobile';
 import Anchor from './anchor';
-import LinkTopPage from './linkTopPage';
+// import LinkTopPage from './linkTopPage';
 import SelectReset from './selectReset';
 import CheckboxVisible from './checkboxVisible';
 import RadioPageVisible from './radioPageVisible';

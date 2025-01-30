@@ -3,24 +3,16 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Models\Brand;
-use App\Models\Agerange;
-use App\Models\Category;
-use App\Models\Consumer;
-use App\Models\Property;
-use App\Models\SkinType;
-use App\Models\Subcategory;
+use App\Models\User;
 use Illuminate\Support\Str;
-use App\Models\ProductImage;
 use App\Traits\Translatable;
-use App\Models\ProductDescription;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Http\Controllers\Person\BookmarkController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\{HasOne, HasMany, BelongsTo, BelongsToMany, HasOneThrough};
+use App\Models\{Brand, Agerange, Bookmark, Category, Consumer, Property, ProductImage, ProductDescription, SkinType, Subcategory};
 
 class Product extends Model
 {
@@ -156,6 +148,15 @@ class Product extends Model
     }
 
     /**
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function bookmarks(): BelongsToMany
+    {
+        return $this->belongsToMany(Bookmark::class);
+
+    }
+
+    /**
      *
      */
     public function scopeSearch($query, string $keyword)
@@ -251,6 +252,20 @@ class Product extends Model
         $local_timezone = session()->get('timezone');
 
         return Carbon::createFromFormat('Y-m-d H:i:s', $value)->setTimezone($local_timezone);
+     }
+
+     /**
+      *  To check if there is a product in bookmark
+       * @return boolean
+      */
+     public function isProductInBookmark()
+     {
+        $getBookmark = User::find(Auth::id())->bookmark;
+
+        $arrayProductIds = BookmarkController::getArrayProductIds($getBookmark);
+
+        return in_array($this->id, $arrayProductIds) ? true : false;
+
      }
 
 }

@@ -103,8 +103,6 @@ class MainController extends Controller
                 $query = $request->all();
                 $query['getCatalogProducts'] = $category->id;
 
-                // dd($query);
-
                 $productQuery = Product::with(['productImages', 'property']);
 
                 $productsPre = (new CategoryFilter($productQuery, $query))->apply();
@@ -173,8 +171,13 @@ class MainController extends Controller
 
         } else {
 
-            // $products = (new GetProducts())->getProducts();
-            $products = [];
+            $query['getBrandProducts'] = $brand->id;
+
+            $productQuery = Product::with(['productImages']);
+
+            $products = (new GetProducts($productQuery, $query))->apply()->get();
+
+            // dd($products);
 
             return view('pages.elements.brand_full', compact('brand', 'products'));
         }

@@ -80,7 +80,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
 
     Route::controller(PersonController::class)->group(function(){
         // Routes for getting User's bookmarks
-        Route::get('bookmarks', 'getBookmarks')->name('bookmarks');
+        // Route::get('bookmarks', 'getBookmarks')->name('bookmarks');
 
         // Routes for getting User's order history
         Route::get('order-history', 'getOrderHistory')->name('order_history');
@@ -93,7 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
         Route::get('bookmarks', 'getBookmarks')->name('bookmarks');
 
         // Routes for adding User's bookmarks
-        Route::post('bookmarks/add/{product:slug}', 'addBookmarks')->name('bookmarks_add');
+        Route::post('bookmarks/{product}/add', 'addBookmarks')->name('bookmarks_add');
 
 
     });

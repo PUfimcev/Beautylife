@@ -25,6 +25,8 @@ abstract class MainAbstractProductFilter
         foreach($this->productFilter() as $fieldname => $value) {
             if(method_exists($this, $fieldname)) {
 
+                if(!isset($value)) $this->$fieldname();
+
                 $this->$fieldname($value);
             }
         }

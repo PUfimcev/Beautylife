@@ -394,6 +394,10 @@
                         .send_to_bookmarks{
                             background-image: url('../images/product_bookmark_heart.png');
                             @extend %icons-settings;
+
+                            &.active{
+                                background-image: url('../images/product_bookmark_heart-opted.png');
+                            }
                         }
 
                         .send_to_basket{
@@ -633,6 +637,10 @@
                         .send_to_bookmarks{
                             background-image: url('../images/product_bookmark_heart.png');
                             @extend %icons-settings;
+
+                            &.active{
+                                background-image: url('../images/product_bookmark_heart-opted.png') !important;
+                            }
                         }
 
                         .send_to_basket{

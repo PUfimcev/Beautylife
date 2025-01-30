@@ -29,6 +29,69 @@
         .link__to_brands:hover{
             color: $text-accent-2;
         }
+
+        .full_brand_products{
+
+            flex-wrap: wrap;
+
+            .bestseller__element{
+
+                .bestseller__elem_on_main-page{
+                    .bestseller__elem_on_main-page_top{
+                        .product__evaluation{
+
+                            right: 1rem;
+                            top: 1rem;
+                        }
+                    }
+                }
+
+                .bestseller__elem_on_main-page:hover{
+
+                    .bestseller__elem_on_main-page_top{
+
+                        border: 1.5px solid $text-accent;
+
+
+
+                        .product-action{
+                            display: flex;
+                            left: 0;
+                            bottom: 0;
+                            border-top: 1.5px solid $text-accent;
+
+
+                            .send_to_bookmarks, .send_to_basket{
+                                display: block;
+                            }
+
+                            .send_to_bookmarks{
+                                border-right: 1.5px solid $text-accent;
+                            }
+                        }
+                    }
+
+                    .bestseller__elem_on_main-page__content{
+
+                        .text{
+                            color: $text-accent;
+                        }
+
+                        .price{
+
+                            .total-price{
+
+                                color: $text-accent;
+                            }
+
+                        }
+
+
+                    }
+
+                }
+            }
+        }
     }
 
 }
@@ -50,12 +113,96 @@
         .link__to_brands{
             text-decoration: underline;
         }
+
+        .full_brand_products{
+
+            .bestseller__element{
+
+                width: 17.2rem !important;
+                height: 100%;
+
+                .bestseller__elem_on_main-page{
+
+                    width: 17.2rem !important;
+
+                    &.bestseller_2{
+                        height: min(70vh, 25rem);
+
+                    }
+
+                    .bestseller__elem_on_main-page_top{
+                        height: 17.2rem !important;
+                        border: none;
+
+                        .product__evaluation{
+
+                            bottom: 1rem;
+                            left: 1rem;
+                        }
+
+                        .product-action{
+                            width: 4.5rem;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            top: 0;
+                            right: 0;
+
+
+                            .send_to_bookmarks, .send_to_basket{
+                                display: block;
+                                width: 100%;
+                                height: 20%;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
 
 @media screen and (max-width:  900px) {
 
+
+    .full_brand{
+
+        .full_brand_products{
+            overflow: hidden;
+            overflow-x: auto;
+            gap: 1.5rem;
+            height: min(70vh, 24rem);
+
+            &::-webkit-scrollbar{
+                width: 0;
+            }
+
+            .bestseller__element{
+
+                width: 16.25rem !important;
+                height: 100% !important;
+
+
+                .bestseller__elem_on_main-page{
+
+                    width: 16.25rem !important;
+
+                    &.bestseller_2{
+
+                        height: 100%;
+                    }
+
+                    .bestseller__elem_on_main-page_top{
+                        height: 16.25rem !important;
+                    }
+
+                }
+            }
+        }
+    }
 
 }
 
@@ -77,6 +224,7 @@
     .full_brand{
         width: min(90%, 1200px);
         padding-top: 1rem;
+
     }
 }
 

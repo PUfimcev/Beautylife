@@ -41,21 +41,16 @@
 
     </div>
 
-    <h3>{{ __('Goods') }}</h3>
+    <h3>{{ __('Goods').' '.$brand->brand_name.' TOP'}}</h3>
 
-    <div class="full_brand_products">
+    <div class="full_brand_products @if($products->count() < 3) less-items @endif">
 
 
         @forelse ($products as $product)
-            {{-- @include('pages.elements.brand', ['brand' => $brand]) --}}
+            @include('pages.elements.bestsellers_on_main_page', ['product' => $product,  'g' => $loop->iteration])
         @empty
             <p class="no__goods">{{ __('There are no goods') }}</p>
         @endforelse
-
-        @if (!isset($products) || !empty($products))
-        <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
-        <div class="pagination-tablet">{{ $products->links('vendor.pagination.simple-default')}}</div>
-        @endif
     </div>
 
 </section>

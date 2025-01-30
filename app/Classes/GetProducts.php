@@ -5,6 +5,7 @@ namespace App\Classes;
 // use App\Models\Product;
 use App\Models\Product;
 use Illuminate\Support\Facades\App;
+use Illuminate\Database\Query\Builder;
 use App\Classes\MainAbstractProductFilter;
 
 class GetProducts extends MainAbstractProductFilter
@@ -31,6 +32,16 @@ class GetProducts extends MainAbstractProductFilter
         }
 
         return $topProducts;
+    }
+
+
+    public function getBrandProducts($queryBrand)
+    {
+        $this->productBuilder->whereIn('id', function (Builder $query) use ($queryBrand) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->where('properties.brand_id', $queryBrand);
+            })->where('top', '1')->inRandomOrder()->limit(3);
     }
 
 

@@ -96,6 +96,7 @@
                     width: 100%;
                     height: 2.3rem;
                     z-index: 3;
+
                     .send_to_bookmarks, .send_to_basket{
                         display: none;
                         width: 50%;
@@ -104,6 +105,10 @@
                     .send_to_bookmarks{
                         background-image: url('../images/product_bookmark_heart.png');
                         @extend %icons-settings;
+
+                        &.active{
+                            background-image: url('../images/product_bookmark_heart-opted.png');
+                        }
                     }
                     .send_to_basket{
                         background-image: url('../images/product_bag_button.png');

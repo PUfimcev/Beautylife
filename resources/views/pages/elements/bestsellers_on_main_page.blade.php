@@ -33,17 +33,21 @@
                     window.location.href = '{{ route('login') }}';"
                 @endguest
                 @auth
-                    @if (Auth::user()->isAdmin()) onclick="event.preventDefault();"
+                    @if (Auth::user()->isAdmin() || $product->isProductInBookmark()) onclick="event.preventDefault();"
                     @else
                         onclick="event.preventDefault();
 
-                        document.getElementById('add_product_bookmarks').submit();"
+                        document.getElementById('add_product_bookmarks_{{ $g }}').submit();"
                     @endif
                 @endauth
-                    class="send_to_bookmarks"></span>
+                    class="send_to_bookmarks  @auth
+                        @if ($product->isProductInBookmark())
+                            active
+                        @endif
+                    @endauth"></span>
                 <span
                     @if ($product->amount > 0)
-                        onclick="event.preventDefault(); document.getElementById('add_product_basket').submit();"
+                        onclick="event.preventDefault(); document.getElementById('add_product_basket_{{ $g }}').submit();"
                     @else
                         onclick="event.preventDefault();"
 
@@ -74,10 +78,10 @@
         </div>
     </a>
 
-    <form id="add_product_bookmarks" action="{{ route('person.bookmarks_add', $product) }}" method="POST" style="display: none">
+    <form id="add_product_bookmarks_{{ $g }}" action="{{ route('person.bookmarks_add', $product) }}" method="POST" style="display: none">
         @csrf
     </form>
-    <form id="add_product_basket" action="{{ route('basket_add', $product) }}" method="POST" style="display: none">
+    <form id="add_product_basket_{{ $g }}" action="{{ route('basket_add', $product) }}" method="POST" style="display: none">
         @csrf
     </form>
 

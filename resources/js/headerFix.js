@@ -41,7 +41,7 @@ class HeaderFix {
                     if(window.matchMedia("screen and (min-width: 769px) and (max-width: 1023px)").matches){
                             this.#mainElem.style = 'margin-top: 166px';
                     } else if(window.matchMedia("screen and (max-width: 768px)").matches) {
-                            this.#mainElem.style = 'margin-top: 170px';
+                            this.#mainElem.style = 'margin-top: 110px';
                     } else {
                             // console.log('margin-top: 0px');
                             this.#mainElem.style = 'margin-top: 174px';
