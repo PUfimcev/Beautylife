@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\EmptyBookmarks;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'localization' => \App\Http\Middleware\Localization::class,
         'is_admin' => \App\Http\Middleware\CheckIsAdmin::class,
         'basket_is_not_empty' => \App\Http\Middleware\BasketIsNotEmpty::class,
+        'empty_bookmarks' => EmptyBookmarks::class,
     ];
 }

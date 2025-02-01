@@ -92,6 +92,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
         // Routes for getting User's bookmarks
         Route::get('bookmarks', 'getBookmarks')->name('bookmarks');
 
+        Route::get('/bookmarks-empty', 'bookmarkIsEmpty')->name('bookmarks_empty');
+
         // Routes for adding User's bookmarks
         Route::post('bookmarks/{product}/add', 'addBookmarks')->name('bookmarks_add');
 

@@ -8,6 +8,7 @@ use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Query\Builder;
 
 class BookmarkController extends Controller
 {
@@ -18,20 +19,31 @@ class BookmarkController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth', 'empty_bookmarks'])->except(['addBookmarks', 'bookmarkIsEmpty']);;
     }
 
     /**
      *  Show the list of featured wares. Bookmarks.
     */
 
-    public function getBookmarks()
+    public function getBookmarks(Request $request)
     {
-         $wares = [];
-         // $wares = ['creme'];
-         // $wares = User::get();
+        $order = (is_null($request->input("bookmarksOrder")) || $request->input("bookmarksOrder") == 'desc') ? 'desc' : 'asc';
 
-        return view('person.bookmarks', compact('wares'));
+        $products = Bookmark::where('user_id', Auth::id())->first()->products()->orderBy('bookmark_product.created_at', $order)->get();
+
+        // dd($products);
+
+        return view('person.bookmarks', compact('products'));
+    }
+
+    /*
+    *  Show notice about empty basket.
+    */
+
+    public function bookmarkIsEmpty()
+    {
+        return view('person.bookmarks_empty');
     }
 
     /**
