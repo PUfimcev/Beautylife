@@ -13,6 +13,7 @@
 
 
     .bookmarks__title{
+        width: 100%;
         border-bottom: 2px solid $text-accent;
         padding-bottom: 1rem;
         margin-bottom: 2rem;
@@ -71,10 +72,13 @@
     .bookmarks__products_list{
 
         width: 100%;
+        padding: 0;
 
         .bookmark__element{
             width: 100%;
-            height: 15rem;
+            height: 10rem;
+            padding: 1rem 0.5rem;
+            border-bottom: 1px solid $text-accent;
 
             display: flex;
             align-items: center;
@@ -85,15 +89,115 @@
                 width: 30%;
                 height: 100%;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content:space-around;
+
+                .product__tag{
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content:space-evenly;
+
+                    span{
+                        display: inline-block;
+                    }
+                    .product__evaluation{
+                        display: flex;
+                        align-items: center;
+                        justify-content:space-between;
+
+                        .star{
+                            display: inline-block;
+                            width: 1.25rem;
+                            height: 1.25rem;
+                            background-image: url('../images/star_icon_main-page.png');
+                            background-size: contain;
+                            @extend %icons-settings;
+                            margin-right: 0.5rem;
+                        }
+                    }
+
+                    .bookmarks__product_remove{
+                        background-image: url('../images/product_bookmark_heart-opted.png');
+                        @extend %icons-settings;
+                        padding: 1rem;
+                    }
+                }
 
                 .product__image{
                     display: block;
-                    object-fit: contain;
+                    object-fit: cover;
                     width: 60%;
                     height: 100%;
 
+                }
+
+            }
+
+            .product__content{
+                width: 50%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content:flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+
+                .content_text{
+                    display: inline-block;
+                    width: 100%;
+                    height: 20%;
+                    text-decoration: underline;
+                    color: $text-accent;
+                    padding: 0;
+                }
+
+                .content_about{
+                    height: 60%;
+                    margin: 0;
+                }
+
+                .request__to_remove_bookmark{
+                    color: $text-accent;
+                    width: 53%;
+                    display: flex;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                }
+            }
+
+            .price{
+                width: 12%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 0.5rem;
+
+                p{
+
+                    margin: 0;
+                }
+
+                .product_abcent{
+                    vertical-align: middle;
+                    margin: 0;
+                }
+            }
+
+            .product-action{
+                width: 5%;
+                height: 100%;
+                display: grid;
+                place-content: center;
+
+                .send_to_basket{
+                    padding: 1rem;
+                    background-image: url('../images/product_bag_button.png');
+                    @extend %icons-settings;
                 }
             }
         }
@@ -160,6 +264,7 @@
 
     .no_bookmarks{
         height: 40vh;
+        margin: auto;
 
         .no_bookmarks-allusion{
             padding: 0;

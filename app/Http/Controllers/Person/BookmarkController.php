@@ -34,7 +34,7 @@ class BookmarkController extends Controller
                     ->first()
                     ->products()
                     ->orderBy('bookmark_product.created_at', $order)
-                    ->paginate(3)->withQueryString();
+                    ->paginate(12)->withQueryString();
 
         return view('person.bookmarks', compact('products'));
     }
@@ -87,11 +87,12 @@ class BookmarkController extends Controller
     */
     public function removeBookmarks(Product $product)
     {
-        // $userID = Auth::id();
-        // $bookmark = Bookmark::create($userID);
-        // $bookmark->products()->attach($bookmark);
+        $getBookmark = Bookmark::whereBelongsTo(Auth::user())
+        ->first();
 
-        // return to_route('admin.offers.index')->with('status', 'Product added in bookmark!');
+        $getBookmark->products()->detach($product);
+
+        return back();
     }
 
 }

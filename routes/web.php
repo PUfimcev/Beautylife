@@ -97,6 +97,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Person', 'prefix' => 'persona
         // Routes for adding User's bookmarks
         Route::post('bookmarks/{product}/add', 'addBookmarks')->name('bookmarks_add');
 
+        // Routes for removing User's bookmarks
+        Route::post('bookmarks/{product}/remove', 'removeBookmarks')->name('bookmarks_remove');
+
 
     });
 

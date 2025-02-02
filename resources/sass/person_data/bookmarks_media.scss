@@ -4,6 +4,44 @@
 
     #bookmarks{
 
+        .bookmarks__products_list{
+
+
+            .bookmark__element{
+
+                .product_top{
+
+                    .product__tag{
+
+                        .bookmarks__product_remove{
+                            cursor: pointer;
+                        }
+                    }
+
+                }
+
+                .product__content{
+
+
+
+                    .request__to_remove_bookmark{
+
+                        .dismiss_request, .remove_bookmark-btn{
+
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .product-action{
+
+                    .send_to_basket{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
         .no_bookmarks{
 
             .no_bookmarks-allusion{
@@ -21,6 +59,7 @@
 @media screen and (max-width: 1023px) {
 
     #bookmarks{
+
 
         .no_bookmarks{
 

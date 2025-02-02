@@ -1,4 +1,4 @@
-<div class="bookmark_product__element">
+<li class="bookmark_product__element removing">
     <div  class="bookmark__element">
         <div class="product_top">
 
@@ -7,10 +7,8 @@
                 @if ($product->isTop())<span>Top</span>@endif
                 @if ($product->isSale())<span>Sale</span>@endif
                 <div class="product__evaluation"><span class="star"></span><span>5.0</span></div>
+                <div class="bookmarks__product_remove"></div>
             </div>
-
-
-
 
             @if($product->productImages->count() > 0)
 
@@ -21,12 +19,19 @@
             @endif
 
 
-
         </div>
         <div class="product__content">
 
             <a class="content_text" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product]) }}">{{ $product->langField('name') }}</a>
             <p class="content_about">{{ $product->productDescription->langField('about') }}</p>
+
+            <div class="request__to_remove_bookmark" >
+                <span class="dismiss_request">{{ __('return') }}</span>
+                <span class="remove_bookmark-btn"
+
+                onclick="event.preventDefault(); document.getElementById('remove_product_bookmarks_{{ $product->langField('name') }}').submit();">
+                {{ __('delete') }}</span>
+            </div>
 
         </div>
 
@@ -38,8 +43,6 @@
                 @endif
 
                 <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $product->price }}</p>
-
-                <p class="text-line"></p>
             @else
 
                 <p class="product_abcent">{{ __('Not available') }} </p>
@@ -61,8 +64,13 @@
         </div>
     </div>
 
+
+    <form id="remove_product_bookmarks_{{ $product->langField('name') }}" action="{{ route('person.bookmarks_remove', $product) }}" method="POST" style="display: none">
+        @csrf
+    </form>
+
     <form id="add_product_basket_{{ $product->langField('name') }}" action="{{ route('basket_add', $product) }}" method="POST" style="display: none">
         @csrf
     </form>
 
-</div>
+</li>
