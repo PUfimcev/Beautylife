@@ -1,9 +1,10 @@
 @if ($paginator->hasPages())
     <nav class="pagination-item d-flex justify-items-center justify-content-between">
-       {{--  <div class="d-flex justify-content-between flex-fill d-sm-none">
-            <ul class="pagination">--}}
+        <div class="d-flex justify-content-between flex-fill d-md-none">
+
+            <ul class="pagination">
                 {{-- Previous Page Link --}}
-                {{-- @if ($paginator->onFirstPage())
+                @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true">
                         <span class="page-link">@lang('pagination.previous')</span>
                     </li>
@@ -11,10 +12,10 @@
                     <li class="page-item">
                         <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a>
                     </li>
-                @endif --}}
+                @endif
 
                 {{-- Next Page Link --}}
-                {{-- @if ($paginator->hasMorePages())
+                @if ($paginator->hasMorePages())
                     <li class="page-item">
                         <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a>
                     </li>
@@ -24,9 +25,9 @@
                     </li>
                 @endif
             </ul>
-        </div> --}}
+        </div>
 
-        <div class="d-none flex-sm-fill d-sm-flex flex-column align-items-sm-center justify-content-sm-center">
+        <div class="d-none flex-sm-fill d-md-flex flex-column align-items-sm-center justify-content-sm-center pagination-desk">
             <div>
                 <p class="pagination__text small text-muted">
                     {!! __('Showing') !!}
@@ -40,7 +41,7 @@
             </div>
 
             <div>
-                <ul class="pagination__links d-sm-flex  align-items-sm-center justify-content-sm-center">
+                <ul class="pagination__links d-md-flex  align-items-sm-center justify-content-sm-center">
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <li class="page-item disabled arrow" aria-disabled="true" aria-label="@lang('pagination.previous')">

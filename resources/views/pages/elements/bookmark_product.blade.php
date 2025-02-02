@@ -6,11 +6,11 @@
                 @if ($product->isNew())<span>New</span>@endif
                 @if ($product->isTop())<span>Top</span>@endif
                 @if ($product->isSale())<span>Sale</span>@endif
+                <div class="product__evaluation"><span class="star"></span><span>5.0</span></div>
             </div>
 
 
 
-            <div class="product__evaluation"><span class="star"></span><span>5.0</span></div>
 
             @if($product->productImages->count() > 0)
 

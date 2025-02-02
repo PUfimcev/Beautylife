@@ -64,7 +64,7 @@
             <div class="product__elements">
                 @if (!isset($products))
 
-                    <div class="searching__box_result">Loading</div>
+                    <div class="searching__box_result">Loading...</div>
                 @else
 
                     @forelse ($products as $product)
@@ -82,8 +82,9 @@
     </div>
 
     @if (isset($products) && !empty($products))
-    <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+        <div class="pagination desk">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
     @endif
+
 
     @push('scripts')
 

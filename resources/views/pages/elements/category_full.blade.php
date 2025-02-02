@@ -336,25 +336,6 @@
 
     <div class="view-all__btn"><a href="{{ route('catalog_top_new', 'all-goods') }}">{{ __('View all') }}</a></div>
 
-    {{-- @if(session('screenWidth') !== 'mobile' && $pages > 0)
-        <div class="pagination">
-            <ul class="pagination__pages">
-                @foreach ($pages as $page)
-                    <li>
-                        <input form="category__filter-id" type="radio" class="radio-select" name="page" id="page-{{ $loop->iteration }}"
-
-                        value="{{ $page }}"
-                        data-id="page-{{ $loop->iteration }}"
-                        @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en))
-                        >
-                        <label class="page__numb" for="page-{{ $loop->iteration }}">{{ $page }}</label>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    @endif --}}
-
-
     @if (!isset($products) || !empty($products))
         <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
     @endif

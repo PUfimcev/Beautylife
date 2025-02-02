@@ -89,6 +89,37 @@ class GetScreensize{
         }
     };
 
+    // #changePagination(data){
+
+    //     if(!data) return;
+
+    //     let deskPaginations = document.querySelectorAll('.pagination-desk');
+    //     let mobilePaginations = document.querySelectorAll('.pagination-mobile');
+
+    //     if(deskPaginations.length == 0 || mobilePaginations.length == 0) return;
+
+    //     if(data == 'mobile'){
+    //         mobilePaginations.forEach((elem) =>{
+    //             elem.setAttribute('style', 'display: block');
+    //         })
+
+    //         deskPaginations.forEach((elem) =>{
+    //             elem.setAttribute('style', 'display: none !importent');
+    //         })
+    //     }
+
+    //     if(data == 'desk'){
+    //         mobilePaginations.forEach((elem) =>{
+    //             elem.setAttribute('style', 'display: none !importent');
+    //         })
+
+    //         deskPaginations.forEach((elem) =>{
+    //             elem.setAttribute('style', 'display: block');
+    //         })
+    //     }
+
+    // }
+
     async #sendData(dataWidth){
 
         if(!dataWidth)  return;
@@ -107,12 +138,9 @@ class GetScreensize{
 
                 const response = await axios.post(screenWidthRoute, screenWidthData);
 
-                if(response.status === 500){
+                let data = response.data;
 
-                    let data = response.data;
-                // console.log(data);
-                    }
-
+                // this.#changePagination(dataWidth);
 
             } catch (error) {
                 console.log(error.message);

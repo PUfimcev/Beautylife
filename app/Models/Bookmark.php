@@ -34,7 +34,6 @@ class Bookmark extends Model
     */
     public function products()
     {
-        // return $this->belongsToMany(Product::class)->withTimestamps()->withPivot('created_at');
         return $this->belongsToMany(Product::class)->withTimestamps();
 
     }

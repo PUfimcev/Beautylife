@@ -7,10 +7,155 @@
     border-radius: 0.8rem;
     background-color: $list-bg;
 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
     .bookmarks__title{
         border-bottom: 2px solid $text-accent;
         padding-bottom: 1rem;
         margin-bottom: 2rem;
+    }
+
+    .bookmarks__select_sorting{
+        width: 9rem;
+        height: 2.5rem;
+        margin-left: auto;
+        position: relative;
+
+        .sorting__option{
+            width: 100%;
+            height: 100%;
+            display: block;
+            @extend %P2-desk-description;
+            color: $text-accent !important;
+            padding-right: 0.2rem;
+
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            cursor: pointer;
+            background-color: transparent;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: none;
+            outline: none;
+
+            &:focus{
+                box-shadow: none;
+            }
+
+        }
+
+
+        .select-arrow{
+            cursor: pointer;
+            position: absolute;
+            z-index: 0;
+            top: 55%;
+            right: 5%;
+            transform: translateY(-50%);
+            display: inline-block;
+            background-image: url(../images/arrow_down_icon_hover.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 9px;
+            height: 9px
+        }
+    }
+
+    .bookmarks__products_list{
+
+        width: 100%;
+
+        .bookmark__element{
+            width: 100%;
+            height: 15rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap:1rem;
+
+            .product_top{
+                width: 30%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content:space-around;
+
+                .product__image{
+                    display: block;
+                    object-fit: contain;
+                    width: 60%;
+                    height: 100%;
+
+                }
+            }
+        }
+    }
+
+    .pagination {
+        align-self: center;
+
+        div:first-child{
+
+            ul{
+                .page-item.disabled{
+
+
+                    .page-link{
+                        background-color: transparent !important;
+                    }
+                }
+
+                :is(li>a){
+
+                    background-color: transparent !important;
+                }
+            }
+        }
+
+        .pagination__links{
+            padding: 0 !important;
+
+                .page-item.disabled{
+
+                    .page-link{
+                        background-color: transparent !important;
+                    }
+                }
+
+                .page-item.active {
+
+                    .page-link{
+                        background-color: transparent !important;
+                        color: $text-accent-2 !important;
+
+                    }
+                }
+
+                .page-item {
+
+                    .page-link{
+                        background-color: transparent !important;
+                        outline: none !important;
+                        line-height: 24px !important;
+                        height: 24px !important;
+                        color: $text-accent !important;
+                        border: none !important;
+                        font-size: 1.5rem;
+                        padding: 0 12px !important;
+
+                    }
+                }
+
+
+        }
     }
 
     .no_bookmarks{

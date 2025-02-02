@@ -19,7 +19,7 @@ class BookmarkController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'empty_bookmarks'])->except(['addBookmarks', 'bookmarkIsEmpty']);;
+        $this->middleware(['auth', 'empty_bookmarks'])->except(['addBookmarks', 'bookmarkIsEmpty']);
     }
 
     /**
@@ -30,9 +30,11 @@ class BookmarkController extends Controller
     {
         $order = (is_null($request->input("bookmarksOrder")) || $request->input("bookmarksOrder") == 'desc') ? 'desc' : 'asc';
 
-        $products = Bookmark::where('user_id', Auth::id())->first()->products()->orderBy('bookmark_product.created_at', $order)->get();
-
-        // dd($products);
+        $products = Bookmark::whereBelongsTo(Auth::user())
+                    ->first()
+                    ->products()
+                    ->orderBy('bookmark_product.created_at', $order)
+                    ->paginate(3)->withQueryString();
 
         return view('person.bookmarks', compact('products'));
     }

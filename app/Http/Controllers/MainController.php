@@ -93,9 +93,10 @@ class MainController extends Controller
 
                 $productsPre = (new CategoryFilter($productQuery, $query))->apply();
 
-                $products = $productsPre->paginate(12);
-
                 $productsQuantity = $productsPre->count();
+
+                $products = $productsPre->paginate(12)->withQueryString();
+
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
 
@@ -107,10 +108,10 @@ class MainController extends Controller
 
                 $productsPre = (new CategoryFilter($productQuery, $query))->apply();
 
-                $products = $productsPre->paginate(12);
-
-
                 $productsQuantity = $productsPre->count();
+
+                $products = $productsPre->paginate(12)->withQueryString();
+
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
 
@@ -135,12 +136,9 @@ class MainController extends Controller
 
         $productsPre = (new GetCatalogTopNewData($productQuery, $query))->apply();
 
-        $products = $productsPre->paginate(12);
-
         $productsCount = $productsPre->count();
 
-        // dd($productsCount);
-
+        $products = $productsPre->paginate(12)->withQueryString();
 
         $categories = CategoryFilter::getCatalogs();
 
@@ -270,12 +268,14 @@ class MainController extends Controller
 
     public function getScreenWidth(Request $request){
 
-        if($request->input('screenWidth') == 'mobile') session(['screenWidth' => $request->input('screenWidth')]);
 
-        if($request->input('screenWidth') == 'desk') {
+        if(!$request->input('screenWidth')) return;
 
-            session(['screenWidth' => $request->input('screenWidth')]);
-        }
+        if($request->session()->has('screenWidth')) $request->session()->forget('screenWidth');
+
+        session(['screenWidth' => $request->input('screenWidth')]);
+
+        return response()->json($request);
 
     }
 }
