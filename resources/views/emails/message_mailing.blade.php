@@ -167,11 +167,6 @@
                         <p class="info_item">{{ $mailbody->langField('additional_info') }}</p>
                     @endisset
                 </div>
-
-                <div class="products_list">
-                    {{-- @isset($products)
-                        @endisset --}}
-                </div>
             </main>
 
             <footer>

@@ -16,4 +16,5 @@ import RadioPageVisible from './radioPageVisible';
 import SelectVisible from './selectVisible';
 import MakeFormInCatalogsubmit from './makeFormInCatalogsubmit';
 import DisableEnableButton from './disableEnableButton';
+import BookmarkRemoving from './bookmarkRemoving';
 
