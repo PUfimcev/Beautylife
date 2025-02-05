@@ -78,6 +78,8 @@ class BookmarkController extends Controller
 
     public static function getArrayProductIds($bookmark)
     {
+        if(!$bookmark) return;
+
         return $bookmark->products()->get()->map->id->toArray();
     }
 

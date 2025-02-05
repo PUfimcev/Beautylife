@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Mail;
 
 use App\Models\Offer;
 use App\Models\Message;
+use App\Models\Product;
 use Illuminate\View\View;
 use App\Mail\OfferMailing;
+use App\Classes\GetProducts;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Mail\MessagesMailing;
@@ -55,11 +57,21 @@ class MessageMailController extends Controller
     {
         $subscribers = self::getSubscribers();
 
+        $query1['getBestsellers'] = 2;
+
+        $productQuery1 = Product::with(['productImages']);
+        $bestsellers = (new GetProducts($productQuery1, $query1))->apply()->get();
+
+        $query2['getNewArrivals'] = 2;
+        $productQuery2 = Product::with(['productImages']);
+
+        $newArrivals = (new GetProducts($productQuery2, $query2))->apply()->get();
+
         if($subscribers) {
 
             foreach($subscribers as $subscriber)
             {
-                Mail::to($subscriber->email)->queue(new OfferMailing($subscriber, $offer));
+                Mail::to($subscriber->email)->queue(new OfferMailing($subscriber, $offer, $bestsellers, $newArrivals));
             };
 
         } else {

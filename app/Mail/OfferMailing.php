@@ -17,15 +17,20 @@ class OfferMailing extends Mailable
 
     protected $subscription;
     protected $offer;
+    protected $bestsellers;
+    protected $newArrivals;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($subscription = null, $offer = null)
+    public function __construct($subscription = null, $offer = null, $bestsellers = null, $newArrivals = null)
     {
 
         if($subscription != null) $this->subscription = $subscription;
         if($offer != null) $this->offer = $offer;
+
+        if($bestsellers != null) $this->bestsellers = $bestsellers;
+        if($newArrivals != null) $this->newArrivals = $newArrivals;
     }
 
     /**
@@ -54,6 +59,8 @@ class OfferMailing extends Mailable
             with: [
                 'mailbody' => $this->offer,
                 'subscribe' => $this->subscription,
+                'bestsellers' => $this->bestsellers,
+                'newArrivals' => $this->newArrivals,
             ]
         );
     }

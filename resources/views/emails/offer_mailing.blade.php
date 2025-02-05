@@ -83,12 +83,12 @@
 
         .offer_head{
             width: 100%;
-            height: 30rem;
+            height: 20rem;
         }
 
         .image{
             display: block;
-            width: clamp(20.5rem, 95%, 35rem);
+            width: clamp(20.5rem, 100%, 35rem);
             height: 100%;
             /* object-fit: contain; */
             object-fit: cover;
@@ -118,7 +118,55 @@
         }
 
         .products_list{
-            height: 100px;
+            width: 100%;
+            margin: 1rem auto;
+        }
+
+        .newArrivals{
+            margin-top: 1rem;
+        }
+        .products_list-title{
+            color: #530C0C;
+            margin-bottom: 1rem;
+        }
+        .bestseller_product__element, .newArrival_product__element{
+            width: 100%;
+            border-bottom: 1px solid #987B75;
+            list-style: none;
+            margin: 0.5rem 0;
+        }
+
+        /* .bestseller__element{
+            width: 100%;
+            height: 100%;
+        } */
+
+        .bestseller__image, .newArrival__image{
+            width: 100%;
+            max-height: 10rem !important;
+            /* object-fit: contain; */
+            object-fit: contain;
+            margin-bottom: 0.4rem;
+        }
+
+        .content_text{
+            color: #530C0C;
+            text-decoration: underline;
+            margin-bottom: 0.4rem;
+        }
+
+        .price{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-bottom: 0.4rem;
+            margin-left: auto;
+        }
+
+        .discount-price{
+            margin-right: 1rem;
         }
 
 
@@ -263,8 +311,81 @@
                 </div>
 
                 <div class="products_list">
-                    {{-- @isset($products)
-                        @endisset --}}
+
+                    @isset($bestsellers)
+                    <h3 class="products_list-title">{{  __('Bestsellers') }}</h3>
+                    <ul class="bestsellers__list">
+                        @foreach ($bestsellers  as $bestseller)
+                        <li class="bestseller_product__element">
+
+                            <div  class="bestseller__element">
+                                <div class="bestseller_top">
+
+
+                                    @if($bestseller->productImages->count() > 0)
+
+                                        <img class="bestseller__image" src="{{ $message->embed(asset('storage/'.$bestseller->productImages[0]->route)) }}" alt="{{ __('Image') }}" />
+
+                                    @else
+                                        <span class="no_picture">{{ __('No picture') }}</span>
+                                    @endif
+                                </div>
+                                <div class="bestseller__content">
+
+                                    <a class="content_text" href="{{ route('product', [$bestseller->getCategory()->first(), $bestseller->getSubcategory()->first(), $bestseller]) }}">{{ $bestseller->langField('name') }}</a>
+                                </div>
+
+                                <div class="price">
+
+                                    @if($bestseller->reduced_price > 0)
+                                        <p class="discount-price">BYN {{ $bestseller->reduced_price }}</p>
+                                    @endif
+
+                                    <p class="total-price"  @if($bestseller->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $bestseller->price }}</p>
+
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                    @endisset
+
+                    @isset($newArrivals)
+                    <h3 class="products_list-title newArrivals">{{  __('New arrivals') }}</h3>
+                    <ul class="newArrivals__list">
+                        @foreach ($newArrivals  as $newArrival)
+                        <li class="newArrival_product__element">
+
+                            <div  class="newArrival__element">
+                                <div class="newArrival_top">
+
+                                    @if($newArrival->productImages->count() > 0)
+
+                                        <img class="newArrival__image" src="{{ $message->embed(asset('storage/'.$newArrival->productImages[0]->route)) }}" alt="{{ __('Image') }}" />
+
+                                    @else
+                                        <span class="no_picture">{{ __('No picture') }}</span>
+                                    @endif
+                                </div>
+                                <div class="newArrival__content">
+
+                                    <a class="content_text" href="{{ route('product', [$newArrival->getCategory()->first(), $newArrival->getSubcategory()->first(), $newArrival]) }}">{{ $newArrival->langField('name') }}</a>
+                                </div>
+
+                                <div class="price">
+
+                                    @if($newArrival->reduced_price > 0)
+                                        <p class="discount-price">BYN {{ $newArrival->reduced_price }}</p>
+                                    @endif
+
+                                    <p class="total-price"  @if($newArrival->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>BYN {{ $newArrival->price }}</p>
+
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                    @endisset
                 </div>
             </main>
 

@@ -31,7 +31,7 @@
         {{-- New arrival --}}
 
         <section class="new_arrival__main_page">
-            <h2 class="new_arrival__title">{{ __('New arrival') }}</h2>
+            <h2 class="new_arrival__title">{{ __('New arrivals') }}</h2>
 
             <div class="new_arrival__elements @if($newArrivals->count() < 3) less-items @endif">
 
