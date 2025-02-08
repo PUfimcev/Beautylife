@@ -251,11 +251,22 @@
                     </ul>
                 </div>
 
-                {{-- <div class="filter-items">
+                <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
 
-                    <div class="subcategory__names">Something</div>
-                </div> --}}
+                    <div class="subcategory__names price">
+
+                        <div class="price__from__to_box">
+                            <span for="price_from">BYN</span>
+                            <div class="price_from-elem">
+                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="price_from" id="price_from" size="6" maxlength="6"  value="{{ old('price_from', request()->has('price_from') ? request()->input('price_from') : '') }}" placeholder="{{ __('from') }}">
+                            </div>
+                            <div class="price_to-elem">
+                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="price_to" id="price_to" size="6" maxlength="6" value="{{ old('price_to', request()->has('price_to') ? request()->input('price_to') : '') }}" placeholder="{{ __('to') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="filter-items">
                     <div class="title" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>

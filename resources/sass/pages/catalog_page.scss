@@ -245,6 +245,52 @@
                         }
                     }
 
+                    .price{
+                        .price__from__to_box{
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+
+                            span{
+                                display: block;
+                                margin: 0;
+                                margin-right: 0.3rem;
+                                font-size: 0.8rem;
+                            }
+
+                            .price_from-elem, .price_to-elem{
+
+                                input{
+                                    font-size: 0.9rem;
+                                    border: 1px solid #987B75;
+                                    padding: 0.2rem 0.5rem;
+                                    background-color: $body-bg;
+
+                                    &:is(:focus){
+                                        outline: none;
+
+                                    }
+                                }
+
+                            }
+
+                            .price_from-elem{
+                                border-radius: 5px 0 0 5px !important;
+
+                                input{
+                                    border-right: 0;
+
+                                }
+                            }
+
+                            .price_to-elem{
+                                border-radius: 0 5px 5px 0 !important;
+
+                            }
+                        }
+                    }
+
                 }
             }
 

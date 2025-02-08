@@ -1,8 +1,11 @@
 class MakeFormInCatalogsubmit{
 
     #selecCheckboxesInCategoryFilter;
+    // #selecPriceFromInCategoryFilter;
+    // #selecPriceToInCategoryFilter;
     #selectOptionsInOptionGoodsTopNewAll;
     #form;
+    #selecPriceInCategoryFilter;
 
 
     constructor(){
@@ -11,14 +14,21 @@ class MakeFormInCatalogsubmit{
 
         this.#selectOptionsInOptionGoodsTopNewAll = document.querySelector('.full_category .select__goods');
 
+        this.#selecPriceInCategoryFilter = document.querySelectorAll('.price__from__to_box input');
+        // console.log(this.#selecPriceInCategoryFilter);
+        // this.#selecPriceFromInCategoryFilter = document.getElementById('price_from');
+        // this.#selecPriceToInCategoryFilter = document.getElementById('price_to');
+
         this.#form = document.querySelector('#category__filter-id');
 
         if(!this.#form) return;
 
-        if((!this.#selecCheckboxesInCategoryFilter && this.#selecCheckboxesInCategoryFilter.length === 0) && !this.#selectOptionsInOptionGoodsTopNewAll && !this.#form) return;
+        if((!this.#selecCheckboxesInCategoryFilter && this.#selecCheckboxesInCategoryFilter.length === 0) && !this.#selectOptionsInOptionGoodsTopNewAll && !this.#form &&  this.#selecPriceInCategoryFilter.length === 0) return;
 
         this.#handleFormCheckbox();
         this.#handleFormSelect();
+        this.#handleFormInput();
+
 
     }
 
@@ -29,6 +39,24 @@ class MakeFormInCatalogsubmit{
             });
         });
     };
+
+    #debounce(func, delay){
+        let timeout;
+        return (...arg) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(()=>{func(...arg)}, delay);
+        };
+    };
+
+    #handleFormInput(){
+        this.#selecPriceInCategoryFilter.forEach((elem) =>{
+            elem.addEventListener('input', this.#debounce((e) =>{
+                this.#form.submit();
+            }, 500));
+        });
+    };
+
+
 
     #handleFormSelect(){
         this.#selectOptionsInOptionGoodsTopNewAll.addEventListener('change', ()=>{
