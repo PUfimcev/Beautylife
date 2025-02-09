@@ -265,7 +265,7 @@ class Product extends Model
 
         $arrayProductIds = BookmarkController::getArrayProductIds($getBookmark);
 
-        if(!$arrayProductIds || $arrayProductIds.length === 0) return;
+        if(!$arrayProductIds || $arrayProductIds === []) return;
 
         return in_array($this->id, $arrayProductIds) ? true : false;
 

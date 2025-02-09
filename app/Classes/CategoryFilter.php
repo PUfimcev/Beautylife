@@ -62,6 +62,51 @@ class CategoryFilter extends MainAbstractProductFilter
             });
     }
 
+
+    /**
+    * @param string $queryPriceFrom
+    * @return void
+    */
+    public function priceFrom($queryPriceFrom)
+    {
+        // dd($queryPriceFrom == null);
+        if(!isset($queryPriceFrom)) {
+            $this->productBuilder;
+        } else {
+
+            $this->productBuilder->where('amount', '>', '0')->where(function($query) use ($queryPriceFrom){
+                $query->where(function($query) use ($queryPriceFrom){
+                    $query->where('price', '>=', $queryPriceFrom)->where('reduced_price', '=','0');
+                })->orWhere(function($query) use ($queryPriceFrom){
+                    $query->where('reduced_price', '>=', $queryPriceFrom)->where('reduced_price', '>','0');
+                });
+            });
+        }
+
+    }
+
+    /**
+    * @param string $queryPriceTo
+    * @return void
+    */
+    public function priceTo($queryPriceTo)
+    {
+        // dd(isset($queryPriceTo));
+        if(!isset($queryPriceTo)) {
+            $this->productBuilder;
+        } else {
+
+            $this->productBuilder->where('amount', '>', '0')->where(function($query) use ($queryPriceTo){
+                $query->where(function($query) use ($queryPriceTo){
+                    $query->where('price', '<=', $queryPriceTo)->where('reduced_price', '=','0');
+                })->orWhere(function($query) use ($queryPriceTo){
+                    $query->where('reduced_price', '<=', $queryPriceTo)->where('reduced_price', '>','0');
+                });
+            });
+        };
+
+    }
+
     /**
     * @param mixed $querySkintype
     * @return void
@@ -121,7 +166,7 @@ class CategoryFilter extends MainAbstractProductFilter
     /**
      * getBrandData
      *
-     * @return void
+     * @return collection
      */
     protected static function getBrandData()
     {
@@ -131,7 +176,7 @@ class CategoryFilter extends MainAbstractProductFilter
     /**
      * getSkintypesData
      *
-     * @return void
+     * @return collection
      */
     protected static function getSkintypesData()
     {
@@ -150,7 +195,7 @@ class CategoryFilter extends MainAbstractProductFilter
     /**
      * getAgerangesData
      *
-     * @return void
+     * @return collection
      */
     protected static function getAgerangesData()
     {
@@ -168,7 +213,7 @@ class CategoryFilter extends MainAbstractProductFilter
     /**
      * getConsumersData
      *
-     * @return void
+     * @return collection
      */
     protected static function getConsumersData()
     {
@@ -186,7 +231,7 @@ class CategoryFilter extends MainAbstractProductFilter
     /**
      * getCataloges
      *
-     * @return void
+     * @return collection
      */
     public static function getCatalogs()
     {
@@ -202,7 +247,7 @@ class CategoryFilter extends MainAbstractProductFilter
     /**
      * getCatalogData
      *
-     * @return void
+     * @return array
      */
     public static function getCatalogOptionData()
     {

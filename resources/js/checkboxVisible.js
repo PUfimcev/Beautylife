@@ -11,13 +11,8 @@ export default class CheckboxVisible {
         this.#checkboxes = document.querySelectorAll('.full_category-body .subcategory-select');
         this.#resetBnt = document.querySelector('.category__subcategory .reset__btn');
 
-        // this.#categoryName = document.querySelector('.full_category-body #category-name').value ?? '';
-
         if(!this.#resetBnt && this.#checkboxes.length === 0 || !this.#checkboxes) return;
 
-        // if(document.querySelector('.full_category #category-name') && this.#arrayCheckboxes.length === 0) {
-        //     this.#arrayCheckboxes.push(this.#categoryName);
-        // }
 
         this.handleCookie();
         this.handleCheckbox();
@@ -32,7 +27,6 @@ export default class CheckboxVisible {
 
             if(!getDataFromCookie && getDataFromCookie.length === 0) return;
 
-            // if(getDataFromCookie.includes(elem.dataset.id))
 
             this.#checkboxesContainers = document.querySelectorAll('.full_category-body .subcategory__names');
 
@@ -50,7 +44,7 @@ export default class CheckboxVisible {
 
         window.addEventListener('unload', ()=>{
             if(sessionStorage.getItem('checkboxes')){
-                // this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {secure: true, 'max-age': 3600 })
+
                 this.setCookie('checkboxes', sessionStorage.getItem('checkboxes'), {'max-age': 600 })
             }
         })
@@ -62,7 +56,7 @@ export default class CheckboxVisible {
         const arr = [];
 
         this.#checkboxes.forEach(elem => {
-            // if(getDataFromCookie.includes(elem.dataset.id))
+
             if(elem.checked)
 
                 arr.push(elem.closest('ul'));
@@ -95,10 +89,10 @@ export default class CheckboxVisible {
 
                     this.#arrayCheckboxes.push(e.target.dataset.id);
                     this.#arrayCheckboxes = [... new Set(this.#arrayCheckboxes)];
-                    document.querySelector(`.full_category #page-1`).click();
+                    // document.querySelector(`.full_category #page-1`).click();
                     this.setListCheckboxes();
                 } else {
-                    document.querySelector(`.full_category #page-1`).click();
+                    // document.querySelector(`.full_category #page-1`).click();
                     this.setListCheckboxes(e.target.dataset.id);
                 }
             });

@@ -259,10 +259,10 @@
                         <div class="price__from__to_box">
                             <span for="price_from">BYN</span>
                             <div class="price_from-elem">
-                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="price_from" id="price_from" size="6" maxlength="6"  value="{{ old('price_from', request()->has('price_from') ? request()->input('price_from') : '') }}" placeholder="{{ __('from') }}">
+                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="priceFrom" id="price_from" size="6" maxlength="6"  value="{{ request()->priceFrom }}" placeholder="{{ __('from') }}">
                             </div>
                             <div class="price_to-elem">
-                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="price_to" id="price_to" size="6" maxlength="6" value="{{ old('price_to', request()->has('price_to') ? request()->input('price_to') : '') }}" placeholder="{{ __('to') }}">
+                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="priceTo" id="price_to" size="6" maxlength="6" value="{{ request()->priceTo }}" placeholder="{{ __('to') }}">
                             </div>
                         </div>
                     </div>

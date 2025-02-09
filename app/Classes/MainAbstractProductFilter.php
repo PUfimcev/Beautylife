@@ -14,7 +14,7 @@ abstract class MainAbstractProductFilter
     public function __construct($builder, $query)
     {
         if(isset($query))  $this->productsRequest = $query;
-;
+
         $this->productBuilder = $builder;
 
     }
@@ -24,8 +24,6 @@ abstract class MainAbstractProductFilter
 
         foreach($this->productFilter() as $fieldname => $value) {
             if(method_exists($this, $fieldname)) {
-
-                if(!isset($value)) $this->$fieldname();
 
                 $this->$fieldname($value);
             }
@@ -37,7 +35,6 @@ abstract class MainAbstractProductFilter
 
     public function productFilter()
     {
-
         return $this->productsRequest;
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Validation\Rules;
+use App\Traits\PreviousUrl;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -9,7 +11,6 @@ use App\Classes\RemoveSessionClass;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Traits\PreviousUrl;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -75,8 +76,8 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
+            $this->username() => 'required|string|email:filter|max:255',
+            'password' => 'required|string|min:8',
             'g-recaptcha-response' => 'required|recaptcha',
         ]);
     }

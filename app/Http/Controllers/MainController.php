@@ -85,6 +85,7 @@ class MainController extends Controller
         } else {
             list($brands, $skintypes, $ageranges, $consumers) = CategoryFilter::getCatalogOptionData();
 
+            // dd($request->all());
             if(count($request->all()) == 0){
 
                 $query['getCatalogProducts'] = $category->id;
@@ -95,7 +96,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                $products = $productsPre->paginate(12)->withQueryString();
+                $products = $productsPre->paginate(2)->withQueryString();
 
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
@@ -110,7 +111,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                $products = $productsPre->paginate(12)->withQueryString();
+                $products = $productsPre->paginate(2)->withQueryString();
 
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);

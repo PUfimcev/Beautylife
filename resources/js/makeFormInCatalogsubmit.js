@@ -1,8 +1,6 @@
 class MakeFormInCatalogsubmit{
 
     #selecCheckboxesInCategoryFilter;
-    // #selecPriceFromInCategoryFilter;
-    // #selecPriceToInCategoryFilter;
     #selectOptionsInOptionGoodsTopNewAll;
     #form;
     #selecPriceInCategoryFilter;
@@ -15,9 +13,6 @@ class MakeFormInCatalogsubmit{
         this.#selectOptionsInOptionGoodsTopNewAll = document.querySelector('.full_category .select__goods');
 
         this.#selecPriceInCategoryFilter = document.querySelectorAll('.price__from__to_box input');
-        // console.log(this.#selecPriceInCategoryFilter);
-        // this.#selecPriceFromInCategoryFilter = document.getElementById('price_from');
-        // this.#selecPriceToInCategoryFilter = document.getElementById('price_to');
 
         this.#form = document.querySelector('#category__filter-id');
 
@@ -52,7 +47,7 @@ class MakeFormInCatalogsubmit{
         this.#selecPriceInCategoryFilter.forEach((elem) =>{
             elem.addEventListener('input', this.#debounce((e) =>{
                 this.#form.submit();
-            }, 500));
+            }, 2000));
         });
     };
 
