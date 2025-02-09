@@ -37,7 +37,12 @@
         </div>
     </div>
 
-    {{-- <section class="filer__mobile">
+    <div class="category__filter-top-mobile">
+        <div>{{ __('Filter by') }} <span class="dropdown__arrow"></span></div>
+        <div>{{ __('Sort by') }} <span class="dropdown__arrow"></span></div>
+     </div>
+
+    <section class="filer__mobile">
 
         <div class="full_category-top-mobile">
 
@@ -45,12 +50,9 @@
 
         </div>
 
-        <div class="category__filter-top-mobile">
-            <div>{{ __('Filter by') }} <span class="dropdown__arrow"></span></div>
-            <div>{{ __('Sort by') }} <span class="dropdown__arrow"></span></div>
-         </div>
+        <a class="return_to_catalog-btn" href="{{ route('catalog') }}">{{ __('Catalogs') }}</a>
 
-        <form class="category__filter-mobile" method="GET" action="">
+        <form class="category__filter-mobile" method="GET" action="{{ route('catalog', $category) }}">
 
                 <ul class="select_goods_wrap">
                     <li>
@@ -185,10 +187,7 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-                <input type="hidden" name="category" id="category-name" value="{{ $category->code }}">
-
-
+                @csrf
 
                 <div class="reset__apply_btns">
                     <a class="reset__btn" href="{{ route('catalog', $category) }}">{{ __('Clear all') }}</a>
@@ -200,7 +199,7 @@
         </form>
 
 
-    </section> --}}
+    </section>
 
 
 
@@ -214,9 +213,9 @@
             <form id="category__filter-id" class="category__filter" method="GET" action="{{ route('catalog', $category) }}">
 
                 <div class="filter-items">
-                    <div class="title" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span></span><span>-</span></div>
+                    <div class="title {{ (request()->filled('subcategorySelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span><span>-</span></div>
 
-                    <ul class="subcategory__names subcategory">
+                    <ul class="subcategory__names subcategory {{ (request()->filled('subcategorySelect')) ? 'open' : '' }}">
 
                         @foreach ($category->subcategories as $subcategory)
                             <li>
@@ -234,9 +233,9 @@
                 </div>
 
                 <div class="filter-items">
-                    <div class="title" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span></span><span>-</span></div>
+                    <div class="title {{ (request()->filled('brandSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span><span>-</span></div>
 
-                    <ul class="subcategory__names brand">
+                    <ul class="subcategory__names brand {{ (request()->filled('brandSelect')) ? 'open' : '' }}">
 
                         @foreach ($brands as $brand)
 
@@ -251,10 +250,10 @@
                     </ul>
                 </div>
 
-                <div class="filter-items">
-                    <div class="title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
+                <div class="filter-items price">
+                    <div class="title {{ (isset(request()->priceFrom) || isset(request()->priceTo)) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span><span>-</span></div>
 
-                    <div class="subcategory__names price">
+                    <div class="subcategory__names price {{ (isset(request()->priceFrom) || isset(request()->priceTo)) ? 'open' : '' }}">
 
                         <div class="price__from__to_box">
                             <span for="price_from">BYN</span>
@@ -269,9 +268,9 @@
                 </div>
 
                 <div class="filter-items">
-                    <div class="title" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>
+                    <div class="title {{ (request()->filled('skintypeSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>
 
-                    <ul class="subcategory__names skintype">
+                    <ul class="subcategory__names skintype {{ (request()->filled('skintypeSelect')) ? 'open' : '' }}">
                         @foreach ($skintypes as $skintype)
                             <li>
                                 <input type="checkbox" class="subcategory-select" name="skintypeSelect[]" id="skintype_item-{{ $loop->iteration }}"
@@ -286,8 +285,8 @@
                 </div>
 
                 <div class="filter-items">
-                    <div class="title" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span></span><span>-</span></div>
-                    <ul class="subcategory__names agerange">
+                    <div class="title {{ (request()->filled('agerangeSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span><span>-</span></div>
+                    <ul class="subcategory__names agerange {{ (request()->filled('agerangeSelect')) ? 'open' : '' }}">
                         @foreach ($ageranges as $agerange)
                             <li>
                                 <input type="checkbox" class="subcategory-select" name="agerangeSelect[]" id="agerange_item-{{ $loop->iteration }}"
@@ -303,9 +302,9 @@
                 </div>
 
                 <div class="filter-items">
-                    <div class="title" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span></span><span>-</span></div>
+                    <div class="title {{ (request()->filled('consumerSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span><span>-</span></div>
 
-                    <ul class="subcategory__names consumers">
+                    <ul class="subcategory__names consumers {{ (request()->filled('consumerSelect')) ? 'open' : '' }}">
                         @foreach ($consumers as $consumer)
                         <li>
                             <input type="checkbox" class="subcategory-select" name="consumerSelect[]" id="consumer_item-{{ $loop->iteration }}"
@@ -378,6 +377,7 @@
     <script>
         function getMenue(elem){
         if(!elem) return;
+
         elem.classList.toggle('open');
         elem.nextElementSibling.classList.toggle('open');
 

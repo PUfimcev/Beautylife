@@ -96,7 +96,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                $products = $productsPre->paginate(2)->withQueryString();
+                $products = $productsPre->paginate(12)->withQueryString();
 
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
@@ -111,7 +111,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                $products = $productsPre->paginate(2)->withQueryString();
+                $products = $productsPre->paginate(12)->withQueryString();
 
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);

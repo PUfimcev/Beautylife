@@ -64,6 +64,7 @@ export default class CheckboxVisible {
 
         [... new Set(arr)].forEach(elem => {
             elem.classList.add('open');
+            elem.previousElementSibling.classList.add('open');
         });
 
     }

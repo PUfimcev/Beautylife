@@ -11,7 +11,7 @@ import BurgerButtonAndNavMobile from './burgerButtonAndNavMobile';
 import Anchor from './anchor';
 // import LinkTopPage from './linkTopPage';
 import SelectReset from './selectReset';
-import inputPricesVisible from './inputPricesVisible';
+// import inputPricesVisible from './inputPricesVisible';
 import RadioPageVisible from './radioPageVisible';
 import SelectVisible from './selectVisible';
 import MakeFormInCatalogsubmit from './makeFormInCatalogsubmit';
