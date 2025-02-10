@@ -16,7 +16,9 @@
 @section('content')
 
 <section class="full_category">
-        <div class="full_category-top">
+
+
+    <div class="full_category-top">
 
         <h2 class="category__name">{{ Str::upper($category->langField('name')) }}</h2>
 
@@ -37,10 +39,7 @@
         </div>
     </div>
 
-    <div class="category__filter-top-mobile">
-        <div>{{ __('Filter by') }} <span class="dropdown__arrow"></span></div>
-        <div>{{ __('Sort by') }} <span class="dropdown__arrow"></span></div>
-     </div>
+    <div id="category__filter-top-mobile">{{ __('Filters and sorting') }}</div>
 
     <section class="filer__mobile">
 
@@ -48,15 +47,21 @@
 
             <h2 class="category__name">{{ Str::upper($category->langField('name')) }}</h2>
 
+            <a class="return_to_catalog-btn" href="{{ route('catalog') }}">{{ __('Catalogs') }}</a>
         </div>
 
-        <a class="return_to_catalog-btn" href="{{ route('catalog') }}">{{ __('Catalogs') }}</a>
 
-        <form class="category__filter-mobile" method="GET" action="{{ route('catalog', $category) }}">
+        <form id="category__filter-mobile" method="GET" action="{{ route('catalog', $category) }}">
 
-                <ul class="select_goods_wrap">
+                <div class="category__filter-top">
+                    <span>{{ Str::upper(__('Filter by')) }}:</span>
+                    <a href="{{ route('catalog', $category) }}" class="navbar__cancel-icon category_mobile"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                    </svg></a>
+                </div>
+
+                <ul class="select_goods_wrap-mobile">
                     <li>
-                        <input type="radio" class="subcategory_select-mobile" name="selectGoods" id="select__goods-all-goods" value="all-goods"
+                        <input type="radio" class="subcategory_select-mobile" name="selectGoods" id="select__goods-all-goods" value="all-goods" checked
 
                         {{ request()->input('selectGoods') == 'all-goods' ? 'checked' : '' }}
                         >
@@ -87,110 +92,117 @@
 
                 <div class="filter__products-mobile">
 
-                    <div class="category">
-                        <div class="category__title" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span></span><span>-</span></div>
+                    <div class="filter-items-mobile">
+                        <div class="title {{ (request()->filled('subcategorySelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ $category->langField('name') }}</span><span>+</span><span>-</span></div>
 
-                        <ul class="subcategory__names">
+                        <ul class="subcategory__names subcategory {{ (request()->filled('subcategorySelect')) ? 'open' : '' }}">
 
                             @foreach ($category->subcategories as $subcategory)
                                 <li>
-                                    <input type="checkbox" class="subcategory_select-mobile" name="subcategory{{ $loop->iteration }}" id="subcategory-mobile-{{ $loop->iteration }}"
+                                    <input type="checkbox" class="subcategory-select-mobile" name="subcategorySelect[]" id="subcategory_item-mobile-{{ $loop->iteration }}"
 
-                                    value="{{ $subcategory->name_en }}"
+                                    {{ in_array($subcategory->id, request()->input('subcategorySelect') ?? []) ? 'checked' : ''}}
 
-                                    {{ request()->has('subcategory'. $loop->iteration ) ? 'checked' : '' }}
+                                    value="{{ $subcategory->id }}"
+                                    data-id="subcategory_item-{{ $loop->iteration }}"
                                     >
-                                    <label class="subcategory__name" for="subcategory-mobile-{{ $loop->iteration }}">{{ $subcategory->langField('name') }}</label>
+                                    <label class="subcategory__name" for="subcategory_item-mobile-{{ $loop->iteration }}">{{ $subcategory->langField('name') }}</label>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
 
-                    <div class="brand-mobile">
-                        <div class="brand__title" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span></span><span>-</span></div>
+                    <div class="filter-items-mobile">
+                        <div class="title {{ (request()->filled('brandSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Brand') }}</span><span>+</span><span>-</span></div>
 
-                        <ul class="brands__names">
+                        <ul class="subcategory__names brand {{ (request()->filled('brandSelect')) ? 'open' : '' }}">
 
                             @foreach ($brands as $brand)
+
+                            <li>
+                                <input type="checkbox" class="subcategory-select-mobile" name="brandSelect[]" id="brand_item-mobile-{{ $loop->iteration }}"
+                                {{ in_array($brand->id, request()->input('brandSelect') ?? []) ? 'checked' : ''}}
+                                value="{{ $brand->id }}"
+                                data-id="brand_item-{{ $loop->iteration }}">
+                                <label class="brand__name" for="brand_item-mobile-{{ $loop->iteration }}">{{ $brand->brand_name }}</label>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="filter-items-mobile price">
+                        <div class="title {{ (isset(request()->priceFrom) || isset(request()->priceTo)) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span><span>-</span></div>
+
+                        <div class="subcategory__names price {{ (isset(request()->priceFrom) || isset(request()->priceTo)) ? 'open' : '' }}">
+
+                            <div class="price__from__to_box-mobile">
+                                <span for="price_from">BYN</span>
+                                <div class="price_from-elem">
+                                    <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7); (this.value.length > 0) ? this.setAttribute('name', 'priceFrom') : this.removeAttribute('name') " {{ request()->filled('priceFrom') ? 'name='.'priceFrom' : ''}} id="price_from" size="6" maxlength="6"  value="{{ request()->priceFrom }}" placeholder="{{ __('from') }}">
+                                </div>
+                                <div class="price_to-elem">
+                                    <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7); (this.value.length > 0) ? this.setAttribute('name', 'priceTo') : this.removeAttribute('name') " {{ request()->filled('priceTo') ? 'name='.'priceTo' : ''}} id="price_to" size="6" maxlength="6" value="{{ request()->priceTo }}" placeholder="{{ __('to') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-items-mobile">
+                        <div class="title {{ (request()->filled('skintypeSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>
+
+                        <ul class="subcategory__names skintype {{ (request()->filled('skintypeSelect')) ? 'open' : '' }}">
+                            @foreach ($skintypes as $skintype)
                                 <li>
-                                    <input type="checkbox" class="subcategory_select-mobile" name="brand{{ $loop->iteration }}" id="brand-mobile-{{ $loop->iteration }}"
-
-                                    value="{{ $brand->brand_name }}"
-
-                                    {{ request()->has('brand'. $loop->iteration ) ? 'checked' : '' }}
+                                    <input type="checkbox" class="subcategory-select-mobile" name="skintypeSelect[]" id="skintype_item-mobile-{{ $loop->iteration }}"
+                                    {{ in_array($skintype->id, request()->input('skintypeSelect') ?? []) ? 'checked' : ''}}
+                                    value="{{ $skintype->id }}"
+                                    data-id="skintype_item-{{ $loop->iteration }}"
                                     >
-                                    <label class="brand__name" for="brand-mobile-{{ $loop->iteration }}">{{ $brand->brand_name }}</label>
+                                    <label class="skintype__name" for="skintype_item-mobile-{{ $loop->iteration }}">{{ $skintype->langField('name') }}</label>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
 
-                    <div class="price-mobile">
-                        <div class="price__title" onclick="getMenue(this)"><span>{{ __('Price') }}</span><span>+</span></span><span>-</span></div>
-
-                        <div class="price__option">Something</div>
-                    </div>
-
-                    <div class="skintype-mobile">
-                        <div class="skintype__title" onclick="getMenue(this)"><span>{{ __('Skin type') }}</span><span>+</span></span><span>-</span></div>
-
-                        <ul class="skin__types">
-
-                            @foreach ($skintypes as $skintype)
-                            <li>
-                                <input type="checkbox" class="subcategory_select-mobile" name="skintype-{{ $loop->iteration }}" id="skintype-.admin__consumers__section-{{ $loop->iteration }}"
-
-                                value="{{ $skintype->name_en }}"
-
-                                @checked(old('skintype-{{ $loop->iteration }}', $skintype->name_en))
-                                >
-                                <label class="skintype__name" for="skintype-mobile-{{ $loop->iteration }}">{{ $skintype->langField('name') }}</label>
-                            </li>
-                        @endforeach
-                        </ul>
-                    </div>
-
-                    <div class="age-mobile">
-                        <div class="age__title" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span></span><span>-</span></div>
-
-                        <ul class="age__types">
+                    <div class="filter-items-mobile">
+                        <div class="title {{ (request()->filled('agerangeSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('Age') }}</span><span>+</span><span>-</span></div>
+                        <ul class="subcategory__names agerange {{ (request()->filled('agerangeSelect')) ? 'open' : '' }}">
                             @foreach ($ageranges as $agerange)
-                            <li>
-                                <input type="checkbox" class="subcategory_select-mobile" name="agerange-{{ $loop->iteration }}" id="agerange_mobile-{{ $loop->iteration }}"
+                                <li>
+                                    <input type="checkbox" class="subcategory-select-mobile" name="agerangeSelect[]" id="agerange_item-mobile-{{ $loop->iteration }}"
 
-                                value="{{ $agerange->name_en }}"
-                                data-id="agerange_mobile-{{ $loop->iteration }}"
-                                @checked(old('agerange-{{ $loop->iteration }}', $agerange->name_en))
+                                    value="{{ $agerange->id }}"
+                                    data-id="agerange_item-{{ $loop->iteration }}"
+                                    {{ in_array($agerange->id, request()->input('agerangeSelect') ?? []) ? 'checked' : ''}}
+                                    >
+                                    <label class="agerange__name" for="agerange_item-mobile-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="filter-items-mobile">
+                        <div class="title {{ (request()->filled('consumerSelect')) ? 'open' : '' }}" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span><span>-</span></div>
+
+                        <ul class="subcategory__names consumers {{ (request()->filled('consumerSelect')) ? 'open' : '' }}">
+                            @foreach ($consumers as $consumer)
+                            <li>
+                                <input type="checkbox" class="subcategory-select-mobile" name="consumerSelect[]" id="consumer_item-mobile-{{ $loop->iteration }}"
+
+                                value="{{ $consumer->id }}"
+                                data-id="consumer_item-{{ $loop->iteration }}"
+                                {{ in_array($consumer->id, request()->input('consumerSelect') ?? []) ? 'checked' : ''}}
                                 >
-                                <label class="agerange__name" for="agerange_mobile-{{ $loop->iteration }}">{{ $agerange->langField('name') }}</label>
+                                <label class="consumer__name" for="consumer_item-mobile-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
                             </li>
                         @endforeach
                         </ul>
                     </div>
-
-                    <div class="forwhom-mobile">
-                        <div class="forwhom__title" onclick="getMenue(this)"><span>{{ __('For whom') }}</span><span>+</span></span><span>-</span></div>
-
-                        <ul class="objects__types">
-                            @foreach ($consumers as $consumer)
-                        <li>
-                            <input type="checkbox" class="subcategory_select-mobile" name="consumer-{{ $loop->iteration }}" id="consumer_mobile-{{ $loop->iteration }}"
-
-                            value="{{ $consumer->name_en }}"
-                            data-id="consumer_mobile-{{ $loop->iteration }}"
-                            @checked(old('consumer-{{ $loop->iteration }}', $consumer->name_en))
-                            >
-                            <label class="consumer__name" for="consumer_mobile-{{ $loop->iteration }}">{{ $consumer->langField('name') }}</label>
-                        </li>
-                    @endforeach
-                        </ul>
-                    </div>
-                </div>
 
                 @csrf
 
-                <div class="reset__apply_btns">
-                    <a class="reset__btn" href="{{ route('catalog', $category) }}">{{ __('Clear all') }}</a>
+                <div class="btns-mobile">
+                    <div class="reset__btn-mobile">{{ __('Clear all') }}</div>
 
                     <button class="apply__btn" type="submit">{{ __('Apply') }}</button>
 
@@ -258,10 +270,10 @@
                         <div class="price__from__to_box">
                             <span for="price_from">BYN</span>
                             <div class="price_from-elem">
-                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="priceFrom" id="price_from" size="6" maxlength="6"  value="{{ request()->priceFrom }}" placeholder="{{ __('from') }}">
+                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7); (this.value.length > 0) ? this.setAttribute('name', 'priceFrom') : this.removeAttribute('name') " {{ request()->filled('priceFrom') ? 'name='.'priceFrom' : ''}} id="price_from" size="6" maxlength="6"  value="{{ request()->priceFrom }}" placeholder="{{ __('from') }}">
                             </div>
                             <div class="price_to-elem">
-                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7);" name="priceTo" id="price_to" size="6" maxlength="6" value="{{ request()->priceTo }}" placeholder="{{ __('to') }}">
+                                <input type="text" oninput="this.value = this.value.trim().replace(/\D/g, '').slice(0,7); (this.value.length > 0) ? this.setAttribute('name', 'priceTo') : this.removeAttribute('name') " {{ request()->filled('priceTo') ? 'name='.'priceTo' : ''}} id="price_to" size="6" maxlength="6" value="{{ request()->priceTo }}" placeholder="{{ __('to') }}">
                             </div>
                         </div>
                     </div>

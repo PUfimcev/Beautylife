@@ -14,9 +14,9 @@ export default class CheckboxVisible {
         if(!this.#resetBnt && this.#checkboxes.length === 0 || !this.#checkboxes) return;
 
 
-        this.handleCookie();
-        this.handleCheckbox();
-        this.handleResetBnt();
+        // this.handleCookie();
+        // this.handleCheckbox();
+        // this.handleResetBnt();
     }
 
     handleCookie(){

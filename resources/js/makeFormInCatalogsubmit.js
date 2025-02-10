@@ -8,7 +8,7 @@ class MakeFormInCatalogsubmit{
 
     constructor(){
 
-        this.#selecCheckboxesInCategoryFilter = document.querySelectorAll('.category__filter .subcategory-select');
+        this.#selecCheckboxesInCategoryFilter = document.querySelectorAll('#category__filter-id .subcategory-select');
 
         this.#selectOptionsInOptionGoodsTopNewAll = document.querySelector('.full_category .select__goods');
 

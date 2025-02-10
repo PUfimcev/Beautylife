@@ -349,6 +349,8 @@
 
 @media screen and (max-width:  768px) {
 
+
+
     .catalog{
 
         margin-top: 2.5rem;
@@ -362,7 +364,7 @@
             display: none;
         }
 
-        .category__filter-top-mobile{
+        #category__filter-top-mobile{
 
             position: fixed;
             bottom: 5px;
@@ -370,36 +372,19 @@
             z-index: 10;
             transform: translateX(-50%);
 
+            // display: block;
             width: 95%;
             margin: 0 auto;
 
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-
-            background-color: $body-bg;
+            background-color:$text-accent;
+            color: $list-bg;
+            text-transform: uppercase;
+            text-align: center !important;
 
             padding: 0.5rem 0;
 
-            border: 1px solid #000;
+            border: 0;
             border-radius: 10px;
-
-            span{
-                display: block;
-                font-size: 1.25rem;
-            }
-
-            .dropdown__arrow {
-                display: inline-block;
-                background-image: url(../images/arrow_down_icon.png);
-                background-repeat: no-repeat;
-                background-size: contain;
-                margin-bottom: 2px;
-                margin-left: 1rem;
-                width: 11px;
-                height: 6px;
-            }
         }
 
         .filer__mobile{
@@ -416,18 +401,19 @@
                 .category__name{
                     margin: 0;
                 }
+
+                .return_to_catalog-btn{
+                    display: block;
+                    width: min(90%, 1200px);
+                    margin: 0 auto;
+                    color: $text-accent;
+                    text-decoration: underline;
+                    text-align: right;
+                }
             }
 
-            .return_to_catalog-btn{
-                display: block;
-                width: min(90%, 1200px);
-                margin: 0 auto;
-                color: $text-accent;
-                text-decoration: underline;
-                text-align: right;
-            }
 
-            .category__filter-mobile{
+            #category__filter-mobile{
                 display: none;
             }
         }
