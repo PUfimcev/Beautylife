@@ -415,6 +415,195 @@
 
             #category__filter-mobile{
                 display: none;
+                width: 100%;
+                flex-direction: column;
+
+                &.open{
+                    display: flex;
+                }
+
+                .category__filter-top{
+
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0.5rem 2rem;
+                    border-bottom: 1px solid $text-accent;
+                    span{
+                        padding: 0.5rem 0;
+                    }
+                }
+
+                .filter__products-mobile{
+                    padding: 1rem 2rem;
+                    display: flex;
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+
+                    .filter-items-mobile{
+                        width: max(50%, 20rem);
+
+
+                        .title{
+                            width: 90%;
+                            background-color: $body-bg;
+                            padding: 2.5rem 0 0 0;
+                            font-family: $font-family-Manrope;
+                            font-size: 0.875rem;
+                            font-weight: 400;
+                            line-height: 1.25rem;
+                            letter-spacing: 0em;
+                            text-align: left;
+                            color: $text-maincolor;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            gap: 1rem;
+
+                            cursor: pointer;
+
+                            span:first-child{
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                            }
+
+                            span:nth-child(2){
+                                display: block;
+                            }
+
+                            span:last-child{
+                                display: none;
+                            }
+
+                            &.open{
+                                span:nth-child(2){
+                                    display: none;
+                                }
+
+                                span:last-child{
+                                    display: block;
+                                }
+                            }
+
+                        }
+
+                        .subcategory__names-mobile {
+                            display: none;
+                            margin-top: 1.25rem;
+                            margin-bottom: 0;
+                            padding-left: 0;
+                            width: 90%;
+
+                            input[type="checkbox"]{
+
+                                 display: none;
+
+                                &:checked + :is(.subcategory__name, .brand__name , .skintype__name, .agerange__name, .consumer__name){
+
+                                    font-weight: bold;
+                                }
+                            }
+
+                            label{
+                                font-family: $font-family-Manrope;
+                                font-size: 0.875rem;
+                                font-weight: 400;
+                                line-height: 1.25rem;
+                                letter-spacing: 0em;
+                                text-align: left;
+                                color: $text-maincolor;
+                                margin-bottom: 0.5rem;
+                                cursor: pointer;
+                            }
+
+                            &.open{
+                                display: block;
+                            }
+
+                            &.price{
+                                .price__from__to_box-mobile{
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: center;
+
+                                    span{
+                                        display: block;
+                                        margin: 0;
+                                        margin-right: 0.3rem;
+                                        font-size: 0.8rem;
+                                    }
+
+                                    .price_from-elem, .price_to-elem{
+
+                                        input{
+                                            font-size: 0.9rem;
+                                            border: 1px solid #987B75;
+                                            padding: 0.2rem 0.5rem;
+                                            background-color: $body-bg;
+
+                                            &:is(:focus){
+                                                outline: none;
+
+                                            }
+                                        }
+
+                                    }
+
+                                    .price_from-elem{
+                                        border-radius: 5px 0 0 5px !important;
+
+                                        input{
+                                            border-right: 0;
+
+                                        }
+                                    }
+
+                                    .price_to-elem{
+                                        border-radius: 0 5px 5px 0 !important;
+
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                .btns-mobile{
+                    width: 100%;
+                    padding: 0rem 2rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 2.5rem 0 1.25rem 0;
+                    gap: 1.25rem;
+
+                    .reset__btn-mobile, .apply__btn{
+
+                        font-family: $font-family-Manrope;
+                        font-size: 0.875rem;
+                        font-weight: 700;
+                        line-height: 1.25rem;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        text-transform: uppercase;
+                        padding: 1rem 2.25rem;
+                        border: 1px solid $text-accent;
+                    }
+
+                    .reset__btn-mobile{
+                        color: $text-maincolor;
+
+                    }
+
+                    .apply__btn{
+                        color: $body-bg;
+                        background-color: $text-accent;
+                    }
+
+                }
+
             }
         }
 
@@ -522,9 +711,31 @@
             }
         }
     }
+
+    .full_category{
+
+        .filer__mobile{
+            #category__filter-mobile{
+                .category__filter-top, .filter__products-mobile, .btns-mobile{
+
+                    padding: 0.825rem 1rem;
+                }
+            }
+        }
+    }
+
 }
 
 @media screen and (max-width:  320px) {
 
+    .full_category{
+        .filer__mobile{
+            .btns-mobile{
+                .reset__btn-mobile, .apply__btn{
+                    padding: 0.85rem 1.25rem !important;
+                }
+            }
+        }
+    }
 
 }

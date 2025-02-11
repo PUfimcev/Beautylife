@@ -1,3 +1,4 @@
+// "This class is created for static filter in catalog page when the selecting of products occurs with JS"
 export default class CheckboxVisible {
 
     #checkboxes;

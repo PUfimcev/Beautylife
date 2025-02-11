@@ -18,17 +18,23 @@ class ResetButtonFilterMobile{
 
             const allMobileInputs = document.querySelectorAll('.filter__products-mobile input[type="checkbox"]');
 
-            const allMobileRadio = document.querySelectorAll('.select_goods_wrap-mobile input[type="radio"]');
+            const allMobileRadio = document.querySelectorAll('.filter-items-mobile input[type="radio"]');
 
-            allMobileInputs.forEach((elem) => {
-                if(elem.checked) elem.checked = false;
-            });
+            if(allMobileInputs.length > 0) {
 
-            allMobileRadio.forEach((elem) => {
-                if(elem.checked) elem.checked = false;
-            });
+                allMobileInputs.forEach((elem) => {
+                    if(elem.checked) elem.checked = false;
+                });
+            }
 
-            allMobileRadio[0].checked = true;
+            if(allMobileRadio.length > 0) {
+
+                allMobileRadio.forEach((elem) => {
+                    if(elem.checked) elem.checked = false;
+                });
+
+                allMobileRadio[0].checked = true;
+            }
 
             const priceFrom = document.querySelector('.price__from__to_box-mobile .price_from-elem input[type="text"]');
 

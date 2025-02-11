@@ -35,7 +35,7 @@ class ShowHideMobileFilterBlock{
         this.#showHideMobileFilterButton.addEventListener('click', (e)=>{
             e.target.style.display = 'none';
 
-            this.#mobileFilterBlock.style.display = 'flex';
+            this.#mobileFilterBlock.classList.add('open');
 
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
@@ -47,30 +47,30 @@ class ShowHideMobileFilterBlock{
         })
     }
 
-    #handleCancelButton(){
-        this.#cancelCategoryBottom.addEventListener('click', ()=>{
-            this.#mobileFilterBlock.style.display = 'none';
+    // #handleCancelButton(){
+    //     this.#cancelCategoryBottom.addEventListener('click', ()=>{
+    //         this.#mobileFilterBlock.classList.remove('open');
 
-            this.#showHideMobileFilterButton.style.display = 'block';
+    //         this.#showHideMobileFilterButton.style.display = 'block';
 
-            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
-            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
-            if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'flex';
-            if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'block';
-            if(this.#categoryPagination) this.#categoryPagination.style.display = 'block';
-            if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'flex';
+    //         if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
+    //         if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
+    //         if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'flex';
+    //         if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'block';
+    //         if(this.#categoryPagination) this.#categoryPagination.style.display = 'block';
+    //         if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'flex';
 
-        })
-    }
+    //     })
+    // }
 
     #windowResize(){
         window.addEventListener('resize', () => {
         if(window.matchMedia("screen and (max-width: 768px)").matches) {
 
-            this.#showHideMobileFilterButton.style.display = 'block';
+            if(this.#mobileFilterBlock.className !== 'open') this.#showHideMobileFilterButton.style.display = 'block';
 
         } else if(window.matchMedia("screen and (min-width: 769px)").matches){
-            this.#mobileFilterBlock.style.display = 'none';
+            this.#mobileFilterBlock.classList.remove('open');
             this.#showHideMobileFilterButton.style.display = 'none';
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
