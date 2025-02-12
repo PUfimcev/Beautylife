@@ -3,22 +3,16 @@ class ShowHideMobileFilterBlock{
     #showHideMobileFilterButton;
     #mobileFilterBlock;
     #fullCategoryTopMobile;
-    #fullCategoryBody;
-    #categoryViewAllProductButton;
-    #categoryPagination;
-    #fullCategoryBottom;
+    #fullCategory;
     #cancelCategoryButton;
     #applyCategoryButton;
 
 
     constructor(){
         this.#showHideMobileFilterButton = document.getElementById('category__filter-top-mobile');
-        this.#mobileFilterBlock = document.getElementById('category__filter-mobile');
+        this.#mobileFilterBlock = document.querySelector('.filer__mobile');
+        this.#fullCategory = document.querySelector('.full_category') || null;
         this.#fullCategoryTopMobile = document.querySelector('.full_category-top-mobile') || null;
-        this.#fullCategoryBody = document.querySelector('.full_category-body') || null;
-        this.#categoryViewAllProductButton = document.querySelector('.view-all__btn') || null;
-        this.#categoryPagination = document.querySelector('.pagination') || null;
-        this.#fullCategoryBottom = document.querySelector('.full_category-bottom') || null;
         this.#cancelCategoryButton = document.querySelector('.navbar__cancel-icon.category_mobile') || null;
         this.#applyCategoryButton = document.querySelector('.apply__btn') || null;
 
@@ -34,15 +28,29 @@ class ShowHideMobileFilterBlock{
     }
 
     #handleButton(){
-        this.#showHideMobileFilterButton.addEventListener('click', (e)=>{
+        this.#showHideMobileFilterButton.addEventListener('click', async (e)=>{
             e.target.style.display = 'none';
 
-            this.#mobileFilterBlock.classList.add('open');
+            const promisResult = await this.#promisBlock();
+
+            if(promisResult) this.#mobileFilterBlock.classList.add('open');
+
+
             this.#showHideProductsElements(false);
             sessionStorage.setItem('mobile-filter', 'open');
 
         })
     }
+
+    #promisBlock(){
+        return new Promise((resolve, reject) => {
+            this.#mobileFilterBlock.style.display = 'block';
+
+            resolve(true);
+        })
+    }
+
+
 
     #handleCancelButton(){
         if(this.#cancelCategoryButton !== null) {
@@ -75,13 +83,19 @@ class ShowHideMobileFilterBlock{
 
 
                     this.#showHideProductsElements(false);
+                    this.#showHideMobileFilterButton.style.display = 'none';
                     this.#mobileFilterBlock.classList.add('open');
 
                 } else {
                     this.#mobileFilterBlock.classList.remove('open');
+                    if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
                 }
 
-                if(this.#mobileFilterBlock.className !== 'open') this.#showHideMobileFilterButton.style.display = 'block';
+                if(this.#mobileFilterBlock.className !== 'open'){
+                    this.#showHideMobileFilterButton.style.display = 'block';
+                } else {
+                    this.#showHideMobileFilterButton.style.display = 'none';
+                }
 
 
             } else if(window.matchMedia("screen and (min-width: 769px)").matches){
@@ -95,19 +109,15 @@ class ShowHideMobileFilterBlock{
 
     #showHideProductsElements(bool){
         if(bool){
-            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
-            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
-            if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'flex';
-            if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'block';
-            if(this.#categoryPagination) this.#categoryPagination.style.display = 'block';
-            if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'flex';
+
+            this.#fullCategoryTopMobile.style.display = 'none';
+            this.#fullCategory.style.display = 'block';
+            // this.#fullCategory.classList.add('close');
         } else {
-                if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
-                if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
-                if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'none';
-                if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'none';
-                if(this.#categoryPagination) this.#categoryPagination.style.display = 'none';
-                if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'none';
+
+            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
+            this.#fullCategory.style.display = 'none';
+            // this.#fullCategory.classList.remove('close');
         }
     }
 
