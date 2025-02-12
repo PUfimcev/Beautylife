@@ -7,7 +7,8 @@ class ShowHideMobileFilterBlock{
     #categoryViewAllProductButton;
     #categoryPagination;
     #fullCategoryBottom;
-    #cancelCategoryBottom;
+    #cancelCategoryButton;
+    #applyCategoryButton;
 
 
     constructor(){
@@ -18,15 +19,16 @@ class ShowHideMobileFilterBlock{
         this.#categoryViewAllProductButton = document.querySelector('.view-all__btn') || null;
         this.#categoryPagination = document.querySelector('.pagination') || null;
         this.#fullCategoryBottom = document.querySelector('.full_category-bottom') || null;
-        this.#cancelCategoryBottom = document.querySelector('.navbar__cancel-icon.category_mobile') || null;
+        this.#cancelCategoryButton = document.querySelector('.navbar__cancel-icon.category_mobile') || null;
+        this.#applyCategoryButton = document.querySelector('.apply__btn') || null;
 
         if(!this.#showHideMobileFilterButton || !this.#mobileFilterBlock) return;
 
         if(window.matchMedia("screen and (max-width: 768px)").matches) this.#showHideMobileFilterButton.style.display = 'block';
 
-
         this.#handleButton();
-        // this.#handleCancelButton();
+        this.#handleCancelButton();
+        this.#handleApplyButton();
         this.#windowResize();
 
     }
@@ -36,51 +38,77 @@ class ShowHideMobileFilterBlock{
             e.target.style.display = 'none';
 
             this.#mobileFilterBlock.classList.add('open');
-
-            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
-            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
-            if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'none';
-            if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'none';
-            if(this.#categoryPagination) this.#categoryPagination.style.display = 'none';
-            if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'none';
+            this.#showHideProductsElements(false);
+            sessionStorage.setItem('mobile-filter', 'open');
 
         })
     }
 
-    // #handleCancelButton(){
-    //     this.#cancelCategoryBottom.addEventListener('click', ()=>{
-    //         this.#mobileFilterBlock.classList.remove('open');
+    #handleCancelButton(){
+        if(this.#cancelCategoryButton !== null) {
 
-    //         this.#showHideMobileFilterButton.style.display = 'block';
+            this.#cancelCategoryButton.addEventListener('click', ()=>{
+                // this.#mobileFilterBlock.classList.remove('open');
+                sessionStorage.removeItem('mobile-filter');
 
-    //         if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
-    //         if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
-    //         if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'flex';
-    //         if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'block';
-    //         if(this.#categoryPagination) this.#categoryPagination.style.display = 'block';
-    //         if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'flex';
+            })
+        }
+    }
 
-    //     })
-    // }
+    #handleApplyButton(){
+
+        if(this.#applyCategoryButton !== null) {
+
+            this.#applyCategoryButton.addEventListener('click', ()=>{
+
+                sessionStorage.removeItem('mobile-filter');
+
+            })
+        }
+    }
 
     #windowResize(){
         window.addEventListener('resize', () => {
-        if(window.matchMedia("screen and (max-width: 768px)").matches) {
+            if(window.matchMedia("screen and (max-width: 768px)").matches) {
 
-            if(this.#mobileFilterBlock.className !== 'open') this.#showHideMobileFilterButton.style.display = 'block';
+                if(sessionStorage.getItem('mobile-filter') === 'open') {
 
-        } else if(window.matchMedia("screen and (min-width: 769px)").matches){
-            this.#mobileFilterBlock.classList.remove('open');
-            this.#showHideMobileFilterButton.style.display = 'none';
+
+                    this.#showHideProductsElements(false);
+                    this.#mobileFilterBlock.classList.add('open');
+
+                } else {
+                    this.#mobileFilterBlock.classList.remove('open');
+                }
+
+                if(this.#mobileFilterBlock.className !== 'open') this.#showHideMobileFilterButton.style.display = 'block';
+
+
+            } else if(window.matchMedia("screen and (min-width: 769px)").matches){
+                this.#mobileFilterBlock.classList.remove('open');
+                this.#showHideMobileFilterButton.style.display = 'none';
+                this.#showHideProductsElements(true);
+            }
+
+        });
+    }
+
+    #showHideProductsElements(bool){
+        if(bool){
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
             if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'flex';
             if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'block';
             if(this.#categoryPagination) this.#categoryPagination.style.display = 'block';
             if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'flex';
+        } else {
+                if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
+                if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
+                if(this.#fullCategoryBody) this.#fullCategoryBody.style.display = 'none';
+                if(this.#categoryViewAllProductButton) this.#categoryViewAllProductButton.style.display = 'none';
+                if(this.#categoryPagination) this.#categoryPagination.style.display = 'none';
+                if(this.#fullCategoryBottom) this.#fullCategoryBottom.style.display = 'none';
         }
-
-        });
     }
 
 }
