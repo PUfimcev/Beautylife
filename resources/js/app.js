@@ -18,5 +18,7 @@ import MakeFormInCatalogsubmit from './makeFormInCatalogsubmit';
 import DisableEnableButton from './disableEnableButton';
 import BookmarkRemoving from './bookmarkRemoving';
 import ShowHideMobileFilterBlock from './showHideMobileFilterBlock';
+import LockOrientation from './lockOrientation';
 import ResetButtonFilterMobile from './resetButtonFilterMobile';
+import LoadingState from './loadingState';
 

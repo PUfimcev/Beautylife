@@ -177,12 +177,13 @@
             <div class="goods_top_new_all-quantity"><span>{{ __('Items') }}: {{ $count }}</span></div>
 
             <div class="product__elements">
-                @forelse ($products as $product)
-
-                    @include('pages.elements.product', ['product' => $product, 'category' => $category, 'i' => $loop->iteration])
-                @empty
-                    <p class="no__goods">{{ __('There are no goods') }}</p>
-                @endforelse
+                @isset($products)
+                    @forelse ($products as $product)
+                        @include('pages.elements.product', ['product' => $product, 'category' => $category, 'i' => $loop->iteration])
+                    @empty
+                        <p class="no__goods">{{ __('There are no goods') }}</p>
+                    @endforelse
+                @endisset
             </div>
         </div>
 
@@ -191,9 +192,10 @@
 
     <div class="view-all__btn"><a href="{{ route('catalog_top_new', 'all-goods') }}">{{ __('View all') }}</a></div>
 
-    @if (!isset($products) || !empty($products))
+    @isset($products)
         <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
-    @endif
+
+    @endisset
 
     <div class="full_category-bottom">
         <h2 class="bestsellers__title">{{ Str::upper(__('You might also like')) }}</h2>

@@ -364,7 +364,7 @@
 
 
         // &.close{
-        //     transform: translateY(-100%);
+            // transform: translateY(-100%);
         //     transform: scaleY(0);
         // }
 
@@ -396,7 +396,7 @@
             border-radius: 10px;
         }
         .full_category-top-mobile{
-
+            display: block;
             width: min(90%, 1200px);
             margin: 2rem auto 0rem;
 
@@ -441,16 +441,23 @@
     }
 
     .filer__mobile{
-        width: 100%;
-        background-color: $body-bg;
-        transform: scaleY(0);
-        transform: translateY(100%);
-        transition: all 0.5s ease-out 0.0s;
 
+        // display: none;
+        position: relative;
+        z-index: -3;
+        opacity: 0;
+    width: 100%;
+    background-color: $body-bg;
+    // transform: scaleY(0);
+    transform: translateY(150%);
+    transition: all 0.5s ease-out 0.0s;
 
         &.open{
+            z-index: 0;
+            opacity: 1;
+            // display: block;
             transform: translateY(0%);
-            transform: scaleY(1);
+            // transform: scaleY(1);
         }
 
         #category__filter-mobile{

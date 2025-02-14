@@ -20,6 +20,8 @@ class ShowHideMobileFilterBlock{
 
         if(window.matchMedia("screen and (max-width: 768px)").matches) this.#showHideMobileFilterButton.style.display = 'block';
 
+        // this.#mobileFilterBlock.style.display = 'none';
+
         this.#handleButton();
         this.#handleCancelButton();
         this.#handleApplyButton();
@@ -57,6 +59,7 @@ class ShowHideMobileFilterBlock{
 
             this.#cancelCategoryButton.addEventListener('click', ()=>{
                 // this.#mobileFilterBlock.classList.remove('open');
+                // this.#mobileFilterBlock.style.display = 'none';
                 sessionStorage.removeItem('mobile-filter');
 
             })
@@ -69,6 +72,7 @@ class ShowHideMobileFilterBlock{
 
             this.#applyCategoryButton.addEventListener('click', ()=>{
 
+                // this.#mobileFilterBlock.style.display = 'none';
                 sessionStorage.removeItem('mobile-filter');
 
             })
@@ -77,29 +81,32 @@ class ShowHideMobileFilterBlock{
 
     #windowResize(){
         window.addEventListener('resize', () => {
-            if(window.matchMedia("screen and (max-width: 768px)").matches) {
+            if(innerWidth <= 768) {
 
                 if(sessionStorage.getItem('mobile-filter') === 'open') {
 
 
                     this.#showHideProductsElements(false);
-                    this.#showHideMobileFilterButton.style.display = 'none';
+                    this.#mobileFilterBlock.style.display = 'block';
+                    // this.#showHideMobileFilterButton.style.display = 'none';
                     this.#mobileFilterBlock.classList.add('open');
 
                 } else {
+                    // this.#mobileFilterBlock.style.display = 'none';
                     this.#mobileFilterBlock.classList.remove('open');
                     if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'block';
                 }
 
-                if(this.#mobileFilterBlock.className !== 'open'){
-                    this.#showHideMobileFilterButton.style.display = 'block';
-                } else {
+                if(this.#mobileFilterBlock.classList.contains('open')){
                     this.#showHideMobileFilterButton.style.display = 'none';
+                } else {
+                    this.#showHideMobileFilterButton.style.display = 'block';
                 }
 
 
-            } else if(window.matchMedia("screen and (min-width: 769px)").matches){
-                this.#mobileFilterBlock.classList.remove('open');
+            } else {
+                this.#mobileFilterBlock.style.display = 'none';
+                // this.#mobileFilterBlock.classList.remove('open');
                 this.#showHideMobileFilterButton.style.display = 'none';
                 this.#showHideProductsElements(true);
             }
@@ -110,13 +117,13 @@ class ShowHideMobileFilterBlock{
     #showHideProductsElements(bool){
         if(bool){
 
-            this.#fullCategoryTopMobile.style.display = 'none';
-            this.#fullCategory.style.display = 'block';
+            if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
+            if(this.#fullCategory) this.#fullCategory.style.display = 'block';
             // this.#fullCategory.classList.add('close');
         } else {
 
             if(this.#fullCategoryTopMobile) this.#fullCategoryTopMobile.style.display = 'none';
-            this.#fullCategory.style.display = 'none';
+            if(this.#fullCategory) this.#fullCategory.style.display = 'none';
             // this.#fullCategory.classList.remove('close');
         }
     }

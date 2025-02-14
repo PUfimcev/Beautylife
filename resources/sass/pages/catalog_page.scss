@@ -68,7 +68,7 @@
     flex-direction: column;
     align-items: flex-start !important;
 
-    #category__filter-top-mobile{
+    #category__filter-top-mobile,  .full_category-top-mobile{
 
         display: none;
     }
@@ -141,9 +141,7 @@
         }
 
     }
-    .filer__mobile{
-        display: none;
-    }
+
 
     .full_category-body{
         width: 100%;
@@ -153,7 +151,7 @@
         background-color: $body-bg;
 
         .category__subcategory{
-            // display: block;
+
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -587,5 +585,9 @@
     }
 
 
+}
+
+.filer__mobile{
+    display: none;
 }
 

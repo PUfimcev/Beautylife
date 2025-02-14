@@ -62,18 +62,14 @@
             <div class="goods_top_new_all-quantity"><span>{{ __('Items') }}: {{ $count }}</span></div>
 
             <div class="product__elements">
-                @if (!isset($products))
 
-                    <div class="searching__box_result">Loading...</div>
-                @else
-
+                @isset($products)
                     @forelse ($products as $product)
-
                         @include('pages.elements.product', ['product' => $product, 'i' => $loop->iteration, 'whatForProduct' => $title])
                     @empty
                         <p class="no__goods">{{ __('There are no goods') }}</p>
                     @endforelse
-                @endif
+                @endisset
             </div>
 
 
@@ -81,9 +77,10 @@
 
     </div>
 
-    @if (isset($products) && !empty($products))
-        <div class="pagination desk">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
-    @endif
+    @isset($products)
+        <div class="pagination">{{ $products->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}</div>
+    @endisset
+
 
 
     @push('scripts')
