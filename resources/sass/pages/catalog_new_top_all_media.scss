@@ -43,6 +43,7 @@
 
 }
 
+
 @media screen and (max-width:  900px) {
 
 
@@ -50,7 +51,38 @@
 
 @media screen and (max-width:  768px) {
 
+    .categories__goods_top_new_all{
 
+        .categories__goods_top_new_all-top_mobile{
+            display: block;
+        }
+
+        .categories__goods_top_new_all-top{
+            display: none;
+        }
+
+        .categories__goods_top_new_all-body{
+            width: min(90%, 1200px);
+            margin: 0 auto;
+
+            .categories__goods{
+                display: none;
+            }
+
+            .goods_top_new_all-result{
+                border: none;
+                width: 100%;
+
+                .goods_top_new_all-quantity{
+                    border: none;
+
+                    span{
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
 
 }
 
