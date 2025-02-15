@@ -7,7 +7,7 @@
 
 header {
 
-    background-color: $body-bg;
+    background-color: $body-bg !important;
 
     &.header_fixed{
             width: 100vw;

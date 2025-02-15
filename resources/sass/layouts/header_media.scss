@@ -226,18 +226,10 @@
 
         &.header_fixed{
             width: 100vw;
-            // position: static;
+            background-color: $body-bg;
+
         }
 
-            // .headbar-mobile{
-            //     // position: sticky;
-            //     top: 0;
-            //     left: 0;
-            //     // position: fixed;
-            //     z-index: 10;
-
-            // // position: sticky;
-        // }
         .desktop_header{
             display: none;
         }

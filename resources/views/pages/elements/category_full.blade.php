@@ -39,8 +39,6 @@
         </div>
     </div>
 
-    <div id="category__filter-top-mobile">{{ __('Filters and sorting') }}</div>
-
     <div class="full_category-top-mobile">
 
         <h2 class="category__name">{{ Str::upper($category->langField('name')) }}</h2>
@@ -219,7 +217,7 @@
 
 </section>
 
-<section class="filer__mobile">
+<section id='filer__mobile-id' class="filer__mobile">
 
     <form id="category__filter-mobile" method="GET" action="{{ route('catalog', $category) }}">
 
@@ -387,6 +385,8 @@
 
 
 </section>
+
+<div id="category__filter-top-mobile">{{ __('Filters and sorting') }}</div>
 
 @push('scripts')
 

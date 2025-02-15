@@ -358,43 +358,12 @@
 
     .full_category{
         width: 100%;
-        // transform: scaleY(1);
-        // transform: translateY(0%);
-        // transition: all 0.5s ease-out 0.0s;
-
-
-        // &.close{
-            // transform: translateY(-100%);
-        //     transform: scaleY(0);
-        // }
 
         .full_category-top{
 
             display: none;
         }
 
-        #category__filter-top-mobile{
-
-            position: fixed;
-            bottom: 5px;
-            left: 50%;
-            z-index: 10;
-            transform: translateX(-50%);
-
-            // display: block;
-            width: 95%;
-            margin: 0 auto;
-
-            background-color:$text-accent;
-            color: $list-bg;
-            text-transform: uppercase;
-            text-align: center !important;
-
-            padding: 0.5rem 0;
-
-            border: 0;
-            border-radius: 10px;
-        }
         .full_category-top-mobile{
             display: block;
             width: min(90%, 1200px);
@@ -442,22 +411,9 @@
 
     .filer__mobile{
 
-        // display: none;
-        position: relative;
-        z-index: -3;
-        opacity: 0;
-    width: 100%;
-    background-color: $body-bg;
-    // transform: scaleY(0);
-    transform: translateY(150%);
-    transition: all 0.5s ease-out 0.0s;
+        width: 100%;
 
         &.open{
-            z-index: 0;
-            opacity: 1;
-            // display: block;
-            transform: translateY(0%);
-            // transform: scaleY(1);
         }
 
         #category__filter-mobile{
@@ -649,6 +605,29 @@
             }
 
         }
+    }
+
+    #category__filter-top-mobile{
+
+        position: fixed;
+        bottom: 5px;
+        left: 50%;
+        z-index: 10;
+        transform: translateX(-50%);
+
+        // display: block;
+        width: 95%;
+        margin: 0 auto;
+
+        background-color:$text-accent;
+        color: $list-bg;
+        text-transform: uppercase;
+        text-align: center !important;
+
+        padding: 0.5rem 0;
+
+        border: 0;
+        border-radius: 10px;
     }
 }
 

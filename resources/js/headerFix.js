@@ -16,7 +16,6 @@ class HeaderFix {
         this.#mainElemWeb = document.querySelector('.main-web');
         this.#mainElemAdmin = document.querySelector('.main-admin');
 
-
         if(this.#headerElem == null || this.#mainElem == null) return;
 
        ((this.#mainElemWeb && this.#fixElem('web')) || (this.#mainElemAdmin && this.#fixElem('admin')));
@@ -33,6 +32,7 @@ class HeaderFix {
         window.addEventListener('scroll', () =>{
 
             if(window.scrollY > this.#headerElem.offsetTop){
+
 
                 this.#headerElem.classList.add('header_fixed');
 

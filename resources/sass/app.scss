@@ -76,18 +76,18 @@
 }
 
 
-html {
+html, body {
     background-color: $body-bg;
-    overflow-y: scroll;
     overscroll-behavior: none;
-}
-
-body{
-
     width: 100vw;
     height: 100vh;
 }
 
+body{
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
 
 .container {
     max-width: 1200px;
