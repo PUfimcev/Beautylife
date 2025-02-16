@@ -21,6 +21,7 @@ class DropdownToggle {
 
                 elem.addEventListener('click', (event) => {
                     let item = event.currentTarget;
+                    console.log(item );
 
                     if (!event.target.matches('li') && !event.target.classList.contains('dropdown__menu') && !event.target.classList.contains('dropdown__item') && !event.target.classList.contains('dropdown_item-reff')){
                         item.classList.toggle('active');

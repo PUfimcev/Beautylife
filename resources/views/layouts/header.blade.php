@@ -13,7 +13,7 @@
         <a id="headbar__call_request-bnt" class="btn btn-outline-secondary border-1 rounded-0 px-4" href="{{ route('callbacks.create') }}" role="button">{{ __('Request a call') }}</a>
     </div>
     <div class="headbar__dropdown">
-        <div id="dropdown_toggle" class="dropdown_toggle">
+        <div  class="dropdown_toggle">
             {{ __('ENG') }} <span class="dropdown__arrow"></span>
         </div>
         <ul class="dropdown__menu dropdown__menu-lang">
@@ -34,7 +34,7 @@
         @endguest
         @auth
             <div class="headbar__dropdown">
-                <a id="dropdown_toggle" class="dropdown_toggle" href="#">
+                <a  class="dropdown_toggle" href="#">
                     {{ Auth::user()->name }} <span class="dropdown__arrow"></span>
                 </a>
                 @if(Auth::user()->isAdmin())

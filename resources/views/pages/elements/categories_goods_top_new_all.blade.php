@@ -19,35 +19,39 @@
     <div class="categories__goods_top_new_all-top_mobile">
 
         <h2 class="category__name">{{ Str::upper( __($title)) }}</h2>
+        <div class="categories__goods_top_new_all_select-sort">
+            <aside class="categories__goods">
 
-        <aside class="categories__goods">
+                <div class="headbar__dropdown">
+                    <a id="dropdown_toggle_categories__goods_top_new_all-top_mobile" class="dropdown_toggle" href="#">
+                        {{ Str::upper(__('Filter by')) }}<span class="dropdown__arrow"></span>
+                    </a>
+
+                    <ul class="dropdown__menu dropdown__menu-auth">
+                        @foreach ($categories as $category)
+                            <li><a  class="dropdown_item-reff" href="{{ route('catalog', $category) }}">{{ $category->langField('name') }}</a></li>
+                        @endforeach
+
+                    </ul>
+                </div>
+            </aside>
 
             <div class="headbar__dropdown">
-                <a id="dropdown_toggle_categories__goods_top_new_all-top_mobile" class="dropdown_toggle" href="#">
-                    <span>{{ Str::upper(__('Filter by')) }}</span><span class="dropdown__arrow"></span>
+                <a id="dropdown_toggle_selection_goods_mobile" class="dropdown_toggle" href="#">
+                    {{ Str::upper(__('Sort by')) }}<span class="dropdown__arrow"></span>
                 </a>
 
                 <ul class="dropdown__menu dropdown__menu-auth">
-                    @foreach ($categories as $category)
-                        <li><a href="{{ route('catalog', $category) }}">{{ $category->langField('name') }}</a></li>
-                    @endforeach
+                    <li><a  href="{{ route('catalog_top_new','all-goods') }}" style = "font-weight: @if($title == 'All goods') bold; @endif">{{ __('All goods') }}</a></li>
+                    <li><a  href="{{ route('catalog_top_new','bestsellers') }}" style = "font-weight: @if($title == 'Bestsellers') bold; @endif">{{ __('Bestsellers') }}</a></li>
+                    <li><a  href="{{ route('catalog_top_new','new-arrivals') }}" style = "font-weight: @if($title == 'New arrivals') bold; @endif">{{ __('New arrivals') }}</a></li>
+                    <li><a  href="{{ route('catalog_top_new','sale-price') }}" style = "font-weight: @if($title == 'Sale price') bold; @endif">{{ __('Sale price') }}</a></li>
 
                 </ul>
-        </aside>
+            </div>
 
-        <div class="headbar__dropdown">
-            <a id="dropdown_toggle_selection_goods_mobile" class="dropdown_toggle" href="#">
-                <span>{{ Str::upper(__('Sort by')) }}</span><span class="dropdown__arrow"></span>
-            </a>
-
-            <ul class="dropdown__menu dropdown__menu-auth">
-                <li><a href="{{ route('catalog_top_new','all-goods') }}" style = "font-weight: @if($title == 'All goods') bold; @endif">{{ __('All goods') }}</a></li>
-                <li><a href="{{ route('catalog_top_new','bestsellers') }}" style = "font-weight: @if($title == 'Bestsellers') bold; @endif">{{ __('Bestsellers') }}</a></li>
-                <li><a href="{{ route('catalog_top_new','new-arrivals') }}" style = "font-weight: @if($title == 'New arrivals') bold; @endif">{{ __('New arrivals') }}</a></li>
-                <li><a href="{{ route('catalog_top_new','sale-price') }}" style = "font-weight: @if($title == 'Sale price') bold; @endif">{{ __('Sale price') }}</a></li>
-
-            </ul>
         </div>
+
     </div>
 
     <div class="categories__goods_top_new_all-top">
