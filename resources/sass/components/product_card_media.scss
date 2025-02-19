@@ -8,6 +8,24 @@
         width: min(90%, 1200px);
         margin: 0 auto;
 
+        .product__description-tabs{
+
+            border-top: 1px solid $text-accent;
+
+            .tabs_head-list{
+
+                li{
+                    cursor: pointer;
+
+                    &:hover{
+                        opacity: 1;
+                        color: $text-accent-2;
+                    }
+                }
+
+            }
+        }
+
         .product__card-bottom{
             flex-wrap: wrap;
 

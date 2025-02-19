@@ -3,6 +3,61 @@
 
 .product__card{
 
+    .product__description-tabs{
+        width: 100%;
+        padding: 2.5rem 0;
+        border-top: 1px solid $text-accent;
+
+        .tabs_head{
+            width: 100%;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+
+            .tabs_head-list{
+                padding: 0;
+                width: max(100%, 30rem);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                scroll-snap-align: start;
+
+                li{
+                    width: 33%;
+                    height: 2.5rem;
+                    @extend %P2-H-desk-description;
+                    text-align: center !important;
+                    align-content: center;
+                    opacity: 0.4;
+                    border-right: 1px solid $text-accent;
+                    border-bottom: 1px solid $text-accent;
+
+                    &.show{
+                        opacity: 1;
+                        border-right: 2px solid $text-accent;
+                        border-bottom: 2px solid $text-accent;
+                    }
+                }
+
+            }
+        }
+
+        .tabs_content-list{
+            padding: 0;
+            margin: 0;
+            padding-top: 2.5rem;
+
+            .content_details{
+
+                width: min(100%, 45rem);
+
+                .title{
+
+                }
+            }
+        }
+    }
+
     .product__card-bottom{
 
 

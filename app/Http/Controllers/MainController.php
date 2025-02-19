@@ -149,18 +149,9 @@ class MainController extends Controller
 
     public function getProduct(Category $category, Subcategory $subcategory, Product $product)
     {
-        // if(session('locale') == 'en'){
-        // dd($category->id,$subcategory->id, $product->id);
-            // return view('pages.elements.product_card', compact('product', 'subcategory', 'category'));
-            // dd('Producr '.$product->name_en);
-        // } else {
-            // dd('Producr '.$product->name);
-            $similarProducts = $product->similarProducts($subcategory->id)->inRandomOrder()->limit(3)->get();
+        $similarProducts = $product->similarProducts($subcategory->id)->inRandomOrder()->limit(3)->get();
 
-            return view('pages.elements.product_card', compact('product', 'subcategory', 'category', 'similarProducts'));
-
-        // }
-
+        return view('pages.elements.product_card', compact('product', 'subcategory', 'category', 'similarProducts'));
     }
 
     public function brands(Brand $brand = null)

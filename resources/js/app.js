@@ -21,4 +21,5 @@ import ShowHideMobileFilterBlock from './showHideMobileFilterBlock';
 import LockOrientation from './lockOrientation';
 import ResetButtonFilterMobile from './resetButtonFilterMobile';
 import LoadingState from './loadingState';
+import Tabs from './tabs';
 
