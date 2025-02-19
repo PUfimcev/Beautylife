@@ -1,6 +1,6 @@
 <div class="new_arrival__element element_{{ $i }}">
 
-    <a  class="new_arrival__elem_on_main-page new_arrival_{{ $i }}" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product]) }}"  title="{{ $product->langField('name') }}">
+    <a  class="new_arrival__elem_on_main-page new_arrival_{{ $i }}" href="{{ route('product', [$product->getCategory(), $product->getSubcategory(), $product]) }}"  title="{{ $product->langField('name') }}">
 
         <div class="new_arrival__elem_on_main-page_top" >
 

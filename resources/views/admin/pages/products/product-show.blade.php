@@ -36,26 +36,25 @@
 
                 <li><span class="details-name">Name in English: </span><span class="details-content">{{ $product->name_en }}</span></li>
 
+                <li><span class="details-name">Аннотация товара: </span><span class="details-content">{{ empty($product->productDescription->about) ?   __('No')  : $product->productDescription->about }}</span></li>
 
-                <li><span class="details-name">Аннотация товара: </span><span class="details-content">{{ empty($product->description->about) ?   __('No')  : $product->about }}</span></li>
+                <li><span class="details-name">Product summary in English: </span><span class="details-content">{{ empty($product->productDescription->about_en) ?   __('No')  : $product->productDescription->about_en }}</span></li>
 
-                <li><span class="details-name">Product summary in English: </span><span class="details-content">{{ empty($product->description->about_en) ?   __('No')  : $product->about_en }}</span></li>
+                <li><span class="details-name">Описание товара: </span><span class="details-content">{{ empty($product->productDescription->description) ?   __('No')  : $product->productDescription->description }}</span></li>
 
-                <li><span class="details-name">Описание товара: </span><span class="details-content">{{ empty($product->description->description) ?   __('No')  : $product->description->description }}</span></li>
+                <li><span class="details-name">Product description in English: </span><span class="details-content">{{ empty($product->productDescription->description_en) ?   __('No')  : $product->productDescription->description_en }}</span></li>
 
-                <li><span class="details-name">Product description in English: </span><span class="details-content">{{ empty($product->description->description_en) ?   __('No')  : $product->description->description_en }}</span></li>
+                <li><span class="details-name">Применение товара: </span><span class="details-content">{{ empty($product->productDescription->application) ?   __('No')  : $product->productDescription->application }}</span></li>
 
-                <li><span class="details-name">Применение товара: </span><span class="details-content">{{ empty($product->description->application) ?   __('No')  : $product->description->application }}</span></li>
+                <li><span class="details-name">Product application in English: </span><span class="details-content">{{ empty($product->productDescription->application_en) ?   __('No')  : $product->productDescription->application_en }}</span></li>
 
-                <li><span class="details-name">Product application in English: </span><span class="details-content">{{ empty($product->description->application_en) ?   __('No')  : $product->description->application_en }}</span></li>
+                <li><span class="details-name">Происхождение товра: </span><span class="details-content">{{ empty($product->productDescription->origin) ?   __('No')  : $product->productDescription->origin }}</span></li>
 
-                <li><span class="details-name">Происхождение товра: </span><span class="details-content">{{ empty($product->description->origin) ?   __('No')  : $product->description->origin }}</span></li>
+                <li><span class="details-name">Product origin in English: </span><span class="details-content">{{ empty($product->productDescription->origin_en) ?   __('No')  : $product->productDescription->origin_en }}</span></li>
 
-                <li><span class="details-name">Product origin in English: </span><span class="details-content">{{ empty($product->description->origin_en) ?   __('No')  : $product->description->origin_en }}</span></li>
+                <li><span class="details-name">Состав товара: </span><span class="details-content">{{ empty($product->productDescription->ingredients) ?   __('No')  : $product->productDescription->ingredients }}</span></li>
 
-                <li><span class="details-name">Состав товара: </span><span class="details-content">{{ empty($product->description->ingredients) ?   __('No')  : $product->description->ingredients }}</span></li>
-
-                <li><span class="details-name">Product ingredients in English: </span><span class="details-content">{{ empty($product->description->ingredients_en) ?   __('No')  : $product->description->ingredients_en }}</span></li>
+                <li><span class="details-name">Product ingredients in English: </span><span class="details-content">{{ empty($product->productDescription->ingredients_en) ?   __('No')  : $product->productDescription->ingredients_en }}</span></li>
 
 
                 <li><span class="details-name">Категория товара: </span><span class="details-content">{{ empty($product->getCategory($product->id)->name) ?   __('No')  : $product->getCategory($product->id)->name }}</span></li>

@@ -54,11 +54,11 @@ class GetOffers{
 
         if(App::getLocale() == 'ru'){
             // $getOffer = Offer::withTrashed()->where('slug', $route )->first();
-            $getOffer = Offer::withTrashed()->getOffer($route)->first();;
+            $getOffer = Offer::withTrashed()->getOffer($route)->first();
 
         } elseif (App::getLocale() == 'en'){
             // $getOffer = Offer::withTrashed()->where('slug_en', $route )->first();
-            $getOffer = Offer::withTrashed()->getOffer($route)->first();;
+            $getOffer = Offer::withTrashed()->getOffer($route)->first();
         }
 
         return $getOffer;

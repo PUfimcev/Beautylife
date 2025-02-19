@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\DB;
 use App\Classes\RemoveSessionClass;
 use Illuminate\Support\Facades\App;
 use App\Classes\GetCatalogTopNewData;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
@@ -96,7 +97,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                $products = $productsPre->paginate(12)->withQueryString();
+                $products = $productsPre->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
 
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
@@ -111,7 +112,7 @@ class MainController extends Controller
 
                 $productsQuantity = $productsPre->count();
 
-                $products = $productsPre->paginate(12)->withQueryString();
+                $products = $productsPre->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
 
 
                 return view('pages.elements.category_full', compact('products'))->with(['count' => $productsQuantity, 'category' => $category, 'brands' => $brands, 'skintypes' => $skintypes, 'ageranges' => $ageranges, 'consumers' => $consumers]);
@@ -148,13 +149,18 @@ class MainController extends Controller
 
     public function getProduct(Category $category, Subcategory $subcategory, Product $product)
     {
-        if(session('locale') == 'en'){
+        // if(session('locale') == 'en'){
+        // dd($category->id,$subcategory->id, $product->id);
+            // return view('pages.elements.product_card', compact('product', 'subcategory', 'category'));
+            // dd('Producr '.$product->name_en);
+        // } else {
+            // dd('Producr '.$product->name);
+            $similarProducts = $product->similarProducts($subcategory->id)->inRandomOrder()->limit(3)->get();
 
-            dd('Producr '.$product->name_en);
-        } else {
-            dd('Producr '.$product->name);
+            return view('pages.elements.product_card', compact('product', 'subcategory', 'category', 'similarProducts'));
 
-        }
+        // }
+
     }
 
     public function brands(Brand $brand = null)

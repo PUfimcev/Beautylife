@@ -2,6 +2,10 @@
 
 
 use App\Models\Offer;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Subcategory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;

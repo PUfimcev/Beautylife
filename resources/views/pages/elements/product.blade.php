@@ -1,5 +1,5 @@
 <div class="product__element element_{{ $i }}">
-    <a  class="product_{{ $i }}" href="{{ route('product', [$product->getCategory()->first(), $product->getSubcategory()->first(), $product]) }}">
+    <a  class="product_{{ $i }}" href="{{ route('product', [$product->getCategory(), $product->getSubcategory(), $product]) }}">
         <div class="product_top">
 
             <div class="product__tag">

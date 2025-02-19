@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use App\Traits\Translatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Controllers\Person\BookmarkController;
@@ -49,18 +50,7 @@ class Product extends Model
      */
     public function getRouteKeyName(): string
     {
-        $slug = 'slug';
-
-        if(session('locale') == 'en'){
-
-            $slug = 'slug_en';
-        } else if (session('locale') == 'ru'){
-
-            $slug = 'slug';
-        }
-
-        return $slug;
-
+        return 'slug_en';
     }
 
     /**
@@ -229,6 +219,16 @@ class Product extends Model
     {
 
         return Product::withTrashed()->findOrFail($this->id)->productImages->where('id', $id)->first();
+    }
+
+    public function scopeSimilarProducts($query, $subcategoryId)
+    {
+        $similarProducts = Product::whereIn('id', function (Builder $query) use ($subcategoryId) {
+            $query->select('product_id')
+                ->from('properties')
+                ->whereColumn('properties.product_id', 'products.id')->where('properties.subcategory_id', $subcategoryId);
+            })->whereNot('id', $this->id);
+        return $similarProducts;
     }
 
     /**

@@ -347,11 +347,9 @@
                     background-size: cover;
 
                     .product__image{
-                        width: 80%;
-                        height: 70%;
-                        object-fit: cover;
-                        aspect-ratio: 4/3;
-                        display: block;
+                        width: 90%;
+                        height: 80%;
+                        object-fit: contain;
                         margin: auto;
                         position: absolute;
                         display: block;
@@ -430,6 +428,11 @@
                 .new_arrival__elem_on_main-page__content{
                     width: 100%;
 
+                    .text{
+                        hyphens: auto;
+                        font-size: 0.875rem;
+                    }
+
                     .price{
                         width: 100%;
                         display: flex;
@@ -491,7 +494,7 @@
 
 }
 
-// Bestsellers
+// Bestsellers, Product cards, Products in categories
 
 .bestsellers__main_page, .full_category-bottom {
 
@@ -565,11 +568,9 @@
                     background-size: cover;
 
                     .product__image{
-                        width: 80%;
-                        height: 70%;
-                        object-fit: cover;
-                        aspect-ratio: 4/3;
-                        display: block;
+                        width: 90%;
+                        height: 80%;
+                        object-fit: contain;
                         margin: auto;
                         position: absolute;
                         display: block;
@@ -681,6 +682,11 @@
 
                 .bestseller__elem_on_main-page__content{
                     width: 100%;
+
+                    .text{
+                        hyphens: auto;
+                        font-size: 0.875rem;
+                    }
 
                     .price{
                         width: 100%;

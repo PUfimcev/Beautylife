@@ -198,11 +198,11 @@
     <div class="full_category-bottom">
         <h2 class="bestsellers__title">{{ Str::upper(__('You might also like')) }}</h2>
 
-        @isset($bestsellers)
+        @if($bestsellers->count() >= 3)
             <a href="{{ route('catalog_top_new', 'bestsellers') }}" class="get__all__bestsellers-mobile" title="{{ __('Get all bestsellers') }}">{{ __('see more') }}</a>
-        @endisset
+        @endif
 
-        <div class="bestsellers__elements">
+        <div class="bestsellers__elements @if($bestsellers->count() < 3) less-items @endif">
 
             @forelse ($bestsellers as $bestseller)
 
