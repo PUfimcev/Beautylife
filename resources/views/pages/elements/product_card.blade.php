@@ -23,13 +23,13 @@
     <div class="product__description-tabs tabs">
         <div class="tabs_head">
             <ul class="tabs_head-list">
-                <li data-id = '1' class="show">{{ __('Details') }}</li>
+                <li data-id = '1'>{{ __('Details') }}</li>
                 <li data-id = '2'>{{ __('Ingredients') }}</li>
                 <li data-id = '3'>{{ __('Reviews') }}</li>
             </ul>
         </div>
         <ul class="tabs_content-list">
-            <li data-id="1" class="content_details">
+            <li data-id="1" class="content_details show">
                 <p class="title">{{ __('Full details') }}:</p>
                 <div class="content">@php echo html_entity_decode($product->productDescription->langField('description'))@endphp</div>
                 <p class="title">{{ __('Skin type') }}:</p>
@@ -49,8 +49,8 @@
             </li>
             <li data-id="3" class="content_reviews">
                 <div class="content__revies_head">
-                    <h3 class="title">{{ __('Reviews') }}</h3>
-                    <a id="product_review-bnt" class="btn btn-outline-secondary border-1 rounded-0 px-4" href="{{-- route('review.create', $product) --}}" role="button">{{ __('Leave a review') }}</a>
+                    <h3>{{ __('Reviews') }}</h3>
+                    <a id="product_review-bnt" href="{{-- route('review.create', $product) --}}" role="button">{{ __('Leave a review') }}</a>
                 </div>
 
                 <p class="consumer__request">{{ __('Help other users with their choice. Leave your review') }}.</p>

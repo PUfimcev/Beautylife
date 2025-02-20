@@ -1,28 +1,40 @@
 class Tabs{
 
-    #tabsLis;
-    #tabsContentLis;
+    #tabsList;
 
     constructor() {
-        this.#tabsLis = document.querySelectorAll('.tabs_head-list li');
+        this.#tabsList = document.querySelectorAll('.tabs_head-list li');
 
-        this.#tabsContentLis = document.querySelectorAll('.tabs_content-list li');
-
-        if(this.#tabsLis.length == 0 || this.#tabsContentLis.length == 0) return;
+        if(this.#tabsList.length == 0) return;
 
         this.#handleTabsLis();
+        this.#tabsList[0].click();
 
     }
 
     #showHideContent(){
 
         let id = this.dataset.id;
-        console.log(id);
 
+        document.querySelectorAll('.tabs_head-list li').forEach((elem) =>{
+            elem.classList.remove('show');
+        })
+
+        this.classList.add('show');
+
+        let tabsContentList = document.querySelectorAll('.tabs_content-list li');
+
+        if(tabsContentList.length > 0) tabsContentList.forEach((elem) =>{
+            elem.classList.remove('show');
+        })
+
+        const contentElem = document.querySelector(`.tabs_content-list li[data-id='${id}']`);
+
+        if(contentElem) contentElem.classList.add('show');
     }
 
     #handleTabsLis(){
-        this.#tabsLis.forEach((elem) =>{
+        this.#tabsList.forEach((elem) =>{
             elem.addEventListener('click', this.#showHideContent)
         });
     }
