@@ -3,6 +3,20 @@
 
 .product__card{
 
+    .product__header{
+        .product__summary{
+            .product__name{
+
+                .product_title{
+                    @extend %P1-desk-description;
+                    font-size: 2rem !important;
+                    color: $text-accent !important;
+
+                }
+            }
+        }
+    }
+
     .product__description-tabs{
         width: 100%;
         padding: 2.5rem 0;

@@ -18,7 +18,73 @@
 
 
 <section class="product__card">
+    <div class="product__header">
+        <div class="product__pictures">
 
+        </div>
+        <div class="product__summary">
+            <div class="product__name">
+                <p class="product_title">{{ $product->langField('name') }}</p>
+                <div class="product_rating"><span class="star"></span><span>5.0</span></div>
+            </div>
+            <div class="product_code_availability">
+                <div class="code">
+                    <span>{{ __('vendor code') }}:</span>
+                    <span>{{ $product->code }}</span>
+                </div>
+                <div class="availability">
+                    @if ($product->amount > 0)
+                        <div class="sign"  style = "background: #987B75" ></div>
+                        <span>{{ __('in stock') }}</span>
+                    @else
+                        <div class="sign"  style = "background: #FAF8F6" ></div>
+                        <span>{{ __('not available') }}</span>
+
+                    @endif
+                </div>
+            </div>
+            <p class="product_about">{{ $product->productDescription->langField('about') }}</p>
+            <div class="product_order">
+                <form action="{{-- route('basket_add', $product) --}}" method="post">
+                    @csrf
+                    <div class="price-amount-to_basket">
+                        <div class="price">
+                            @if($product->amount > 0)
+
+                                @if($product->reduced_price > 0)
+                                    <p class="discount-price">BYN {{ $product->reduced_price }}</p>
+                                @endif
+
+                                <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>{{ $product->price }}</p>
+
+                                <p class="text-line"></p>
+                            @else
+
+                                <p class="product_abcent">{{ __('Not available') }} </p>
+
+                            @endif
+                        </div>
+
+                        <div class="amount_option">
+                            <span class="minus">-</span>
+                            <input type="text" class="amount_option_value" name="productsAmount" value="{{ request()->has('productsAmount') ? request()->input('productsAmount') : '1' }}">
+                            <span class="pluus">+</span>
+                        </div>
+
+                        <div
+                            @if ($product->amount > 0)
+                                onclick="event.preventDefault(); document.getElementById('product_card_tobasket').submit();"
+                            @else
+                                onclick="event.preventDefault();"
+                            @endif
+                            class="to_basket">{{ __('Add to bag') }}
+                        </div>
+                    </div>
+                    <button @disabled(($product->amount > 0) ? false : true ) >{{ __('Buy in 1 click') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="product__description-tabs tabs">
         <div class="tabs_head">
@@ -86,6 +152,10 @@
             @endisset
         </div>
     </div>
+
+    <form id="product_card_tobasket" action="{{ route('basket_add', $product) }}" method="POST" style="display: none">
+        @csrf
+    </form>
 
 </section>
 
