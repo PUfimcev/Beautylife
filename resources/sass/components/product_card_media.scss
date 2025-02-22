@@ -8,6 +8,132 @@
         width: min(90%, 1200px);
         margin: 0 auto;
 
+        .product__summary{
+            width: 50%;
+
+            .product__name{
+            //     display: flex;
+            //     justify-content: space-between;
+            //     align-self: flex-start;
+
+                .product_title{
+                    font-size: 1.85rem !important;
+            //         width: 70%;
+            //         @extend %P1-desk-description;
+            //         font-size: 1.85rem !important;
+            //         color: $text-accent !important;
+            //         margin-bottom: 0.625rem;
+
+                }
+
+            //     .product_rating{
+            //         width: 20%;
+            //         height: 1.75rem;
+            //         margin: 0;
+            //         display: flex !important;
+            //         justify-content: flex-end;
+
+            //         .star{
+            //             display: block;
+            //             width: 1.75rem;
+            //             height: 1.75rem;
+            //             background-image: url('../images/star_icon_main-page.png');
+            //             background-size: contain;
+            //             @extend %icons-settings;
+            //             margin-right: 0.5rem;
+            //         }
+
+            //         span:last-child{
+            //             display: block;
+            //             align-content: center;
+            //             @extend %P2-desk-description;
+            //         }
+            //     }
+            }
+
+            // .product_code_availability{
+
+            //     display: flex;
+            //     justify-content: space-between;
+            //     align-items: center;
+            //     padding-right: 3.5rem;
+
+            //     .code{
+            //         padding: 1.2rem 0;
+            //         width: 40%;
+            //         @extend %P2-desk-description;
+            //         color: $text-accent !important;
+            //     }
+
+            //     .availability{
+            //         padding: 1.2rem 0;
+            //         width: 45%;
+            //         display: flex;
+            //         justify-content: flex-end;
+            //         align-items: center;
+            //         gap: 0.5rem;
+            //         border-top: 1px solid $text-accent;
+
+            //         .sign{
+            //             width: 0.75rem;
+            //             height: 0.75rem;
+            //             border-radius: 50%;
+            //             overflow: hidden;
+            //         }
+            //     }
+            // }
+
+            // .product_about{
+
+            // }
+
+            .product_order{
+
+                .price-amount-to_basket{
+
+                    // .price{
+                    //     display: flex;
+                    //     justify-content: flex-start;
+                    //     align-items: center;
+                    //     gap: 0.5rem;
+                    //     @extend %P1-desk-description;
+                    //     font-size: 1.25rem !important;
+
+
+
+                    //     p, .discount-price, .total-price{
+
+                    //         @extend %P1-desk-description;
+                    //         font-size: 1.25rem !important;
+                    //         margin: 0;
+
+                    //     }
+
+                    //     .product_abcent{
+                    //         @extend %P1-desk-description;
+                    //         font-size: 1.25rem !important;
+                    //         margin: 0;
+                    //     }
+
+
+                    // }
+
+                    .to_basket{
+                        &:hover{
+                            background-color: $text-accent-2;
+                            border: 1px solid $text-accent-2;
+                        }
+                    }
+                }
+                button{
+                    &:hover{
+                        background-color: $text-accent;
+                        color: $list-bg !important;
+                    }
+                }
+            }
+        }
+
         .product__description-tabs{
 
             .tabs_head{

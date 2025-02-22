@@ -40,9 +40,10 @@ class BasketController extends Controller
     /**
     *  Add product to the basket.
     */
-    public function addProductToBasket(Product $product) :void
+    public function addProductToBasket(Request $request, Product $product)
     {
-        dd($product);
+        // return back();
+        dd($request->input('productsAmount'), $product);
     }
 
 }

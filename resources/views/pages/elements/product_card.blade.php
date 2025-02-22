@@ -45,14 +45,14 @@
             </div>
             <p class="product_about">{{ $product->productDescription->langField('about') }}</p>
             <div class="product_order">
-                <form action="{{-- route('basket_add', $product) --}}" method="post">
+                <form action="{{-- route('basket_add', $product) --}}" method="{{-- post --}}">
                     @csrf
                     <div class="price-amount-to_basket">
                         <div class="price">
                             @if($product->amount > 0)
-
+                            <p>BYN</p>
                                 @if($product->reduced_price > 0)
-                                    <p class="discount-price">BYN {{ $product->reduced_price }}</p>
+                                    <p class="discount-price">{{ $product->reduced_price }}</p>
                                 @endif
 
                                 <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>{{ $product->price }}</p>
@@ -65,19 +65,20 @@
                             @endif
                         </div>
 
-                        <div class="amount_option">
-                            <span class="minus">-</span>
-                            <input type="text" class="amount_option_value" name="productsAmount" value="{{ request()->has('productsAmount') ? request()->input('productsAmount') : '1' }}">
-                            <span class="pluus">+</span>
+                        <div class="amount_option"  @if($product->amount == 0) style="display: none" @endif>
+                            <span class="minus_product" translate="no">-</span>
+                            <input type="text" class="amount_option_value" name="productsAmount" value="{{ request()->has('productsAmount') ? request()->input('productsAmount') : '1' }}" size="3" translate="no">
+                            <span class="plus_product" translate="no">+</span>
                         </div>
 
                         <div
                             @if ($product->amount > 0)
-                                onclick="event.preventDefault(); document.getElementById('product_card_tobasket').submit();"
+                                onclick="event.preventDefault(); document.getElementById('amount_option_value_for_cart').value = document.querySelector('.amount_option_value').value;  document.getElementById('product_card_tobasket').submit();"
                             @else
-                                onclick="event.preventDefault();"
+                                onclick="event.preventDefault();" style = "pointer-events: none"
                             @endif
-                            class="to_basket">{{ __('Add to bag') }}
+                                class="to_basket">{{ __('Add to bag') }}
+                            {{-- class="to_basket">{{ (point if there is a product in cart) ?  __('Add to bag') : __('In bag') }} --}}
                         </div>
                     </div>
                     <button @disabled(($product->amount > 0) ? false : true ) >{{ __('Buy in 1 click') }}</button>
@@ -155,6 +156,7 @@
 
     <form id="product_card_tobasket" action="{{ route('basket_add', $product) }}" method="POST" style="display: none">
         @csrf
+        <input type="text" id="amount_option_value_for_cart" name="productsAmount" value="1">
     </form>
 
 </section>
