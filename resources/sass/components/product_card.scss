@@ -10,6 +10,116 @@
         justify-content: space-between;
         align-self: flex-start;
 
+        .product__pictures{
+            width: 50%;
+            padding-right: 3.5rem;
+            overflow: hidden;
+
+            #carousel{
+                width: 100%;
+                height: 100%;
+
+                .carousel-inner{
+                    width: 100% !important;
+                    display: flex !important;
+                    flex-direction: column;
+
+
+                    &:has(.no_picture){
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .carousel_items-main{
+                        width: 100% !important;
+                        margin-bottom: 3.125rem;
+
+
+                        .carousel_item-main{
+                            width: 100% !important;
+                            overflow: hidden;
+                            display: none;
+
+                            &.active{
+                                display: block;
+
+                                img {
+                                    width: 100%;
+                                    object-fit: contain;
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    .carousel_items-bar{
+                        width: 100%;
+                        height: 6rem;
+                        margin-bottom: 3rem;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .carousel_items-list{
+                            width: 19.5rem;
+                            height: 100%;
+                            overflow: hidden;
+                            // width: 26rem;
+                            display: flex;
+                            justify-content: flex-start;
+                            flex-wrap: nowrap;
+                            align-items: center;
+                            gap: 0.5rem;
+
+                            .carousel_item-bar{
+                                width: 6rem;
+                                height: 100%;
+                                background-color: $line-color;
+                                cursor: pointer;
+
+                                img {
+                                    opacity: 0.7;
+                                    width: 6rem;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+
+                                &.active{
+
+                                    img {
+                                        opacity: 1;
+                                        width: 6rem;
+                                        height: 100%;
+                                        object-fit: cover;
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                        .carousel_arrow{
+                            background-image: url('../images/carousel_arrow.png');
+                            @extend %icons-settings;
+                            background-size: contain;
+                            width: 3rem;
+                            height: 1.2rem;
+                            padding: 1rem;
+
+                        }
+                    }
+
+
+
+                }
+            }
+
+        }
+
+
         .product__summary{
             width: 50%;
 
@@ -128,7 +238,8 @@
                     }
 
                     .amount_option{
-                        user-select:none;
+                        @include user-select(none);
+
                         .minus_product, .plus_product{
                             padding: 0.5rem;
                             user-select:none;

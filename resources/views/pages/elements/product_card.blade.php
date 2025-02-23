@@ -21,6 +21,43 @@
     <div class="product__header">
         <div class="product__pictures">
 
+            <div id="carousel" class="carousel_slide">
+
+                <div class="carousel-inner">
+
+                    @if($product->productImages->count() > 0)
+
+                        <div class="carousel_items-main">
+
+                            @foreach ($product->productImages as $image)
+
+                                <div class="carousel_item-main @if ($loop->iteration == 1) active @endif" data-id="{{ $loop->iteration }}">
+                                    <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="carousel_items-bar">
+
+                            <div class="carousel_items-list" >
+
+                                @foreach ($product->productImages as $image)
+
+                                    <div class="carousel_item-bar @if ($loop->iteration == 1) active @endif" data-id="{{ $loop->iteration }}">
+                                        <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
+                                    </div>
+                                @endforeach
+                            </div>
+                            @if($product->productImages->count() > 3)
+                                <div class="carousel_arrow"></div>
+                            @endif
+                        </div>
+
+                    @else
+                        <span class="no_picture">{{ __('No picture') }}</span>
+                    @endif
+                </div>
+              </div>
         </div>
         <div class="product__summary">
             <div class="product__name">

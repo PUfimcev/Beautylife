@@ -1,3 +1,4 @@
+
 // Desktop
 
 // Fonts
@@ -298,4 +299,10 @@ select:-webkit-autofill:focus {
 
 }
 
+@mixin user-select($option) {
+    -webkit-user-select: $option;
+    -moz-user-select: $option;
+    -ms-user-select: $option;
+    user-select: $option;
+}
 
