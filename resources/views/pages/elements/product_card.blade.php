@@ -21,7 +21,7 @@
     <div class="product__header">
         <div class="product__pictures">
 
-            <div id="carousel" class="carousel_slide">
+            <div id="carousel" class="carousel_slide-desk">
 
                 <div class="carousel-inner">
 
@@ -57,7 +57,7 @@
                         <span class="no_picture">{{ __('No picture') }}</span>
                     @endif
                 </div>
-              </div>
+            </div>
         </div>
         <div class="product__summary">
             <div class="product__name">
@@ -119,6 +119,117 @@
                         </div>
                     </div>
                     <button @disabled(($product->amount > 0) ? false : true ) >{{ __('Buy in 1 click') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="product__header-mob">
+        <div class="product__name-mob">
+            <p class="product_title">{{ $product->langField('name') }}</p>
+
+            <a class="product__route_back" href="{{ route('catalog', $category) }}">{{ __('Back') }}</a>
+
+            <div class="product_rating"><span class="star"></span><span>5.0</span></div>
+        </div>
+
+        <div class="product__pictures-mob">
+
+            <div id="carouselExampleIndicators" class="carousel slide">
+                {{-- @if($product->productImages->count() > 0) --}}
+                    <div class="carousel-indicators">
+
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> --}}
+                    </div>
+                {{-- @endif --}}
+                <div class="carousel-inner">
+                    @if($product->productImages->count() > 0)
+
+                        @foreach ($product->productImages as $image)
+                            <div class="carousel-item @if ($loop->iteration == 1) active @endif">
+                                <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}" class="d-block w-100">
+                            </div>
+                        @endforeach
+
+                    @else
+                        <span class="no_picture">{{ __('No picture') }}</span>
+                    @endif
+                </div>
+                {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button> --}}
+              </div>
+
+        </div>
+
+        <div class="product__summary">
+
+            <div class="product_code_availability">
+                <div class="code">
+                    <span>{{ __('vendor code') }}:</span>
+                    <span>{{ $product->code }}</span>
+                </div>
+                <div class="availability">
+                    @if ($product->amount > 0)
+                        <div class="sign"  style = "background: #987B75" ></div>
+                        <span>{{ __('in stock') }}</span>
+                    @else
+                        <div class="sign"  style = "background: #FAF8F6" ></div>
+                        <span>{{ __('not available') }}</span>
+
+                    @endif
+                </div>
+            </div>
+            <p class="product_about">{{ $product->productDescription->langField('about') }}</p>
+
+            <div class="product_order">
+                <form action="{{-- route('basket_add', $product) --}}" method="{{-- post --}}">
+                    @csrf
+                    <div class="price-amount-to_basket">
+                        <div class="price">
+                            @if($product->amount > 0)
+                            <p>BYN</p>
+                                @if($product->reduced_price > 0)
+                                    <p class="discount-price">{{ $product->reduced_price }}</p>
+                                @endif
+
+                                <p class="total-price"  @if($product->reduced_price > 0) style="text-decoration-line: line-through; opacity: 0.5" @endif>{{ $product->price }}</p>
+
+                                <p class="text-line"></p>
+                            @else
+
+                                <p class="product_abcent">{{ __('Not available') }} </p>
+
+                            @endif
+                        </div>
+
+                        <div class="amount_option"  @if($product->amount == 0) style="display: none" @endif>
+                            <span class="minus_product" translate="no">-</span>
+                            <input type="text" class="amount_option_value" name="productsAmount" value="{{ request()->has('productsAmount') ? request()->input('productsAmount') : '1' }}" size="3" translate="no">
+                            <span class="plus_product" translate="no">+</span>
+                        </div>
+
+                    </div>
+                    <div class="buttons">
+                        <div
+                            @if ($product->amount > 0)
+                                onclick="event.preventDefault(); document.getElementById('amount_option_value_for_cart').value = document.querySelector('.amount_option_value').value;  document.getElementById('product_card_tobasket').submit();"
+                            @else
+                                onclick="event.preventDefault();" style = "pointer-events: none"
+                            @endif
+                                class="to_basket">{{ __('Add to bag') }}
+                            {{-- class="to_basket">{{ (point if there is a product in cart) ?  __('Add to bag') : __('In bag') }} --}}
+                        </div>
+
+                        <button @disabled(($product->amount > 0) ? false : true ) >{{ __('Buy in 1 click') }}</button>
+                    </div>
                 </form>
             </div>
         </div>
