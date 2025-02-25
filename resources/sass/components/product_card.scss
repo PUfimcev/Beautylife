@@ -38,23 +38,37 @@
                         height: 25rem;
                         margin-bottom: 3.125rem;
                         position: relative;
+                        border: 1px solid $text-accent;
 
 
                         .carousel_item-main{
-                            position: absolute;
-                            top: 0;
-                            left: 0;
                             width: 100% !important;
                             height: 100%;
                             overflow: hidden;
                             opacity: 0;
+                            background-color: $list-bg;
+                            position: absolute;
+                            top: 0%;
+                            left: 0%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
 
                             &.active{
                                 transition: opacity 1s ease 0s;
                                 opacity: 1;
 
                                 img {
+                                    display: block;
                                     width: 100%;
+                                    height: 100%;
                                     object-fit: contain;
                                 }
                             }
@@ -64,7 +78,6 @@
                     }
 
                     .carousel_items-bar{
-                        position: relative;
                         width: 100%;
                         height: 6rem;
                         margin-bottom: 3rem;
@@ -72,42 +85,53 @@
                         justify-content: space-between;
                         align-items: center;
 
-                        .carousel_items-list{
+                        .bar_wrapper{
+
                             width: 19.5rem;
                             height: 100%;
                             overflow: hidden;
-                            // width: 26rem;
-                            display: flex;
-                            justify-content: flex-start;
-                            flex-wrap: nowrap;
-                            align-items: center;
-                            gap: 0.5rem;
 
-                            .carousel_item-bar{
-                                width: 6rem;
+                            .carousel_items-list{
                                 height: 100%;
-                                background-color: $line-color;
-                                cursor: pointer;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                gap: 0.5rem;
 
-                                img {
-                                    opacity: 0.7;
+                                .carousel_item-bar{
+                                    position: relative;
                                     width: 6rem;
-                                    height: 100%;
-                                    object-fit: cover;
-                                }
+                                    background-color: $list-bg;
+                                    border: 1px solid $text-accent;
+                                    cursor: pointer;
+                                    filter: brightness(60%);
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
 
-                                &.active{
 
                                     img {
-                                        opacity: 1;
+                                        display: block;
                                         width: 6rem;
-                                        height: 100%;
+                                        height: auto;
                                         object-fit: cover;
                                     }
+
+                                    &.active{
+                                        background-color: $list-bg;
+                                        filter: brightness(100%);
+
+                                        img {
+                                            display: block;
+                                            width: 6rem;
+                                            height: auto;
+                                            object-fit: cover;
+                                        }
+                                    }
+
                                 }
 
                             }
-
                         }
 
                         .carousel_arrow{
@@ -352,17 +376,41 @@
         }
 
         .product__pictures-mob{
+            width: 25rem;
+            height: 25rem;
+            margin: 0 auto;
             #carouselExampleIndicators{
+                width: 100%;
+                height: 100%;
 
+                .carousel-indicators{
+                    margin: 2rem 0;
+                    bottom: 0;
+                    button{
+                        border-radius: 50% !important;
+                        border: 1px solid $text-accent !important;
+                        background-color: transparent;
+
+                        &.active{
+                            background-color: $text-accent;
+
+                        }
+                    }
+                }
 
                 .carousel-inner{
+                    width: 100%;
+                    height: 100%;
 
                     .carousel_item{
+                        width: 100%;
+                        height: 100%;
                         border: 1px solid $text-accent;
+                        margin: 0 !important;
 
                         img {
-                            width: 100%;
                             object-fit: contain;
+                            aspect-ratio: 4/3 !important;
                         }
                     }
                 }

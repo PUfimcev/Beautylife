@@ -39,14 +39,17 @@
 
                         <div class="carousel_items-bar">
 
-                            <div class="carousel_items-list" >
+                            <div class="bar_wrapper">
 
-                                @foreach ($product->productImages as $image)
+                                <div class="carousel_items-list" >
 
-                                    <div class="carousel_item-bar @if ($loop->iteration == 1) active @endif" data-id="{{ $loop->iteration }}">
-                                        <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
-                                    </div>
-                                @endforeach
+                                    @foreach ($product->productImages as $image)
+
+                                        <div class="carousel_item-bar @if ($loop->iteration == 1) active @endif" data-id="{{ $loop->iteration }}">
+                                            <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                             @if($product->productImages->count() > 3)
                                 <div class="carousel_arrow"></div>
@@ -136,14 +139,16 @@
         <div class="product__pictures-mob">
 
             <div id="carouselExampleIndicators" class="carousel slide">
-                {{-- @if($product->productImages->count() > 0) --}}
+                @if($product->productImages->count() > 0)
                     <div class="carousel-indicators">
+                        @for ($i = 0; $i < $product->productImages->count(); $i++)
 
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" class="@if ($i == 0) active @endif" aria-current="true" aria-label="Slide {{ $i + 1 }}"></button>
+                        @endfor
+                      {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button> --}}
                       {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> --}}
                     </div>
-                {{-- @endif --}}
+                @endif
                 <div class="carousel-inner">
                     @if($product->productImages->count() > 0)
 

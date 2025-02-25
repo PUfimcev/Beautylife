@@ -283,6 +283,100 @@
 
     .product__card{
 
+        .product__header{
+
+            .product__pictures{
+
+                padding-right: 2.5rem;
+
+                #carousel{
+
+                    height: max(100%, 40rem);
+
+                    .carousel-inner{
+
+                        .carousel_items-main{
+
+                            height: 22rem;
+
+                        }
+
+                        .carousel_items-bar{
+                            height: 5rem;
+
+                            .bar_wrapper{
+                                width: 16.5rem;
+
+                                .carousel_items-list{
+
+                                    .carousel_item-bar{
+
+                                        width: 5rem;
+
+                                        img {
+
+                                            width: 5rem;
+                                        }
+
+                                        &.active{
+
+                                            img {
+                                                width: 5rem;
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+
+                            .carousel_arrow{
+
+
+                                // background-size: contain;
+                                // width: 3rem;
+                                // height: 1.2rem;
+                                // padding: 1rem;
+
+                            }
+                        }
+
+
+
+                    }
+                }
+
+            }
+
+            .product__summary{
+
+                .product__name{
+
+                    .product_title{
+
+                        font-size: 1.5rem !important;
+                        line-height: 2.5rem;
+
+                    }
+                }
+
+
+                .product_code_availability{
+
+                    padding-right: 0;
+                }
+
+                .product_about{
+                    padding-right: 0;
+
+                }
+
+                .product_order{
+                    padding-right: 0;
+                }
+            }
+        }
+
         .product__card-bottom{
 
             .bestsellers__elements{
@@ -322,8 +416,159 @@
 
 }
 
-@media screen and (min-width:  769px) {
+@media screen and (max-width:  850px) {
+    .product__card{
 
+        .product__header{
+
+            .product__pictures{
+
+                padding-right: 2rem;
+
+                #carousel{
+
+                    height: max(100%, 30rem);
+
+                    .carousel-inner{
+
+                        .carousel_items-main{
+
+                            height: 20rem;
+
+                        }
+
+                        .carousel_items-bar{
+                            height: 4.5rem;
+
+
+                            .bar_wrapper{
+                                width: 15rem;
+
+                                .carousel_items-list{
+
+                                    .carousel_item-bar{
+
+                                        width: 4.5rem;
+
+                                        img {
+
+                                            width: 4.5rem;
+                                        }
+
+                                        &.active{
+
+                                            img {
+                                                width: 4.5rem;
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+                            .carousel_arrow{
+
+
+                                // background-size: contain;
+                                // width: 3rem;
+                                // height: 1.2rem;
+                                // padding: 1rem;
+
+                            }
+                        }
+
+
+
+                    }
+                }
+
+            }
+
+            .product__summary{
+
+                .product__name{
+
+                    .product_title{
+
+                        font-size: 1.2rem !important;
+                        line-height: 2.5rem;
+
+                    }
+
+                    .product_rating{
+
+                        height: 1.2rem;
+
+                        .star{
+
+                            width: 1.2rem;
+                            height: 1.2rem;
+                        }
+                    }
+                }
+
+                .product_order{
+
+                    .price-amount-to_basket{
+
+                        .price{
+                            font-size: 1rem !important;
+
+
+
+                            p, .discount-price, .total-price{
+
+                                font-size: 1rem !important;
+
+                            }
+
+                            .product_abcent{
+                                font-size: 1rem !important;
+                            }
+
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .product__card-bottom{
+
+            .bestsellers__elements{
+                overflow: hidden;
+                overflow-x: auto;
+                gap: 1.5rem;
+                height: min(70vh, 24rem);
+
+                &::-webkit-scrollbar{
+                    width: 0;
+                }
+
+                .bestseller__element{
+
+                    width: 16.25rem !important;
+                    height: 100% !important;
+
+
+                    .bestseller__elem_on_main-page{
+
+                        width: 16.25rem !important;
+
+                        &.bestseller_2{
+
+                            height: 100%;
+                        }
+
+                        .bestseller__elem_on_main-page_top{
+                            height: 16.25rem !important;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }
 
 
