@@ -18,50 +18,38 @@
 
 
 <section class="product__card">
+
     <div class="product__header">
         <div class="product__pictures">
 
-            <div id="carousel" class="carousel_slide-desk">
+            @if($product->productImages->count() > 0)
 
-                <div class="carousel-inner">
+            <div class="swiper-container gallery-top">
+                <div class="swiper-wrapper">
+                    @foreach ($product->productImages as $image)
+                    <div class="swiper-slide">
+                        <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
+                    </div>
+                    @endforeach
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
 
-                    @if($product->productImages->count() > 0)
-
-                        <div class="carousel_items-main">
-
-                            @foreach ($product->productImages as $image)
-
-                                <div class="carousel_item-main @if ($loop->iteration == 1) active @endif" data-id="{{ $loop->iteration }}">
-                                    <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div class="carousel_items-bar">
-
-                            <div class="bar_wrapper">
-
-                                <div class="carousel_items-list" >
-
-                                    @foreach ($product->productImages as $image)
-
-                                        <div class="carousel_item-bar @if ($loop->iteration == 1) active @endif" data-id="{{ $loop->iteration }}">
-                                            <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            @if($product->productImages->count() > 3)
-                                <div class="carousel_arrow"></div>
-                            @endif
-                        </div>
-
-                    @else
-                        <span class="no_picture">{{ __('No picture') }}</span>
-                    @endif
+            <div class="swiper-container gallery-thumbs">
+                <div class="swiper-wrapper">
+                    @foreach ($product->productImages as $image)
+                    <div class="swiper-slide">
+                        <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
+                    </div>
+                    @endforeach
                 </div>
             </div>
+
+            @else
+                <span class="no_picture">{{ __('No picture') }}</span>
+            @endif
         </div>
+
         <div class="product__summary">
             <div class="product__name">
                 <p class="product_title">{{ $product->langField('name') }}</p>
@@ -138,40 +126,22 @@
 
         <div class="product__pictures-mob">
 
-            <div id="carouselExampleIndicators" class="carousel slide">
-                @if($product->productImages->count() > 0)
-                    <div class="carousel-indicators">
-                        @for ($i = 0; $i < $product->productImages->count(); $i++)
+            @if($product->productImages->count() > 0)
 
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" class="@if ($i == 0) active @endif" aria-current="true" aria-label="Slide {{ $i + 1 }}"></button>
-                        @endfor
-                      {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button> --}}
-                      {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> --}}
+            <div class="swiper-container gallery-mob">
+                <div class="swiper-wrapper">
+                    @foreach ($product->productImages as $image)
+                    <div class="swiper-slide">
+                        <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}">
                     </div>
-                @endif
-                <div class="carousel-inner">
-                    @if($product->productImages->count() > 0)
-
-                        @foreach ($product->productImages as $image)
-                            <div class="carousel-item @if ($loop->iteration == 1) active @endif">
-                                <img src="{{ asset('storage/'.$image->route) }}"  alt="{{ __('Image') }}" class="d-block w-100">
-                            </div>
-                        @endforeach
-
-                    @else
-                        <span class="no_picture">{{ __('No picture') }}</span>
-                    @endif
+                    @endforeach
                 </div>
-                {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button> --}}
-              </div>
+                <div class="swiper-pagination"></div>
+            </div>
 
+            @else
+                <span class="no_picture">{{ __('No picture') }}</span>
+            @endif
         </div>
 
         <div class="product__summary">

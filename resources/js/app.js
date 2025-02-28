@@ -23,5 +23,6 @@ import ResetButtonFilterMobile from './resetButtonFilterMobile';
 import LoadingState from './loadingState';
 import Tabs from './tabs';
 import IncreaseReduceProductAmount from './increaseReduceProductAmount';
-import CarouselSlide from './carouselSlide';
+import { galleryThumbs, galleryTop, galleryMob } from './swiper';
+
 
