@@ -115,7 +115,40 @@
 
 @media screen and (max-width:  768px) {
 
+    #header__searching{
 
+        .searching__popup{
+
+            .container_wrap {
+                .searching__box{
+
+                    .searching__box_result{
+
+                        .searching__box_result-list{
+
+                            .product__founded{
+
+                                height: 15rem;
+
+                                a{
+                                    .search_desktop{
+                                        display: none;
+                                    }
+
+                                    .search_mob{
+
+                                        display: flex;
+
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width:  650px) {
@@ -222,9 +255,75 @@
         .searching__popup{
 
             .container_wrap {
+                .searching__box{
 
-                #searching__popup_elements{
-                    // height: 10%;
+                    .searching__box_result{
+
+                        .searching__box_result-list{
+
+                            .product__founded{
+                                border-bottom: 1px solid $text-accent;
+                                a{
+
+                                    .search_mob{
+
+                                        flex-direction: column;
+
+                                        .product__image{
+                                            width: 100%;
+                                            height: 50%;
+                                            display: flex;
+                                            flex-direction:row;
+                                            justify-content: space-between;
+
+                                            img{
+                                                display: block;
+                                                width: 40%;
+                                                height: 100%;
+                                                object-fit: contain;
+                                                aspect-ratio: 16/9;
+                                            }
+
+                                            .product__price, .product__availability{
+                                                justify-content: flex-end;
+                                            }
+                                            .product__price{
+
+                                                width: 35%;
+                                                height: 100%;
+
+                                                span{
+                                                    width: 2.25rem;
+                                                    margin-right: 0;
+                                                    // margin-left: 0.5rem;
+
+                                                }
+                                            }
+                                            .product__availability{
+                                                padding-right: 0;
+                                            }
+
+                                        }
+                                        .product__description{
+
+                                            width: 100%;
+                                            height: 50%;
+
+                                            p{
+                                                &:last-child{
+                                                    display: -webkit-box;
+                                                    -webkit-line-clamp: 3;
+                                                    -webkit-box-orient: vertical;
+                                                    overflow: hidden;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
         }

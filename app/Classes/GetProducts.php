@@ -57,7 +57,7 @@ class GetProducts extends MainAbstractProductFilter
             $about = 'product_descriptions.about_en';
         } elseif (session('locale') == 'ru'){
             $nameColumn = 'name';
-            $slug = 'products.slug';
+            $slug = 'products.slug_en';
             $name = 'products.name';
             $about = 'product_descriptions.about';
         }
@@ -68,17 +68,18 @@ class GetProducts extends MainAbstractProductFilter
 
                 if(session('locale') == 'en'){
                     $name = $product->name_en;
-                    $slug = $product->slug_en;
                     $about = $product->about_en;
                     $currancy = 'USD';
                     $productAvailability = 'Not available';
+                    $slug = $product->slug_en;
                 } elseif (session('locale') == 'ru'){
                     $name = $product->name;
-                    $slug = $product->slug;
                     $about = $product->about;
                     $currancy = 'BYN';
                     $productAvailability = 'Нет в наличии';
+                    $slug = $product->slug_en;
                 }
+
 
                 $category = $product->getCategory()->first();
                 $subcategory = $product->getSubcategory()->first();
@@ -91,34 +92,51 @@ class GetProducts extends MainAbstractProductFilter
 
                 $urlProduct = $urlMain.'/'.$category->code.'/'.$subcategory->code.'/'.$slug;
 
-                    $showHidePrice = ($product->amount > 0) ? 'display: flex' : 'display: none';
-                    $showHideAvailability = ($product->amount > 0) ? 'display: none' : 'display: flex';
-                    $showHideReducedPrice = ($product->reduced_price > 0) ? 'display: block' : 'display: none';
-                    $crossedPrice = ($product->reduced_price > 0) ? 'class="crossedPrice"' : '';
+                $showHidePrice = ($product->amount > 0) ? 'display: flex' : 'display: none';
+                $showHideAvailability = ($product->amount > 0) ? 'display: none' : 'display: flex';
+                $showHideReducedPrice = ($product->reduced_price > 0) ? 'display: block' : 'display: none';
+                $crossedPrice = ($product->reduced_price > 0) ? 'class="crossedPrice"' : '';
 
                     echo  "
                         <li class=\"product__founded\" >
                             <a href=\"$urlProduct\" title=\"$name\">
-                            <div>
-                                <div class=\"product__image\" ><img src=\"$urlImg\" alt=\"Image\" /></div>
-                                <div class=\"product__description\">
-                                    <p class=\"product__name\">$name</з>
-                                    <p>{$about}</p>
+                                <div class=\"search_desktop\">
+                                    <div class=\"product__image\" ><img src=\"$urlImg\" alt=\"Image\" /></div>
+                                    <div class=\"product__description\">
+                                        <p class=\"product__name\">$name</з>
+                                        <p>{$about}</p>
+                                    </div>
+                                    <div style=\"$showHidePrice\" class=\"product__price\">
+                                        <span >$currancy</span>
+                                        <span $crossedPrice>$product->price</span>
+                                        <span style=\"$showHideReducedPrice\">$product->reduced_price</span>
+                                    </div>
+                                    <div style=\"$showHideAvailability\" class=\"product__availability\">
+                                        <span >$productAvailability</span>
+                                    </div>
                                 </div>
-                                <div style=\"$showHidePrice\" class=\"product__price\">
-                                    <span >$currancy</span>
-                                    <span $crossedPrice>$product->price</span>
-                                    <span style=\"$showHideReducedPrice\">$product->reduced_price</span>
+                                <div class=\"search_mob\">
+                                    <div class=\"product__image\" >
+                                        <img src=\"$urlImg\" alt=\"Image\" />
+                                        <div style=\"$showHidePrice\" class=\"product__price\">
+                                            <span >$currancy</span>
+                                            <span $crossedPrice>$product->price</span>
+                                            <span style=\"$showHideReducedPrice\">$product->reduced_price</span>
+                                        </div>
+                                        <div style=\"$showHideAvailability\" class=\"product__availability\">
+                                            <span >$productAvailability</span>
+                                        </div>
+                                    </div>
+                                    <div class=\"product__description\">
+                                        <p class=\"product__name\">$name</з>
+                                        <p>{$about}</p>
+                                    </div>
                                 </div>
-                                <div style=\"$showHideAvailability\" class=\"product__availability\">
-                                    <span >$productAvailability</span>
-                                </div>
-                            </div>
                             </a>
 
                         </li>
                     ";
-                }
+            }
         });
     }
 

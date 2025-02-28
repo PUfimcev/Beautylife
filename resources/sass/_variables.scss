@@ -310,3 +310,10 @@ select:-webkit-autofill:focus {
     user-select: $option;
 }
 
+@mixin line-clamp($option) {
+    display: -webkit-box;
+    -webkit-line-clamp: $option;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
