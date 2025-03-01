@@ -5,10 +5,14 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Carbon\Carbon;
+use App\Models\Order;
+use App\Models\Address;
 use App\Models\Bookmark;
+use App\Models\FullName;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -53,6 +57,30 @@ class User extends Authenticatable
     public function bookmark(): HasOne
     {
         return $this->hasOne(Bookmark::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function fullname(): HasOne
+    {
+        return $this->hasOne(FullName::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 
     /**

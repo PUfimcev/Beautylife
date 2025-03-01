@@ -291,9 +291,8 @@
 
 
                     .swiper-button-next{
-                        position: absolute;
 
-                        top: var(--swiper-navigation-top-offset, 91%);
+                        top: var(--swiper-navigation-top-offset, 88%);
                     }
                 }
             }
@@ -381,6 +380,14 @@
                         background-position: right center;
                         background-size: 90%;
                     }
+
+                    .swiper-button-next{
+
+                        top: var(--swiper-navigation-top-offset, 87%);
+                    }
+
+
+
                 }
             }
 

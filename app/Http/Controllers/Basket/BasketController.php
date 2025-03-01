@@ -43,7 +43,9 @@ class BasketController extends Controller
     public function addProductToBasket(Request $request, Product $product)
     {
         // return back();
-        dd($request->input('productsAmount'), $product);
+        $product['productsAmount'] =  ($request->input('productsAmount') === null) ? '1' : $request->input('productsAmount');
+
+        dd($product['productsAmount'], $product);
     }
 
 }

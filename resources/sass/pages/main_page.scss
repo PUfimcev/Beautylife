@@ -473,12 +473,16 @@
             }
         }
 
+        &:has(.no__new_arrival){
+            height: 10rem;
+            justify-content: center;
+            align-items: center;
 
-        .no__new_arrival{
-            display:inline-block;
-            font-family: $font-family-Mostly-Bright;
-            font-size: 1.75rem;
-            margin: auto;
+            .no__new_arrival{
+                display:inline-block;
+                font-family: $font-family-Mostly-Bright;
+                font-size: 1.75rem;
+            }
         }
     }
 
@@ -727,12 +731,18 @@
                 text-align: center;
             }
 
-        .no__bestsellers{
-            display:inline-block;
-            font-family: $font-family-Mostly-Bright;
-            font-size: 1.75rem;
-            margin: 0 auto 3rem auto;
         }
+
+        &:has(.no__bestsellers){
+            height: 10rem;
+            justify-content: center;
+            align-items: center;
+
+            .no__bestsellers{
+                display:inline-block;
+                font-family: $font-family-Mostly-Bright;
+                font-size: 1.75rem;
+            }
         }
     }
 

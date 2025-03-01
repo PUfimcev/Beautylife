@@ -294,3 +294,36 @@ Route::group(['namespace' => 'App\Http\Controllers\Basket', 'prefix' => 'basket'
 
 
 
+// Schema::create('orders', function (Blueprint $table) {
+//     $table->id();
+//     $table->unsignedBigInteger('user_id')->nullable();
+//     $table->foreign('user_id')
+//     ->references('id')->on('users')
+//     ->onDelete('cascade');
+//     $table->unsignedBigInteger('unregistered_customer_id')->nullable();
+//     $table->foreign('unregistered_customer_id')
+//     ->references('id')->on('unregistered_customers')
+//     ->onDelete('cascade');
+//     $table->string('carrency')->default('BYN');
+//     $table->decimal('total_price', 10, 2)->default(0.00);
+//     $table->unsignedBigInteger('name_id')->nullable();
+//     $table->unsignedBigInteger('phone_id')->nullable();
+//     $table->unsignedBigInteger('address_id')->nullable();
+//     $table->text('comment')->nullable();
+//     $table->string('delivery')->default(0);
+//     $table->string('payment')->nullable();;
+//     $table->boolean('confirmed')->default(0);
+//     $table->timestamps();
+// });
+
+// Schema::create('unregistered_customers', function (Blueprint $table) {
+//     $table->id();
+//     $table->string('firstName')->nullable();
+//     $table->string('lastName')->nullable();
+//     $table->string('phone')->nullable();
+//     $table->string('email')->nullable();
+//     $table->string('street')->nullable();
+//     $table->string('city')->nullable();
+//     $table->string('country')->nullable();
+//     $table->timestamps();
+// });

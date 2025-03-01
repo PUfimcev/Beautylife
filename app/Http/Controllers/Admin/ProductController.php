@@ -347,7 +347,7 @@ class ProductController extends Controller
 
         $product->forceDelete();
 
-        return to_route('admin.products.index')->with('status', 'Completely removed!');
+        return to_route('admin.products_archive')->with('status', 'Completely removed!');
     }
 
 }

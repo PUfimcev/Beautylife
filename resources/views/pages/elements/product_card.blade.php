@@ -25,6 +25,7 @@
             @if($product->productImages->count() > 0)
 
             <div class="swiper-container gallery-top">
+                <div class="swiper-button-next"></div>
                 <div class="swiper-wrapper">
                     @foreach ($product->productImages as $image)
                     <div class="swiper-slide">
@@ -32,7 +33,6 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="swiper-button-next"></div>
             </div>
 
             <div class="swiper-container gallery-thumbs">
