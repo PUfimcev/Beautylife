@@ -43,14 +43,14 @@
                     @endauth"></span>
                 <span
 
-                    @if ($product->amount > 0)
+                    @if ($product->amount > 0 && !$product->isProductInBasket())
                         onclick="event.preventDefault(); document.getElementById('add_product_basket_{{ $i }}').submit();"
                     @else
                         onclick="event.preventDefault();"
 
                     @endif
 
-                class="send_to_basket"></span>
+                class="send_to_basket @if ($product->isProductInBasket()) active @endif"></span>
             </div>
 
         </div>

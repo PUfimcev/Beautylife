@@ -100,13 +100,14 @@
                         </div>
 
                         <div
-                            @if ($product->amount > 0)
-                                onclick="event.preventDefault(); document.getElementById('amount_option_value_for_cart').value = document.querySelector('.amount_option_value').value;  document.getElementById('product_card_tobasket').submit();"
+                            @if ($product->amount > 0 && !$product->isProductInBasket())
+                            onclick="event.preventDefault(); document.getElementById('amount_option_value_for_cart').value = document.querySelector('.amount_option_value').value;  document.getElementById('product_card_tobasket').submit();"
                             @else
-                                onclick="event.preventDefault();" style = "pointer-events: none"
+                            onclick="event.preventDefault();" style = "pointer-events: none"
                             @endif
-                                class="to_basket">{{ __('Add to bag') }}
-                            {{-- class="to_basket">{{ (point if there is a product in cart) ?  __('Add to bag') : __('In bag') }} --}}
+                            class="to_basket">
+                            {{ ($product->isProductInBasket()) ? __('In bag') : __('Add to bag') }}
+
                         </div>
                     </div>
                     <button @disabled(($product->amount > 0) ? false : true ) >{{ __('Buy in 1 click') }}</button>
@@ -192,15 +193,15 @@
                         </div>
 
                     </div>
+
                     <div class="buttons">
-                        <div
-                            @if ($product->amount > 0)
+                        <div  @if ($product->amount > 0 && !$product->isProductInBasket())
                                 onclick="event.preventDefault(); document.getElementById('amount_option_value_for_cart').value = document.querySelector('.amount_option_value').value;  document.getElementById('product_card_tobasket').submit();"
                             @else
                                 onclick="event.preventDefault();" style = "pointer-events: none"
                             @endif
-                                class="to_basket">{{ __('Add to bag') }}
-                            {{-- class="to_basket">{{ (point if there is a product in cart) ?  __('Add to bag') : __('In bag') }} --}}
+                                class="to_basket">
+                                {{ ($product->isProductInBasket()) ? __('In bag') : __('Add to bag') }}
                         </div>
 
                         <button @disabled(($product->amount > 0) ? false : true ) >{{ __('Buy in 1 click') }}</button>

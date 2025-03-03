@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Person;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Bookmark;
+use App\Traits\PreviousUrl;
 use Illuminate\Http\Request;
+use App\Classes\RemoveSessionClass;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Query\Builder;
 
 class BookmarkController extends Controller
 {
+    use PreviousUrl;
     /**
      * Create a new controller instance.
      *
@@ -28,6 +31,9 @@ class BookmarkController extends Controller
 
     public function getBookmarks(Request $request)
     {
+
+        $this->getPreviousUrl();
+
         $order = (is_null($request->input("bookmarksOrder")) || $request->input("bookmarksOrder") == 'desc') ? 'desc' : 'asc';
 
         $products = Bookmark::whereBelongsTo(Auth::user())
@@ -45,6 +51,7 @@ class BookmarkController extends Controller
 
     public function bookmarkIsEmpty()
     {
+        (new RemoveSessionClass())->removeSessionPrevUrl();
         return view('person.bookmarks_empty');
     }
 

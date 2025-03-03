@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Support\Str;
+use App\Classes\HandleOrder;
 use App\Traits\Translatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Query\Builder;
@@ -147,6 +149,15 @@ class Product extends Model
 
     }
 
+
+    /**
+    * @return BelongsToMany
+    */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->withPivot('amount', 'current_price', 'sum');
+    }
+
     /**
      *
      */
@@ -270,5 +281,32 @@ class Product extends Model
         return in_array($this->id, $arrayProductIds) ? true : false;
 
      }
+
+     /**
+      *  To check if there is a product in basket
+       * @return boolean
+      */
+     public function isProductInBasket()
+     {
+        // if(session()->has('order')){
+
+        //     $order = session()->get('order');
+
+        // }
+        // else {
+
+            if(!Auth::check()) return false;
+
+            $order = HandleOrder::restoreAuthReservedOrder();
+
+        // }
+
+
+        return ($order->products->contains($this)) ? true : false;
+        // return $order->products;
+
+     }
+
+
 
 }

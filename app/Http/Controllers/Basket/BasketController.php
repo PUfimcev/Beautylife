@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Basket;
 
 use App\Models\Product;
+use App\Classes\HandleOrder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,6 +26,7 @@ class BasketController extends Controller
 
     public function getBasket()
     {
+
         return view('basket.basket');
     }
 
@@ -42,10 +44,12 @@ class BasketController extends Controller
     */
     public function addProductToBasket(Request $request, Product $product)
     {
-        // return back();
-        $product['productsAmount'] =  ($request->input('productsAmount') === null) ? '1' : $request->input('productsAmount');
+        // dd($product->id);
+        // dd($product->isProductInBasket());
+        $amount['amount'] =  ($request->input('productsAmount') === null) ? '1' : $request->input('productsAmount');
+        HandleOrder::createOrder($product, $amount);
 
-        dd($product['productsAmount'], $product);
+        return back();
     }
 
 }

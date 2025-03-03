@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Product;
 use App\Traits\Translatable;
 use App\Models\UnregisteredCustomer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Order extends Model
 {
@@ -42,13 +44,20 @@ class Order extends Model
     }
 
 
-
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
     public function unregisteredCustomer(): BelongsTo
     {
         return $this->belongsTo(UnregisteredCustomer::class);
+    }
+
+    /**
+    * @return BelongsToMany
+    */
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withPivot('amount', 'current_price', 'sum');
     }
 
 

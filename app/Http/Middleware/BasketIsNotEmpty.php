@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Classes\HandleOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class BasketIsNotEmpty
@@ -15,9 +17,18 @@ class BasketIsNotEmpty
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $orderId = null;
+        if(session()->has('order')){
 
-        if(is_null($orderId)) {
+            $order = session('order');
+        } else {
+
+            if(Auth::check()) $order = HandleOrder::restoreAuthReservedOrder();
+
+            $order = null;
+        }
+
+        dd($order->products);
+        if(is_null($order)) {
             return to_route('basket_empty');
         }
 

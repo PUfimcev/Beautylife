@@ -111,6 +111,10 @@
                     .send_to_basket{
                         background-image: url('../images/product_bag_button.png');
                         @extend %icons-settings;
+
+                        &.active{
+                            background-image: url('../images/product_bookmark_heart-opted.png');
+                        }
                     }
                 }
             }

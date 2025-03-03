@@ -3,19 +3,21 @@
 namespace App\Providers;
 
 // use Carbon\Traits\Date;
-use App\Models\{Offer, Product, Category};
 use App\Classes\GetBlogs;
 use Illuminate\View\View;
-use App\Classes\{GetOffers, GetReviews, GetProducts};
+use App\Classes\HandleOrder;
 use App\Observers\OfferObserver;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use App\Models\{Offer, Product, Category};
+use App\Classes\{GetOffers, GetReviews, GetProducts};
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -51,6 +53,29 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+// get number of products in basket
+
+        view()->composer(['layouts.header', 'layouts.header_mobile'], function(View $view) {
+
+            if(session()->has('order')){
+
+                $order = session()->get('order');
+            } else {
+
+                if(Auth::check()) $order = HandleOrder::restoreAuthReservedOrder();
+            }
+
+
+            if(is_null($order)) {
+                $view->with('numberBasketProducts', null);
+            }
+
+            $numberBasketProducts = $order->products()->count();
+
+            $view->with('numberBasketProducts', $numberBasketProducts);
+
+        });
+
 // input timezone
         view()->composer('*', function(View $view) {
 
@@ -61,16 +86,6 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('local_timezone', config('app.timezone'));
             }
         });
-
-// input data for catalog page
-
-        // view()->composer('pages.catalog', function(View $view) {
-
-        //     $categories = Category::all();
-
-        //     $view->with('categories', $categories);
-
-        // });
 
 
 // input offers on the main page

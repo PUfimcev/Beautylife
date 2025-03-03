@@ -11,6 +11,10 @@
     flex-direction: column;
     align-items: flex-start;
 
+    .bookmarks.navbar__cancel-icon{
+        margin-left: auto;
+    }
+
 
     .bookmarks__title{
         width: 100%;
@@ -83,7 +87,7 @@
 
             .bookmark__element{
                 width: 100%;
-                // height: 10rem;
+                height: 10rem;
                 padding: 1rem 0.5rem;
                 border-bottom: 1px solid $text-accent;
 
@@ -94,7 +98,7 @@
 
                 .product_top{
                     width: max(30%, 13rem);
-                    height: 10rem;
+                    // height: 10rem;
                     display: flex;
                     align-items: flex-start;
                     justify-content:space-around;
@@ -138,7 +142,7 @@
 
                     .product__image{
                         display: block;
-                        object-fit: cover;
+                        object-fit: contain;
                         aspect-ratio: 4/3;
                         width: 60%;
                         height: 100%;
@@ -148,30 +152,27 @@
 
                 .product__content{
                     width: max(50%, 22rem);
-                    height: 10rem;
+                    // height: 10rem;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     justify-content:flex-start;
                     gap: 0.5rem;
-                    padding: 1rem;
 
                     .content_text{
                         display: inline-block;
                         width: 100%;
-                        height: 20%;
+                        // height: 20%;
                         text-decoration: underline;
                         color: $text-accent;
                         padding: 0;
                     }
 
                     .content_about{
-                        height: 80%;
+                        height: 70%;
                         margin: 0;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 4;
-                        -webkit-box-orient: vertical;
                         overflow: hidden;
+                        @include line-clamp(4);
                     }
                 }
 

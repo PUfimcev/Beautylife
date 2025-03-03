@@ -68,7 +68,7 @@
                     </form>
             </div>
         @endauth
-        <div><a href="{{ route ('basket') }}" class="headbar__cart"><span class="headbar__cart_amount">20</span></a></div>
+        <div><a href="{{ route ('basket') }}" class="headbar__cart"><span class="headbar__cart_amount">{{ $numberBasketProducts }}</span></a></div>
     </div>
 </div>
 <nav class="navbar__line">

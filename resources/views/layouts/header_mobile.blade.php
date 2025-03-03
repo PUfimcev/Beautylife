@@ -51,7 +51,7 @@
                 </div>
 
             @endauth
-            <div><a href="{{ route ('basket') }}" class="headbar__cart"><span class="headbar__cart_amount">20</span></a></div>
+            <div><a href="{{ route ('basket') }}" class="headbar__cart"><span class="headbar__cart_amount">{{ $numberBasketProducts }}</span></a></div>
         </div>
         <div  class="d-flex flex-row justify-content-between align-items-center gap-3">
 
