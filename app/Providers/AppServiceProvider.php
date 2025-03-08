@@ -57,6 +57,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer(['layouts.header', 'layouts.header_mobile'], function(View $view) {
 
+            $order = null;
+
             if(session()->has('order')){
 
                 $order = session()->get('order');
@@ -68,11 +70,10 @@ class AppServiceProvider extends ServiceProvider
 
             if(is_null($order)) {
                 $view->with('numberBasketProducts', null);
+            } else {
+                $numberBasketProducts = $order->products()->count();
+                $view->with('numberBasketProducts', $numberBasketProducts);
             }
-
-            $numberBasketProducts = $order->products()->count();
-
-            $view->with('numberBasketProducts', $numberBasketProducts);
 
         });
 

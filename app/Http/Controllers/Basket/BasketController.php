@@ -47,7 +47,7 @@ class BasketController extends Controller
         // dd($product->id);
         // dd($product->isProductInBasket());
         $amount['amount'] =  ($request->input('productsAmount') === null) ? '1' : $request->input('productsAmount');
-        HandleOrder::createOrder($product, $amount);
+        // HandleOrder::createOrder($product, $amount);
 
         return back();
     }
